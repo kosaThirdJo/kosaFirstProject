@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @ToString
 @AllArgsConstructor
 public class UserVO {
-
     private int userId;
     private String name;
     private String password;
@@ -24,8 +23,5 @@ public class UserVO {
     private String profile_content;
     private String interest_language;
     private String interest_framework;
-
     private String interest_job;
-
-
 }
