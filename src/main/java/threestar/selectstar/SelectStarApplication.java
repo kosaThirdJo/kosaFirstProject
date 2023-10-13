@@ -1,9 +1,13 @@
 package threestar.selectstar;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
+@SpringBootApplication//(exclude = DataSourceAutoConfiguration.class)
+//@ComponentScan(basePackages = {"threestar.selectstar"})
+@MapperScan(value = {"threestar.selectstar.dao"})
 public class SelectStarApplication {
 
     public static void main(String[] args) {
