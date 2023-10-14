@@ -1,0 +1,1581 @@
+.signup-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.signup-content {
+  gap: 65px;
+  width: 40%;
+  height: auto;
+  display: flex;
+  padding: 100px 10%;
+  margin: 15% auto;
+  overflow: hidden;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  align-items: center;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 1);
+}
+.signup-top {
+  gap: 20px;
+  display: flex;
+  padding: 26px 37px;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-logo {
+  gap: 2px;
+  display: flex;
+  padding: 20px 0;
+  align-items: center;
+  justify-content: center;
+}
+.signup-text {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 80px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-text001 {
+  color: rgba(0, 0, 0, 1);
+}
+.signup-text002 {
+  color: rgba(250, 243, 227, 1);
+}
+.signup-text003 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 30px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-text005 {
+  color: rgba(113, 112, 112, 1);
+  height: auto;
+  font-size: 20px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-snssignup {
+  gap: 30px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.signup-text007 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 25px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-kakaoimg {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-kakaologinmediumnarrow1 {
+  width: 269px;
+  height: 66px;
+}
+.signup-or {
+  gap: 10px;
+  width: 591.9865112304688px;
+  display: flex;
+  padding: 10px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+}
+.signup-line1 {
+  width: 257px;
+  height: 1px;
+  flex-grow: 1;
+}
+.signup-text009 {
+  color: rgba(145, 143, 143, 1);
+  height: auto;
+  font-size: 20px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-line2 {
+  width: 257px;
+  height: 1px;
+  flex-grow: 1;
+}
+.signup-selectsignup {
+  gap: 5px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.signup-text-notification {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 25px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-input {
+  gap: 30px;
+  display: flex;
+  padding: 30px 0;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.signup-id {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-text013 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 20px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-input1 {
+  gap: 10px;
+  color: rgba(145, 143, 143, 1);
+  display: flex;
+  padding: 0 20px;
+  overflow: hidden;
+  font-size: 20px;
+  align-self: stretch;
+  text-align: left;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: NanumGothic;
+  font-weight: 400;
+  border-color: rgba(145, 143, 143, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+}
+.signup-check {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.signup-info {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(165, 0, 0, 1);
+}
+.signup-info1 {
+  top: 1.9999998807907104px;
+  left: 1.9999998807907104px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+}
+.signup-text015 {
+  color: rgba(165, 0, 0, 1);
+  height: auto;
+  font-size: 20px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-password {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-text017 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 20px;
+  align-self: stretch;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-input2 {
+  gap: 10px;
+  color: rgba(145, 143, 143, 1);
+  display: flex;
+  padding: 0 20px;
+  overflow: hidden;
+  font-size: 20px;
+  align-self: stretch;
+  text-align: left;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: NanumGothic;
+  font-weight: 400;
+  border-color: rgba(145, 143, 143, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+}
+.signup-email {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-text019 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 20px;
+  align-self: stretch;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-input3 {
+  gap: 10px;
+  color: rgba(145, 143, 143, 1);
+  display: flex;
+  padding: 0 20px;
+  overflow: hidden;
+  font-size: 20px;
+  align-self: stretch;
+  text-align: left;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: NanumGothic;
+  font-weight: 400;
+  border-color: rgba(145, 143, 143, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+}
+.signup-nickname {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-text021 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 20px;
+  align-self: stretch;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-input4 {
+  gap: 10px;
+  color: rgba(145, 143, 143, 1);
+  display: flex;
+  padding: 0 20px;
+  overflow: hidden;
+  font-size: 20px;
+  align-self: stretch;
+  text-align: left;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: NanumGothic;
+  font-weight: 400;
+  border-color: rgba(145, 143, 143, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+}
+.signup-location {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-text023 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 20px;
+  align-self: stretch;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-geolocation {
+  gap: 20px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+}
+.signup-input5 {
+  gap: 10px;
+  color: rgba(145, 143, 143, 1);
+  height: 55px;
+  display: flex;
+  padding: 0 20px;
+  overflow: hidden;
+  flex-grow: 1;
+  font-size: 20px;
+  text-align: left;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: NanumGothic;
+  font-weight: 400;
+  border-color: rgba(145, 143, 143, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+}
+.signup-locationbtnbutton {
+  gap: 10px;
+  display: flex;
+  padding: 10px 15px;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: center;
+  background-color: rgba(26, 77, 46, 1);
+}
+.signup-text025 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 20px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-geolocation1 {
+  gap: 20px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+}
+.signup-input6 {
+  gap: 10px;
+  height: 55px;
+  display: flex;
+  padding: 0 20px;
+  overflow: hidden;
+  flex-grow: 1;
+  align-items: center;
+  flex-shrink: 0;
+  border-color: rgba(145, 143, 143, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+.signup-text027 {
+  color: rgba(145, 143, 143, 1);
+  height: auto;
+  font-size: 20px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-arrowdropdown {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.signup-arrowdropdown1 {
+  top: 10px;
+  left: 7px;
+  width: 10px;
+  height: 5px;
+  position: absolute;
+}
+.signup-interest {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-text029 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 20px;
+  align-self: stretch;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-frame15296 {
+  display: flex;
+  padding: 20px;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  border-color: rgba(145, 144, 144, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-language {
+  gap: 10px;
+  display: flex;
+  padding: 10px 0;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-text031 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 17px;
+  align-self: stretch;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-select {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+}
+.signup-btnbutton {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(26, 77, 46, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text033 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton01 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text035 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton02 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.interest-lang-button {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton03 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text038 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton04 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text040 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton05 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(26, 77, 46, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text042 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton06 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text044 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton07 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text046 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton08 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text048 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton09 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text050 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton10 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text052 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-framework {
+  gap: 10px;
+  display: flex;
+  padding: 10px 0;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-text054 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 17px;
+  align-self: stretch;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-select1 {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+}
+.signup-btnbutton11 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(26, 77, 46, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text056 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton12 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text058 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton13 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text060 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton14 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text062 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton15 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text064 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton16 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text066 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton17 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(26, 77, 46, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text068 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton18 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(26, 77, 46, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text070 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton19 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text072 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton20 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text074 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-role {
+  gap: 10px;
+  display: flex;
+  padding: 10px 0;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-text076 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 17px;
+  align-self: stretch;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-select2 {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+}
+.signup-btnbutton21 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text078 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton22 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(26, 77, 46, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text080 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton23 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(26, 77, 46, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text082 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton24 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text084 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton25 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text086 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton26 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text088 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton27 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text090 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-btnbutton28 {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-text092 {
+  color: rgba(167, 166, 166, 1);
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-agree {
+  gap: 20px;
+  display: flex;
+  padding: 10px 0;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-allagree {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+}
+.signup-checkboxoutlineblank {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.signup-checkboxoutlineblank1 {
+  top: 2.999999761581421px;
+  left: 2.999999761581421px;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+}
+.signup-text094 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 20px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-selectagree {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.signup-agree1 {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  flex-grow: 1;
+  align-items: center;
+}
+.signup-checkboxoutlineblank2 {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.signup-checkboxoutlineblank3 {
+  top: 2.999999761581421px;
+  left: 2.999999761581421px;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+}
+.signup-text096 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 18px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-selectagree1 {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.signup-agree2 {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+}
+.signup-checkboxoutlineblank4 {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.signup-checkboxoutlineblank5 {
+  top: 2.999999761581421px;
+  left: 2.999999761581421px;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+}
+.signup-text098 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 18px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-text100 {
+  color: rgba(57, 55, 55, 1);
+  height: auto;
+  font-size: 18px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: underline;
+}
+.signup-selectagree2 {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.signup-agree3 {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+}
+.signup-checkboxoutlineblank6 {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.signup-checkboxoutlineblank7 {
+  top: 2.999999761581421px;
+  left: 2.999999761581421px;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+}
+.signup-text102 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 18px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-text104 {
+  color: rgba(57, 55, 55, 1);
+  height: auto;
+  font-size: 18px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: underline;
+}
+.signup-signupbtnbutton {
+  gap: 10px;
+  display: flex;
+  padding: 10px;
+  overflow: hidden;
+  align-self: stretch;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  justify-content: space-between;
+  background-color: rgba(26, 77, 46, 1);
+}
+.signup-text106 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 25px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-join {
+  gap: 10px;
+  display: flex;
+  padding: 10px 0;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+}
+.signup-text108 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 20px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-text110 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 20px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: underline;
+}

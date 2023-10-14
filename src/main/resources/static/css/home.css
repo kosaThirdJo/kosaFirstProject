@@ -1,0 +1,2716 @@
+.main-login-xbutton-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  align-items: center;
+  flex-direction: column;
+}
+.main-login-xbutton-dummy-container {
+  width: 100%;
+}
+.main-login-xbutton-main-login-xbutton {
+  gap: 36px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  overflow: hidden;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  align-items: center;
+  flex-shrink: 0;
+  border-color: rgba(0, 0, 0, 1);
+  border-style: solid;
+  border-width: 1px;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 1);
+}
+.main-login-xbutton-header {
+  gap: 71px;
+  width: 1440px;
+  height: 84px;
+  display: flex;
+  padding: 20px 100px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 1);
+}
+.main-login-xbutton-logo {
+  gap: 2px;
+  top: 20px;
+  left: 100px;
+  width: 172px;
+  display: flex;
+  position: absolute;
+  align-self: stretch;
+  align-items: center;
+}
+.main-login-xbutton-text {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 40px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text001 {
+  color: rgba(0, 0, 0, 1);
+}
+.main-login-xbutton-text002 {
+  color: rgba(250, 243, 227, 1);
+}
+.main-login-xbutton-nav-links {
+  top: 20px;
+  left: 304.66668701171875px;
+  width: 427px;
+  display: flex;
+  position: absolute;
+  align-self: stretch;
+  align-items: center;
+  border-color: rgba(0, 0, 0, 1);
+  border-style: solid;
+  border-width: 1px;
+  justify-content: center;
+}
+.main-login-xbutton-from {
+  gap: 10px;
+  display: flex;
+  padding: 9px 20px;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 1);
+}
+.main-login-xbutton-text003 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 20px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-join {
+  gap: 10px;
+  display: flex;
+  padding: 9px 20px;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(26, 77, 46, 1);
+}
+.main-login-xbutton-text005 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 20px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-joinlist {
+  gap: 20px;
+  display: flex;
+  padding: 10px 20px;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+}
+.main-login-xbutton-study {
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-text007 {
+  color: var(--dl-color-default-black);
+  height: auto;
+  font-size: 20px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-project {
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-text009 {
+  color: var(--dl-color-default-black);
+  height: auto;
+  font-size: 20px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-etc {
+  display: flex;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-text011 {
+  color: var(--dl-color-default-black);
+  height: auto;
+  font-size: 20px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-search-boxinput {
+  gap: 12px;
+  top: 20px;
+  left: 899.3333740234375px;
+  width: 200px;
+  display: flex;
+  padding: 12px 56px 12px 30px;
+  position: absolute;
+  align-self: stretch;
+  align-items: center;
+  background-color: rgba(246, 246, 246, 1);
+}
+.main-login-xbutton-frame {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.main-login-xbutton-frame1 {
+  top: 1.6666667461395264px;
+  left: 1.6666667461395264px;
+  width: 15.833333015441895px;
+  height: 15.833333015441895px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.main-login-xbutton-vector {
+  top: 0px;
+  left: 0px;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+}
+.main-login-xbutton-text013 {
+  color: var(--dl-color-default-black);
+  height: auto;
+  font-size: 14px;
+  font-style: Regular;
+  text-align: left;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-btn {
+  gap: 10px;
+  top: 20px;
+  left: 1180px;
+  width: 208px;
+  display: flex;
+  padding: 0 10px;
+  overflow: hidden;
+  position: absolute;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-loginbutton {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  justify-content: center;
+  background-color: rgba(255, 159, 41, 1);
+}
+.main-login-xbutton-text015 {
+  color: rgba(250, 243, 227, 1);
+  width: 75px;
+  height: auto;
+  font-size: 16px;
+  font-style: Semi Bold;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 700;
+  line-height: 129.99999523162842%;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-signupbutton {
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  justify-content: center;
+  background-color: rgba(84, 82, 82, 1);
+}
+.main-login-xbutton-text017 {
+  color: rgba(250, 243, 227, 1);
+  width: 75px;
+  height: auto;
+  font-size: 16px;
+  font-style: Semi Bold;
+  text-align: center;
+  font-family: Inter;
+  font-weight: 700;
+  line-height: 129.99999523162842%;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-content {
+  gap: 50px;
+  display: flex;
+  padding: 10px 100px;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-shrink: 0;
+  justify-content: center;
+}
+.main-login-xbutton-join1 {
+  gap: 17px;
+  width: 832px;
+  display: flex;
+  padding: 12px 0;
+  overflow: hidden;
+  align-items: flex-start;
+  flex-shrink: 0;
+  flex-direction: column;
+}
+.main-login-xbutton-title-join {
+  gap: 4px;
+  width: 832px;
+  display: flex;
+  padding: 0 6px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.main-login-xbutton-order-by {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-notifications {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-notifications1 {
+  top: 2.9166667461395264px;
+  left: 5.833333492279053px;
+  width: 23px;
+  height: 29px;
+  position: absolute;
+}
+.main-login-xbutton-text019 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 30px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-arrow {
+  gap: 15px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-arrowcircleleftbutton {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-arrowcircleleft {
+  top: 2.3333332538604736px;
+  left: 2.3333332538604736px;
+  width: 23px;
+  height: 23px;
+  position: absolute;
+}
+.main-login-xbutton-arrowcirclerightbutton {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-arrowcircleright {
+  top: 2.3333332538604736px;
+  left: 2.3333332538604736px;
+  width: 23px;
+  height: 23px;
+  position: absolute;
+}
+.main-login-xbutton-join-list1 {
+  gap: 40px;
+  width: 832px;
+  display: flex;
+  padding: 10px;
+  overflow: hidden;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.main-login-xbutton-join2 {
+  gap: 10px;
+  display: flex;
+  padding: 23px;
+  overflow: hidden;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  align-items: flex-start;
+  border-radius: 10px;
+  flex-direction: column;
+  background-color: rgba(250, 243, 227, 1);
+}
+.main-login-xbutton-white {
+  width: 338px;
+  height: 188px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 1);
+}
+.main-login-xbutton-period {
+  gap: 17px;
+  top: 151px;
+  left: 55px;
+  width: 120px;
+  height: 22px;
+  display: flex;
+  padding: 3px 0;
+  overflow: hidden;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.main-login-xbutton-deadline {
+  gap: 3px;
+  top: 140px;
+  left: 0px;
+  width: 338px;
+  display: flex;
+  padding: 0 20px;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-login-xbutton-calendartoday {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(26, 77, 46, 1);
+}
+.main-login-xbutton-calendartoday1 {
+  top: 1.3333333730697632px;
+  left: 2px;
+  width: 12px;
+  height: 13px;
+  position: absolute;
+}
+.main-login-xbutton-text021 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 11px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text023 {
+  top: 161px;
+  left: 20px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text025 {
+  top: 85px;
+  left: 20px;
+  color: rgba(0, 0, 0, 1);
+  width: 298px;
+  height: auto;
+  position: absolute;
+  font-size: 18px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: 22px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-location {
+  gap: 3px;
+  top: 58px;
+  left: 0px;
+  width: 338px;
+  display: flex;
+  padding: 3px 20px;
+  overflow: hidden;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-login-xbutton-distance {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(26, 77, 46, 1);
+}
+.main-login-xbutton-distance1 {
+  top: 1.3333333730697632px;
+  left: 4px;
+  width: 8px;
+  height: 13px;
+  position: absolute;
+}
+.main-login-xbutton-text027 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 11px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-top {
+  gap: 158px;
+  top: 0px;
+  left: 0px;
+  width: 338px;
+  display: flex;
+  padding: 15px 20px;
+  overflow: hidden;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.main-login-xbutton-category {
+  gap: 10px;
+  width: 85px;
+  height: 30px;
+  display: flex;
+  padding: 6px 13px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(26, 77, 46, 1);
+}
+.main-login-xbutton-text029 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-state {
+  gap: 10px;
+  width: 75px;
+  height: 30px;
+  display: flex;
+  padding: 6px 13px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 159, 41, 1);
+}
+.main-login-xbutton-text031 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-bot {
+  gap: 50px;
+  width: 338px;
+  display: flex;
+  padding: 4px 6px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.main-login-xbutton-people {
+  gap: 5px;
+  width: 172px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-login-xbutton-groups {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(0, 0, 0, 1);
+}
+.main-login-xbutton-groups1 {
+  top: 6px;
+  left: -1.7881393432617188e-7px;
+  width: 24px;
+  height: 12px;
+  position: absolute;
+}
+.main-login-xbutton-text033 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text034 {
+  color: rgba(0, 0, 0, 1);
+}
+.main-login-xbutton-text035 {
+  color: rgba(255, 159, 41, 1);
+}
+.main-login-xbutton-icon {
+  gap: 7px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: flex-end;
+}
+.main-login-xbutton-view {
+  gap: 4px;
+  display: flex;
+  opacity: 0.30;
+  padding: 0 4px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-visibility {
+  width: 23px;
+  height: 23px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-visibility1 {
+  top: 3.8333332538604736px;
+  left: 0.8982322812080383px;
+  width: 21px;
+  height: 14px;
+  position: absolute;
+}
+.main-login-xbutton-text037 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-chat {
+  gap: 4px;
+  display: flex;
+  opacity: 0.30;
+  padding: 0 4px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-chatbubble {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-chatbubble1 {
+  top: 1.666637659072876px;
+  left: 1.6666666269302368px;
+  width: 17px;
+  height: 17px;
+  position: absolute;
+}
+.main-login-xbutton-text039 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-chat1 {
+  gap: 4px;
+  display: flex;
+  opacity: 0.30;
+  padding: 0 4px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-favorite {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-favorite1 {
+  top: 2.4291610717773438px;
+  left: 1.8333333730697632px;
+  width: 18px;
+  height: 17px;
+  position: absolute;
+}
+.main-login-xbutton-hashtag {
+  gap: 10px;
+  display: flex;
+  padding: 4px 6px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-text040 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text042 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-join3 {
+  gap: 10px;
+  display: flex;
+  padding: 23px;
+  overflow: hidden;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  align-items: flex-start;
+  border-radius: 10px;
+  flex-direction: column;
+  background-color: rgba(250, 243, 227, 1);
+}
+.main-login-xbutton-white1 {
+  width: 338px;
+  height: 188px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 1);
+}
+.main-login-xbutton-period1 {
+  gap: 17px;
+  top: 151px;
+  left: 55px;
+  width: 120px;
+  height: 22px;
+  display: flex;
+  padding: 3px 0;
+  overflow: hidden;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.main-login-xbutton-deadline1 {
+  gap: 3px;
+  top: 140px;
+  left: 0px;
+  width: 338px;
+  display: flex;
+  padding: 0 20px;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-login-xbutton-calendartoday2 {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(26, 77, 46, 1);
+}
+.main-login-xbutton-calendartoday3 {
+  top: 1.3333333730697632px;
+  left: 2px;
+  width: 12px;
+  height: 13px;
+  position: absolute;
+}
+.main-login-xbutton-text044 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 11px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text046 {
+  top: 161px;
+  left: 20px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text048 {
+  top: 85px;
+  left: 20px;
+  color: rgba(0, 0, 0, 1);
+  width: 298px;
+  height: auto;
+  position: absolute;
+  font-size: 18px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: 22px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-location1 {
+  gap: 3px;
+  top: 58px;
+  left: 0px;
+  width: 338px;
+  display: flex;
+  padding: 3px 20px;
+  overflow: hidden;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-login-xbutton-distance2 {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(26, 77, 46, 1);
+}
+.main-login-xbutton-distance3 {
+  top: 1.3333333730697632px;
+  left: 4px;
+  width: 8px;
+  height: 13px;
+  position: absolute;
+}
+.main-login-xbutton-text050 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 11px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-top1 {
+  gap: 158px;
+  top: 0px;
+  left: 0px;
+  width: 338px;
+  display: flex;
+  padding: 15px 20px;
+  overflow: hidden;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.main-login-xbutton-category1 {
+  gap: 10px;
+  width: 85px;
+  height: 30px;
+  display: flex;
+  padding: 6px 13px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(26, 77, 46, 1);
+}
+.main-login-xbutton-text052 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-state1 {
+  gap: 10px;
+  width: 75px;
+  height: 30px;
+  display: flex;
+  padding: 6px 13px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 159, 41, 1);
+}
+.main-login-xbutton-text054 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-bot1 {
+  gap: 50px;
+  width: 338px;
+  display: flex;
+  padding: 4px 6px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.main-login-xbutton-people1 {
+  gap: 5px;
+  width: 172px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-login-xbutton-groups2 {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(0, 0, 0, 1);
+}
+.main-login-xbutton-groups3 {
+  top: 6px;
+  left: -1.7881393432617188e-7px;
+  width: 24px;
+  height: 12px;
+  position: absolute;
+}
+.main-login-xbutton-text056 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text057 {
+  color: rgba(0, 0, 0, 1);
+}
+.main-login-xbutton-text058 {
+  color: rgba(255, 159, 41, 1);
+}
+.main-login-xbutton-icon1 {
+  gap: 7px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: flex-end;
+}
+.main-login-xbutton-view1 {
+  gap: 4px;
+  display: flex;
+  opacity: 0.30;
+  padding: 0 4px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-visibility2 {
+  width: 23px;
+  height: 23px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-visibility3 {
+  top: 3.8333332538604736px;
+  left: 0.8982322812080383px;
+  width: 21px;
+  height: 14px;
+  position: absolute;
+}
+.main-login-xbutton-text060 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-chat2 {
+  gap: 4px;
+  display: flex;
+  opacity: 0.30;
+  padding: 0 4px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-chatbubble2 {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-chatbubble3 {
+  top: 1.666637659072876px;
+  left: 1.6666666269302368px;
+  width: 17px;
+  height: 17px;
+  position: absolute;
+}
+.main-login-xbutton-text062 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-chat3 {
+  gap: 4px;
+  display: flex;
+  opacity: 0.30;
+  padding: 0 4px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-favorite2 {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-favorite3 {
+  top: 2.4291610717773438px;
+  left: 1.8333333730697632px;
+  width: 18px;
+  height: 17px;
+  position: absolute;
+}
+.main-login-xbutton-hashtag1 {
+  gap: 10px;
+  display: flex;
+  padding: 4px 6px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-text063 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text065 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-join4 {
+  gap: 10px;
+  display: flex;
+  padding: 23px;
+  overflow: hidden;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  align-items: flex-start;
+  border-radius: 10px;
+  flex-direction: column;
+  background-color: rgba(250, 243, 227, 1);
+}
+.main-login-xbutton-white2 {
+  width: 338px;
+  height: 188px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 1);
+}
+.main-login-xbutton-period2 {
+  gap: 17px;
+  top: 151px;
+  left: 55px;
+  width: 120px;
+  height: 22px;
+  display: flex;
+  padding: 3px 0;
+  overflow: hidden;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.main-login-xbutton-deadline2 {
+  gap: 3px;
+  top: 140px;
+  left: 0px;
+  width: 338px;
+  display: flex;
+  padding: 0 20px;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-login-xbutton-calendartoday4 {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(26, 77, 46, 1);
+}
+.main-login-xbutton-calendartoday5 {
+  top: 1.3333333730697632px;
+  left: 2px;
+  width: 12px;
+  height: 13px;
+  position: absolute;
+}
+.main-login-xbutton-text067 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 11px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text069 {
+  top: 161px;
+  left: 20px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text071 {
+  top: 85px;
+  left: 20px;
+  color: rgba(0, 0, 0, 1);
+  width: 298px;
+  height: auto;
+  position: absolute;
+  font-size: 18px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: 22px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-location2 {
+  gap: 3px;
+  top: 58px;
+  left: 0px;
+  width: 338px;
+  display: flex;
+  padding: 3px 20px;
+  overflow: hidden;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-login-xbutton-distance4 {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(26, 77, 46, 1);
+}
+.main-login-xbutton-distance5 {
+  top: 1.3333333730697632px;
+  left: 4px;
+  width: 8px;
+  height: 13px;
+  position: absolute;
+}
+.main-login-xbutton-text073 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 11px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-top2 {
+  gap: 158px;
+  top: 0px;
+  left: 0px;
+  width: 338px;
+  display: flex;
+  padding: 15px 20px;
+  overflow: hidden;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.main-login-xbutton-category2 {
+  gap: 10px;
+  width: 85px;
+  height: 30px;
+  display: flex;
+  padding: 6px 13px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(26, 77, 46, 1);
+}
+.main-login-xbutton-text075 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-state2 {
+  gap: 10px;
+  width: 75px;
+  height: 30px;
+  display: flex;
+  padding: 6px 13px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 159, 41, 1);
+}
+.main-login-xbutton-text077 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-bot2 {
+  gap: 50px;
+  width: 338px;
+  display: flex;
+  padding: 4px 6px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.main-login-xbutton-people2 {
+  gap: 5px;
+  width: 172px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-login-xbutton-groups4 {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(0, 0, 0, 1);
+}
+.main-login-xbutton-groups5 {
+  top: 6px;
+  left: -1.7881393432617188e-7px;
+  width: 24px;
+  height: 12px;
+  position: absolute;
+}
+.main-login-xbutton-text079 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text080 {
+  color: rgba(0, 0, 0, 1);
+}
+.main-login-xbutton-text081 {
+  color: rgba(255, 159, 41, 1);
+}
+.main-login-xbutton-icon2 {
+  gap: 7px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: flex-end;
+}
+.main-login-xbutton-view2 {
+  gap: 4px;
+  display: flex;
+  opacity: 0.30;
+  padding: 0 4px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-visibility4 {
+  width: 23px;
+  height: 23px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-visibility5 {
+  top: 3.8333332538604736px;
+  left: 0.8982322812080383px;
+  width: 21px;
+  height: 14px;
+  position: absolute;
+}
+.main-login-xbutton-text083 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-chat4 {
+  gap: 4px;
+  display: flex;
+  opacity: 0.30;
+  padding: 0 4px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-chatbubble4 {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-chatbubble5 {
+  top: 1.666637659072876px;
+  left: 1.6666666269302368px;
+  width: 17px;
+  height: 17px;
+  position: absolute;
+}
+.main-login-xbutton-text085 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-chat5 {
+  gap: 4px;
+  display: flex;
+  opacity: 0.30;
+  padding: 0 4px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-favorite4 {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-favorite5 {
+  top: 2.4291610717773438px;
+  left: 1.8333333730697632px;
+  width: 18px;
+  height: 17px;
+  position: absolute;
+}
+.main-login-xbutton-hashtag2 {
+  gap: 10px;
+  display: flex;
+  padding: 4px 6px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-text086 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text088 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-join5 {
+  gap: 10px;
+  display: flex;
+  padding: 23px;
+  overflow: hidden;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  align-items: flex-start;
+  border-radius: 10px;
+  flex-direction: column;
+  background-color: rgba(250, 243, 227, 1);
+}
+.main-login-xbutton-white3 {
+  width: 338px;
+  height: 188px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 1);
+}
+.main-login-xbutton-period3 {
+  gap: 17px;
+  top: 151px;
+  left: 55px;
+  width: 120px;
+  height: 22px;
+  display: flex;
+  padding: 3px 0;
+  overflow: hidden;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.main-login-xbutton-deadline3 {
+  gap: 3px;
+  top: 140px;
+  left: 0px;
+  width: 338px;
+  display: flex;
+  padding: 0 20px;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-login-xbutton-calendartoday6 {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(26, 77, 46, 1);
+}
+.main-login-xbutton-calendartoday7 {
+  top: 1.3333333730697632px;
+  left: 2px;
+  width: 12px;
+  height: 13px;
+  position: absolute;
+}
+.main-login-xbutton-text090 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 11px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text092 {
+  top: 161px;
+  left: 20px;
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  position: absolute;
+  font-size: 12px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text094 {
+  top: 85px;
+  left: 20px;
+  color: rgba(0, 0, 0, 1);
+  width: 298px;
+  height: auto;
+  position: absolute;
+  font-size: 18px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: 22px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-location3 {
+  gap: 3px;
+  top: 58px;
+  left: 0px;
+  width: 338px;
+  display: flex;
+  padding: 3px 20px;
+  overflow: hidden;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-login-xbutton-distance6 {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(26, 77, 46, 1);
+}
+.main-login-xbutton-distance7 {
+  top: 1.3333333730697632px;
+  left: 4px;
+  width: 8px;
+  height: 13px;
+  position: absolute;
+}
+.main-login-xbutton-text096 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 11px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-top3 {
+  gap: 158px;
+  top: 0px;
+  left: 0px;
+  width: 338px;
+  display: flex;
+  padding: 15px 20px;
+  overflow: hidden;
+  position: absolute;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.main-login-xbutton-category3 {
+  gap: 10px;
+  width: 85px;
+  height: 30px;
+  display: flex;
+  padding: 6px 13px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(26, 77, 46, 1);
+}
+.main-login-xbutton-text098 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-state3 {
+  gap: 10px;
+  width: 75px;
+  height: 30px;
+  display: flex;
+  padding: 6px 13px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 159, 41, 1);
+}
+.main-login-xbutton-text100 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-bot3 {
+  gap: 50px;
+  width: 338px;
+  display: flex;
+  padding: 4px 6px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.main-login-xbutton-people3 {
+  gap: 5px;
+  width: 172px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-login-xbutton-groups6 {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(0, 0, 0, 1);
+}
+.main-login-xbutton-groups7 {
+  top: 6px;
+  left: -1.7881393432617188e-7px;
+  width: 24px;
+  height: 12px;
+  position: absolute;
+}
+.main-login-xbutton-text102 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text103 {
+  color: rgba(0, 0, 0, 1);
+}
+.main-login-xbutton-text104 {
+  color: rgba(255, 159, 41, 1);
+}
+.main-login-xbutton-icon3 {
+  gap: 7px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: flex-end;
+}
+.main-login-xbutton-view3 {
+  gap: 4px;
+  display: flex;
+  opacity: 0.30;
+  padding: 0 4px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-visibility6 {
+  width: 23px;
+  height: 23px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-visibility7 {
+  top: 3.8333332538604736px;
+  left: 0.8982322812080383px;
+  width: 21px;
+  height: 14px;
+  position: absolute;
+}
+.main-login-xbutton-text106 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-chat6 {
+  gap: 4px;
+  display: flex;
+  opacity: 0.30;
+  padding: 0 4px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-chatbubble6 {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-chatbubble7 {
+  top: 1.666637659072876px;
+  left: 1.6666666269302368px;
+  width: 17px;
+  height: 17px;
+  position: absolute;
+}
+.main-login-xbutton-text108 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-chat7 {
+  gap: 4px;
+  display: flex;
+  opacity: 0.30;
+  padding: 0 4px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-favorite6 {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-favorite7 {
+  top: 2.4291610717773438px;
+  left: 1.8333333730697632px;
+  width: 18px;
+  height: 17px;
+  position: absolute;
+}
+.main-login-xbutton-hashtag3 {
+  gap: 10px;
+  display: flex;
+  padding: 4px 6px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-text109 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text111 {
+  color: rgba(26, 77, 46, 1);
+  height: auto;
+  font-size: 13px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-right {
+  gap: 40px;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  flex-direction: column;
+}
+.main-login-xbutton-intro {
+  gap: 20px;
+  display: flex;
+  padding: 30px 0;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(69, 66, 66, 1);
+}
+.main-login-xbutton-text113 {
+  gap: 8px;
+  display: flex;
+  padding: 0 35px;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.main-login-xbutton-text114 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 16px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text116 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 20px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-circle {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-ellipse212 {
+  width: 10px;
+  height: 10px;
+}
+.main-login-xbutton-ellipse213 {
+  width: 10px;
+  height: 10px;
+}
+.main-login-xbutton-ellipse214 {
+  width: 10px;
+  height: 10px;
+}
+.main-login-xbutton-rank {
+  gap: 16px;
+  width: 314px;
+  display: flex;
+  padding: 12px 0;
+  overflow: hidden;
+  align-items: flex-start;
+  flex-shrink: 0;
+  flex-direction: column;
+}
+.main-login-xbutton-title-hot {
+  gap: 4px;
+  display: flex;
+  padding: 0 6px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.main-login-xbutton-localfiredepartment {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+  background-color: rgba(217, 217, 217, 1);
+}
+.main-login-xbutton-localfiredepartment1 {
+  top: 4.374999523162842px;
+  left: 5.833333492279053px;
+  width: 23px;
+  height: 28px;
+  position: absolute;
+}
+.main-login-xbutton-text118 {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 30px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-rank-list {
+  gap: 10px;
+  width: 315px;
+  display: flex;
+  padding: 10px 15px;
+  overflow: hidden;
+  align-items: flex-start;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: center;
+}
+.main-login-xbutton-rank01 {
+  gap: 15px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.main-login-xbutton-text120 {
+  color: rgba(255, 159, 41, 1);
+  width: 19px;
+  height: auto;
+  font-size: 15px;
+  font-style: ExtraBold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 800;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text121 {
+  color: rgba(0, 0, 0, 1);
+  width: 252px;
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-rank02 {
+  gap: 15px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.main-login-xbutton-text123 {
+  color: rgba(255, 159, 41, 1);
+  width: 19px;
+  height: auto;
+  font-size: 15px;
+  font-style: ExtraBold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 800;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text124 {
+  color: rgba(0, 0, 0, 1);
+  width: 252px;
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-rank03 {
+  gap: 15px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.main-login-xbutton-text126 {
+  color: rgba(255, 159, 41, 1);
+  width: 19px;
+  height: auto;
+  font-size: 15px;
+  font-style: ExtraBold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 800;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text127 {
+  color: rgba(0, 0, 0, 1);
+  width: 252px;
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-rank04 {
+  gap: 15px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.main-login-xbutton-text129 {
+  color: rgba(84, 82, 82, 1);
+  width: 19px;
+  height: auto;
+  font-size: 15px;
+  font-style: ExtraBold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 800;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text130 {
+  color: rgba(0, 0, 0, 1);
+  width: 252px;
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-rank05 {
+  gap: 15px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.main-login-xbutton-text132 {
+  color: rgba(84, 82, 82, 1);
+  width: 19px;
+  height: auto;
+  font-size: 15px;
+  font-style: ExtraBold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 800;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text133 {
+  color: rgba(0, 0, 0, 1);
+  width: 252px;
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-rank06 {
+  gap: 15px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.main-login-xbutton-text135 {
+  color: rgba(84, 82, 82, 1);
+  width: 19px;
+  height: auto;
+  font-size: 15px;
+  font-style: ExtraBold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 800;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text136 {
+  color: rgba(0, 0, 0, 1);
+  width: 252px;
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-rank07 {
+  gap: 15px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.main-login-xbutton-text138 {
+  color: rgba(84, 82, 82, 1);
+  width: 19px;
+  height: auto;
+  font-size: 15px;
+  font-style: ExtraBold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 800;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text139 {
+  color: rgba(0, 0, 0, 1);
+  width: 252px;
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-rank08 {
+  gap: 15px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.main-login-xbutton-text141 {
+  color: rgba(84, 82, 82, 1);
+  width: 19px;
+  height: auto;
+  font-size: 15px;
+  font-style: ExtraBold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 800;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text142 {
+  color: rgba(0, 0, 0, 1);
+  width: 252px;
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-rank09 {
+  gap: 15px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.main-login-xbutton-text144 {
+  color: rgba(84, 82, 82, 1);
+  width: 19px;
+  height: auto;
+  font-size: 15px;
+  font-style: ExtraBold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 800;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text145 {
+  color: rgba(0, 0, 0, 1);
+  width: 252px;
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-rank10 {
+  gap: 15px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.main-login-xbutton-text147 {
+  color: rgba(84, 82, 82, 1);
+  width: 19px;
+  height: auto;
+  font-size: 15px;
+  font-style: ExtraBold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 800;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text149 {
+  color: rgba(0, 0, 0, 1);
+  width: 252px;
+  height: auto;
+  font-size: 15px;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: 20px;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-footer {
+  gap: 20px;
+  width: 1440px;
+  height: 184px;
+  display: flex;
+  padding: 39px 72px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(26, 77, 46, 1);
+}
+.main-login-xbutton-menu {
+  gap: 173px;
+  display: flex;
+  padding: 0 30px;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.main-login-xbutton-logo1 {
+  gap: 2px;
+  width: 185px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.main-login-xbutton-text151 {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 40px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.main-login-xbutton-text152 {
+  color: rgba(255, 255, 255, 1);
+}
+.main-login-xbutton-text153 {
+  color: rgba(250, 243, 227, 1);
+}
+.main-login-xbutton-policy {
+  gap: 70px;
+  display: flex;
+  padding: 1px 0;
+  overflow: hidden;
+  align-items: center;
+}
+.main-login-xbutton-text154 {
+  color: var(--dl-color-gray-100);
+  height: auto;
+  text-align: left;
+  line-height: 24px;
+}
+.main-login-xbutton-text156 {
+  color: var(--dl-color-gray-100);
+  height: auto;
+  text-align: left;
+  line-height: 24px;
+}
+.main-login-xbutton-text158 {
+  color: var(--dl-color-gray-100);
+  height: auto;
+  text-align: left;
+  line-height: 24px;
+}
+.main-login-xbutton-social {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+}
+.main-login-xbutton-frame1 {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.main-login-xbutton-bg {
+  top: 0px;
+  left: 0px;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+}
+.main-login-xbutton-logogithub1 {
+  top: 7.2265625px;
+  left: 8.12890625px;
+  width: 12.95979118347168px;
+  height: 12.645162582397461px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.main-login-xbutton-group {
+  top: 0px;
+  left: 0px;
+  width: 12.95979118347168px;
+  height: 12.645162582397461px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.main-login-xbutton-vector1 {
+  top: 0px;
+  left: 0px;
+  width: 13px;
+  height: 13px;
+  position: absolute;
+}
+.main-login-xbutton-frame2 {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.main-login-xbutton-bg1 {
+  top: 0px;
+  left: 0px;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+}
+.main-login-xbutton-logoinstagram1 {
+  top: 7.2265625px;
+  left: 7.2265625px;
+  width: 13.54838752746582px;
+  height: 13.549030303955078px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.main-login-xbutton-group1 {
+  top: 0px;
+  left: 0px;
+  width: 13.54838752746582px;
+  height: 13.549030303955078px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.main-login-xbutton-vector2 {
+  top: 0px;
+  left: 0px;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+}
+.main-login-xbutton-vector3 {
+  top: 3.296875px;
+  left: 3.296875px;
+  width: 7px;
+  height: 7px;
+  position: absolute;
+}
+.main-login-xbutton-vector4 {
+  top: 2.345703125px;
+  left: 9.578125px;
+  width: 2px;
+  height: 2px;
+  position: absolute;
+}
+.main-login-xbutton-frame3 {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.main-login-xbutton-bg2 {
+  top: 0px;
+  left: 0px;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+}
+.main-login-xbutton-logotwitter2 {
+  top: 9.935546875px;
+  left: 9.033203125px;
+  width: 11.17392635345459px;
+  height: 9.032258987426758px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.main-login-xbutton-group2 {
+  top: 0px;
+  left: 0px;
+  width: 11.17392635345459px;
+  height: 9.032258987426758px;
+  display: flex;
+  position: absolute;
+  align-items: flex-start;
+  flex-shrink: 1;
+}
+.main-login-xbutton-vector5 {
+  top: 0px;
+  left: 0px;
+  width: 11px;
+  height: 9px;
+  position: absolute;
+}
+.main-login-xbutton-line {
+  width: 1296px;
+  height: 1px;
+}
+.main-login-xbutton-text160 {
+  color: var(--dl-color-blue-gray-300);
+  height: auto;
+  text-align: center;
+  line-height: 22px;
+}
+@media(max-width: 1600px) {
+  .main-login-xbutton-header {
+    width: 100%;
+  }
+  .main-login-xbutton-footer {
+    width: 100%;
+  }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+<th:block th:fragment="header">
+    <header>
+<!--        임시 nav-->
+        <nav>
+            <ul>
+                <li><a th:href="@{/meeting}">모임</a></li>
+                <li><a th:href="@{/search}">검색</a></li>
+                <li><a th:href="@{/login}">로그인</a></li>
+                <li><a th:href="@{/signup}">회원가입</a></li>
+            </ul>
+        </nav>
+        <button th:href="@{/signup}">회원가입</button>
+
+<!--header-->
+        <div class="main-login-xbutton-container">
+            <div class="main-login-xbutton-dummy-container">
+                <button class="main-login-xbutton-main-login-xbutton">
+                    <div class="main-login-xbutton-header">
+                        <div class="main-login-xbutton-logo">
+                <span class="main-login-xbutton-text">
+                  <span class="main-login-xbutton-text001">SELECT</span>
+                  <span class="main-login-xbutton-text002">*</span>
+                </span>
+                        </div>
+                        <div class="main-login-xbutton-nav-links">
+                            <div class="main-login-xbutton-from">
+                  <span class="main-login-xbutton-text003">
+                    <span>FROM</span>
+                  </span>
+                            </div>
+                            <div class="main-login-xbutton-join">
+                  <span class="main-login-xbutton-text005">
+                    <span>모임</span>
+                  </span>
+                            </div>
+                            <div class="main-login-xbutton-joinlist">
+                                <div class="main-login-xbutton-study">
+                    <span class="main-login-xbutton-text007">
+                      <span>스터디</span>
+                    </span>
+                                </div>
+                                <div class="main-login-xbutton-project">
+                    <span class="main-login-xbutton-text009">
+                      <span>프로젝트</span>
+                    </span>
+                                </div>
+                                <div class="main-login-xbutton-etc">
+                    <span class="main-login-xbutton-text011">
+                      <span>기타</span>
+                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-login-xbutton-search-boxinput">
+                            <div class="main-login-xbutton-frame">
+                                <div>
+                                    <img
+                                            src="public/external/vector6181-1jdl.svg"
+                                            alt="Vector6181"
+                                            class="main-login-xbutton-vector"
+                                    />
+                                </div>
+                            </div>
+                            <span class="main-login-xbutton-text013">
+                  <span>검색해보세요!</span>
+                </span>
+                        </div>
+                        <div class="main-login-xbutton-btn">
+                            <div class="main-login-xbutton-loginbutton">
+                  <span class="main-login-xbutton-text015">
+                    <span>로그인</span>
+                  </span>
+                            </div>
+                            <div class="main-login-xbutton-signupbutton">
+                  <span class="main-login-xbutton-text017">
+                    <span>회원가입</span>
+                  </span>
+                            </div>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+</th:block>
+</body>
+</html>

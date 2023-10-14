@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <title>회원가입</title>
+    <link th:href="@{/css/signup.css}" rel="stylesheet" />
+    <meta charset="utf-8" />
+</head>
+<body>
+<!--회원 가입 내용 container-->
+    <div class="signup-container">
+        <div class="signup-content">
+
+        <!-- 01 상단 텍스트 : 로고, 설명 -->
+            <div class="signup-top">
+                <div class="signup-logo">
+              <span class="signup-text">
+                <span class="signup-text001">SELECT</span>
+                <span class="signup-text002">*</span>
+              </span>
+                </div>
+                <span class="signup-text003">
+              <span>SELECT *에 오신것을 환영합니다.</span>
+            </span>
+                <span class="signup-text005">
+              <span>SELECT *는 개발자를 위한 모임 커뮤니티입니다.</span>
+            </span>
+            </div>
+
+            <!--  02 입력 폼-->
+            <div class="signup-selectsignup">
+
+                <!--  02-01 회원 가입 문구  -->
+                <span class="signup-text-notification">
+                  <span>회원가입에 필요한 기본정보를 입력해주세요.</span>
+                </span>
+
+                <!--  02-02 회원 가입 form  -->
+                <form action="/signup" method="post">
+                    <div class="signup-input">
+                        <!--  02-02-01 아이디  -->
+                        <div class="signup-id">
+                            <span class="signup-text013"><span>아이디</span></span>
+                            <input
+                                    type="text"
+                                    name="username"
+                                    placeholder="4~15자 이내로 입력해주세요"
+                                    class="signup-input1"
+                                    required
+                            />
+                            <!--                        유효성 검사-->
+                            <!--                        <div class="signup-check">-->
+                            <!--                            <div class="signup-info">-->
+                            <!--                                <img-->
+                            <!--                                        src="public/external/info1101-kstg.svg"-->
+                            <!--                                        alt="info1101"-->
+                            <!--                                        class="signup-info1"-->
+                            <!--                                />-->
+                            <!--                            </div>-->
+                            <!--                            <span class="signup-text015">-->
+                            <!--                    <span>아이디는 최소 4자 이상 입력하세요.</span>-->
+                            <!--                  </span>-->
+                            <!--                        </div>-->
+                        </div>
+                        <!--  02-02-02 비밀번호  -->
+                        <div class="signup-password">
+                            <span class="signup-text017"><span>비밀번호</span></span>
+                            <input
+                                    type="password"
+                                    name="password"
+                                    placeholder="최소 6자 이상(알파벳, 숫자 필수)"
+                                    class="signup-input2"
+                                    required
+                            />
+                        </div>
+                        <!--  02-02-03 이메일  -->
+                        <div class="signup-email">
+                            <span class="signup-text019"><span>이메일</span></span>
+                            <input
+                                    type="email"
+                                    placeholder="honggildong@select.com"
+                                    class="signup-input3"
+                                    required
+                            />
+                        </div>
+                        <!--  02-02-04 닉네임  -->
+                        <div class="signup-nickname">
+                            <span class="signup-text021"><span>닉네임</span></span>
+                            <input
+                                    type="text"
+                                    placeholder="닉네임을 알파벳, 한글, 숫자를 20자 이하로 입력해주세요."
+                                    class="signup-input4"
+                                    required
+                            />
+                        </div>
+                        <!--  02-02-05 지역  -->
+                        <div class="signup-location">
+                            <span class="signup-text023"><span>지역</span></span>
+                           <!--                         카카오API 사용 시 지역 인증
+                                                    <div class="signup-geolocation">
+                                                        <input
+                                                                type="text"
+                                                                placeholder="현재 지역을 인증해주세요."
+                                                                class="signup-input5"
+                                                        />
+                                                        <button class="signup-locationbtnbutton">
+                                                            <span class="signup-text025"><span>지역 인증</span></span>
+                                                        </button>
+                                                    </div>-->
+                            <!--  우선 option으로 지역 선택  -->
+                            <select name="location" required class="signup-geolocation1">
+                                <option value="seoul">서울</option>
+                                <option value="busan">부산</option>
+                                <!-- 다른 지역 옵션들 추가 -->
+                            </select>
+                            <!--<div class="signup-geolocation1">
+                                <div class="signup-input6">
+                                <span class="signup-text027">
+                                  <span>지역을 선택해주세요.</span>
+                                </span>
+                                    <div class="signup-arrowdropdown">
+                                        <img
+                                                src="public/external/arrowdropdown1101-d9m7.svg"
+                                                alt="arrowdropdown1101"
+                                                class="signup-arrowdropdown1"
+                                        />
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                        <!--  02-02-06 관심 분야  -->
+                        <div class="signup-interest">
+                            <span class="signup-text029"><span>관심 분야</span></span>
+                            <div class="signup-frame15296">
+                                <!--  02-02-06-01 언어  -->
+                                <div class="signup-language">
+                                    <span class="signup-text031"><span>언어</span></span>
+                                    <div class="signup-select">
+                                        <button class="signup-btnbutton">
+                                            <span class="interest-lang-button"><span>Java</span></span>
+                                        </button>
+                                        <button class="signup-btnbutton01">
+                                            <span class="interest-lang-button"><span>Python</span></span>
+                                        </button>
+                                        <button class="signup-btnbutton02">
+                                            <span class="interest-lang-button">C</span>
+                                        </button>
+                                </div>
+
+                                <!--  02-02-06-02 프레임워크  -->
+                                <div class="signup-framework">
+                                    <span class="signup-text054"><span>프레임워크</span></span>
+                                    <div class="signup-select1">
+                                        <button class="signup-btnbutton11">
+                                            <span class="signup-text056"><span>Spring</span></span>
+                                        </button>
+                                        <button class="signup-btnbutton12">
+                                            <span class="signup-text058"><span>Django</span></span>
+                                        </button>
+                                        <button class="signup-btnbutton13">
+                                            <span class="signup-text060"><span>Flask</span></span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!--  02-02-06-03 직무  -->
+                                <div class="signup-role">
+                                    <span class="signup-text076"><span>직무</span></span>
+                                    <div class="signup-select2">
+                                        <button class="signup-btnbutton21">
+                                            <span class="signup-text078">
+                                              <span>프론트엔드</span>
+                                            </span>
+                                        </button>
+                                        <button class="signup-btnbutton22">
+                                            <span class="signup-text080"><span>백엔드</span></span>
+                                        </button>
+                                        <button class="signup-btnbutton23">
+                                            <span class="signup-text082"><span>풀스택</span></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--동의 시작 -->
+                        <div class="signup-agree">
+                            <div class="signup-allagree">
+                                <div class="signup-checkboxoutlineblank">
+                                    <img
+                                            src="public/external/checkboxoutlineblank1101-1d54.svg"
+                                            alt="checkboxoutlineblank1101"
+                                            class="signup-checkboxoutlineblank1"
+                                    />
+                                </div>
+                                <span class="signup-text094"><span>모두 동의</span></span>
+                            </div>
+                            <div class="signup-selectagree">
+                                <div class="signup-agree1">
+                                    <div class="signup-checkboxoutlineblank2">
+                                        <img
+                                                src="public/external/checkboxoutlineblank1101-n2te.svg"
+                                                alt="checkboxoutlineblank1101"
+                                                class="signup-checkboxoutlineblank3"
+                                        />
+                                    </div>
+                                    <span class="signup-text096">
+                      <span>(필수) 만 14세 이상입니다.</span>
+                    </span>
+                                </div>
+                            </div>
+                            <div class="signup-selectagree1">
+                                <div class="signup-agree2">
+                                    <div class="signup-checkboxoutlineblank4">
+                                        <img
+                                                src="public/external/checkboxoutlineblank1102-zi0k.svg"
+                                                alt="checkboxoutlineblank1102"
+                                                class="signup-checkboxoutlineblank5"
+                                        />
+                                    </div>
+                                    <span class="signup-text098">
+                      <span>(필수) SELECT * 이용약관 동의</span>
+                    </span>
+                                </div>
+                                <span class="signup-text100"><span>보기</span></span>
+                            </div>
+                            <div class="signup-selectagree2">
+                                <div class="signup-agree3">
+                                    <div class="signup-checkboxoutlineblank6">
+                                        <img
+                                                src="public/external/checkboxoutlineblank1102-dzan.svg"
+                                                alt="checkboxoutlineblank1102"
+                                                class="signup-checkboxoutlineblank7"
+                                        />
+                                    </div>
+                                    <span class="signup-text102">
+                      <span>(필수) 개인정보 수집 및 이용 동의</span>
+                    </span>
+                                </div>
+                                <span class="signup-text104"><span>보기</span></span>
+                            </div>
+                        </div>
+                        <!--동의 끝-->
+
+                        <!--회원 가입 버튼-->
+                        <button class="signup-signupbtnbutton">
+                            <span class="signup-text106"><span>회원가입</span></span>
+                        </button>
+                    </div>
+                    </div>
+                </form>
+<!--           02 폼 끝-->
+
+<!--            03 로그인 페이지 이동-->
+                <div class="signup-join">
+                            <span class="signup-text108">
+                              <span>이미 회원이신가요?</span>
+                            </span>
+                    <span class="signup-text110"><span>로그인</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
