@@ -13,6 +13,6 @@ public interface UserMapper {
     @Select("select * from user")
     public List<UserVO> getAllUserList();
 
-    @Select("select about_me, profile_content from user where user_id = #{userId}")
+    @Select("select nickname, profile_photo, about_me, profile_content from user where user_id = #{userId}")
     public UserDTO getUserProfileInfo(int userId);
 }
