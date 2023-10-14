@@ -1,10 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <title>로그인</title>
+    <link th:href="@{/css/login.css}" rel="stylesheet" />
 </head>
 <body>
+<div class="login-container">
+    <div class="login-login">
+        <div class="login-top">
+            <div class="login-logo">
+              <span class="login-text">
+                <span class="login-text01">SELECT</span>
+                <span class="login-text02">*</span>
+              </span>
+            </div>
+            <span class="login-text03">
+              <span>SELECT *에 오신것을 환영합니다.</span>
+            </span>
+            <span class="login-text05">
+              <span>SELECT *는 개발자를 위한 모임 커뮤니티입니다.</span>
+            </span>
+        </div>
 
+        <div class="login-selectlogin">
+            <span class="login-text11">
+              <span>SELECT * 아이디로 로그인</span>
+            </span>
+            <form action="/login" method="post">
+            <div class="login-input">
+                <div class="login-id">
+                    <span class="login-text13"><span>아이디</span></span>
+                    <input type="text" id="name" name="name" placeholder="" class="login-idinput" />
+                </div>
+                <div class="login-password">
+                    <span class="login-text15"><span>비밀번호</span></span>
+                    <input type="password" id="password" name="password" placeholder="" class="login-passwordinput" />
+                </div>
+                <button type="submit" class="login-loginbtnbutton">
+                    <span class="login-text17"><span>로그인</span></span>
+                </button>
+                <div class="login-join">
+                <span class="login-text19">
+                  <span>아직 회원이 아니신가요?</span>
+                </span>
+                    <span class="login-text21"><span>회원가입</span></span>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
