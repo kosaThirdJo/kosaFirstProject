@@ -23,4 +23,8 @@ public class MeetingVO {
 	private String location;
 	private String description;
 	private LocalDateTime creationDate;
+	private String interestLanguage;
+	private String interestFramework;
+	private String interestJob;
+
 }
