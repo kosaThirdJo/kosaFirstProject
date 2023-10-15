@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <link th:href="@{/css/home.css}" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        main{
+            width : 90%;
+            margin : 0 auto;
+        }
+        aside{
+            width: 30%;
+            float: left;
+        }
+        section{
+            width: 70%;
+            float: left;
+        }
+        footer{
+            width: 90%;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+<body>
+    <!--/*Header*/-->
+    <th:block th:replace="layout/header :: header"></th:block>
+    <!--/*Content(with Side)*/-->
+    <main>
+        <th:block th:replace="layout/sidebar :: sidebarFragment"></th:block>
+        <section>
+            <th:block layout:fragment="content"></th:block>
+        </section>
+    </main>
+    <!--/*Footer*/-->
+    <th:block th:replace="layout/footer :: footer"></th:block>
+</body>
+</html>
