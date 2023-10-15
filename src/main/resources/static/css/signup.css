@@ -1,3 +1,8 @@
+.signup-interest-lang-btn.selected, .signup-interest-fw-btn.selected, .signup-interest-job-btn.selected {
+    background-color: green;
+    color: white;
+}
+
 .signup-container {
   width: 100%;
   display: flex;
@@ -167,6 +172,7 @@
 }
 .signup-input {
   gap: 30px;
+  width: 100%;
   display: flex;
   padding: 30px 0;
   overflow: hidden;
@@ -515,7 +521,7 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.signup-frame15296 {
+.signup-interest-container {
   display: flex;
   padding: 20px;
   overflow: hidden;
@@ -528,7 +534,7 @@
   flex-direction: column;
   justify-content: center;
 }
-.signup-language {
+.signup-interest-content {
   gap: 10px;
   display: flex;
   padding: 10px 0;
@@ -538,7 +544,7 @@
   flex-direction: column;
   justify-content: center;
 }
-.signup-text031 {
+.signup-interest-text {
   color: rgba(0, 0, 0, 1);
   height: auto;
   font-size: 17px;
@@ -560,7 +566,7 @@
   align-items: center;
   flex-shrink: 0;
 }
-.signup-btnbutton {
+.signup-interestbtn{
   gap: 10px;
   display: flex;
   padding: 5px 10px;
@@ -620,19 +626,7 @@
   border-radius: 10px;
   justify-content: center;
 }
-.interest-lang-button {
-  color: rgba(167, 166, 166, 1);
-  height: auto;
-  font-size: 15px;
-  font-style: Regular;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
-}
-.signup-btnbutton03 {
+.signup-interest-lang-btn, .signup-interest-fw-btn, .signup-interest-job-btn {
   gap: 10px;
   display: flex;
   padding: 5px 10px;
