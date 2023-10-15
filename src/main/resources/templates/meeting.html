@@ -39,20 +39,37 @@
             /*margin: 10px;
             */
             background-color: #FAF3E3;
+            cursor: pointer;
 
+        }
+        header {
+            position: fixed;
+            top: 0;
+            /* width: 100% 상단 고정*/
+            left: 0;
+            right: 0;
+            /* 생략 */
+        }
+
+        body {
+            padding-top: 75px;
+            padding-bottom: 75px;
+            /* 생략 */
         }
 
     </style>
 </head>
 <body>
-<header>헤더 입니다.</header>
+<header style="width: 100%; z-index: 1; top:0; position: fixed;">
+    헤더입니다.
+</header>
 <article id="content_list">
     <div style="font-size: 36px">
         <img th:src="@{/image/global/notifications01.png}">
         ORDER BY</div>
     <div th:each= "meetingOne, meetingStat:${allMeetingList}">
         <div th:if="${meetingStat.index %2 == 0}">
-            <section style="margin: 5px;" class="border border-dark">
+            <section th:id="|section_${meetingStat.index}|" style="margin: 5px;" class="border border-dark">
                 <div style="background-color: white; border-radius: 5%; height: 200px; margin: 20px;">
                     <div>
                         <span class="btn btn-primary" style="width:50px; background-color: #1A4D2E; color: white;" th:text="${allMeetingList.get(meetingStat.index).getCategory()}">
@@ -102,7 +119,7 @@
 
             </section>
 
-            <section th:if="${meetingStat.index <= (meetingStat.size)-2 }" style="margin: 5px;" class="border border-dark">
+            <section th:id="|section_${meetingStat.index+1}|" th:if="${meetingStat.index <= (meetingStat.size)-2 }" style="margin: 5px;" class="border border-dark">
                 <div style="background-color: white; border-radius: 5%; height: 200px; margin: 20px;">
                     <div>
                         <span class="btn btn-primary" style="width:50px; background-color: #1A4D2E; color: white;" th:text="${allMeetingList.get(meetingStat.index+1).getCategory()}">
@@ -149,14 +166,27 @@
                 <span th:each="interestOne, interestStat:${interestListJob.get(meetingStat.index+1)}">
                     # <span style="color: #1A4D2E" th:if="${interestOne!=null}"  th:text="${interestOne}"></span>
                 </span>
-
             </section>
         </div>
     </div>
+    <div class="btn btn-primary" style="background-color: #FF9F29; color: white; margin-top: 30px;"> 새 글 작성</div>
 
 </article>
-<footer>푸터입니다.</footer>
-<script>
+<!-- https://kyurasi.tistory.com/entry/footer-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EA%B2%B9%EC%B9%98%EB%8A%94-%EC%98%A4%EB%A5%98-%EC%9E%A1%EA%B8%B0-->
+
+<script th:inline="javascript">
+    // 모든 섹션 리스트 조회
+    const sectionAll = document.querySelectorAll("section");
+    for (const sectionAllKey in sectionAll) {
+        sectionAll[sectionAllKey].addEventListener("click",function (){
+            window.location.href += "/articles/" + sectionAllKey;
+        });
+    }
 </script>
 </body>
+<footer style="width: 100%; z-index: 1; bottom:0; position: fixed;">
+    <div>
+        푸터입니다.
+    </div>
+</footer>
 </html>
