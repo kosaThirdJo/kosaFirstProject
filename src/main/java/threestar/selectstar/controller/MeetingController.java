@@ -3,6 +3,7 @@ package threestar.selectstar.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import threestar.selectstar.dao.MeetingMapper;
 import threestar.selectstar.domain.MeetingVO;
@@ -20,6 +21,7 @@ public class MeetingController {
         this.meetingDao = meetingDao;
     }
 
+    // 메인페이지
     @GetMapping("")
     public String meetingMain(Model model){
         List<MeetingVO> allMeetingList = meetingDao.getAllMeetingList();
@@ -28,7 +30,6 @@ public class MeetingController {
         List<List<String>> interestListLang = new ArrayList<>();
         List<List<String>> interestListFrame = new ArrayList<>();
         List<List<String>> interestListJob = new ArrayList<>();
-        int idx = 0;
         for (MeetingVO meetingDaoOne:
              allMeetingList) {
             List<String> interestListLangEle = new ArrayList<>();
@@ -41,7 +42,7 @@ public class MeetingController {
             System.out.println(interestLanguage);
             // 배열로 만들기 0: 언어, 1: 프레임워크, 2:
             // 배열에 삽입 빈값이면 넣지 말기!
-            if (interestLanguage != null && !interestLanguage.isEmpty()){
+            if (interestLanguage != null){
                 String[] SplitInterestLanguage = interestLanguage.split("_");
                 for (String splitEle:
                         SplitInterestLanguage) {
@@ -50,7 +51,7 @@ public class MeetingController {
                     }
                 }
             }
-            if (interestFramework != null && !interestFramework.isEmpty()){
+            if (interestFramework != null){
                 String[] SplitInterestFramework = interestFramework.split("_");
                 for (String splitEle:
                         SplitInterestFramework) {
@@ -59,7 +60,7 @@ public class MeetingController {
                     }
                 }
             }
-            if (interestJob != null && !interestJob.isEmpty()) {
+            if (interestJob != null) {
                 String[] SplitInterestJob = interestJob.split("_");
                 for (String splitEle:
                         SplitInterestJob) {
@@ -79,6 +80,13 @@ public class MeetingController {
         model.addAttribute("interestListFrame",interestListFrame);
         model.addAttribute("interestListJob",interestListJob);
 
-        return "meeting";
+        return "meeting/meeting_home";
+    }
+    @GetMapping("/articles/{id}")
+    public String meetingArticle(@PathVariable int id,Model model){
+        System.out.println("123!@#");
+        MeetingVO meetingArticle = meetingDao.getMeetingArticleById(id);
+        model.addAttribute("meetingArticle",meetingArticle);
+        return "meeting/meeting_article";
     }
 }
