@@ -1,162 +1,20 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="kr">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-
-        article{
-            margin-left: 300px;
-        }
-        span{
-            margin: 5px;
-        }
-        div{
-
-        }
-        header{
-            background-color: green;
-        }
-        footer{
-            background-color: blue;
-        }
-
-        font{
-            @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
-        }
-        .nanumgothic * {
-                font-family: 'Nanum Gothic', sans-serif;
-            }
-
-
-        section {
-            border-radius: 5%;
-            display: inline-block;
-            height: 300px;
-            width: 400px;
-            /*margin: 10px;
-            */
-            background-color: #FAF3E3;
-
-        }
-
-    </style>
+    <
 </head>
 <body>
-<header>헤더 입니다.</header>
-<article id="content_list">
-    <div style="font-size: 36px">
-        <img th:src="@{/image/global/notifications01.png}">
-        ORDER BY</div>
-    <div th:each= "meetingOne, meetingStat:${allMeetingList}">
-        <div th:if="${meetingStat.index %2 == 0}">
-            <section style="margin: 5px;" class="border border-dark">
-                <div style="background-color: white; border-radius: 5%; height: 200px; margin: 20px;">
-                    <div>
-                        <span class="btn btn-primary" style="width:50px; background-color: #1A4D2E; color: white;" th:text="${allMeetingList.get(meetingStat.index).getCategory()}">
-                        </span>
-                        <span class="btn btn-primary" style="width:50px;float: right; background-color: #FF9F29; color: white;" th:text="${allMeetingList.get(meetingStat.index).getStatus()}">
-                        </span>
-                    </div>
-                    <div>
-                        <img th:src="@{/image/global/location01.png}">
-                        <span th:text="${allMeetingList.get(meetingStat.index).getLocation()}"></span>
-                    </div>
-                    <div style="font-size: 36px;" th:text="${allMeetingList.get(meetingStat.index).getTitle()}">
-                    </div>
-                    <div>
-                        <img th:src="@{/image/global/end_date01.png}">
-                        마감일
-                    </div>
-                    <div th:text="${allMeetingList.get(meetingStat.index).getApplicationDeadline()}">
-                    </div>
+미팅페이지
 
-                </div>
-                <div style="" >
-                    <img th:src="@{/image/global/member_count.png}">
-                    현재
-                    <span style="color: #FF9F29" th:text="|${allMeetingList.get(meetingStat.index).getApplicationCount()+1} 명|">
-                        0명
-                    </span>
-                    <span>
-                        이 참가중입니다.
-                    </span>
-                    <span style=" float: right">
-                        <img th:src="@{/image/global/see_count01.png}">
-                        <span th:text="${allMeetingList.get(meetingStat.index).getViews()}">
-                        </span>
-                    </span>
-                </div>
-                <!--/* 언어 프레임워크 직무 3개 가져와서 띄우기 interestListFrame"*/-->
-                <span th:each="interestOne, interestStat:${interestListLang.get(meetingStat.index)}">
-                    # <span style="color: #1A4D2E" th:if="${interestOne!=null}" th:text="${interestOne}"></span>
-                </span>
-                <span th:each="interestOne, interestStat:${interestListFrame.get(meetingStat.index)}">
-                    # <span style="color: #1A4D2E" th:if="${interestOne!=null}"  th:text="${interestOne}"></span>
-                </span>
-                <span th:each="interestOne, interestStat:${interestListJob.get(meetingStat.index)}">
-                    # <span style="color: #1A4D2E" th:if="${interestOne!=null}"  th:text="${interestOne}"></span>
-                </span>
-
-            </section>
-
-            <section th:if="${meetingStat.index <= (meetingStat.size)-2 }" style="margin: 5px;" class="border border-dark">
-                <div style="background-color: white; border-radius: 5%; height: 200px; margin: 20px;">
-                    <div>
-                        <span class="btn btn-primary" style="width:50px; background-color: #1A4D2E; color: white;" th:text="${allMeetingList.get(meetingStat.index+1).getCategory()}">
-                        </span>
-                        <span class="btn btn-primary" style="width:50px;float: right; background-color: #FF9F29; color: white;" th:text="${allMeetingList.get(meetingStat.index+1).getStatus()}">
-                        </span>
-                    </div>
-                    <div>
-                        <img th:src="@{/image/global/location01.png}">
-                        <span th:text="${allMeetingList.get(meetingStat.index+1).getLocation()}"></span>
-                    </div>
-                    <div style="font-size: 36px;" th:text="${allMeetingList.get(meetingStat.index+1).getTitle()}">
-                    </div>
-                    <div>
-                        <img th:src="@{/image/global/end_date01.png}">
-                        마감일
-                    </div>
-                    <div th:text="${allMeetingList.get(meetingStat.index+1).getApplicationDeadline()}">
-                    </div>
-
-                </div>
-                <div style="" >
-                    <img th:src="@{/image/global/member_count.png}">
-                    현재
-                    <span style="color: #FF9F29" th:text="|${allMeetingList.get(meetingStat.index+1).getApplicationCount()+1} 명|">
-                        0명
-                    </span>
-                    <span>
-                        이 참가중입니다.
-                    </span>
-                    <span style=" float: right">
-                        <img th:src="@{/image/global/see_count01.png}">
-                        <span th:text="${allMeetingList.get(meetingStat.index+1).getViews()}">
-                        </span>
-                    </span>
-                </div>
-                <!--/* 언어 프레임워크 직무 3개 가져와서 띄우기 interestListFrame"*/-->
-                <span th:each="interestOne, interestStat:${interestListLang.get(meetingStat.index+1)}">
-                    # <span style="color: #1A4D2E" th:if="${interestOne!=null}" th:text="${interestOne}"></span>
-                </span>
-                <span th:each="interestOne, interestStat:${interestListFrame.get(meetingStat.index+1)}">
-                    # <span style="color: #1A4D2E" th:if="${interestOne!=null}"  th:text="${interestOne}"></span>
-                </span>
-                <span th:each="interestOne, interestStat:${interestListJob.get(meetingStat.index+1)}">
-                    # <span style="color: #1A4D2E" th:if="${interestOne!=null}"  th:text="${interestOne}"></span>
-                </span>
-
-            </section>
-        </div>
+2개씩 조회
+<div th:each= "meetingOne, meetingStat:${allMeetingList}">
+    <div th:if="${meetingStat.index %2 == 0}">
+        <span th:text="${allMeetingList.get(meetingStat.index)}"></span>
+        <span th:if="${meetingStat.index != (meetingStat.size)-1}" th:text="${allMeetingList.get(meetingStat.index+1)}"></span>
     </div>
-
-</article>
-<footer>푸터입니다.</footer>
-<script>
-</script>
+</div>
 </body>
 </html>
