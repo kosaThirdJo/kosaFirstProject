@@ -10,7 +10,6 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 public class MeetingVO {
-
 	private int meetingId;
 	private int userId;
 	private String title;
