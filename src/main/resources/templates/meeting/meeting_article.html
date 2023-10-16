@@ -1,16 +1,130 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="kr">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        body {
+            padding-top: 75px;
+            padding-bottom: 75px;
+            /* 생략 */
+        }
+        font{
+        @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+        }
+        .nanumgothic * {
+            font-family: 'Nanum Gothic', sans-serif;
+        }
+        #profile{
+            float: right;
+            background-color: #FAF3E3;
+            width: 300px;
+            height: 200px;
+            margin-right: 50px;
+            margin-top: 50px;
+        }
+        #content_box {
+            width: 800px;
+            padding: 5px 5px 5px 5px;
+        }
+        #content_title{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #content_description{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        #comment_box {
+            background-color: #FAF3E3;
+            width: 800px;
+            padding: 20px 20px 20px 20px;
+        }
+        #comment_input_line{
+            margin: 5px 5px 5px ;
+        }
+        #comment_input{
+            outline: none;
+            border-radius: 10px;
+            border:none;
+        }
+
+        #comment_list{
+            padding-top: 10px;
+            padding-left: 10px;
+            background-color: white;
+            margin-bottom: 5px;
+        }
+        #comment_title{
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+        article{
+            margin-left: 200px;
+        }
+
+        header {
+            background-color: green;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+    </style>
 </head>
 <body>
-미팅 디테일 컨텐츠입니다.
-<div th:text="${meetingArticle}">
-<div th:each="ele : ${commentListByMeetingId}">
-    <div th:text="${ele}">
+<header style="width: 100%; z-index: 1; top:0; position: fixed;">
+    헤더입니다.
+</header>
+<article>
+    <div id="profile" class="border border-dark">
     </div>
-</div>
-</div>
+    <section id="content_box">
+        <div>
+            <span class="badge bg-secondary">모집중</span>
+            <h2 id="content_title" style="display: inline" th:text="${meetingArticle.getTitle()}"> </h2>
+            <span class="badge bg-secondary" style="float: right">신청하기 세션확인!</span>
+        </div>
+        <div>
+            <span style="margin-left: 10px" th:text="|${meetingArticle.getCreationDate().getYear()}년 ${meetingArticle.getCreationDate().monthValue}월 ${meetingArticle.getCreationDate().dayOfMonth}일|"></span>
+            <span> 조회수 </span>
+            <span th:text="${meetingArticle.getViews()}"></span>
+        </div>
+        <div id="content_description" class="main-content-container" th:text="${meetingArticle.getDescription()}">
+        </div>
+        <div id="end_date_line">
+            <img th:src="@{/image/global/end_date01.png}">
+            <span>마감일</span>
+            <span th:text="${meetingArticle.getApplicationDeadline()}">
+            </span>
+        </div>
+        <div id="location">
+            <img th:src="@{/image/global/location01.png}">
+            <span>모집장소</span>
+        </div>
+    </section>
+    <section id="comment_box">
+        <div>댓글
+            집계함수로 댓글 수 적기
+        </div>
+        <div id="comment_input_line">
+            <form th:action="|${requestURI}/${meetingArticle.getMeetingId()}|" method=post>
+                <input type="hidden" name="commentUserName" th:value="test1">
+                <input id="comment_input" type="text" name="commentContent" placeholder=" 댓글을 작성해 보세요 버튼 주황색 글씨 흰색" size=80% maxlength=8>
+                <span id="comment_button" class="btn btn-primary">등록</span>
+            </form>
+        </div>
+        <div class="main-content-container" th:each="ele : ${commentListByMeetingId}">
+            <div id="comment_list">
+                <div id="comment_title" th:text="${userDao.getNameById(ele.getUserId())}"></div>
+                <div th:text="|${ele.getCreationDate().getYear()}년 ${ele.getCreationDate().monthValue}월 ${ele.getCreationDate().dayOfMonth}일|"></div>
+                <div th:text="${ele.getContent()}"></div>
+            </div>
+        </div>
+    </section>
+</article>
 </body>
 </html>
