@@ -1,13 +1,17 @@
 package threestar.selectstar.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import threestar.selectstar.dao.CommentMapper;
 import threestar.selectstar.dao.MeetingMapper;
+import threestar.selectstar.dao.UserMapper;
+import threestar.selectstar.domain.CommentDTO;
 import threestar.selectstar.domain.MeetingVO;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +20,15 @@ import java.util.List;
 public class MeetingController {
     final
     MeetingMapper meetingDao;
+    final
+    CommentMapper commentDao;
+    final
+    UserMapper userDao;
 
-    public MeetingController(MeetingMapper meetingDao) {
+    public MeetingController(MeetingMapper meetingDao,CommentMapper commentDao, UserMapper userDao) {
         this.meetingDao = meetingDao;
+        this.commentDao = commentDao;
+        this.userDao = userDao;
     }
 
     // 메인페이지
@@ -82,11 +92,32 @@ public class MeetingController {
 
         return "meeting/meeting_home";
     }
-    @GetMapping("/articles/{id}")
-    public String meetingArticle(@PathVariable int id,Model model){
-        System.out.println("123!@#");
-        MeetingVO meetingArticle = meetingDao.getMeetingArticleById(id);
-        model.addAttribute("meetingArticle",meetingArticle);
-        return "meeting/meeting_article";
+    @GetMapping("/articles")
+    public String meetingArticle(@RequestParam("id")Integer id,HttpServletRequest request,Model model){
+        //
+        if (id != null) {
+            MeetingVO meetingArticle = meetingDao.getMeetingArticleById(String.valueOf(id));
+            List<CommentDTO> commentListByMeetingId = commentDao.getCommentListByMeetingId(String.valueOf(id));
+            //
+            model.addAttribute("requestURI", request.getRequestURI());
+            model.addAttribute("meetingArticle", meetingArticle);
+            model.addAttribute("commentListByMeetingId", commentListByMeetingId);
+            model.addAttribute("userDao",userDao);
+            return "meeting/meeting_article";
+        }
+        return "meeting/meeting_home";
+    }
+    @PostMapping("/articles/{id}")
+    public String addMeetingComment(@PathVariable int id,String commentUserName,String commentContent, HttpServletRequest request){
+
+        // 유저 이름으로 유저 id 조회
+        int commentUserId = userDao.getIdByName(commentUserName);
+        //
+        CommentDTO commentDTO = new CommentDTO(0,id,commentUserId,commentContent,LocalDateTime.now());
+        commentDao.insertComment(commentDTO);
+
+        // 리다이렉트 댓글
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
     }
 }
