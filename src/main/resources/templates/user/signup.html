@@ -147,7 +147,7 @@
             </form>
 
 
-            <!--            03 로그인 페이지 이동-->
+            <!--03 로그인 페이지 이동-->
             <div class="signup-join">
                             <span class="signup-text108">
                               <span>이미 회원이신가요?</span>
@@ -172,12 +172,12 @@
                 const interest = button.value;  // 클릭된 버튼 value
 
                 if (selectedInterests.includes(interest)) {  // 선택되어있으면, 배열에서 제거
-                    selectedInterests = selectedInterests.filter(item => item !== interest);
+                    selectedInterests = selectedInterests.filter(item => item != interest);
                 } else {  // 선택되어있지않으면, 배열에 추가
                     selectedInterests.push(interest);
                 }
 
-                selectedInterestsInput.value = selectedInterests.join('_');
+                selectedInterestsInput.value = `_${selectedInterests.join('_')}_`;  // 언더바(_) 추가
                 button.classList.toggle('selected');  // 버튼 상태 토글
             });
         });
