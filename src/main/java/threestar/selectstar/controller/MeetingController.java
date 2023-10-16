@@ -136,8 +136,6 @@ public class MeetingController {
                                 int recruitNum,
                                 String content) {
         //HttpSession
-        System.out.println(endDate);
-        System.out.println();
 
         meetingDao.insertMeeting(new MeetingDTO
                 (1,
