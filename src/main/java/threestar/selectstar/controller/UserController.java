@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -43,19 +44,26 @@ public class UserController {
 		return "user/login";
 	}
 
-	@PostMapping("/login")
-	public String processLogin(@RequestParam String name, @RequestParam String password, HttpSession session) {
-		UserDTO userDTO = new UserDTO();
-		userDTO.setName(name);
-		userDTO.setPassword(password);
+	@PostMapping("/logincheck")
+	public String progressLogin(@RequestParam("loginName") String name, @RequestParam("loginPassword") String password, HttpSession session) {
 
-		UserDTO loggedInUser = userDAO.loginUser(userDTO);
+		Integer userId = userDAO.loginUser(name, password);
 
-		if (loggedInUser != null) {
-			session.setAttribute("username", loggedInUser.getName());
-			return "redirect:/"; // 로그인 성공 시, 메인 페이지로 이동
-		} else {
-			return "user/login"; // 로그인 실패 시, 로그인 페이지로 다시 이동
+		if (userId != null && userId > 0) {  // 로그인 성공
+			session.setAttribute("user_id", userId);
+			session.setMaxInactiveInterval(60 * 30);  // 세션 30분 동안 유지 ( -1 : 무한대 )
+			return "redirect:/";
+
+		} else {  // 로그인 실패
+			return "user/login";
 		}
 	}
+
+	// 로그아웃
+	@GetMapping("/logout")
+	public String progressLogout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
+
 }
