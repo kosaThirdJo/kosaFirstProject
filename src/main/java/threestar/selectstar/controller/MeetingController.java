@@ -49,7 +49,6 @@ public class MeetingController {
             String interestLanguage = meetingDaoOne.getInterestLanguage();
             String interestFramework = meetingDaoOne.getInterestFramework();
             String interestJob = meetingDaoOne.getInterestJob();
-            System.out.println(interestLanguage);
             // 배열로 만들기 0: 언어, 1: 프레임워크, 2:
             // 배열에 삽입 빈값이면 넣지 말기!
             if (interestLanguage != null){
