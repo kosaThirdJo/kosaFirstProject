@@ -1,0 +1,224 @@
+.signup-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+}
+.signup-content {
+  gap: 65px;
+  width: 90%;
+  height: auto;
+  display: flex;
+  padding: 10px 5%;
+  margin: auto;
+  overflow: hidden;
+  align-items: left;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 1);
+}
+.signup-selectsignup {
+  gap: 5px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.signup-input {
+  gap: 30px;
+  width: 100%;
+  display: flex;
+  padding: 30px 0;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.signup-password { /* 비밀번호 입력  div */
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-text017 { /* 비밀번호, 이메일 등 소제목 */
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 20px;
+  align-self: stretch;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-input2 { /* 비밀번호 입력 form*/
+  gap: 10px;
+  color: black;
+  display: flex;
+  padding: 0 20px;
+  overflow: hidden;
+  font-size: 20px;
+  align-self: stretch;
+  text-align: left;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: NanumGothic;
+  font-weight: 400;
+  border-color: rgba(145, 143, 143, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+}
+.signup-email {/* 이메일 입력 div*/
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-input3 { /* 이메일, 닉네임 입력 form*/
+  gap: 10px;
+  color: black;
+  display: flex;
+  padding: 0 20px;
+  overflow: hidden;
+  font-size: 20px;
+  align-self: stretch;
+  text-align: left;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: NanumGothic;
+  font-weight: 400;
+  border-color: rgba(145, 143, 143, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+}
+.signup-nickname { /* nickname 입력 div*/
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-input4 { /*nickname 입력 form */
+  gap: 10px;
+  color: black;
+  display: flex;
+  padding: 0 20px;
+  overflow: hidden;
+  font-size: 20px;
+  align-self: stretch;
+  text-align: left;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: NanumGothic;
+  font-weight: 400;
+  border-color: rgba(145, 143, 143, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+}
+.signup-location { /* 지역  div*/
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-geolocation1 { /* 지역 select */
+  gap: 20px;
+  font-size: 20px;
+  height: 30px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: center;
+}
+.signup-interest { /* 02-02-06 관심분야 */
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-interest-container {
+  display: flex;
+  padding: 20px;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  border-color: rgba(145, 144, 144, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-interest-content { /*각 관심분야 div*/
+  gap: 10px;
+  display: flex;
+  padding: 10px 0;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.signup-interest-text { /*관심분야, 언어,  fw, 직무 제목*/
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 17px;
+  align-self: stretch;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.signup-select { /* 관심분야 선택박스 div*/
+  gap: 10px;
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+}
+.signup-interest-lang-btn, .signup-interest-fw-btn, .signup-interest-job-btn {
+  gap: 10px;
+  display: flex;
+  padding: 5px 10px;
+  overflow: hidden;
+  align-items: center;
+  border-color: rgba(167, 166, 166, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.signup-interest-lang-btn.selected, .signup-interest-fw-btn.selected, .signup-interest-job-btn.selected {
+    background-color: green;
+    color: white;
+}
