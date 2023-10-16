@@ -6,87 +6,103 @@
 <body>
 <th:block th:fragment="header">
     <header>
-<!--        임시 nav-->
-        <nav>
-            <ul>
-                <li><a th:href="@{/meeting}">모임</a></li>
-                <li><a th:href="@{/search}">검색</a></li>
-                <li><a th:href="@{/login}">로그인</a></li>
-                <li><a th:href="@{/signup}">회원가입</a></li>
-                <li><a th:href="@{/mypage}">마이페이지</a></li>
-            </ul>
-        </nav>
+        <div class="main-header">
+            <div class="main-header-wrap">
 
-<!--header (미구현)-->
-        <div class="main-login-xbutton-container">
-            <div class="main-login-xbutton-dummy-container">
-                <button class="main-login-xbutton-main-login-xbutton">
-                    <div class="main-login-xbutton-header">
-                        <div class="main-login-xbutton-logo">
-                <span class="main-login-xbutton-text">
-                  <span class="main-login-xbutton-text001">SELECT</span>
-                  <span class="main-login-xbutton-text002">*</span>
-                </span>
-                        </div>
-                        <div class="main-login-xbutton-nav-links">
-                            <div class="main-login-xbutton-from">
-                  <span class="main-login-xbutton-text003">
-                    <span>FROM</span>
-                  </span>
-                            </div>
-                            <div class="main-login-xbutton-join">
-                  <span class="main-login-xbutton-text005">
-                    <span>모임</span>
-                  </span>
-                            </div>
-                            <div class="main-login-xbutton-joinlist">
-                                <div class="main-login-xbutton-study">
-                    <span class="main-login-xbutton-text007">
-                      <span>스터디</span>
+                <!-- 01 로고 -->
+                <a th:href="@{/}" class="main-header-logo">
+                    <span class="main-header-logo-text">
+                        <span class="main-header-logo-text-1">SELECT</span>
+                        <span class="main-header-logo-text-2">*</span>
                     </span>
-                                </div>
-                                <div class="main-login-xbutton-project">
-                    <span class="main-login-xbutton-text009">
-                      <span>프로젝트</span>
-                    </span>
-                                </div>
-                                <div class="main-login-xbutton-etc">
-                    <span class="main-login-xbutton-text011">
-                      <span>기타</span>
-                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="main-login-xbutton-search-boxinput">
-                            <div class="main-login-xbutton-frame">
-                                <div>
-                                    <img
-                                            src="public/external/vector6181-1jdl.svg"
-                                            alt="Vector6181"
-                                            class="main-login-xbutton-vector"
-                                    />
-                                </div>
-                            </div>
-                            <span class="main-login-xbutton-text013">
-                  <span>검색해보세요!</span>
-                </span>
-                        </div>
-                        <div class="main-login-xbutton-btn">
-                            <div class="main-login-xbutton-loginbutton">
-                  <span class="main-login-xbutton-text015">
-                    <span>로그인</span>
-                  </span>
-                            </div>
-                            <div class="main-login-xbutton-signupbutton">
-                  <span class="main-login-xbutton-text017">
-                    <span>회원가입</span>
-                  </span>
-                            </div>
-                        </div>
+                </a>
+
+                <!-- 02 nav -->
+                <div class="main-header-nav">
+                    <!-- 02-01 FROM -->
+                    <div class="main-header-nav-from">
+                        <span class="main-header-nav-from-text">
+                            <span>FROM</span>
+                        </span>
                     </div>
-                </button>
+                    <!-- 02-02 모임 -->
+                    <a th:href="@{/meeting}" class="main-header-nav-meeting">
+                        <span class="main-header-nav-meeting-text">
+                            <span>모임</span>
+                        </span>
+                    </a>
+                    <!-- 02-03 모임 리스트 -->
+                    <div class="main-header-nav-meetinglist">
+                        <!-- 02-03-01 스터디 -->
+                        <a th:href="@{/}" class="main-header-nav-meetinglist-text">
+                            <span>스터디</span>
+                        </a>
+                        <!-- 02-03-02 프로젝트 -->
+                        <a th:href="@{/}" class="main-header-nav-meetinglist-text">
+                            <span>프로젝트</span>
+                        </a>
+                        <!-- 02-03-03 기타 -->
+                        <a th:href="@{/}" class="main-header-nav-meetinglist-text">
+                            <span>기타</span>
+                        </a>
+                    </div>
+                    <!-- 02-04 마이페이지 -->
+                    <a th:href="@{/mypage/profile}"  class="main-header-nav-mypage" th:if="${session.user_id}">
+                        <div class="main-header-nav-meetinglist-text">
+                            <span>마이페이지</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- 03 검색 -->
+                <form action="/search" method="get">
+                    <div class="main-header-search">
+                        <div class="main-header-search-glass">
+                            <img src="public/external/vector6181-1jdl.svg" alt="Vector6181" class="main-login-xbutton-vector" />
+                        </div>
+                        <input type="text" name="searchWord" class="main-header-search-input" placeholder="검색해보세요!" />
+                        <button type="submit" class="main-header-search-button">
+                            <span class="main-header-search-text">
+                                <span>검색</span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- 04 로그인, 회원가입, 로그아웃 -->
+                <div class="main-header-button">
+                    <!-- 로그인하지 않았을 경우 -->
+                    <th:block th:unless="${session.user_id}">
+                        <button class="main-header-button-login" th:onclick="|location.href='@{/login}'|">
+                            <span class="main-header-button-login-text">
+                                <span>로그인</span>
+                            </span>
+                        </button>
+                        <button class="main-header-button-signup" th:onclick="|location.href='@{/signup}'|">
+                            <span class="main-header-button-signup-text">
+                                <span>회원가입</span>
+                            </span>
+                        </button>
+                    </th:block>
+
+                    <!-- 로그인 했을 경우 -->
+                    <th:block th:if="${session.user_id}">
+                        <button class="main-header-button-logout" th:onclick="|location.href='@{/logout}'|">
+                            <span class="main-header-button-logout-text">
+                                <span>로그아웃</span>
+                            </span>
+                        </button>
+                    </th:block>
+                </div>
             </div>
         </div>
+        <script>
+            document.getElementById('searchForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var searchQuery = document.querySelector('.main-header-search-input').value;
+                window.location.href = '/search?searchWord=' + searchQuery;
+            });
+        </script>
     </header>
 </th:block>
 </body>
