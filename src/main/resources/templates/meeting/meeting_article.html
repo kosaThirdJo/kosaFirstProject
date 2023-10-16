@@ -98,7 +98,7 @@
         <div id="end_date_line">
             <img th:src="@{/image/global/end_date01.png}">
             <span>마감일</span>
-            <span th:text="${meetingArticle.getApplicationDeadline()}">
+            <span th:text="|${meetingArticle.getCreationDate().getYear()}년 ${meetingArticle.getCreationDate().monthValue}월 ${meetingArticle.getCreationDate().dayOfMonth}일|">
             </span>
         </div>
         <div id="location">
@@ -107,8 +107,7 @@
         </div>
     </section>
     <section id="comment_box">
-        <div>댓글
-            집계함수로 댓글 수 적기
+        <div>댓글 <span style="color: #1A4D2E" th:text="${count_comment}"></span>
         </div>
         <div id="comment_input_line">
             <form th:action="|${requestURI}/${meetingArticle.getMeetingId()}|" method=post>

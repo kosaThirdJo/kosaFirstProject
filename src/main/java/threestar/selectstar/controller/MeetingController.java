@@ -1,7 +1,7 @@
 package threestar.selectstar.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +9,7 @@ import threestar.selectstar.dao.CommentMapper;
 import threestar.selectstar.dao.MeetingMapper;
 import threestar.selectstar.dao.UserMapper;
 import threestar.selectstar.domain.CommentDTO;
+import threestar.selectstar.domain.MeetingDTO;
 import threestar.selectstar.domain.MeetingVO;
 
 import java.time.LocalDateTime;
@@ -49,7 +50,6 @@ public class MeetingController {
             String interestLanguage = meetingDaoOne.getInterestLanguage();
             String interestFramework = meetingDaoOne.getInterestFramework();
             String interestJob = meetingDaoOne.getInterestJob();
-            System.out.println(interestLanguage);
             // 배열로 만들기 0: 언어, 1: 프레임워크, 2:
             // 배열에 삽입 빈값이면 넣지 말기!
             if (interestLanguage != null){
@@ -96,13 +96,17 @@ public class MeetingController {
     public String meetingArticle(@RequestParam("id")Integer id,HttpServletRequest request,Model model){
         //
         if (id != null) {
-            MeetingVO meetingArticle = meetingDao.getMeetingArticleById(String.valueOf(id));
-            List<CommentDTO> commentListByMeetingId = commentDao.getCommentListByMeetingId(String.valueOf(id));
-            //
+            MeetingVO meetingArticle = meetingDao.getMeetingArticleById(id);
+            List<CommentDTO> commentListByMeetingId = commentDao.getCommentListByMeetingId(id);
+
+            // 조회수 1추가
+            meetingDao.updateMeetingCount(meetingArticle.getViews()+1,id);
+            // 조회를 위한 값 저장
             model.addAttribute("requestURI", request.getRequestURI());
             model.addAttribute("meetingArticle", meetingArticle);
             model.addAttribute("commentListByMeetingId", commentListByMeetingId);
             model.addAttribute("userDao",userDao);
+            model.addAttribute("count_comment",commentDao.calcCommentCount(id));
             return "meeting/meeting_article";
         }
         return "meeting/meeting_home";
@@ -120,4 +124,41 @@ public class MeetingController {
         String referer = request.getHeader("Referer");
         return "redirect:" + referer;
     }
+    @GetMapping("/write")
+    public String writeArticleForm(){
+        return "meeting/meeting_form";
+    }
+    @PostMapping("/write")
+    public String writerArticle(String title,
+                                int meetingType,
+                                LocalDateTime endDate,
+                                String location,
+                                int recruitNum,
+                                String content) {
+        //HttpSession
+        System.out.println(endDate);
+        System.out.println();
+
+        meetingDao.insertMeeting(new MeetingDTO
+                (1,
+                2,
+                title,
+                meetingType,
+                0,
+                endDate,
+                0,
+                recruitNum,
+                0,
+                location,
+                content,
+                LocalDateTime.now(),
+                "",
+                "",
+                ""
+                )
+        );
+
+        return "redirect:" + "/meeting";
+    }
+
 }
