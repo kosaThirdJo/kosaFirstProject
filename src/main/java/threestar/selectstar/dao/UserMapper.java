@@ -3,6 +3,7 @@ package threestar.selectstar.dao;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import threestar.selectstar.domain.UserDTO;
 import threestar.selectstar.domain.UserVO;
@@ -24,7 +25,7 @@ public interface UserMapper {
     public boolean signupUser(UserDTO dto);
 
     // 로그인
-    @Select("select name, password from user where name = #{name} and password = #{password}")
-    public UserDTO loginUser(UserDTO dto);
+    @Select("select user_id from user where name = #{name} and password = #{password}")
+    public Integer loginUser(@Param("name") String name, @Param("password") String password);
 
 }
