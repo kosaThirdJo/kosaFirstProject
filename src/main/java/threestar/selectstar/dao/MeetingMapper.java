@@ -13,7 +13,7 @@ public interface MeetingMapper {
     List<MeetingVO> getAllMeetingList();
     // 단건 미팅 조회 <-- 세션에 유저 아이디를 저장하고 같으면 버튼활성화? 해야 될 듯
     @Select("select * from meeting where meeting_id= #{meetingId}")
-    MeetingVO getMeetingArticleById(int meetingId);
+    MeetingVO getMeetingArticleById(String meetingId);
     // 삭제기능 <--- 차후
 
     // 댓글 조회 해야 됨 필수

@@ -7,7 +7,10 @@
 <body>
 미팅 디테일 컨텐츠입니다.
 <div th:text="${meetingArticle}">
-
+<div th:each="ele : ${commentListByMeetingId}">
+    <div th:text="${ele}">
+    </div>
+</div>
 </div>
 </body>
 </html>

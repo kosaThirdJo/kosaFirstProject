@@ -1,10 +1,12 @@
 package threestar.selectstar.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import threestar.selectstar.dao.CommentMapper;
 import threestar.selectstar.dao.MeetingMapper;
 import threestar.selectstar.domain.MeetingVO;
 
@@ -16,9 +18,12 @@ import java.util.List;
 public class MeetingController {
     final
     MeetingMapper meetingDao;
+    final
+    CommentMapper commentDao;
 
-    public MeetingController(MeetingMapper meetingDao) {
+    public MeetingController(MeetingMapper meetingDao,CommentMapper commentDao) {
         this.meetingDao = meetingDao;
+        this.commentDao = commentDao;
     }
 
     // 메인페이지
@@ -84,9 +89,12 @@ public class MeetingController {
     }
     @GetMapping("/articles/{id}")
     public String meetingArticle(@PathVariable int id,Model model){
-        System.out.println("123!@#");
-        MeetingVO meetingArticle = meetingDao.getMeetingArticleById(id);
+        //
+        MeetingVO meetingArticle = meetingDao.getMeetingArticleById(String.valueOf(id));
+        // List<MeetingVO> commentListByMeetingId = commentDao.getCommentListByMeetingId(id);
+        //
         model.addAttribute("meetingArticle",meetingArticle);
+        // model.addAttribute("commentListByMeetingId",commentListByMeetingId);
         return "meeting/meeting_article";
     }
 }
