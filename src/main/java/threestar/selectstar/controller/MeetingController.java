@@ -1,7 +1,7 @@
 package threestar.selectstar.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +9,7 @@ import threestar.selectstar.dao.CommentMapper;
 import threestar.selectstar.dao.MeetingMapper;
 import threestar.selectstar.dao.UserMapper;
 import threestar.selectstar.domain.CommentDTO;
+import threestar.selectstar.domain.MeetingDTO;
 import threestar.selectstar.domain.MeetingVO;
 
 import java.time.LocalDateTime;
@@ -124,8 +125,40 @@ public class MeetingController {
         return "redirect:" + referer;
     }
     @GetMapping("/write")
-    public String WriteArticlesForm(){
+    public String writeArticleForm(){
         return "meeting/meeting_form";
+    }
+    @PostMapping("/write")
+    public String writerArticle(String title,
+                                int meetingType,
+                                LocalDateTime endDate,
+                                String location,
+                                int recruitNum,
+                                String content) {
+        //HttpSession
+        System.out.println(endDate);
+        System.out.println();
+
+        meetingDao.insertMeeting(new MeetingDTO
+                (1,
+                2,
+                title,
+                meetingType,
+                0,
+                endDate,
+                0,
+                recruitNum,
+                0,
+                location,
+                content,
+                LocalDateTime.now(),
+                "",
+                "",
+                ""
+                )
+        );
+
+        return "redirect:" + "/meeting";
     }
 
 }

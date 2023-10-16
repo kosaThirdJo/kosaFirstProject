@@ -110,7 +110,7 @@
         <div>댓글 <span style="color: #1A4D2E" th:text="${count_comment}"></span>
         </div>
         <div id="comment_input_line">
-            <form onsubmit="return false" th:action="|${requestURI}/${meetingArticle.getMeetingId()}|" method=post>
+            <form th:action="|${requestURI}/${meetingArticle.getMeetingId()}|" method=post>
                 <input type="hidden" name="commentUserName" th:value="test1">
                 <input id="comment_input" type="text" name="commentContent" placeholder=" 댓글을 작성해 보세요 버튼 주황색 글씨 흰색" size=80% maxlength=8>
                 <span id="comment_button" class="btn btn-primary">등록</span>
