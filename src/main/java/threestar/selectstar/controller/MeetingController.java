@@ -3,10 +3,12 @@ package threestar.selectstar.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import threestar.selectstar.dao.MeetingMapper;
 import threestar.selectstar.domain.MeetingVO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -19,10 +21,72 @@ public class MeetingController {
         this.meetingDao = meetingDao;
     }
 
+    // 메인페이지
     @GetMapping("")
     public String meetingMain(Model model){
         List<MeetingVO> allMeetingList = meetingDao.getAllMeetingList();
         model.addAttribute("allMeetingList",allMeetingList);
-        return "meeting";
+        // 관심 분야 한곳에 넣기
+        List<List<String>> interestListLang = new ArrayList<>();
+        List<List<String>> interestListFrame = new ArrayList<>();
+        List<List<String>> interestListJob = new ArrayList<>();
+        for (MeetingVO meetingDaoOne:
+             allMeetingList) {
+            List<String> interestListLangEle = new ArrayList<>();
+            List<String> interestListFrameEle = new ArrayList<>();
+            List<String> interestListJobEle = new ArrayList<>();
+            // 선호 값 가져오기
+            String interestLanguage = meetingDaoOne.getInterestLanguage();
+            String interestFramework = meetingDaoOne.getInterestFramework();
+            String interestJob = meetingDaoOne.getInterestJob();
+            System.out.println(interestLanguage);
+            // 배열로 만들기 0: 언어, 1: 프레임워크, 2:
+            // 배열에 삽입 빈값이면 넣지 말기!
+            if (interestLanguage != null){
+                String[] SplitInterestLanguage = interestLanguage.split("_");
+                for (String splitEle:
+                        SplitInterestLanguage) {
+                    if (splitEle != null && !splitEle.equals("")) {
+                        interestListLangEle.add(splitEle);
+                    }
+                }
+            }
+            if (interestFramework != null){
+                String[] SplitInterestFramework = interestFramework.split("_");
+                for (String splitEle:
+                        SplitInterestFramework) {
+                    if (splitEle != null &&!splitEle.equals("")) {
+                        interestListFrameEle.add(splitEle);
+                    }
+                }
+            }
+            if (interestJob != null) {
+                String[] SplitInterestJob = interestJob.split("_");
+                for (String splitEle:
+                        SplitInterestJob) {
+                    if (splitEle != null &&!splitEle.equals("")) {
+                        interestListJobEle.add(splitEle);
+                    }
+                }
+            }
+
+            // 관심분야를 다시 리스트에 넣기
+            interestListLang.add(interestListLangEle);
+            interestListFrame.add(interestListFrameEle);
+            interestListJob.add(interestListJobEle);
+        }
+        // 모델에 넣기
+        model.addAttribute("interestListLang",interestListLang);
+        model.addAttribute("interestListFrame",interestListFrame);
+        model.addAttribute("interestListJob",interestListJob);
+
+        return "meeting/meeting_home";
+    }
+    @GetMapping("/articles/{id}")
+    public String meetingArticle(@PathVariable int id,Model model){
+        System.out.println("123!@#");
+        MeetingVO meetingArticle = meetingDao.getMeetingArticleById(id);
+        model.addAttribute("meetingArticle",meetingArticle);
+        return "meeting/meeting_article";
     }
 }
