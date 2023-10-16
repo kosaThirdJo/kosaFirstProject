@@ -96,13 +96,17 @@ public class MeetingController {
     public String meetingArticle(@RequestParam("id")Integer id,HttpServletRequest request,Model model){
         //
         if (id != null) {
-            MeetingVO meetingArticle = meetingDao.getMeetingArticleById(String.valueOf(id));
-            List<CommentDTO> commentListByMeetingId = commentDao.getCommentListByMeetingId(String.valueOf(id));
-            //
+            MeetingVO meetingArticle = meetingDao.getMeetingArticleById(id);
+            List<CommentDTO> commentListByMeetingId = commentDao.getCommentListByMeetingId(id);
+
+            // 조회수 1추가
+            meetingDao.updateMeetingCount(meetingArticle.getViews()+1,id);
+            // 조회를 위한 값 저장
             model.addAttribute("requestURI", request.getRequestURI());
             model.addAttribute("meetingArticle", meetingArticle);
             model.addAttribute("commentListByMeetingId", commentListByMeetingId);
             model.addAttribute("userDao",userDao);
+            model.addAttribute("count_comment",commentDao.calcCommentCount(id));
             return "meeting/meeting_article";
         }
         return "meeting/meeting_home";
@@ -120,4 +124,9 @@ public class MeetingController {
         String referer = request.getHeader("Referer");
         return "redirect:" + referer;
     }
+    @GetMapping("/write")
+    public String WriteArticlesForm(){
+        return "meeting/meeting_form";
+    }
+
 }
