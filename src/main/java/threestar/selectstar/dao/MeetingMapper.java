@@ -9,10 +9,10 @@ import java.util.List;
 @Mapper
 public interface MeetingMapper {
     // 모든 미팅 조회 상태가 2(삭제면) 조회안함
-    @Select("select meeting_id meetingId, user_id userId, title,category,status,application_deadline applicationDeadline,views,recruitment_count recruitmentCount,application_count applicationCount,location,description,creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where status != 2 order by meeting_id desc")
+    @Select("select meeting_id meetingId, user_id userId, title,category,status,application_deadline applicationDeadline,views,recruitment_count recruitmentCount,application_count applicationCount,location,description,creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where is_delete = 0 order by meeting_id desc")
     List<MeetingVO> getAllMeetingList();
     // 단건 미팅 조회 상태가 2(삭제면) 조회안함
-    @Select("select meeting_id meetingId, user_id userId, title,category,status,application_deadline applicationDeadline,views,recruitment_count recruitmentCount,application_count applicationCount,location,description,creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where meeting_id= #{meetingId} and status != 2")
+    @Select("select meeting_id meetingId, user_id userId, title,category,status,application_deadline applicationDeadline,views,recruitment_count recruitmentCount,application_count applicationCount,location,description,creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where meeting_id= #{meetingId} and is_delete = 0")
     MeetingVO getMeetingArticleById(int meetingId);
     // 조회수 올리기!
     @Update("update meeting set views= #{views} where meeting_id=#{meetingId}")
@@ -20,10 +20,12 @@ public interface MeetingMapper {
     // 신청 폼
     @Insert("insert into meeting (user_id, title, category,status,application_deadline,views,recruitment_count,location,description,creation_date,interest_language,interest_framework,interest_job) VALUES (#{userId}, #{title}, #{category},#{status},#{applicationDeadline},#{views},#{recruitmentCount},#{location},#{description},#{creationDate},#{interestLanguage},#{interestFramework},#{interestJob})")
     boolean insertMeeting(MeetingDTO meetingDTO);
-    // 모집 완료 기능, 삭제 기능
+    // 모집 완료 기능
     @Update("update meeting set status= #{status} where meeting_id=#{meetingId}")
     boolean updateStatus(@Param("status") int status, @Param("meetingId") int meetingId);
-
+    // 삭제 기능
+    @Update("update meeting set is_delete= 1 where meeting_id=#{meetingId}")
+    boolean deleteMeeting(@Param("meetingId") int meetingId);
     // 메인 - 최신글 조회 (ORDER BY) (현재는 4개만 출력)
     @Select("SELECT * FROM meeting ORDER BY creation_date DESC LIMIT 4")
     List<MeetingVO> getLatestMeetings();
