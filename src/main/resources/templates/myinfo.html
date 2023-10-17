@@ -108,12 +108,69 @@
         </form>
         </div>
         <script>
-            /*
+            // 언어
+            const interestLangButtons = document.querySelectorAll('.signup-interest-lang-btn');
+            const selectedInterestsLangInput = document.getElementById('selected-interests-lang');
+            let selectedInterestsLang = [];
+            selectInterests(interestLangButtons, selectedInterestsLang, selectedInterestsLangInput);
+            // 프레임워크
+            const interestFwButtons = document.querySelectorAll('.signup-interest-fw-btn');
+            const selectedInterestsFwInput = document.getElementById('selected-interests-fw');
+            let selectedInterestsFw = [];
+            selectInterests(interestFwButtons, selectedInterestsFw, selectedInterestsFwInput);
+            // 직무
+            const interestJobButtons = document.querySelectorAll('.signup-interest-job-btn');
+            const selectedInterestsJobInput = document.getElementById('selected-interests-job');
+            let selectedInterestsJob = [];
+            selectInterests(interestJobButtons, selectedInterestsJob, selectedInterestsJobInput);
+
+            console.log("[[${userDTO.interest_language}]]");
+            console.log("[[${userDTO.interest_framework}]]");
+            console.log("[[${userDTO.interest_job}]]");
+
+            //언어 문자열에서 "_"을 제외한 문자열 배열 생성 후 배열에서 "" 삭제
+            let langarr = "[[${userDTO.interest_language}]]".split("_");
+            let langs = langarr.filter((element) => element !== "");
+            //프레임워크
+            let fwarr = "[[${userDTO.interest_framework}]]".split("_");
+            let fws = fwarr.filter((element) => element !== "");
+            //직무
+            let jobarr = "[[${userDTO.interest_job}]]".split("_");
+            let jobs = jobarr.filter((element) => element !== "");
+
+            //관심분야(언어, 프레임워크, 직무) 기존 데이터 화면 출력
             window.onload = function(){
-                let interestLangButtons = document.querySelectorAll('.signup-interest-lang-btn');
-                console.log("조회");
-                console.log(interestLangButtons);
-            }*/
+                //관심 언어
+                let langButtons = document.querySelectorAll('.signup-interest-lang-btn');
+                for(let lang of langs){
+                    for(let langBtn of langButtons){
+                        if(lang == langBtn.value){
+                           langBtn.className = "signup-interest-lang-btn selected";
+                           selectedInterestsLang.push(langBtn.value);
+                        }
+                    }
+                }
+                //관심 프레임워크
+                let fwButtons = document.querySelectorAll('.signup-interest-fw-btn');
+                for(let fw of fws){
+                    for(let fwBtn of fwButtons){
+                        if(fw == fwBtn.value){
+                            fwBtn.className = "signup-interest-fw-btn selected";
+                            selectedInterestsFw.push(fwBtn.value);
+                        }
+                    }
+                }
+                //관심 직무
+                let jobButtons = document.querySelectorAll('.signup-interest-job-btn');
+                for(let job of jobs){
+                    for(let jobBtn of jobButtons){
+                        if(job == jobBtn.value){
+                            jobBtn.className ="signup-interest-job-btn selected";
+                            selectedInterestsJob.push(jobBtn.value);
+                        }
+                    }
+                }
+            }
             // 관심 분야 선택
             // 버튼 목록, 선택된 관심사 배열, hidden input에 저장
             function selectInterests(buttons, selectedInterests, selectedInterestsInput) {
@@ -126,44 +183,12 @@
                         } else {  // 선택되어있지않으면, 배열에 추가
                             selectedInterests.push(interest);
                         }
-
-                        console.log(selectedInterests);
-
                         selectedInterestsInput.value = selectedInterests.join('_');
                         button.classList.toggle('selected');  // 버튼 상태 토글
                         //선택된 버튼은 class가 signup-interest-lang-btn selected 됨
                     });
                 });
             }
-            console.log("[[${userDTO.interest_language}]]");
-            console.log("[[${userDTO.interest_framework}]]");
-            console.log("[[${userDTO.interest_job}]]");
-
-            // 문자열에서 "_"을 제외한 문자열 배열 생성
-            let langarr = "[[${userDTO.interest_language}]]".split("_");
-            console.log(langarr);
-            //문자열 배열에서 "" 삭제
-            let lang = langarr.filter((element) => element !== "");
-            console.log(lang);
-
-
-            // 언어
-            const interestLangButtons = document.querySelectorAll('.signup-interest-lang-btn');
-            const selectedInterestsLangInput = document.getElementById('selected-interests-lang');
-            let selectedInterestsLang = lang;
-            console.log(selectedInterestsLang);
-            selectInterests(interestLangButtons, selectedInterestsLang, selectedInterestsLangInput);
-
-            // 프레임워크
-            const interestFwButtons = document.querySelectorAll('.signup-interest-fw-btn');
-            const selectedInterestsFwInput = document.getElementById('selected-interests-fw');
-            let selectedInterestsFw = [];
-            selectInterests(interestFwButtons, selectedInterestsFw, selectedInterestsFwInput);
-            // 직무
-            const interestJobButtons = document.querySelectorAll('.signup-interest-job-btn');
-            const selectedInterestsJobInput = document.getElementById('selected-interests-job');
-            let selectedInterestsJob = [];
-            selectInterests(interestJobButtons, selectedInterestsJob, selectedInterestsJobInput);
         </script>
     </th:block>
 </body>
