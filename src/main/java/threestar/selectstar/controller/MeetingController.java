@@ -34,13 +34,18 @@ public class MeetingController {
 
     // 메인페이지
     @GetMapping("")
-    public String meetingMain(Model model){
+    public String meetingMain(HttpSession session,Model model){
+        // 세션으로
+//        Integer userId = null;
+//        if(session.getAttribute("user_id") != null){
+//            userId = (int) session.getAttribute("user_id");
+//        }
         List<MeetingVO> allMeetingList = meetingDao.getAllMeetingList();
-        model.addAttribute("allMeetingList",allMeetingList);
         // 관심 분야 한곳에 넣기
         List<List<String>> interestListLang = new ArrayList<>();
         List<List<String>> interestListFrame = new ArrayList<>();
         List<List<String>> interestListJob = new ArrayList<>();
+
         for (MeetingVO meetingDaoOne:
              allMeetingList) {
             List<String> interestListLangEle = new ArrayList<>();
@@ -85,7 +90,9 @@ public class MeetingController {
             interestListFrame.add(interestListFrameEle);
             interestListJob.add(interestListJobEle);
         }
+        System.out.println(allMeetingList);
         // 모델에 넣기
+        model.addAttribute("allMeetingList",allMeetingList);
         model.addAttribute("interestListLang",interestListLang);
         model.addAttribute("interestListFrame",interestListFrame);
         model.addAttribute("interestListJob",interestListJob);
@@ -93,68 +100,62 @@ public class MeetingController {
         return "meeting/meeting_home";
     }
     @GetMapping("/articles")
-    public String meetingArticle(@RequestParam("id")Integer id,HttpServletRequest request,Model model){
+    public String meetingArticle(@RequestParam("id")Integer meetingId, HttpServletRequest request, Model model){
         //
-        if (id != null) {
-            MeetingVO meetingArticle = meetingDao.getMeetingArticleById(id);
-            List<CommentDTO> commentListByMeetingId = commentDao.getCommentListByMeetingId(id);
-
+        if (meetingId != null) {
+            // 미팅 vo 조회
+            MeetingVO meetingArticle = meetingDao.getMeetingArticleById(meetingId);
+            // 댓글 리스트 조회
+            List<CommentDTO> commentListByMeetingId = commentDao.getCommentListByMeetingId(meetingId);
             // 조회수 1추가
-            meetingDao.updateMeetingCount(meetingArticle.getViews()+1,id);
+            meetingDao.updateMeetingCount(meetingArticle.getViews()+1,meetingId);
             // 조회를 위한 값 저장
             model.addAttribute("requestURI", request.getRequestURI());
             model.addAttribute("meetingArticle", meetingArticle);
             model.addAttribute("commentListByMeetingId", commentListByMeetingId);
             model.addAttribute("userDao",userDao);
-            model.addAttribute("count_comment",commentDao.calcCommentCount(id));
+            model.addAttribute("count_comment",commentDao.calcCommentCount(meetingId));
             return "meeting/meeting_article";
         }
-        return "meeting/meeting_home";
+        return "meeting/meeting_article";
     }
     @PostMapping("/articles/{id}")
-    public String addMeetingComment(@PathVariable int id,String commentUserName,String commentContent, HttpServletRequest request){
-
-        // 유저 이름으로 유저 id 조회
-        int commentUserId = userDao.getIdByName(commentUserName);
-        //
-        CommentDTO commentDTO = new CommentDTO(0,id,commentUserId,commentContent,LocalDateTime.now());
-        commentDao.insertComment(commentDTO);
-
+    public String addMeetingComment(HttpSession session,@PathVariable("id") int meetingId,String commentUserName,String commentContent, HttpServletRequest request){
+        Integer userId = null;
+        if(session.getAttribute("user_id") != null){
+            userId = (int) session.getAttribute("user_id");
+            // 유저 이름으로 유저 id 조회
+            CommentDTO commentDTO = new CommentDTO(0,meetingId,userId,commentContent,LocalDateTime.now());
+            commentDao.insertComment(commentDTO);
+        }
         // 리다이렉트 댓글
         String referer = request.getHeader("Referer");
         return "redirect:" + referer;
     }
     @GetMapping("/write")
-    public String writeArticleForm(){
-        return "meeting/meeting_form";
+    public String writeArticleForm(HttpSession session){
+        Integer userId = null;
+        if(session.getAttribute("user_id") != null){
+            return "meeting/meeting_form";
+        }
+        return "user/login";
     }
     @PostMapping("/write")
     public String writerArticle(String title,
-                                int meetingType,
+                                int category,
                                 LocalDateTime endDate,
                                 String location,
                                 int recruitNum,
-                                String content) {
+                                String content,
+                                HttpSession session) {
         //HttpSession
+        Integer userId = null;
+        if(session.getAttribute("user_id") != null)
+            {
 
-        meetingDao.insertMeeting(new MeetingDTO
-                (1,
-                2,
-                title,
-                meetingType,
-                0,
-                endDate,
-                0,
-                recruitNum,
-                0,
-                location,
-                content,
-                LocalDateTime.now(),
-                "",
-                "",
-                ""
-                )
-        );
+                return "redirect:" + "/meeting";
+            }
+
 
         return "redirect:" + "/meeting";
     }
