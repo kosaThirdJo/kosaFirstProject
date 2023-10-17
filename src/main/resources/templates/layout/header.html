@@ -54,45 +54,44 @@
                     </a>
                 </div>
 
-                <!-- 03 검색 -->
-                <form action="/search" method="get">
-                    <div class="main-header-search">
-                        <div class="main-header-search-glass">
-                            <img src="public/external/vector6181-1jdl.svg" alt="Vector6181" class="main-login-xbutton-vector" />
+                <div class="main-header-searchAndBtn">
+                    <!-- 03 검색 -->
+                    <form action="/search" method="get">
+                        <div class="main-header-search">
+                            <input type="text" name="searchWord" class="main-header-search-input" placeholder="검색해보세요!" />
+                            <button type="submit" class="main-header-search-button">
+                                <div class="main-header-search-glass">
+                                    <img th:src="@{/image/home/search.png}">
+                                </div>
+                            </button>
                         </div>
-                        <input type="text" name="searchWord" class="main-header-search-input" placeholder="검색해보세요!" />
-                        <button type="submit" class="main-header-search-button">
-                            <span class="main-header-search-text">
-                                <span>검색</span>
-                            </span>
-                        </button>
+                    </form>
+
+                    <!-- 04 로그인, 회원가입, 로그아웃 -->
+                    <div class="main-header-button">
+                        <!-- 로그인하지 않았을 경우 -->
+                        <th:block th:unless="${session.user_id}">
+                            <button class="main-header-button-login" th:onclick="|location.href='@{/login}'|">
+                                <span class="main-header-button-login-text">
+                                    <span>로그인</span>
+                                </span>
+                            </button>
+                            <button class="main-header-button-signup" th:onclick="|location.href='@{/signup}'|">
+                                <span class="main-header-button-signup-text">
+                                    <span>회원가입</span>
+                                </span>
+                            </button>
+                        </th:block>
+
+                        <!-- 로그인 했을 경우 -->
+                        <th:block th:if="${session.user_id}">
+                            <button class="main-header-button-logout" th:onclick="|location.href='@{/logout}'|">
+                                <span class="main-header-button-logout-text">
+                                    <span>로그아웃</span>
+                                </span>
+                            </button>
+                        </th:block>
                     </div>
-                </form>
-
-                <!-- 04 로그인, 회원가입, 로그아웃 -->
-                <div class="main-header-button">
-                    <!-- 로그인하지 않았을 경우 -->
-                    <th:block th:unless="${session.user_id}">
-                        <button class="main-header-button-login" th:onclick="|location.href='@{/login}'|">
-                            <span class="main-header-button-login-text">
-                                <span>로그인</span>
-                            </span>
-                        </button>
-                        <button class="main-header-button-signup" th:onclick="|location.href='@{/signup}'|">
-                            <span class="main-header-button-signup-text">
-                                <span>회원가입</span>
-                            </span>
-                        </button>
-                    </th:block>
-
-                    <!-- 로그인 했을 경우 -->
-                    <th:block th:if="${session.user_id}">
-                        <button class="main-header-button-logout" th:onclick="|location.href='@{/logout}'|">
-                            <span class="main-header-button-logout-text">
-                                <span>로그아웃</span>
-                            </span>
-                        </button>
-                    </th:block>
                 </div>
             </div>
         </div>

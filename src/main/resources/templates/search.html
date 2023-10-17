@@ -3,11 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <title>검색</title>
+    <link th:href="@{/css/search.css}" rel="stylesheet" />
 </head>
 <body>
 <!--  content  -->
 <th:block layout:fragment="content">
-    검색 결과 출력
+
+    <div class="search-container">
+        <div class="search-result">
+            <div class="search-title">
+                <span class="search-title-word" th:text="${searchWord}"></span>
+                <span class="search-title-result">검색결과</span>
+            </div>
+            <!-- 모임 결과 시작 -->
+            <div class="search-meeting-result">
+                <!-- search filter -->
+                <div class="search-filter">
+                    <!-- search filter top -->
+                    <div class="search-filter-top">
+                        <div class="search-filter-text-meeting">
+                            <span class="search-text023">모임</span>
+                        </div>
+                        <button class="search-filter-btn">
+                            <div class="search-filter-btn-title">
+                                <div class="search-filter-btn-title-icon">
+                                    <img
+                                            src="public/external/filteralt1102-s9td.svg"
+                                            alt="filteralt1102"
+                                    />
+                                </div>
+                                <span class="search-filter-btn-title-text"><span>검색 필터</span></span>
+                            </div>
+                            <div class="search-filter-btn-dropdown">
+                                <img
+                                        src="public/external/boundingbox1102-0cf-200h.png"
+                                        alt="Boundingbox1102"
+                                        class="search-filter-btn-dropdown-box"
+                                />
+                                <img
+                                        src="public/external/arrowdropdown1102-464l.svg"
+                                        alt="arrowdropdown1102"
+                                        class="search-filter-btn-dropdown-arrow"
+                                />
+                            </div>
+                        </button>
+                    </div>
+                    <!-- search filter select -->
+                    <div class="search-filter-select" style="display: none;">
+                        <!-- search filter select meeting category -->
+                        <div class="search-filter-select-list">
+                            <span class="search-filter-select-title">모임</span>
+                            <div class="search-filter-select-category">
+                                <button class="search-filter-select-btn-selected">
+                                    <span>스터디</span>
+                                </button>
+                                <button class="search-filter-select-btn-nonselected">
+                                    <span>프로젝트</span>
+                                </button>
+                                <button class="search-filter-select-btn-nonselected">
+                                    <span>기타</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- search filter select language category -->
+                        <div class="search-filter-select-list">
+                            <span class="search-filter-select-title">언어</span>
+                            <div class="search-filter-select-category">
+                                <button class="search-filter-select-btn-selected">
+                                    <span>Java</span>
+                                </button>
+                                <button class="search-filter-select-btn-nonselected">
+                                    <span>Python</span>
+                                </button>
+                                <button class="search-filter-select-btn-nonselected">
+                                    <span>C</span>
+                                </button>
+                                <button class="search-filter-select-btn-selected">
+                                    <span>JavaScript</span>
+                                </button>
+                                <button class="search-filter-select-btn-nonselected">
+                                    <span>Kotlin</span>
+                                </button>
+                                <button class="search-filter-select-btn-nonselected">
+                                    <span>TypeScript</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- search filter select framework category -->
+                        <div class="search-filter-select-list">
+                            <span class="search-filter-select-title">프레임워크</span>
+                            <div class="search-filter-select-category">
+                                <button class="search-filter-select-btn-selected">
+                                    <span>Spring</span>
+                                </button>
+                                <button class="search-filter-select-btn-nonselected">
+                                    <span>Django</span>
+                                </button>
+                                <button class="search-filter-select-btn-nonselected">
+                                    <span>Flask</span>
+                                </button>
+                                <button class="search-filter-select-btn-nonselected">
+                                    <span>Laravel</span>
+                                </button>
+                                <button class="search-filter-select-btn-nonselected">
+                                    <span>Vue.js</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- search filter select job category -->
+                        <div class="search-filter-select-list">
+                            <span class="search-filter-select-title">직무</span>
+                            <div class="search-filter-select-category">
+                                <button class="search-filter-select-btn-selected">
+                                    <span>프론트엔드</span>
+                                </button>
+                                <button class="search-filter-select-btn-nonselected">
+                                    <span>백엔드</span>
+                                </button>
+                                <button class="search-filter-select-btn-nonselected">
+                                    <span>풀스택</span>
+                                </button>
+                                <button class="search-filter-select-btn-nonselected">
+                                    <span>Android</span>
+                                </button>
+                                <button class="search-filter-select-btn-nonselected">
+                                    <span>IOS</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="search-filter-select-reset">
+                            <button class="search-filter-select-reset-button">
+                                <div class="search-filter-select-reset-button-icon">
+                                    <img
+                                            src="public/external/restartalt1102-vla.svg"
+                                            alt="restartalt1102"
+                                            class="search-restartalt1"
+                                    />
+                                </div>
+                                <span class="search-filter-select-reset-button-text"><span>초기화</span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+<!-- 결과 출력 시작 -->
+                <div class="search-filter-result">
+                    <th:block th:each="meeting : ${searchMeetingResults}">
+                        <div class="main-left-content-bottom-meeting">
+                            <!-- 01-02-01 white box -->
+                            <div class="main-left-content-bottom-meeting-white">
+                                <!-- white box - top -->
+                                <div class="main-left-content-bottom-meeting-white-top">
+                                    <!-- white box - top - category -->
+                                    <div class="main-left-content-bottom-meeting-white-top-category">
+                                        <!-- 0: 스터디, 1:프로젝트, 2: 기타 -->
+                                        <span class="main-left-content-bottom-meeting-white-top-text"
+                                              th:switch="${meeting.category}">
+                                        <span th:case="0">스터디</span>
+                                        <span th:case="1">프로젝트</span>
+                                        <span th:case="2">기타</span>
+                                    </span>
+                                    </div>
+                                    <!-- white box - top - status -->
+                                    <div class="main-left-content-bottom-meeting-white-top-status">
+                                        <!-- 0: 모집중, 1:모집완료 -->
+                                        <span class="main-left-content-bottom-meeting-white-top-text"
+                                              th:switch="${meeting.status}">
+                                        <span th:case="0">모집중</span>
+                                        <span th:case="1">모집완료</span>
+                                    </span>
+                                    </div>
+                                </div>
+
+                                <!-- white box - bottom -->
+                                <div class="main-left-content-bottom-meeting-white-bottom">
+                                    <!-- white box - location -->
+                                    <div class="main-left-content-bottom-meeting-white-location">
+                                        <div class="main-left-content-bottom-meeting-white-location-icon">
+                                            <img th:src="@{/image/global/location01.png}">
+                                        </div>
+                                        <span class="main-left-content-bottom-meeting-white-location-text"
+                                              th:text="${meeting.location}"></span>
+                                    </div>
+
+                                    <!-- white box - title -->
+                                    <div class="main-left-content-bottom-meeting-white-title"
+                                         th:text="${meeting.title}"></div>
+
+                                    <!-- whitebox - deadline -->
+                                    <div class="main-left-content-bottom-meeting-white-deadline">
+                                        <div class="main-left-content-bottom-meeting-white-deadline-icon">
+                                            <img th:src="@{/image/global/end_date01.png}">
+                                        </div>
+                                        <span class="main-left-content-bottom-meeting-white-deadline-text">마감일</span>
+                                    </div>
+
+                                    <!-- whitebox - deadlineText -->
+                                    <span class="main-left-content-bottom-meeting-white-deadlineText"
+                                          th:text="${#temporals.format(meeting.applicationDeadline, 'yyyy. MM. dd')}"></span>
+                                </div>
+                            </div>
+
+                            <!-- 01-02-02 yellow box -->
+                            <!-- yellowbox - now -->
+                            <div class="main-left-content-bottom-meeting-yellow-now">
+                                <!-- yellowbox - now - people -->
+                                <div class="main-left-content-bottom-meeting-yellow-now-people">
+                                    <div class="main-left-content-bottom-meeting-yellow-now-people-icon">
+                                        <img th:src="@{/image/global/member_count.png}">
+                                    </div>
+                                    <div class="main-left-content-bottom-meeting-yellow-now-people-text">
+                                        현재
+                                        <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt"
+                                              th:text="${meeting.applicationCount}">0</span>명이
+                                        참여중입니다!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- yellowbox - hashtag -->
+                            <div class="main-left-content-bottom-meeting-yellow-hashtag">
+                                <div class="main-left-content-bottom-meeting-yellow-hashtag-text">
+                                    <span># Java</span>
+                                    <span># Spring</span>
+                                    <span># 백엔드</span>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+<!--  결과 출력 끝 -->
+
+                <button class="search-morebtn">
+                    <div class="search-morebtn-icon">
+                        <img
+                                src="public/external/expandcircledown1103-b4br.svg"
+                                alt="expandcircledown1103"
+                        />
+                    </div>
+                    <span class="search-morebtn-text"><span>더보기</span></span>
+                </button>
+            </div>
+            <!-- 모임 검색 결과 끝 -->
+
+            <!-- 사용자 검색 정보 -->
+            <div class="search-nickname-result">
+                <div class="search-nickname-title">회원</div>
+                <div class="search-nickname-content">
+                    <div class="search-nickname-info">
+                        <img
+                                src="public/external/profielimg1103-ovfi-200h.png"
+                                alt="profielImg1103"
+                                class="search-nickname-info-profileImg"
+                        />
+                        <span class="search-nickname-info-name"><span>유니코</span></span>
+                        <span class="search-nickname-info-oneline">
+                    <span>웹 개발 잘 해보아요:)</span>
+                  </span>
+                    </div>
+                    <div class="search-nickname-info">
+                        <img
+                                src="public/external/profielimg1103-ovfi-200h.png"
+                                alt="profielImg1103"
+                                class="search-nickname-info-profileImg"
+                        />
+                        <span class="search-nickname-info-name"><span>유니코</span></span>
+                        <span class="search-nickname-info-oneline">
+                    <span>웹 개발 잘 해보아요:)</span>
+                  </span>
+                    </div>
+                    <div class="search-nickname-info">
+                        <img
+                                src="public/external/profielimg1103-ovfi-200h.png"
+                                alt="profielImg1103"
+                                class="search-nickname-info-profileImg"
+                        />
+                        <span class="search-nickname-info-name"><span>유니코</span></span>
+                        <span class="search-nickname-info-oneline">
+                    <span>웹 개발 잘 해보아요:)</span>
+                  </span>
+                    </div>
+                    <div class="search-nickname-info">
+                        <img
+                                src="public/external/profielimg1103-ovfi-200h.png"
+                                alt="profielImg1103"
+                                class="search-nickname-info-profileImg"
+                        />
+                        <span class="search-nickname-info-name"><span>유니코</span></span>
+                        <span class="search-nickname-info-oneline">
+                    <span>웹 개발 잘 해보아요:)</span>
+                  </span>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // 검색 필터 버튼 구현 (search-filter-btn 버튼 클릭 시 이벤트 처리)
+        const filterButton = document.querySelector('.search-filter-btn');
+        const filterSelect = document.querySelector('.search-filter-select');
+
+        filterButton.addEventListener('click', () => {
+            if (filterSelect.style.display == 'none' || filterSelect.style.display == '') {
+                filterSelect.style.display = 'block';
+            } else {
+                filterSelect.style.display = 'none';
+            }
+        });
+
+    </script>
 </th:block>
 </body>
 </html>
