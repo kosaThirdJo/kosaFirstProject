@@ -86,7 +86,18 @@
         <div>
             <span class="badge bg-secondary">모집중</span>
             <h2 id="content_title" style="display: inline" th:text="${meetingArticle.getTitle()}"> </h2>
-            <span class="badge bg-secondary" style="float: right">신청하기 세션확인!</span>
+            <a th:href="|/meeting/apply/${meetingArticle.getMeetingId()}|">
+            <span th:if="${user_id!= null} and ${meetingArticle.getUserId() != user_id}" class="badge bg-secondary" style="float: right" th:text="신청하기"></span>
+            </a>
+            <a th:href="|/meeting/finish/${meetingArticle.getMeetingId()}|">
+                <span th:if="${meetingArticle.getUserId() == user_id}" class="badge bg-secondary" style="float: right" th:text="모집완료"></span>
+            </a>
+            <a th:href="|/meeting/fix/${meetingArticle.getMeetingId()}|">
+                <span th:if="${meetingArticle.getUserId() == user_id}" class="badge bg-secondary" style="float: right" th:text="수정하기"></span>
+            </a>
+            <a th:href="|/meeting/remove/${meetingArticle.getMeetingId()}|">
+                <span th:if="${meetingArticle.getUserId() == user_id}" class="badge bg-secondary" style="float: right" th:text="삭제하기"></span>
+            </a>
         </div>
         <div>
             <span style="margin-left: 10px" th:text="|${meetingArticle.getCreationDate().getYear()}년 ${meetingArticle.getCreationDate().monthValue}월 ${meetingArticle.getCreationDate().dayOfMonth}일|"></span>
