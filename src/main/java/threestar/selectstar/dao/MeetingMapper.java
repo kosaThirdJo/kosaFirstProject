@@ -38,4 +38,6 @@ public interface MeetingMapper {
             "creation_date creationDate, location, description " +
             "from meeting where user_id= #{userId}")
     public List<MeetingVO> getMyMeetingList(int userId);
+    
+    //마이페이지-내가 신청한 글 목록 조회
 }
