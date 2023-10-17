@@ -1,8 +1,8 @@
 package threestar.selectstar.dao;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
-import org.apache.ibatis.annotations.*;
-import threestar.selectstar.domain.CommentDTO;
-import threestar.selectstar.domain.MeetingDTO;
 import threestar.selectstar.domain.MeetingVO;
 
 import java.util.List;
@@ -24,5 +24,18 @@ public interface MeetingMapper {
     // 모집 완료 기능
 
     // 삭제기능 <--- 차후
+    // 신청 폼 <-- 차후?
+
+    // 메인 - 최신글 조회 (ORDER BY) (현재는 4개만 출력)
+    @Select("SELECT * FROM meeting ORDER BY creation_date DESC LIMIT 4")
+    List<MeetingVO> getLatestMeetings();
+
+    // 메인 - 인기글 조회 (RANK) : 최근 일주일간 올라온 글 중에서 조회수 높은 것 10개
+    @Select("SELECT * FROM meeting WHERE DATEDIFF(NOW(), creation_date) <= 7 ORDER BY views DESC LIMIT 10")
+    List<MeetingVO> getPopularMeetings();
+
+    // 검색 - 모임글 검색 (제목 일치)
+    @Select("SELECT * FROM meeting WHERE title LIKE CONCAT('%', #{searchWord}, '%')")
+    List<MeetingVO> searchMeetings(@Param("searchWord") String searchWord);
 
 }
