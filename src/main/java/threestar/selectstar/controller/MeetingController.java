@@ -1,13 +1,18 @@
 package threestar.selectstar.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import threestar.selectstar.dao.CommentMapper;
 import threestar.selectstar.dao.MeetingMapper;
+import threestar.selectstar.dao.UserMapper;
+import threestar.selectstar.domain.CommentDTO;
+import threestar.selectstar.domain.MeetingDTO;
 import threestar.selectstar.domain.MeetingVO;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +21,15 @@ import java.util.List;
 public class MeetingController {
     final
     MeetingMapper meetingDao;
+    final
+    CommentMapper commentDao;
+    final
+    UserMapper userDao;
 
-    public MeetingController(MeetingMapper meetingDao) {
+    public MeetingController(MeetingMapper meetingDao,CommentMapper commentDao, UserMapper userDao) {
         this.meetingDao = meetingDao;
+        this.commentDao = commentDao;
+        this.userDao = userDao;
     }
 
     // 메인페이지
@@ -39,7 +50,6 @@ public class MeetingController {
             String interestLanguage = meetingDaoOne.getInterestLanguage();
             String interestFramework = meetingDaoOne.getInterestFramework();
             String interestJob = meetingDaoOne.getInterestJob();
-            System.out.println(interestLanguage);
             // 배열로 만들기 0: 언어, 1: 프레임워크, 2:
             // 배열에 삽입 빈값이면 넣지 말기!
             if (interestLanguage != null){
@@ -82,11 +92,73 @@ public class MeetingController {
 
         return "meeting/meeting_home";
     }
-    @GetMapping("/articles/{id}")
-    public String meetingArticle(@PathVariable int id,Model model){
-        System.out.println("123!@#");
-        MeetingVO meetingArticle = meetingDao.getMeetingArticleById(id);
-        model.addAttribute("meetingArticle",meetingArticle);
-        return "meeting/meeting_article";
+    @GetMapping("/articles")
+    public String meetingArticle(@RequestParam("id")Integer id,HttpServletRequest request,Model model){
+        //
+        if (id != null) {
+            MeetingVO meetingArticle = meetingDao.getMeetingArticleById(id);
+            List<CommentDTO> commentListByMeetingId = commentDao.getCommentListByMeetingId(id);
+
+            // 조회수 1추가
+            meetingDao.updateMeetingCount(meetingArticle.getViews()+1,id);
+            // 조회를 위한 값 저장
+            model.addAttribute("requestURI", request.getRequestURI());
+            model.addAttribute("meetingArticle", meetingArticle);
+            model.addAttribute("commentListByMeetingId", commentListByMeetingId);
+            model.addAttribute("userDao",userDao);
+            model.addAttribute("count_comment",commentDao.calcCommentCount(id));
+            return "meeting/meeting_article";
+        }
+        return "meeting/meeting_home";
     }
+    @PostMapping("/articles/{id}")
+    public String addMeetingComment(@PathVariable int id,String commentUserName,String commentContent, HttpServletRequest request){
+
+        // 유저 이름으로 유저 id 조회
+        int commentUserId = userDao.getIdByName(commentUserName);
+        //
+        CommentDTO commentDTO = new CommentDTO(0,id,commentUserId,commentContent,LocalDateTime.now());
+        commentDao.insertComment(commentDTO);
+
+        // 리다이렉트 댓글
+        String referer = request.getHeader("Referer");
+        return "redirect:" + referer;
+    }
+    @GetMapping("/write")
+    public String writeArticleForm(){
+        return "meeting/meeting_form";
+    }
+    @PostMapping("/write")
+    public String writerArticle(String title,
+                                int meetingType,
+                                LocalDateTime endDate,
+                                String location,
+                                int recruitNum,
+                                String content) {
+        //HttpSession
+        System.out.println(endDate);
+        System.out.println();
+
+        meetingDao.insertMeeting(new MeetingDTO
+                (1,
+                2,
+                title,
+                meetingType,
+                0,
+                endDate,
+                0,
+                recruitNum,
+                0,
+                location,
+                content,
+                LocalDateTime.now(),
+                "",
+                "",
+                ""
+                )
+        );
+
+        return "redirect:" + "/meeting";
+    }
+
 }
