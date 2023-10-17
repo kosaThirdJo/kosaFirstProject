@@ -5,9 +5,11 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import threestar.selectstar.dao.ApplyMapper;
 import threestar.selectstar.dao.CommentMapper;
 import threestar.selectstar.dao.MeetingMapper;
 import threestar.selectstar.dao.UserMapper;
+import threestar.selectstar.domain.ApplyVO;
 import threestar.selectstar.domain.CommentDTO;
 import threestar.selectstar.domain.MeetingDTO;
 import threestar.selectstar.domain.MeetingVO;
@@ -24,13 +26,15 @@ public class MeetingController {
     CommentMapper commentDao;
     final
     UserMapper userDao;
+    final ApplyMapper applyDao;
     final static List<String> categoryInfo =  new ArrayList<>(Arrays.asList("스터디","프로젝트","기타"));
     final static List<String> statusInfo =  new ArrayList<>(Arrays.asList("모집중","모집완료","삭제"));
 
-    public MeetingController(MeetingMapper meetingDao,CommentMapper commentDao, UserMapper userDao) {
+    public MeetingController(MeetingMapper meetingDao,CommentMapper commentDao, UserMapper userDao, ApplyMapper applyDao) {
         this.meetingDao = meetingDao;
         this.commentDao = commentDao;
         this.userDao = userDao;
+        this.applyDao = applyDao;
     }
 
     // 메인페이지
@@ -162,6 +166,7 @@ public class MeetingController {
         Integer userId = null;
         if (session.getAttribute("user_id") != null)
             {
+                //빌더 패턴
                 MeetingDTO meetingDTO = MeetingDTO.builder()
                         .userId((int)session.getAttribute("user_id"))
                         .title(title)
@@ -173,6 +178,7 @@ public class MeetingController {
                         .applicationCount(0)
                         .creationDate(LocalDateTime.now())
                         .build();
+                meetingDao.insertMeeting(meetingDTO);
             }
         return "redirect:" + "/meeting";
     }
@@ -211,4 +217,27 @@ public class MeetingController {
         // 엘스 비정상정인 접근입니다.
         return "redirect:/meeting";
     }
+    @PostMapping("/apply/{id}")
+    public String addApply(HttpSession session,String emailAddress, @PathVariable("id") int meetingId ,String reason,String snsAddress) {
+        System.out.println(ApplyVO.builder()
+                .userId((int)session.getAttribute("user_id"))
+                .meetingId(meetingId)
+                .emailAddress(emailAddress)
+                .snsAddress(snsAddress)
+                .reason(reason)
+                .applicationDate(LocalDateTime.now())
+                .build());
+        if (session.getAttribute("user_id") != null) {
+            applyDao.insertComment(ApplyVO.builder()
+                    .userId((int)session.getAttribute("user_id"))
+                            .meetingId(meetingId)
+                            .emailAddress(emailAddress)
+                            .snsAddress(snsAddress)
+                            .reason(reason)
+                            .applicationDate(LocalDateTime.now())
+                        .build());
+        }
+        return "redirect:/meeting/articles?id=" + meetingId;
+    }
+
 }

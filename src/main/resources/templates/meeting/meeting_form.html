@@ -62,6 +62,51 @@
       <div>모집인원수
         <input name="recruitNum" type="number" placeholder="XX명">
       </div>
+      <!--  02-02-06 관심 분야  -->
+      <div class="signup-interest">
+        <span class="signup-text017"><span>관심 분야</span></span>
+        <div class="signup-interest-container">
+          <!--  02-02-06-01 언어  -->
+          <div class="signup-interest-content">
+            <span class="signup-interest-text"><span>언어</span></span>
+            <div id="signup-select-lang" class="signup-select">
+              <input type="hidden" name="interest_language" id="signup-interest-lang-btn" value="">
+              <button id="java" type="button" class="signup-interest-lang-btn" value="Java">Java</button>
+              <button id="py" type="button"  class="signup-interest-lang-btn" value="Python">Python</button>
+              <button id="c" type="button"  class="signup-interest-lang-btn" value="C">C</button>
+              <button id="c++"  type="button"  class="signup-interest-lang-btn" value="C++">C++</button>
+              <button id="c#" type="button"  class="signup-interest-lang-btn" value="C#">C#</button>
+              <button id="script" type="button"  class="signup-interest-lang-btn" value="JavaScript">JavaScript</button>
+            </div>
+          </div>
+          <!--  02-02-06-02 프레임워크  -->
+          <div class="signup-interest-content">
+            <span class="signup-interest-text"><span>프레임워크</span></span>
+            <div id="signup-select-framework" class="signup-select">
+              <input type="hidden" name="interest_framework" id="signup-interest-fw-btn" value="">
+              <button type="button" class="signup-interest-fw-btn" value="Spring">Spring</button>
+              <button type="button"  class="signup-interest-fw-btn" value="Django">Django</button>
+              <button type="button"  class="signup-interest-fw-btn" value="Flask">Flask</button>
+              <button type="button"  class="signup-interest-fw-btn" value="Vue.js">Vue.js</button>
+              <button type="button"  class="signup-interest-fw-btn" value="Laravel">Laravel</button>
+            </div>
+          </div>
+
+          <!--  02-02-06-01 직무  -->
+          <div class="signup-interest-content">
+            <span class="signup-interest-text"><span>직무</span></span>
+            <div id="signup-select-job" class="signup-select">
+              <input type="hidden" name="interest_job" id="signup-interest-job-btn" value="">
+              <button type="button" class="signup-interest-job-btn" value="front">프론트엔드</button>
+              <button type="button"  class="signup-interest-job-btn" value="back">백엔드</button>
+              <button type="button"  class="signup-interest-job-btn" value="full">풀스택</button>
+              <button type="button"  class="signup-interest-job-btn" value="android">Android</button>
+              <button type="button"  class="signup-interest-job-btn" value="IOS">IOS</button>
+              <button type="button"  class="signup-interest-job-btn" value="designer">디자이너</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   <section>
@@ -73,7 +118,38 @@
   <button id="submit_content" class="btn btn-primary" style="background-color: #FF9F29; color: white; margin-top: 30px;">등록하기</button>
   </form>
 </article>
-
 </body>
+<script>
+  function buttonPress (e){
+    document.querySelector("#"+e.target.className).value = e.target.value
+  }
+  const lang = document.querySelectorAll("#signup-select-lang")
+  const framework = document.querySelectorAll("#signup-select-framework")
+  const job = document.querySelectorAll("#signup-select-job")
+  for (const langElement of lang) {
+    const subElements = langElement.querySelectorAll("*"); // langElement의 하위 요소를 모두 가져옴
+    for (const subElement of subElements) {
+      subElement.addEventListener("click", (e) => {
+        buttonPress(e);
+      }, true);
+    }
+  }
+  for (const framElement of framework) {
+    const subElements = framElement.querySelectorAll("*"); // langElement의 하위 요소를 모두 가져옴
+    for (const subElement of subElements) {
+      subElement.addEventListener("click", (e) => {
+        buttonPress(e);
+      }, true);
+    }
+  }
+  for (const jobElement of job) {
+    const subElements = jobElement.querySelectorAll("*"); // langElement의 하위 요소를 모두 가져옴
+    for (const subElement of subElements) {
+      subElement.addEventListener("click", (e) => {
+        buttonPress(e);
+      }, true);
+    }
+  }
+</script>
 
 </html>
