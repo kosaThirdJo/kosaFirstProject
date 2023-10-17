@@ -36,8 +36,26 @@ public interface MeetingMapper {
     @Select("select meeting_id meetingId, user_id userId, title, category, status, application_deadline applicationDeadline, " +
             "views, recruitment_count recruitmentCount, application_count applicationCount, " +
             "creation_date creationDate, location, description " +
-            "from meeting where user_id= #{userId}")
+            "from meeting where user_id= #{userId} and is_delete = 0 " +
+            "order by creationDate desc")
     public List<MeetingVO> getMyMeetingList(int userId);
-    
+
+    //마이페이지-내가 작성한 글목록 카테고리별 조회
+    @Select("select meeting_id meetingId, user_id userId, title, category, status, application_deadline applicationDeadline, " +
+            "views, recruitment_count recruitmentCount, application_count applicationCount, " +
+            "creation_date creationDate, location, description " +
+            "from meeting where user_id= #{userId} and is_delete = 0 and category= #{category} " +
+            "order by creationDate desc")
+    public List<MeetingVO> getMyMeetingListByCategory(@Param("userId") int userId, @Param("category") int category);
+
+
     //마이페이지-내가 신청한 글 목록 조회
+    @Select("select m.meeting_id meetingId, m.title, m.is_delete isDelete, m.category, m.status, " +
+            "m.application_deadline applicationDeadline, m.views, m.recruitment_count recruitmentCount, " +
+            "m.application_count applicationCount, m.creation_date creationDate, m.location, m.description " +
+            "from meeting m " +
+            "join apply a " +
+            "on m.meeting_id = a.meeting_id " +
+            "where a.user_id= #{userId}  and m.is_delete = 0;")
+    public List<MeetingVO> getMyApplyList(int userId);
 }
