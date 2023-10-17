@@ -58,6 +58,13 @@
 <header style="width: 100%; z-index: 1; top:0; position: fixed;">
     헤더입니다.
 </header>
+
+<div th:if="${isFail}">
+    <script>
+        alert("로그인을 해 주세요!")
+        location.href= "/login"
+    </script>
+</div>
 <article id="content_list">
     <div style="font-size: 36px">
         <img th:src="@{/image/global/notifications01.png}">
@@ -67,9 +74,9 @@
             <section th:id="|section_${allMeetingList.get(meetingStat.index).getMeetingId()}|" style="margin: 5px;" class="border border-dark">
                 <div style="background-color: white; border-radius: 5%; height: 200px; margin: 20px;">
                     <div>
-                        <span class="btn btn-primary" style="width:50px; background-color: #1A4D2E; color: white;" th:text="${allMeetingList.get(meetingStat.index).getCategory()}">
+                        <span class="btn btn-primary" style="background-color: #1A4D2E; color: white;" th:text="${categoryInfo.get(allMeetingList.get(meetingStat.index).getCategory())}">
                         </span>
-                        <span class="btn btn-primary" style="width:50px;float: right; background-color: #FF9F29; color: white;" th:text="${allMeetingList.get(meetingStat.index).getStatus()}">
+                        <span class="btn btn-primary" style="float: right; background-color: #FF9F29; color: white;" th:text="${statusInfo.get(allMeetingList.get(meetingStat.index).getStatus())}">
                         </span>
                     </div>
                     <div>
@@ -89,7 +96,7 @@
                 <div style="" >
                     <img th:src="@{/image/global/member_count.png}">
                     현재
-                    <span style="color: #FF9F29" th:text="|${allMeetingList.get(meetingStat.index).getApplicationCount()+1} 명|">
+                    <span style="color: #FF9F29" th:text="|${allMeetingList.get(meetingStat.index).getApplicationCount()} 명|">
                         0명
                     </span>
                     <span>
@@ -117,9 +124,9 @@
             <section th:id="|section_${allMeetingList.get(meetingStat.index+1).getMeetingId()}|" th:if="${meetingStat.index <= (meetingStat.size)-2 }" style="margin: 5px;" class="border border-dark">
                 <div style="background-color: white; border-radius: 5%; height: 200px; margin: 20px;">
                     <div>
-                        <span class="btn btn-primary" style="width:50px; background-color: #1A4D2E; color: white;" th:text="${allMeetingList.get(meetingStat.index+1).getCategory()}">
+                        <span class="btn btn-primary" style=" background-color: #1A4D2E; color: white;" th:text="${categoryInfo.get(allMeetingList.get(meetingStat.index+1).getCategory())}">
                         </span>
-                        <span class="btn btn-primary" style="width:50px;float: right; background-color: #FF9F29; color: white;" th:text="${allMeetingList.get(meetingStat.index+1).getStatus()}">
+                        <span class="btn btn-primary" style=" float: right; background-color: #FF9F29; color: white;" th:text="${statusInfo.get(allMeetingList.get(meetingStat.index+1).getStatus())}">
                         </span>
                     </div>
                     <div>
@@ -139,7 +146,7 @@
                 <div style="" >
                     <img th:src="@{/image/global/member_count.png}">
                     현재
-                    <span style="color: #FF9F29" th:text="|${allMeetingList.get(meetingStat.index+1).getApplicationCount()+1} 명|">
+                    <span style="color: #FF9F29" th:text="|${allMeetingList.get(meetingStat.index+1).getApplicationCount()} 명|">
                         0명
                     </span>
                     <span>

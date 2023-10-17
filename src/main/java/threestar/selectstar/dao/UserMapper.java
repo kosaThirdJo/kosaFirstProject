@@ -19,12 +19,12 @@ public interface UserMapper {
     public UserDTO getUserProfileInfo(int userId);
 
     // 회원 가입
-    @Insert("insert into user (name, password, email, nickname, location1, interest_language, interest_framework, interest_job, join_date) "
-        + "values (#{name}, #{password}, #{email}, #{nickname}, #{location1}, #{interest_language}, #{interest_framework}, #{interest_job}, now())")
+    @Insert("INSERT INTO user (name, password, email, nickname, location1, interest_language, interest_framework, interest_job, join_date) "
+            + "VALUES (#{name}, #{password}, #{email}, #{nickname}, #{location1}, #{interest_language}, #{interest_framework}, #{interest_job}, NOW())")
     public boolean signupUser(UserDTO dto);
 
     // 로그인
-    @Select("select user_id from user where name = #{name} and password = #{password}")
+    @Select("SELECT user_id FROM user WHERE name = #{name} AND password = #{password}")
     public Integer loginUser(@Param("name") String name, @Param("password") String password);
     
     //마이페이지(이력관리) 수정
