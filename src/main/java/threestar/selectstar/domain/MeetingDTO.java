@@ -5,8 +5,9 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+@Builder
 @Getter
-@Setter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
 public class MeetingDTO {
     private int meetingId;

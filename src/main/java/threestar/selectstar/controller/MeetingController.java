@@ -5,10 +5,13 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import threestar.selectstar.dao.ApplyMapper;
 import threestar.selectstar.dao.CommentMapper;
 import threestar.selectstar.dao.MeetingMapper;
 import threestar.selectstar.dao.UserMapper;
+import threestar.selectstar.domain.ApplyVO;
 import threestar.selectstar.domain.CommentDTO;
+import threestar.selectstar.domain.MeetingDTO;
 import threestar.selectstar.domain.MeetingVO;
 
 import java.time.LocalDateTime;
@@ -23,13 +26,15 @@ public class MeetingController {
     CommentMapper commentDao;
     final
     UserMapper userDao;
+    final ApplyMapper applyDao;
     final static List<String> categoryInfo =  new ArrayList<>(Arrays.asList("스터디","프로젝트","기타"));
     final static List<String> statusInfo =  new ArrayList<>(Arrays.asList("모집중","모집완료","삭제"));
 
-    public MeetingController(MeetingMapper meetingDao,CommentMapper commentDao, UserMapper userDao) {
+    public MeetingController(MeetingMapper meetingDao,CommentMapper commentDao, UserMapper userDao, ApplyMapper applyDao) {
         this.meetingDao = meetingDao;
         this.commentDao = commentDao;
         this.userDao = userDao;
+        this.applyDao = applyDao;
     }
 
     // 메인페이지
@@ -159,40 +164,80 @@ public class MeetingController {
                                 HttpSession session) {
         //HttpSession
         Integer userId = null;
-        if( session.getAttribute("user_id") != null)
+        if (session.getAttribute("user_id") != null)
             {
-                return "redirect:" + "/meeting";
+                //빌더 패턴
+                MeetingDTO meetingDTO = MeetingDTO.builder()
+                        .userId((int)session.getAttribute("user_id"))
+                        .title(title)
+                        .category(category)
+                        .applicationDeadline(endDate)
+                        .location(location)
+                        .recruitmentCount(recruitNum)
+                        .description(content)
+                        .applicationCount(0)
+                        .creationDate(LocalDateTime.now())
+                        .build();
+                meetingDao.insertMeeting(meetingDTO);
             }
         return "redirect:" + "/meeting";
     }
+    // 게시글 수정 페이지
     @GetMapping("/fix/{id}")
-    public String fixArticle(Model model, HttpSession session){
+    public String fixArticle(Model model, HttpSession session, @PathVariable String id){
         model.addAttribute("user_id",session.getAttribute("user_id"));
-        // id 조회후 다르면 강제 이동.
-        // 같으면 페이지 값 가져와서 화면에 뿌리기
-        return "redirect:" +"meeting/meeting_form_fix";
+        return "meeting/meeting_form_fix";
     }
     // 게시글 수정
     @PostMapping("/fix/{id}")
-    public String fixArticle(Model model, HttpSession session, @PathVariable String id){
+    public String fixArticleadd(Model model, HttpSession session, @PathVariable String id){
         model.addAttribute("user_id",session.getAttribute("user_id"));
         // id 조회후 다르면 강제 이동.
         // 같으면 페이지 값 가져와서 화면에 뿌리기
-        return "redirect:" +"meeting/meeting_form_fix";
+        return "redirect:" +"meeting";
     }
     // 모집 완료
     @GetMapping("/finish/{id}")
     public String finishArticle(Model model, HttpSession session, @PathVariable("id") int meetingId){
-        model.addAttribute("user_id");
-        meetingDao.updateStatus(1,meetingId);
+        // 게시글에서 작성한 아이디가 새션 아이디랑 같을시
+        if (session.getAttribute("user_id").equals(meetingDao.getMeetingArticleById(meetingId).getUserId())){
+            model.addAttribute("user_id",session.getAttribute("user_id"));
+            meetingDao.updateStatus(1,meetingId);
+        }
         return "redirect:/meeting";
     }
+    // 게시글 삭제(비활성화)
     @GetMapping("/remove/{id}")
     public String deleteArticle(Model model, HttpSession session, @PathVariable("id") int meetingId){
-        model.addAttribute("user_id",session.getAttribute("user_id"));
-        meetingDao.updateStatus(2,meetingId);
-        // id 조회후 다르면 강제 이동.
-        // 같으면 페이지 값 가져와서 화면에 뿌리기
+        // 게시글에서 작성한 아이디가 새션 아이디랑 같을시
+        if (session.getAttribute("user_id").equals(meetingDao.getMeetingArticleById(meetingId).getUserId())){
+            model.addAttribute("user_id",session.getAttribute("user_id"));
+            meetingDao.deleteMeeting(meetingId);
+        }
+        // 엘스 비정상정인 접근입니다.
         return "redirect:/meeting";
     }
+    @PostMapping("/apply/{id}")
+    public String addApply(HttpSession session,String emailAddress, @PathVariable("id") int meetingId ,String reason,String snsAddress) {
+        System.out.println(ApplyVO.builder()
+                .userId((int)session.getAttribute("user_id"))
+                .meetingId(meetingId)
+                .emailAddress(emailAddress)
+                .snsAddress(snsAddress)
+                .reason(reason)
+                .applicationDate(LocalDateTime.now())
+                .build());
+        if (session.getAttribute("user_id") != null) {
+            applyDao.insertComment(ApplyVO.builder()
+                    .userId((int)session.getAttribute("user_id"))
+                            .meetingId(meetingId)
+                            .emailAddress(emailAddress)
+                            .snsAddress(snsAddress)
+                            .reason(reason)
+                            .applicationDate(LocalDateTime.now())
+                        .build());
+        }
+        return "redirect:/meeting/articles?id=" + meetingId;
+    }
+
 }
