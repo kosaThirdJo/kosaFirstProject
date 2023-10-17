@@ -4,11 +4,13 @@ import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Getter
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 public class MeetingVO {
 	private int meetingId;
 	private int userId;

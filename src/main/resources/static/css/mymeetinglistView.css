@@ -1,0 +1,40 @@
+.e-category{
+    display: inline;
+}
+.e-status{
+    display: inline;
+}
+.mymeeting-container {
+    list-style-type: none;
+    padding: 10px;
+}
+.meetinginfo{
+    height: 150px;
+}
+.click-meetingpost{  //li의 a태그
+    display:inline-block;
+}
+.meeting-status{
+    display:inline-block;
+    width: 10%;
+}
+.title-text{
+    display:inline-block;
+    width: 70%;
+}
+.meeting-title .meeting-footer{
+    height: 50px;
+}
+.meeting-body{
+    height: 50px;
+    /*overflow: hidden;
+    text-overflow: ellipsis;*/
+}
+.meeting-body-content{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.meeting-footer div{
+    display: inline-block;
+}

@@ -40,6 +40,20 @@
                 </textarea><br>
                 <input type="submit" value="수정하기"/>
             </form>
+
+        <!--/*
+        <script th:inline="javascript">
+            window.onload = function(){
+                console.log("[[${updateresult}]]");
+                //console.log("[[${params.updateresult}]]");
+                const msg = [[${updateresult}]];
+                if(msg){
+                    alert(msg);
+                }
+            }
+        </script>
+        */-->
+
     </th:block>
 </body>
 </html>

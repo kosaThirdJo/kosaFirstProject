@@ -15,7 +15,7 @@ public interface UserMapper {
     public List<UserVO> getAllUserList();
 
     //마이페이지 이력관리 조회
-    @Select("select nickname, profile_photo, about_me, profile_content from user where user_id = #{userId}")
+    @Select("select user_id userId, nickname, email, profile_photo, about_me, profile_content from user where user_id = #{userId}")
     public UserDTO getUserProfileInfo(int userId);
 
     // 회원 가입
@@ -38,7 +38,8 @@ public interface UserMapper {
 
     //개인정보 수정
     @Update("update user set password= #{password}, email= #{email}, nickname= #{nickname}, "
-            +"location1= #{location1}, location2= #{location2}, interest_language= #{interest_language} where user_id= #{userId}")
+            +"location1= #{location1}, location2= #{location2}, interest_language= #{interest_language},"
+            + "interest_framework= #{interest_framework}, interest_job= #{interest_job} where user_id= #{userId}")
     public boolean updateUserInfo(UserDTO userDTO);
     @Select("select name from user where user_id= #{userId}")
     public String getNameById(int userId);

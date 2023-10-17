@@ -38,4 +38,19 @@ public interface MeetingMapper {
     @Select("SELECT * FROM meeting WHERE title LIKE CONCAT('%', #{searchWord}, '%')")
     List<MeetingVO> searchMeetings(@Param("searchWord") String searchWord);
 
+    // 댓글 조회 해야 됨 필수
+
+    // 댓글 추가 입력폼.. 필수 만약 댓글올렷으면 리다이렉트..
+
+    // 신청 폼 <-- 차후?
+
+
+    //마이페이지-내가 작성한 글목록 조회(제목, 분야, 모집상태, 장소, 조회수, 모집인원, 신청인원, 작성일, 모집마감일)
+    @Select("select meeting_id meetingId, user_id userId, title, category, status, application_deadline applicationDeadline, " +
+            "views, recruitment_count recruitmentCount, application_count applicationCount, " +
+            "creation_date creationDate, location, description " +
+            "from meeting where user_id= #{userId}")
+    public List<MeetingVO> getMyMeetingList(int userId);
+    
+    //마이페이지-내가 신청한 글 목록 조회
 }
