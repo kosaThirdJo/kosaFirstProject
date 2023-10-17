@@ -27,5 +27,4 @@ public class MeetingVO {
 	private String interestLanguage;
 	private String interestFramework;
 	private String interestJob;
-
 }

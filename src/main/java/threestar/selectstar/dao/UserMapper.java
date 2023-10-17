@@ -41,5 +41,8 @@ public interface UserMapper {
             +"location1= #{location1}, location2= #{location2}, interest_language= #{interest_language},"
             + "interest_framework= #{interest_framework}, interest_job= #{interest_job} where user_id= #{userId}")
     public boolean updateUserInfo(UserDTO userDTO);
-
+    @Select("select name from user where user_id= #{userId}")
+    public String getNameById(int userId);
+    @Select("select user_id from user where name= #{name}")
+    public int getIdByName(String name);
 }
