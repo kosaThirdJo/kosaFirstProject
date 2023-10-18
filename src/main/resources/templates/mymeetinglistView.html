@@ -34,10 +34,10 @@
                             <button th:onclick="" class="button-status">전체</button>
                         </li>
                         <li class="e-status">
-                            <button class="button-status">모집</button>
+                            <button th:onclick="" class="button-status">모집중</button>
                         </li>
                         <li class="e-status">
-                            <button class="button-status">모집완료</button>
+                            <button th:onclick="" class="button-status">모집완료</button>
                         </li>
                     </ul>
                 </div>
@@ -45,8 +45,8 @@
                     <!--/* 조회 결과(meetingvoList가 있을 경우 */-->
                     <th:block th:if="${meetingvoList}">
                         <ul class="mymeeting-list">
-                            <li th:each="meetingvo : ${meetingvoList}" class="mymeeting-container">
-                                <a class="click-meetingpost">
+                            <li th:each="meetingvo : ${meetingvoList}" th:withclass="mymeeting-container">
+                                <a th:href="@{/meeting/articles(id=${meetingvo.meetingId})}" class="click-meetingpost">
                                 <div class="meetinginfo">
                                     <!-- 게시글 항목 status & title-->
                                     <div class="meeting-title">

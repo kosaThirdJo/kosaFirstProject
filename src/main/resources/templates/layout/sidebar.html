@@ -1,8 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:data="http://www.w3.org/1999/xhtml">
 <!--/* sidebar */-->
 <th:block th:fragment="sidebarFragment">
     <style>
+        .profile-image{
+            width: 100%;
+
+        }
         li {
             list-style-type: none;
         }
@@ -14,13 +19,22 @@
     <aside>
         <!--/* profile Image */-->
         <div class="profile-image">
-            <a class="">
-                <img style="width:5rem; height:5rem; border-radius:9999px;" th:src="@{/image/global/test1.png}"/><br/>
+            <form action="/mypage/uploadprofileimg" enctype="multipart/form-data" method="post">
+                <th:block th:if="${userDTO.profile_photo} != null">
+                    <img style="width:5rem; height:5rem; border-radius:9999px";
+                         th:src="@{'data:image/png;base64,' + ${encodeImg}}" alt="Image"><br/>
+                </th:block>
+               <th:block th:if="${userDTO.profile_photo} == null">
+                    <img style="width:5rem; height:5rem; border-radius:9999px;"
+                         th:src="@{/image/global/userdefaultimg.png}"/><br/>
+                </th:block>
                 <span>[[${userDTO.nickname}]]</span><br>
                 <span>[[${userDTO.email}]]</span><br>
-            </a>
+                <input type="hidden" name="userId" th:value="${userDTO.userId}"/>
+                <input type="file" name="profile_photo" accept=".jpg, .png"/>
+                <input type="submit" value="수정"/>
+            </form>
         </div>
-        <button>수정</button>
         <!--/* Mypage Menu */-->
         <h5>홈</h5>
         <div>
