@@ -15,6 +15,7 @@ import threestar.selectstar.domain.MeetingDTO;
 import threestar.selectstar.domain.MeetingVO;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Controller
@@ -50,7 +51,7 @@ public class MeetingController {
         List<List<String>> interestListLang = new ArrayList<>();
         List<List<String>> interestListFrame = new ArrayList<>();
         List<List<String>> interestListJob = new ArrayList<>();
-
+        List<String> timeList = new ArrayList<>();
         for (MeetingVO meetingDaoOne:
              allMeetingList) {
             List<String> interestListLangEle = new ArrayList<>();
@@ -94,6 +95,7 @@ public class MeetingController {
             interestListLang.add(interestListLangEle);
             interestListFrame.add(interestListFrameEle);
             interestListJob.add(interestListJobEle);
+            timeList.add(meetingDaoOne.getCreationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         }
         // 모델에 넣기
         model.addAttribute("allMeetingList",allMeetingList);
@@ -103,6 +105,8 @@ public class MeetingController {
 
         model.addAttribute("categoryInfo",categoryInfo);
         model.addAttribute("statusInfo",statusInfo);
+        model.addAttribute("userDao",userDao);
+        model.addAttribute("timeList",timeList);
         return "meeting/meeting_home";
     }
     @GetMapping("/articles")
@@ -161,9 +165,11 @@ public class MeetingController {
                                 String location,
                                 int recruitNum,
                                 String content,
+                                @RequestParam("interest_language")String interestLanguage,
+                                @RequestParam("interest_framework")String interestFramework,
+                                @RequestParam("interest_job") String interestJob,
                                 HttpSession session) {
         //HttpSession
-        Integer userId = null;
         if (session.getAttribute("user_id") != null)
             {
                 //빌더 패턴
@@ -177,6 +183,9 @@ public class MeetingController {
                         .description(content)
                         .applicationCount(0)
                         .creationDate(LocalDateTime.now())
+                        .interestLanguage(interestLanguage)
+                        .interestFramework(interestFramework)
+                        .interestJob(interestJob)
                         .build();
                 meetingDao.insertMeeting(meetingDTO);
             }
@@ -184,8 +193,10 @@ public class MeetingController {
     }
     // 게시글 수정 페이지
     @GetMapping("/fix/{id}")
-    public String fixArticle(Model model, HttpSession session, @PathVariable String id){
+    public String fixArticle(Model model, HttpSession session, @PathVariable("id") int meetingId){
+        MeetingVO meetingVO = meetingDao.getMeetingArticleById(meetingId);
         model.addAttribute("user_id",session.getAttribute("user_id"));
+        model.addAttribute("meetingVO",meetingVO);
         return "meeting/meeting_form_fix";
     }
     // 게시글 수정
@@ -217,27 +228,35 @@ public class MeetingController {
         // 엘스 비정상정인 접근입니다.
         return "redirect:/meeting";
     }
+    // 지원 햇을경 우
     @PostMapping("/apply/{id}")
-    public String addApply(HttpSession session,String emailAddress, @PathVariable("id") int meetingId ,String reason,String snsAddress) {
-        System.out.println(ApplyVO.builder()
-                .userId((int)session.getAttribute("user_id"))
-                .meetingId(meetingId)
-                .emailAddress(emailAddress)
-                .snsAddress(snsAddress)
-                .reason(reason)
-                .applicationDate(LocalDateTime.now())
-                .build());
+    public String addApply(HttpSession session,String emailAddress,
+                           @PathVariable("id") int meetingId ,
+                           String reason,String snsAddress
+                           ) {
+
         if (session.getAttribute("user_id") != null) {
+            // 신청 데이터 추가
             applyDao.insertComment(ApplyVO.builder()
                     .userId((int)session.getAttribute("user_id"))
-                            .meetingId(meetingId)
-                            .emailAddress(emailAddress)
-                            .snsAddress(snsAddress)
-                            .reason(reason)
-                            .applicationDate(LocalDateTime.now())
+                        .meetingId(meetingId)
+                        .emailAddress(emailAddress)
+                        .snsAddress(snsAddress)
+                        .reason(reason)
+                        .applicationDate(LocalDateTime.now())
                         .build());
+            // 미팅 데이터에서 미팅인원 1 올리가
+            meetingDao.updateApplicationCount(MeetingDTO.builder()
+                    .meetingId(meetingId)
+                    .applicationCount(applyDao.countApplyByMeetingId(meetingId))
+                    .build());
+            // 만약 신청인원 이상일 경우 모집완료 하기.
+            MeetingVO meetingArticle = meetingDao.getMeetingArticleById(meetingId);
+            if (meetingArticle.getApplicationCount() >= meetingArticle.getRecruitmentCount()){
+                meetingDao.updateStatus(1,meetingId);
+            }
         }
-        return "redirect:/meeting/articles?id=" + meetingId;
+                return "redirect:/meeting/articles?id=" + meetingId;
     }
 
 }
