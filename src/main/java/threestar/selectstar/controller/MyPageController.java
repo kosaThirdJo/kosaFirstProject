@@ -60,7 +60,7 @@ public class MyPageController {
         log.info("userid "+userDTO.getUserId());
         boolean result = userDAO.updateProfileInfo(userDTO);
 
-        log.info("result "+result);
+        log.info("result >> "+result);
         if(result) {
             model.addAttribute("updateresult", "이력 수정 완료되었습니다.");
         }else{
