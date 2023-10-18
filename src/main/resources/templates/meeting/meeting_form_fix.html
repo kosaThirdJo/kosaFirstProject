@@ -41,7 +41,7 @@
       <section>
         <div id="content_type">
           <div>
-            카테코리
+            카테고리
             <input id="radio0" type="radio" name="category" value=0> 프로젝트
             <input id="radio1" type="radio" name="category" value=1> 스터디
             <input id="radio2" type="radio" name="category" value=2> 기타
@@ -108,7 +108,7 @@
               <div class="signup-interest-content">
                 <span class="signup-interest-text"><span>직무</span></span>
                 <div class="signup-select">
-                  <input type="hidden" name="interest_job" id="selected-interests-job" value="">
+                  <input type="hidden" name="interest_job" id="selected-interests-job" >
                   <button type="button" class="signup-interest-job-btn" value="front">프론트엔드</button>
                   <button type="button" class="signup-interest-job-btn" value="back">백엔드</button>
                   <button type="button" class="signup-interest-job-btn" value="full">풀스택</button>
@@ -137,7 +137,7 @@
   </body>
   <script>
     // 라디오 박스 체크
-
+    document.querySelector("#radio"+[[${meetingVO.getStatus()}]]).setAttribute("checked","checked")
 
     // 언어
     const interestLangButtons = document.querySelectorAll('.signup-interest-lang-btn');
@@ -155,16 +155,15 @@
     let selectedInterestsJob = [];
     selectInterests(interestJobButtons, selectedInterestsJob, selectedInterestsJobInput);
 
-
-
     //언어 문자열에서 "_"을 제외한 문자열 배열 생성 후 배열에서 "" 삭제
-    let langarr = []
+    //언어 문자열에서 "_"을 제외한 문자열 배열 생성 후 배열에서 "" 삭제
+    let langarr = "[[${meetingVO.interestLanguage}]]".split("_");
     let langs = langarr.filter((element) => element !== "");
     //프레임워크
-    let fwarr = []
+    let fwarr = "[[${meetingVO.interestFramework}]]".split("_");
     let fws = fwarr.filter((element) => element !== "");
     //직무
-    let jobarr = []
+    let jobarr = "[[${meetingVO.interestJob}]]".split("_");
     let jobs = jobarr.filter((element) => element !== "");
 
     //관심분야(언어, 프레임워크, 직무) 기존 데이터 화면 출력

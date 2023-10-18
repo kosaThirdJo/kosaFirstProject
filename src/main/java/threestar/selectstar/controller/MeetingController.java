@@ -193,7 +193,9 @@ public class MeetingController {
     }
     // 게시글 수정 페이지
     @GetMapping("/fix/{id}")
-    public String fixArticle(Model model, HttpSession session, @PathVariable("id") int meetingId){
+    public String fixArticle(Model model,
+                             HttpSession session,
+                             @PathVariable("id") int meetingId){
         MeetingVO meetingVO = meetingDao.getMeetingArticleById(meetingId);
         model.addAttribute("user_id",session.getAttribute("user_id"));
         model.addAttribute("meetingVO",meetingVO);
@@ -201,10 +203,23 @@ public class MeetingController {
     }
     // 게시글 수정
     @PostMapping("/fix/{id}")
-    public String fixArticleadd(Model model, HttpSession session, @PathVariable String id){
+    public String fixArticle(Model model,
+                                HttpSession session,
+                                @PathVariable("id") int meetingId,
+                                String title,
+                                int category,
+                                LocalDateTime endDate,
+                                String location,
+                                int recruitNum,
+                                String content,
+                                @RequestParam("interest_language")String interestLanguage,
+                                @RequestParam("interest_framework")String interestFramework,
+                                @RequestParam("interest_job") String interestJob){
         model.addAttribute("user_id",session.getAttribute("user_id"));
-        // id 조회후 다르면 강제 이동.
-        // 같으면 페이지 값 가져와서 화면에 뿌리기
+        MeetingDTO.builder()
+                .title("")
+                .build();
+        //meetingDao.updat
         return "redirect:" +"meeting";
     }
     // 모집 완료
