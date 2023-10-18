@@ -7,10 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import threestar.selectstar.dao.MeetingMapper;
 import threestar.selectstar.dao.UserMapper;
@@ -83,15 +80,16 @@ public class MyPageController {
     }
 
     //내가 만든 모임(내가 작성한 글)
-    @GetMapping("/mymeetinglist")
-    public ModelAndView getMyMeetingList(HttpSession session){
+    @GetMapping(value = {"/mymeetinglist", "/mymeetinglist/{category}"})
+    public ModelAndView getMyMeetingList(@PathVariable(value = "category", required = false)Integer category, HttpSession session){
         UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
         userDTO.setUserId((int)session.getAttribute("user_id"));
-
-        log.info("/mymeetinglist user id >> "+(int)session.getAttribute("user_id"));
-
-        List<MeetingVO> list = meetingDAO.getMyMeetingList(1);
-        log.info("my meeting list count "+list.size());
+        List<MeetingVO> list = null;
+        if(category == null){
+            list = meetingDAO.getMyMeetingList((int)session.getAttribute("user_id"));
+        }else{
+            list = meetingDAO.getMyMeetingListByCategory((int)session.getAttribute("user_id"), category);
+        }
         log.info("my meeting list "+list);
         ModelAndView mav = new ModelAndView();
         mav.addObject("userDTO", userDTO);
@@ -99,11 +97,31 @@ public class MyPageController {
         if(list.size() != 0){
             mav.addObject("meetingvoList", list);
         }else{
-            mav.addObject("msg", "아직 작성한 모집 글이 없습니다.");
+            mav.addObject("msg", "조회된 글이 없습니다.");
         }
-
+        mav.addObject("chkcategory", 99);
         mav.setViewName("mymeetinglistView");
         return mav;
     }
+    //내가 참여한 모임(내가 신청한 글)
+    @GetMapping("/myapplymeetinglist")
+    public ModelAndView getMyApplyMeeting(HttpSession session){
+        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
+        userDTO.setUserId((int)session.getAttribute("user_id"));
 
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("userDTO", userDTO);
+        List<MeetingVO> list = meetingDAO.getMyApplyList((int)session.getAttribute("user_id"));
+        log.info("apply list >> "+list);
+
+        if(list.size() != 0){
+            mav.addObject("applyingvoList", list);
+        }else{
+            mav.addObject("msg", "조회된 글이 없습니다.");
+        }
+
+        mav.addObject("applyingvoList", list);
+        mav.setViewName("applymeetinglistView");
+        return mav;
+    }
 }
