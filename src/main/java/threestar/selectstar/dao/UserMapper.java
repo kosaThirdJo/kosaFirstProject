@@ -45,4 +45,8 @@ public interface UserMapper {
     public String getNameById(int userId);
     @Select("select user_id from user where name= #{name}")
     public int getIdByName(String name);
+
+    //마이페이지-프로필 이미지(profile_photo) 수정
+    @Update("update user set profile_photo= #{profile_photo} where user_id= #{userId}")
+    public boolean updateUserProfileImg(@Param("userId") int userId,@Param("profile_photo") byte[] profile_photo);
 }
