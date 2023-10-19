@@ -46,7 +46,7 @@
                     <th:block th:if="${applyingvoList}">
                         <ul class="mymeeting-list">
                             <li th:each="applyingvo : ${applyingvoList}" class="mymeeting-container">
-                                <a class="click-meetingpost">
+                                <a th:href="@{/meeting/articles(id=${applyingvo.meetingId})}" class="click-meetingpost">
                                 <div class="meetinginfo">
                                     <!-- 게시글 항목 status & title-->
                                     <div class="meeting-title">
