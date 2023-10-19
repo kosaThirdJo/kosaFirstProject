@@ -1,17 +1,14 @@
 package threestar.selectstar.domain;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@Builder
 @Getter
-@Setter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @ToString
-@AllArgsConstructor
 public class MeetingDTO {
     private int meetingId;
     private int userId;

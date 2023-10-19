@@ -48,9 +48,13 @@ public interface UserMapper {
     @Select("select user_id from user where name= #{name}")
     public int getIdByName(String name);
 
-
     // 검색 - 회원 닉네임 검색
     @Select("SELECT user_id, nickname, profile_photo, about_me "
         + "FROM user WHERE nickname LIKE CONCAT('%', #{searchWord}, '%')")
     List<UserVO> searchUser(SearchDTO search);
+
+    //마이페이지-프로필 이미지(profile_photo) 수정
+    @Update("update user set profile_photo= #{profile_photo} where user_id= #{userId}")
+    public boolean updateUserProfileImg(@Param("userId") int userId,@Param("profile_photo") byte[] profile_photo);
+
 }

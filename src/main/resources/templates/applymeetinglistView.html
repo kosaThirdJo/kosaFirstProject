@@ -5,25 +5,25 @@
 <head>
     <meta charset="UTF-8">
     <title>SELECT*</title>
-    <link th:href="@{/css/mymeetinglistView.css}" rel="stylesheet" />
+    <link th:href="@{/css/applymeetinglistView.css}" rel="stylesheet" />
 </head>
 <body>
     <th:block layout:fragment="content">
-        <h1>내가 만든 모임 - 내가 작성한 글 목록</h1>
+        <h1>내가 참여한 모임 - 내가 신청한 글 목록</h1>
         <div class="mymeeting-body">
             <div class="search-filter">
                 <ul class="search-categry">
                     <li class="e-category">
-                        <button th:onclick="location.href='/mypage/mymeetinglist'" class="button-category">전체</button>
+                        <button th:onclick="" class="button-category">전체</button>
                     </li>
                     <li class="e-category">
-                        <button th:onclick="location.href='/mypage/mymeetinglist/1'" value="1"  class="button-category">프로젝트</button>
+                        <button th:onclick="" value="1"  class="button-category">프로젝트</button>
                     </li>
                     <li class="e-category">
-                        <button th:onclick="location.href='/mypage/mymeetinglist/0'" value="0" class="button-category">스터디</button>
+                        <button th:onclick="" value="0" class="button-category">스터디</button>
                     </li>
                     <li class="e-category">
-                        <button th:onclick="location.href='/mypage/mymeetinglist/2'" value="2" class="button-category">기타</button>
+                        <button th:onclick="" value="2" class="button-category">기타</button>
                     </li>
                 </ul>
             </div>
@@ -34,67 +34,67 @@
                             <button th:onclick="" class="button-status">전체</button>
                         </li>
                         <li class="e-status">
-                            <button th:onclick="" class="button-status">모집중</button>
+                            <button class="button-status">모집</button>
                         </li>
                         <li class="e-status">
-                            <button th:onclick="" class="button-status">모집완료</button>
+                            <button class="button-status">모집완료</button>
                         </li>
                     </ul>
                 </div>
                 <div class="list-container-body">
                     <!--/* 조회 결과(meetingvoList가 있을 경우 */-->
-                    <th:block th:if="${meetingvoList}">
+                    <th:block th:if="${applyingvoList}">
                         <ul class="mymeeting-list">
-                            <li th:each="meetingvo : ${meetingvoList}" th:withclass="mymeeting-container">
-                                <a th:href="@{/meeting/articles(id=${meetingvo.meetingId})}" class="click-meetingpost">
+                            <li th:each="applyingvo : ${applyingvoList}" class="mymeeting-container">
+                                <a class="click-meetingpost">
                                 <div class="meetinginfo">
                                     <!-- 게시글 항목 status & title-->
                                     <div class="meeting-title">
                                         <div class="meeting-status">
-                                            <span th:switch="${meetingvo.status}" class="">
+                                            <span th:switch="${applyingvo.status}" class="">
                                                 <span th:case="0">모집중</span>
                                                 <span th:case="1">모집완료</span>
                                             </span>
                                         </div>
                                         <div class="meeting-category">
-                                            <span th:switch="${meetingvo.category}" class="">
+                                            <span th:switch="${applyingvo.category}" class="">
                                                 <span th:case="0">스터디</span>
                                                 <span th:case="1">프로젝트</span>
                                                 <span th:case="2">기타</span>
                                             </span>
                                         </div>
-                                        <h3 class="title-text">[[${meetingvo.title}]]</h3>
+                                        <h3 class="title-text">[[${applyingvo.title}]]</h3>
                                     </div>
                                     <!--게시글 항목 내용-->
                                     <div class="meeting-body">
-                                        <p class="meeting-body-content">[[${meetingvo.description}]]</p>
+                                        <p class="meeting-body-content">[[${applyingvo.description}]]</p>
                                     </div>
                                     <!--게시글 항목 하단-->
                                     <div class="meeting-footer">
                                         <div class="meeting-cratedata">
                                             작성일
-                                            <span th:text="${#temporals.format(meetingvo.creationDate, 'YYYY/MM/dd')}"></span>
+                                            <span th:text="${#temporals.format(applyingvo.creationDate, 'YYYY/MM/dd')}"></span>
                                         </div>
                                         <span>&nbsp;</span>
                                         <div class="meeing-location">
                                             장소
-                                            <span>[[${meetingvo.location}]]</span>
+                                            <span>[[${applyingvo.location}]]</span>
                                         </div>
                                         <span>&nbsp;</span>
                                         <div class="meeting-count">
                                             신청인원
-                                            <span th:text="|${meetingvo.applicationCount}/${meetingvo.recruitmentCount}">
+                                            <span th:text="|${applyingvo.applicationCount}/${applyingvo.recruitmentCount}">
                                             </span>
                                         </div>
                                         <span>&nbsp;</span>
                                         <div class="meeting-deadline">
                                             모집마감일
-                                            <span th:text="${#temporals.format(meetingvo.applicationDeadline, 'YYYY/MM/dd HH:mm')}"></span>
+                                            <span th:text="${#temporals.format(applyingvo.applicationDeadline, 'YYYY/MM/dd HH:mm')}"></span>
                                         </div>
                                         <span>&nbsp;</span>
                                         <div class="meeting-view">
                                             조회수
-                                            <span th:text="${meetingvo.views}"></span>
+                                            <span th:text="${applyingvo.views}"></span>
                                         </div>
                                     </div>
                                 </div>
