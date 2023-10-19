@@ -20,11 +20,11 @@
         <!--/* profile Image */-->
         <div class="profile-image">
             <form action="/mypage/uploadprofileimg" enctype="multipart/form-data" method="post">
-                <th:block th:if="${userDTO.profile_photo} != null">
+                <th:block th:if="${userDTO.profile_photo != null && !#strings.isEmpty(encodeImg)}">
                     <img style="width:5rem; height:5rem; border-radius:9999px";
                          th:src="@{'data:image/png;base64,' + ${encodeImg}}" alt="Image"><br/>
                 </th:block>
-               <th:block th:if="${userDTO.profile_photo} == null">
+                <th:block th:if="${userDTO.profile_photo == null || #strings.isEmpty(encodeImg)}">
                     <img style="width:5rem; height:5rem; border-radius:9999px;"
                          th:src="@{/image/global/userdefaultimg.png}"/><br/>
                 </th:block>

@@ -6,7 +6,12 @@
     <meta charset="UTF-8">
     <title>SELECT*</title>
     <style>
-
+        textarea{
+            width: 60%;
+            height: 300px;
+            resize: none;
+            outline: none;
+        }
     </style>
 </head>
 <body>
@@ -14,11 +19,11 @@
         <h1>프로필</h1>
         <!--사용자 이미지-->
         <div>
-            <th:block th:if="${userDTO.profile_photo} != null">
+            <th:block th:if="${userDTO.profile_photo != null && !#strings.isEmpty(encodeImg)}">
                 <img style="width:5rem; height:5rem; border-radius:9999px";
                      th:src="@{'data:image/png;base64,' + ${encodeImg}}" alt="Image"><br/>
             </th:block>
-            <th:block th:if="${userDTO.profile_photo} == null">
+            <th:block th:if="${userDTO.profile_photo == null || #strings.isEmpty(encodeImg)}">
                 <img style="width:5rem; height:5rem; border-radius:9999px;"
                      th:src="@{/image/global/userdefaultimg.png}"/><br/>
             </th:block>
@@ -31,9 +36,15 @@
         <div>
             <p th:text="${userDTO.about_me}"></p>
         </div><br>
+        <!--사용자 이력 -->
         <div>
-            <h3>사용자 이력</h3>
-            <p th:text="${userDTO.profile_content}"></p>
+            <h2>사용자 이력</h2>
+            <textarea
+                    class="infoInput"
+                    name="profile_content"
+                    th:text="${userDTO.profile_content}"
+                    readonly>
+                </textarea>
         </div>
     </th:block>
 </body>
