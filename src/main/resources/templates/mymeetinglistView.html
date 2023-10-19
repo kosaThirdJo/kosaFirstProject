@@ -11,6 +11,7 @@
     <th:block layout:fragment="content">
         <h1>내가 만든 모임 - 내가 작성한 글 목록</h1>
         <div class="mymeeting-body">
+            <!-- 카테고리(전체, 프로젝트, 스터디, 기타)    메뉴 -->
             <div class="search-filter">
                 <ul class="search-categry">
                     <li class="e-category">
@@ -27,22 +28,25 @@
                     </li>
                 </ul>
             </div>
+            <!-- 목록 -->
             <div class="mymeeting-list-container">
+                <!-- 모집상태(전체, 모집중, 모집완료) 메뉴-->
                 <div class="list-container-header">
-                    <ul class="search-status">
+                    <ul class="search-filter-select">
                         <li class="e-status">
-                            <button th:onclick="" class="button-status">전체</button>
+                            <button class="search-filter-select-btn-selected">전체</button>
                         </li>
                         <li class="e-status">
-                            <button th:onclick="" class="button-status">모집중</button>
+                            <button class="search-filter-select-btn-nonselected">모집중</button>
                         </li>
                         <li class="e-status">
-                            <button th:onclick="" class="button-status">모집완료</button>
+                            <button class="search-filter-select-btn-nonselected">모집완료</button>
                         </li>
                     </ul>
                 </div>
+                <!-- 목록 -->
                 <div class="list-container-body">
-                    <!--/* 조회 결과(meetingvoList가 있을 경우 */-->
+                    <!--/* 조회 결과(meetingvoList)가 있을 경우 */-->
                     <th:block th:if="${meetingvoList}">
                         <ul class="mymeeting-list">
                             <li th:each="meetingvo : ${meetingvoList}" th:withclass="mymeeting-container">
@@ -112,6 +116,9 @@
                 </div>
             </div>
         </div>
+        <script>
+
+        </script>
     </th:block>
 </body>
 </html>

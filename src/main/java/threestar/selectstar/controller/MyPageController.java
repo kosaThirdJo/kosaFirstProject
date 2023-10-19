@@ -46,7 +46,10 @@ public class MyPageController {
         userDTO.setUserId((int)session.getAttribute("user_id"));
         //마이페이지 side bar -프로필 이미지
         byte[] imgByte = userDTO.getProfile_photo();
-        String encodeImg = Base64.getEncoder().encodeToString(imgByte);
+        String encodeImg = null;
+        if(imgByte != null) {
+            encodeImg = Base64.getEncoder().encodeToString(imgByte);
+        }
         mav.addObject("encodeImg", encodeImg);
 
         mav.addObject("userDTO", userDTO);
@@ -60,7 +63,7 @@ public class MyPageController {
         log.info("userid "+userDTO.getUserId());
         boolean result = userDAO.updateProfileInfo(userDTO);
 
-        log.info("result "+result);
+        log.info("result >> "+result);
         if(result) {
             model.addAttribute("updateresult", "이력 수정 완료되었습니다.");
         }else{
@@ -81,7 +84,10 @@ public class MyPageController {
 
         //마이페이지 side bar -프로필 이미지
         byte[] imgByte = userDTO.getProfile_photo();
-        String encodeImg = Base64.getEncoder().encodeToString(imgByte);
+        String encodeImg = null;
+        if(imgByte != null) {
+            encodeImg = Base64.getEncoder().encodeToString(imgByte);
+        }
         mav.addObject("encodeImg", encodeImg);
 
         mav.addObject("userDTO", userDTO);
@@ -131,7 +137,10 @@ public class MyPageController {
 
         //마이페이지 side bar -프로필 이미지
         byte[] imgByte = userDTO.getProfile_photo();
-        String encodeImg = Base64.getEncoder().encodeToString(imgByte);
+        String encodeImg = null;
+        if(imgByte != null) {
+            encodeImg = Base64.getEncoder().encodeToString(imgByte);
+        }
         mav.addObject("encodeImg", encodeImg);
 
         if(list.size() != 0){
@@ -155,7 +164,10 @@ public class MyPageController {
 
         //마이페이지 side bar -프로필 이미지
         byte[] imgByte = userDTO.getProfile_photo();
-        String encodeImg = Base64.getEncoder().encodeToString(imgByte);
+        String encodeImg = null;
+        if(imgByte != null) {
+            encodeImg = Base64.getEncoder().encodeToString(imgByte);
+        }
         mav.addObject("encodeImg", encodeImg);
 
         if(list.size() != 0){
