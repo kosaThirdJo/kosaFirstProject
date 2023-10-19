@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/default">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/default">
 <head>
     <meta charset="UTF-8">
     <title>검색</title>
-    <link th:href="@{/css/search.css}" rel="stylesheet" />
+    <link th:href="@{/css/search.css}" rel="stylesheet"/>
 </head>
 <body>
 <!--  content  -->
@@ -21,132 +22,77 @@
                 <div class="search-filter">
                     <!-- search filter top -->
                     <div class="search-filter-top">
-                        <div class="search-filter-text-meeting">
-                            <span class="search-text023">모임</span>
-                        </div>
+                        <div class="search-filter-text-meeting">모임</div>
                         <button class="search-filter-btn">
                             <div class="search-filter-btn-title">
                                 <div class="search-filter-btn-title-icon">
-                                    <img
-                                            src="public/external/filteralt1102-s9td.svg"
-                                            alt="filteralt1102"
-                                    />
+                                    <img th:src="@{/image/home/filter.png}">
                                 </div>
                                 <span class="search-filter-btn-title-text"><span>검색 필터</span></span>
                             </div>
                             <div class="search-filter-btn-dropdown">
-                                <img
-                                        src="public/external/boundingbox1102-0cf-200h.png"
-                                        alt="Boundingbox1102"
-                                        class="search-filter-btn-dropdown-box"
-                                />
-                                <img
-                                        src="public/external/arrowdropdown1102-464l.svg"
-                                        alt="arrowdropdown1102"
-                                        class="search-filter-btn-dropdown-arrow"
-                                />
+                                <img th:src="@{/image/home/arrow_drop_down.png}">
                             </div>
                         </button>
                     </div>
                     <!-- search filter select -->
                     <div class="search-filter-select" style="display: none;">
                         <!-- search filter select meeting category -->
-                        <div class="search-filter-select-list">
+                        <div class="search-filter-select-list-meeting">
                             <span class="search-filter-select-title">모임</span>
                             <div class="search-filter-select-category">
-                                <button class="search-filter-select-btn-selected">
-                                    <span>스터디</span>
-                                </button>
-                                <button class="search-filter-select-btn-nonselected">
-                                    <span>프로젝트</span>
-                                </button>
-                                <button class="search-filter-select-btn-nonselected">
-                                    <span>기타</span>
-                                </button>
+                                <button type="button" class="search-filter-select-btn" data-category="category" value="0">스터디</button>
+                                <button type="button" class="search-filter-select-btn" data-category="category" value="1">프로젝트</button>
+                                <button type="button" class="search-filter-select-btn" data-category="category" value="2">기타</button>
                             </div>
                         </div>
                         <!-- search filter select language category -->
-                        <div class="search-filter-select-list">
+                        <div class="search-filter-select-list-language">
                             <span class="search-filter-select-title">언어</span>
                             <div class="search-filter-select-category">
-                                <button class="search-filter-select-btn-selected">
-                                    <span>Java</span>
-                                </button>
-                                <button class="search-filter-select-btn-nonselected">
-                                    <span>Python</span>
-                                </button>
-                                <button class="search-filter-select-btn-nonselected">
-                                    <span>C</span>
-                                </button>
-                                <button class="search-filter-select-btn-selected">
-                                    <span>JavaScript</span>
-                                </button>
-                                <button class="search-filter-select-btn-nonselected">
-                                    <span>Kotlin</span>
-                                </button>
-                                <button class="search-filter-select-btn-nonselected">
-                                    <span>TypeScript</span>
-                                </button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="Java">Java</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="Python">Python</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="C">C</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="C++">C++</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="JavaScript">JavaScript</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="Kotiln">Kotiln</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="TypeScript">TypeScript</button>
                             </div>
                         </div>
                         <!-- search filter select framework category -->
-                        <div class="search-filter-select-list">
+                        <div class="search-filter-select-list-framework">
                             <span class="search-filter-select-title">프레임워크</span>
-                            <div class="search-filter-select-category">
-                                <button class="search-filter-select-btn-selected">
-                                    <span>Spring</span>
-                                </button>
-                                <button class="search-filter-select-btn-nonselected">
-                                    <span>Django</span>
-                                </button>
-                                <button class="search-filter-select-btn-nonselected">
-                                    <span>Flask</span>
-                                </button>
-                                <button class="search-filter-select-btn-nonselected">
-                                    <span>Laravel</span>
-                                </button>
-                                <button class="search-filter-select-btn-nonselected">
-                                    <span>Vue.js</span>
-                                </button>
+                            <div class="search-filter-select-category" value="frameworks">
+                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="Spring">Spring</button>
+                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="Django">Django</button>
+                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="Flask">Flask</button>
+                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="Laravel">Laravel</button>
+                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="Vue.js">Vue.js</button>
                             </div>
                         </div>
                         <!-- search filter select job category -->
-                        <div class="search-filter-select-list">
+                        <div class="search-filter-select-list-job">
                             <span class="search-filter-select-title">직무</span>
-                            <div class="search-filter-select-category">
-                                <button class="search-filter-select-btn-selected">
-                                    <span>프론트엔드</span>
-                                </button>
-                                <button class="search-filter-select-btn-nonselected">
-                                    <span>백엔드</span>
-                                </button>
-                                <button class="search-filter-select-btn-nonselected">
-                                    <span>풀스택</span>
-                                </button>
-                                <button class="search-filter-select-btn-nonselected">
-                                    <span>Android</span>
-                                </button>
-                                <button class="search-filter-select-btn-nonselected">
-                                    <span>IOS</span>
-                                </button>
+                            <div class="search-filter-select-category" value="jobs">
+                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="frontend">프론트엔드</button>
+                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="backend">백엔드</button>
+                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="full">풀스택</button>
+                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="Android">Android</button>
+                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="IOS">IOS</button>
                             </div>
                         </div>
 
                         <div class="search-filter-select-reset">
                             <button class="search-filter-select-reset-button">
                                 <div class="search-filter-select-reset-button-icon">
-                                    <img
-                                            src="public/external/restartalt1102-vla.svg"
-                                            alt="restartalt1102"
-                                            class="search-restartalt1"
-                                    />
+                                    <img th:src="@{/image/home/restart.png}">
                                 </div>
                                 <span class="search-filter-select-reset-button-text"><span>초기화</span></span>
                             </button>
                         </div>
                     </div>
                 </div>
-<!-- 결과 출력 시작 -->
+                <!-- 결과 출력 시작 -->
                 <div class="search-filter-result">
                     <th:block th:each="meeting : ${searchMeetingResults}">
                         <div class="main-left-content-bottom-meeting">
@@ -200,7 +146,7 @@
 
                                     <!-- whitebox - deadlineText -->
                                     <span class="main-left-content-bottom-meeting-white-deadlineText"
-                                          th:text="${#temporals.format(meeting.applicationDeadline, 'yyyy. MM. dd')}"></span>
+                                          th:text="${#temporals.format(meeting.applicationDeadline, 'yyyy. MM. dd')}">?</span>
                                 </div>
                             </div>
 
@@ -232,17 +178,15 @@
                         </div>
                     </th:block>
                 </div>
-<!--  결과 출력 끝 -->
+                <!--  결과 출력 끝 -->
 
-                <button class="search-morebtn">
+<!-- 더보기 버튼 -->
+                <!--<button class="search-morebtn">
                     <div class="search-morebtn-icon">
-                        <img
-                                src="public/external/expandcircledown1103-b4br.svg"
-                                alt="expandcircledown1103"
-                        />
+                        <img th:src="@{/image/home/expand_circle_down.png}">
                     </div>
                     <span class="search-morebtn-text"><span>더보기</span></span>
-                </button>
+                </button>-->
             </div>
             <!-- 모임 검색 결과 끝 -->
 
@@ -250,62 +194,31 @@
             <div class="search-nickname-result">
                 <div class="search-nickname-title">회원</div>
                 <div class="search-nickname-content">
-                    <div class="search-nickname-info">
-                        <img
-                                src="public/external/profielimg1103-ovfi-200h.png"
-                                alt="profielImg1103"
-                                class="search-nickname-info-profileImg"
-                        />
-                        <span class="search-nickname-info-name"><span>유니코</span></span>
-                        <span class="search-nickname-info-oneline">
-                    <span>웹 개발 잘 해보아요:)</span>
-                  </span>
-                    </div>
-                    <div class="search-nickname-info">
-                        <img
-                                src="public/external/profielimg1103-ovfi-200h.png"
-                                alt="profielImg1103"
-                                class="search-nickname-info-profileImg"
-                        />
-                        <span class="search-nickname-info-name"><span>유니코</span></span>
-                        <span class="search-nickname-info-oneline">
-                    <span>웹 개발 잘 해보아요:)</span>
-                  </span>
-                    </div>
-                    <div class="search-nickname-info">
-                        <img
-                                src="public/external/profielimg1103-ovfi-200h.png"
-                                alt="profielImg1103"
-                                class="search-nickname-info-profileImg"
-                        />
-                        <span class="search-nickname-info-name"><span>유니코</span></span>
-                        <span class="search-nickname-info-oneline">
-                    <span>웹 개발 잘 해보아요:)</span>
-                  </span>
-                    </div>
-                    <div class="search-nickname-info">
-                        <img
-                                src="public/external/profielimg1103-ovfi-200h.png"
-                                alt="profielImg1103"
-                                class="search-nickname-info-profileImg"
-                        />
-                        <span class="search-nickname-info-name"><span>유니코</span></span>
-                        <span class="search-nickname-info-oneline">
-                    <span>웹 개발 잘 해보아요:)</span>
-                  </span>
-                    </div>
-
-
+                    <th:block th:if="${searchUserResults != null and not #lists.isEmpty(searchUserResults)}">
+                        <th:block th:each="user : ${searchUserResults}">
+                            <div class="search-nickname-info">
+                                <!-- !! 프로필 이미지 예정-->
+                                <img th:src="@{/image/home/profileImg.png}">
+                                <span class="search-nickname-info-name" th:text="${user.nickname}">닉네임</span>
+                                <span class="search-nickname-info-about" th:text="${user.about_me != null} ? ${user.about_me} : '한줄평 없음'">한줄평</span>
+                            </div>
+                        </th:block>
+                        <th:block th:unless="${searchUserResults != null and not #lists.isEmpty(searchUserResults)}">
+                            찾으시는 회원이 존재하지 않습니다.
+                        </th:block>
+                    </th:block>
                 </div>
             </div>
         </div>
 
     </div>
+    <script th:inline="javascript">
+        // 검색어
+        var searchWord = [[${searchWord}]];
 
-    <script>
-        // 검색 필터 버튼 구현 (search-filter-btn 버튼 클릭 시 이벤트 처리)
-        const filterButton = document.querySelector('.search-filter-btn');
-        const filterSelect = document.querySelector('.search-filter-select');
+        // 검색 필터 보여주기
+        const filterButton = document.querySelector('.search-filter-btn');  // 검색 필터 버튼
+        const filterSelect = document.querySelector('.search-filter-select');  // 검색 필터 선택 창
 
         filterButton.addEventListener('click', () => {
             if (filterSelect.style.display == 'none' || filterSelect.style.display == '') {
@@ -315,7 +228,152 @@
             }
         });
 
+
+        // 검색 필터링
+        document.addEventListener('DOMContentLoaded', function() {
+            var selectedFilters = {};
+
+            var resetButton = document.querySelector('.search-filter-select-reset-button'); // 초기화 버튼
+
+            function toggleFilter(button) {
+                var filterCategory = button.getAttribute('data-category');  // 필터 카테고리 가져오기 (category, languages, frameworks, jobs)
+                var filterValue = button.getAttribute('value');
+
+                console.log(filterCategory);
+                console.log(filterValue);
+
+                if (!selectedFilters[filterCategory]) {
+                    selectedFilters[filterCategory] = [];
+                }
+
+                var index = selectedFilters[filterCategory].indexOf(filterValue);
+                console.log(index);
+
+                if (index == -1) {
+                    selectedFilters[filterCategory].push(filterValue);
+                } else {
+                    selectedFilters[filterCategory].splice(index, 1);
+                }
+                button.classList.toggle('selected');
+                console.log(selectedFilters);
+            }
+
+            var filterButtons = document.querySelectorAll('.search-filter-select-btn');
+
+            filterButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    toggleFilter(this);
+                    sendAjaxRequest();
+                });
+            });
+
+            // 초기화
+            var resetButton = document.querySelector('.search-filter-select-reset-button'); // 초기화 버튼
+            resetButton.addEventListener('click', function() {
+                resetFilters();
+            });
+
+            // 초기화 함수
+            function resetFilters() {
+                var filterButtons = document.querySelectorAll('.search-filter-select-btn');
+                filterButtons.forEach(function(button) {
+                    button.classList.remove('selected');
+                });
+                selectedFilters = {}; // 필터 초기화
+                sendAjaxRequest();
+            }
+
+            function sendAjaxRequest() {
+                var xhr = new XMLHttpRequest();
+                var url = "/searchResults?searchWord=" + searchWord;
+
+                for (var category in selectedFilters) {
+                    url += "&" + category + "=" + selectedFilters[category].join("&" + category + "=");
+                }
+                console.log(url);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.status == 200) {
+                        const searchMeetingResults = JSON.parse(xhr.responseText);
+                        updateMeetingResults(searchMeetingResults);
+                    }
+                };
+                xhr.open('GET', url, true);
+                xhr.send();
+            }
+
+            function updateMeetingResults(meetings) {
+                const searchMeetingResultContainer = document.querySelector('.search-filter-result');
+                searchMeetingResultContainer.innerHTML = '';
+
+                meetings.forEach(meeting => {
+                    const meetingElement = document.createElement('div');
+                    meetingElement.classList.add('main-left-content-bottom-meeting');
+                    meetingElement.innerHTML = `
+
+                        <div class="main-left-content-bottom-meeting-white">
+                            <div class="main-left-content-bottom-meeting-white-top">
+                                <div class="main-left-content-bottom-meeting-white-top-category">
+                                    <span class="main-left-content-bottom-meeting-white-top-text">
+                                        ${meeting.category == 0 ? '스터디' : meeting.category == 1 ? '프로젝트' : '기타'}
+                                    </span>
+                                </div>
+                                <div class="main-left-content-bottom-meeting-white-top-status">
+                                    <span class="main-left-content-bottom-meeting-white-top-text">
+                                        ${meeting.status == 0 ? '모집중' : '모집완료'}
+                                    </span>
+                                </div>
+                            </div>
+                                <div class="main-left-content-bottom-meeting-white-bottom">
+                                    <div class="main-left-content-bottom-meeting-white-location">
+                                        <div class="main-left-content-bottom-meeting-white-location-icon">
+                                            <img src="/image/global/location01.png">
+                                        </div>
+                                        <span class="main-left-content-bottom-meeting-white-location-text">${meeting.location}</span>
+                                    </div>
+
+                                    <div class="main-left-content-bottom-meeting-white-title">${meeting.title}</div>
+
+
+                                    <div class="main-left-content-bottom-meeting-white-deadline">
+                                        <div class="main-left-content-bottom-meeting-white-deadline-icon">
+                                            <img src="/image/global/end_date01.png">
+                                        </div>
+                                        <span class="main-left-content-bottom-meeting-white-deadline-text">마감일</span>
+                                    </div>
+
+                                    <span class="main-left-content-bottom-meeting-white-deadlineText">
+                                        <span>${meeting.applicationDeadline}</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="main-left-content-bottom-meeting-yellow-now">
+                                <div class="main-left-content-bottom-meeting-yellow-now-people">
+                                    <div class="main-left-content-bottom-meeting-yellow-now-people-icon">
+                                        <img src="/image/global/member_count.png">
+                                    </div>
+                                    <div class="main-left-content-bottom-meeting-yellow-now-people-text">
+                                        현재 <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt">${meeting.applicationCount}</span>명이 참여중입니다!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="main-left-content-bottom-meeting-yellow-hashtag">
+                                <div class="main-left-content-bottom-meeting-yellow-hashtag-text">
+                                    <span># Java</span>
+                                    <span># Spring</span>
+                                    <span># 백엔드</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    searchMeetingResultContainer.appendChild(meetingElement);
+                });
+            }
+        });
     </script>
 </th:block>
 </body>
 </html>
+

@@ -423,6 +423,7 @@
   line-height: 20px;
   font-stretch: normal;
   text-decoration: none;
+  text-overflow : ellipsis;
 }
 
 /* meeting - white box */
@@ -514,6 +515,8 @@
   font-stretch: normal;
   text-decoration: none;
   margin: 10px auto;
+  height: 50px;
+  text-overflow : ellipsis;
 }
 
 .main-left-content-bottom-meeting-white-deadline {
