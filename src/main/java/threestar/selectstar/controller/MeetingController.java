@@ -216,10 +216,20 @@ public class MeetingController {
                                 @RequestParam("interest_framework")String interestFramework,
                                 @RequestParam("interest_job") String interestJob){
         model.addAttribute("user_id",session.getAttribute("user_id"));
-        MeetingDTO.builder()
-                .title("")
-                .build();
-        //meetingDao.updat
+
+        //meetingDao.update
+        meetingDao.updateMeetingById(MeetingDTO.builder()
+                        .title(title)
+                        .category(category)
+                        .description(content)
+                        .recruitmentCount(recruitNum)
+                        .location(location)
+                        .meetingId(meetingId)
+                        .applicationDeadline(endDate)
+                        .interestLanguage(interestLanguage)
+                        .interestFramework(interestFramework)
+                        .interestJob(interestJob)
+                        .build());
         return "redirect:" +"meeting";
     }
     // 모집 완료

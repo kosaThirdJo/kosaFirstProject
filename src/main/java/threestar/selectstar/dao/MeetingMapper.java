@@ -68,4 +68,7 @@ public interface MeetingMapper {
     // 신청시 신청인원 수정
     @Update("update meeting set application_count = #{applicationCount} where meeting_id=#{meetingId}")
     public boolean updateApplicationCount(MeetingDTO meetingDTO);
+    @Update("update meeting set title = #{title}, category = #{category}, application_deadline =#{applicationDeadline},recruitment_count = #{recruitment_count},location = #{location},description = #{description},creation_date = #{creationDate},interest_language = #{interestLanguage},interest_framework = #{interestFramework},interest_job = #{interestJob} where meeting_id=#{meetingId}")
+    public boolean updateMeetingById(MeetingDTO meetingDTO);
+
 }

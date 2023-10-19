@@ -77,7 +77,7 @@
               <div class="signup-interest-content">
                 <span class="signup-interest-text"><span>언어</span></span>
                 <div class="signup-select">
-                  <input type="hidden" name="interest_language" id="selected-interests-lang" value="">
+                  <input type="hidden" name="interest_language" id="selected-interests-lang" th:value="${meetingVO.getInterestLanguage()}">
                   <button type="button" class="signup-interest-lang-btn" value="Java">Java</button>
                   <button type="button" class="signup-interest-lang-btn" value="Python">Python
                   </button>
@@ -94,7 +94,7 @@
               <div class="signup-interest-content">
                 <span class="signup-interest-text"><span>프레임워크</span></span>
                 <div class="signup-select">
-                  <input type="hidden" name="interest_framework" id="selected-interests-fw" value="">
+                  <input type="hidden" name="interest_framework" id="selected-interests-fw" th:value="${meetingVO.getInterestFramework()}">
                   <button type="button" class="signup-interest-fw-btn" value="Spring">Spring</button>
                   <button type="button" class="signup-interest-fw-btn" value="Django">Django</button>
                   <button type="button" class="signup-interest-fw-btn" value="Flask">Flask</button>
@@ -108,7 +108,7 @@
               <div class="signup-interest-content">
                 <span class="signup-interest-text"><span>직무</span></span>
                 <div class="signup-select">
-                  <input type="hidden" name="interest_job" id="selected-interests-job" >
+                  <input type="hidden" name="interest_job" id="selected-interests-job" th:value="${meetingVO.getInterestJob()}">
                   <button type="button" class="signup-interest-job-btn" value="front">프론트엔드</button>
                   <button type="button" class="signup-interest-job-btn" value="back">백엔드</button>
                   <button type="button" class="signup-interest-job-btn" value="full">풀스택</button>
