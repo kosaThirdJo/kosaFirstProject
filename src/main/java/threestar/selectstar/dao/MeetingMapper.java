@@ -1,10 +1,13 @@
 package threestar.selectstar.dao;
+
 import org.apache.ibatis.annotations.*;
 
 import threestar.selectstar.domain.MeetingDTO;
 import threestar.selectstar.domain.MeetingVO;
+import threestar.selectstar.domain.SearchDTO;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface MeetingMapper {
@@ -31,12 +34,51 @@ public interface MeetingMapper {
     List<MeetingVO> getLatestMeetings();
 
     // 메인 - 인기글 조회 (RANK) : 최근 일주일간 올라온 글 중에서 조회수 높은 것 10개
-    @Select("SELECT * FROM meeting WHERE DATEDIFF(NOW(), creation_date) <= 7 ORDER BY views DESC LIMIT 10")
+    @Select("SELECT meeting_id meetingId, title FROM meeting WHERE DATEDIFF(NOW(), creation_date) <= 7 ORDER BY views DESC LIMIT 10")
     List<MeetingVO> getPopularMeetings();
 
     // 검색 - 모임글 검색 (제목 일치)
-    @Select("SELECT * FROM meeting WHERE title LIKE CONCAT('%', #{searchWord}, '%')")
-    List<MeetingVO> searchMeetings(@Param("searchWord") String searchWord);
+    @Select("SELECT meeting_id meetingId, title, category, status, application_deadline applicationDeadline, application_count applicationCount, location "
+        + "FROM meeting WHERE title LIKE CONCAT('%', #{searchWord}, '%')")
+    List<MeetingVO> searchMeetings(SearchDTO search);
+
+    // 검색 - 모임글 검색 (필터링 적용)
+    @Select({
+        "<script>",
+        "SELECT meeting_id meetingId, title, category, status, application_deadline applicationDeadline,",
+        "application_count applicationCount, location",
+        "FROM meeting",
+        "WHERE title LIKE CONCAT('%', #{searchWord}, '%')",
+        "<if test='searchCategory != null and !searchCategory.isEmpty()'>",
+        "   AND category IN",
+        "   <foreach collection='searchCategory' item='ct' open='(' separator=',' close=')'>",
+        "       #{ct}",
+        "   </foreach>",
+        "</if>",
+        "<if test='searchLanguages != null and !searchLanguages.isEmpty()'>",
+        "   AND (",
+        "       <foreach collection='searchLanguages' item='lang' separator=' OR '>",
+        "           interest_language LIKE CONCAT('%_', #{lang}, '_%')",
+        "       </foreach>",
+        "   )",
+        "</if>",
+        "<if test='searchFrameworks != null and !searchFrameworks.isEmpty()'>",
+        "   AND (",
+        "       <foreach collection='searchFrameworks' item='fw' separator=' OR '>",
+        "           interest_framework LIKE CONCAT('%_', #{fw}, '_%')",
+        "       </foreach>",
+        "   )",
+        "</if>",
+        "<if test='searchJobs != null and !searchJobs.isEmpty()'>",
+        "   AND (",
+        "       <foreach collection='searchJobs' item='job' separator=' OR '>",
+        "           interest_job LIKE CONCAT('%_', #{job}, '_%')",
+        "       </foreach>",
+        "   )",
+        "</if>",
+        "</script>"
+    })
+    List<MeetingVO> selectMeetingsByFilter(SearchDTO search);
 
 
     //마이페이지-내가 작성한 글목록 조회(제목, 분야, 모집상태, 장소, 조회수, 모집인원, 신청인원, 작성일, 모집마감일)

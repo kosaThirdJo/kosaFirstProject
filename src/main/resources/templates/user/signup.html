@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<title>회원가입</title>
-<link th:href="@{/css/signup.css}" rel="stylesheet" />
-<meta charset="utf-8" />
+<head>
+    <title>회원가입</title>
+    <link th:href="@{/css/signup.css}" rel="stylesheet" />
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
 <!--회원 가입 내용 container-->
@@ -81,12 +83,18 @@
 
                     <!--  02-02-05 지역  -->
                     <div class="signup-location">
-                        <span class="signup-text023"><span>지역</span></span>
-                        <select name="location1" class="signup-geolocation1">
-                            <option value="seoul">서울</option>
-                            <option value="busan">부산</option>
-                        </select>
+                        <span class="signup-location-text"><span>지역</span></span>
+                        <div class="signup-geolocation">
+                            <input
+                                    type="text" name="location1" placeholder="현재 지역을 인증해주세요."
+                                    class="signup-input5" id="locationInput" readonly
+                            />
+                            <button type="button" class="signup-locationbtnbutton">
+                                <span class="signup-text025"><span>지역 인증</span></span>
+                            </button>
+                        </div>
                     </div>
+
 
                     <!--  02-02-06 관심 분야  -->
                     <div class="signup-interest">
@@ -162,7 +170,7 @@
     alert([[${successMessage}]]);
 </script>
 
-<script>
+<script th:inline="javascript">
     // 관심 분야 선택
     // 버튼 목록, 선택된 관심사 배열, hidden input에 저장
     function selectInterests(buttons, selectedInterests, selectedInterestsInput) {
@@ -197,6 +205,38 @@
     const selectedInterestsJobInput = document.getElementById('selected-interests-job');
     let selectedInterestsJob = [];
     selectInterests(interestJobButtons, selectedInterestsJob, selectedInterestsJobInput);
+
+    // 지역
+    document.addEventListener('DOMContentLoaded', function() {
+        const locationInput = document.getElementById('locationInput');
+        const locationButton = document.querySelector('.signup-locationbtnbutton');
+
+        locationButton.addEventListener('click', function(event) {
+            event.preventDefault(); // 버튼 클릭 시 폼 제출 막음
+
+            var apiKey = [[${apiKey}]];
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var x = position.coords.longitude;
+                    var y = position.coords.latitude;
+                    if (x && y) {
+                        axios.get(
+                            `https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${x}&y=${y}`,
+                            {headers:{Authorization:`KakaoAK ${apiKey}`}}
+                        ).then((result) => {
+                            console.log(result.data);
+                            console.log(result.data.documents[0].region_1depth_name);
+                            var location = result.data.documents[0].region_1depth_name;
+                            locationInput.value = location;
+                            locationInput.placeholder = location;
+                        })
+                    }
+                });
+            } else {
+                alert('브라우저가 위치 정보를 지원하지 않습니다.');
+            }
+        });
+    });
 
 </script>
 </body>

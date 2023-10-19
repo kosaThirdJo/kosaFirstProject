@@ -178,7 +178,7 @@ body{
   flex-direction: column;
   justify-content: center;
 }
-.search-filter-select-list {
+.search-filter-select-list-meeting, .search-filter-select-list-language, .search-filter-select-list-framework, .search-filter-select-list-job {
   gap: 50px;
   display: flex;
   padding: 10px;
@@ -209,7 +209,7 @@ body{
   align-self: stretch;
   align-items: center;
 }
-.search-filter-select-btn-selected, .search-filter-select-btn-nonselected {
+.search-filter-select-btn {
   gap: 10px;
   display: flex;
   padding: 7px 12px;
@@ -220,8 +220,8 @@ body{
   border-width: 1px;
   border-radius: 12px;
   justify-content: center;
-  background-color: rgba(26, 77, 46, 1);
-  color: rgba(255, 255, 255, 1);
+  background-color: rgba(250, 243, 227, 1);
+  color: rgba(84, 82, 82, 1);
   height: auto;
   font-size: 15px;
   font-style: Bold;
@@ -233,9 +233,9 @@ body{
   text-decoration: none;
 }
 
-.search-filter-select-btn-nonselected {
-  background-color: rgba(250, 243, 227, 1);
-  color: rgba(84, 82, 82, 1);
+.search-filter-select-btn.selected {
+  background-color: rgba(26, 77, 46, 1);
+  color: rgba(255, 255, 255, 1);
 }
 
 .search-filter-select-reset {
@@ -290,6 +290,7 @@ body{
   flex-shrink: 0;
   flex-direction: row;
   flex-wrap: wrap;
+  width: 100%;
 }
 /* 검색 더보기 */
 .search-morebtn {
@@ -398,7 +399,7 @@ body{
   font-stretch: normal;
   text-decoration: none;
 }
-.search-nickname-info-oneline {
+.search-nickname-info-about {
   color: rgba(95, 91, 91, 1);
   height: auto;
   font-size: 14px;
@@ -415,7 +416,7 @@ body{
 
 /*모임 결과 출력*/
 .main-left-content-bottom-meeting {
-  gap: 30px;
+  gap: 10px;
   display: flex;
   padding: 23px;
   overflow: hidden;
@@ -515,6 +516,8 @@ body{
   font-stretch: normal;
   text-decoration: none;
   margin: 10px auto;
+  height: 50px;
+  text-overflow : ellipsis;
 }
 
 .main-left-content-bottom-meeting-white-deadline {
