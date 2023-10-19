@@ -35,15 +35,31 @@ public class MyPageController {
     @Autowired
     MeetingMapper meetingDAO;
 
+    //다른 이용자 이력 조회
+    @GetMapping("/profileinfo")
+    public ModelAndView getUserProfile(@RequestParam("id")Integer userId){
+        UserDTO userDTO = userDAO.getProfileInfo(userId);
+        ModelAndView mav = new ModelAndView();
+        byte[] imgByte = userDTO.getProfile_photo();
+        String encodeImg = null;
+        if(imgByte != null) {
+            encodeImg = Base64.getEncoder().encodeToString(imgByte);
+        }
+        //log.info("encodeImg >>"+encodeImg);
+        mav.addObject("encodeImg", encodeImg);
+        mav.addObject("userDTO", userDTO);
+        mav.setViewName("userprofile");
+        return mav;
+    }
+
     //이력관리 조회
     @GetMapping("/profile")
-    public ModelAndView getUserProfileInfo(HttpSession session, HttpServletRequest req) {
+    public ModelAndView getMyProfileInfo(HttpSession session, HttpServletRequest req) {
         ModelAndView mav = new ModelAndView();
-
-        log.info("session user_id 확인"+session.getAttribute("user_id"));
 
         UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
         userDTO.setUserId((int)session.getAttribute("user_id"));
+
         //마이페이지 side bar -프로필 이미지
         byte[] imgByte = userDTO.getProfile_photo();
         String encodeImg = null;
