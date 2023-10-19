@@ -9,7 +9,6 @@ import lombok.ToString;
 
 @Getter
 @ToString
-@AllArgsConstructor
 @NoArgsConstructor
 public class MeetingVO {
 	private int meetingId;
@@ -27,4 +26,5 @@ public class MeetingVO {
 	private String interestLanguage;
 	private String interestFramework;
 	private String interestJob;
+
 }

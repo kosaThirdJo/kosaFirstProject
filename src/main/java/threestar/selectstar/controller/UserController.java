@@ -1,7 +1,9 @@
 package threestar.selectstar.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,9 +22,13 @@ public class UserController {
 	@Autowired
 	private UserMapper userDAO;
 
+	@Value("${REST_API_KEY}")
+	private String apiKey;
+
 	// 회원 가입
 	@GetMapping("/signup")
-	public String showSignUpPage(){
+	public String showSignUpPage(Model model){
+		model.addAttribute("apiKey", apiKey);
 		return "user/signup";
 	}
 
