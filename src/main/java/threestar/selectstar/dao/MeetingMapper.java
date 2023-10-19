@@ -8,8 +8,8 @@ import java.util.List;
 
 @Mapper
 public interface MeetingMapper {
-    // 모든 미팅 조회 상태가 2(삭제면) 조회안함
-    @Select("select meeting_id meetingId, user_id userId, title,category,status,application_deadline applicationDeadline,views,recruitment_count recruitmentCount,application_count applicationCount,location,description,creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where is_delete = 0 order by meeting_id desc")
+    // 모든 미팅 조회 상태가 2(삭제면) 조회안함 , 10글자 이상시 생략 후 ... 붙임
+    @Select("select meeting_id meetingId, user_id userId, if(CHAR_LENGTH(title) > 10,concat(substr(title,1,10),'...'),title) as title, category, status, application_deadline applicationDeadline, views, recruitment_count recruitmentCount, application_count applicationCount, location, description, creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where is_delete = 0 order by meeting_id desc")
     List<MeetingVO> getAllMeetingList();
     // 단건 미팅 조회 상태가 2(삭제면) 조회안함
     @Select("select meeting_id meetingId, user_id userId, title,category,status,application_deadline applicationDeadline,views,recruitment_count recruitmentCount,application_count applicationCount,location,description,creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where meeting_id= #{meetingId} and is_delete = 0")
@@ -39,7 +39,6 @@ public interface MeetingMapper {
     List<MeetingVO> searchMeetings(@Param("searchWord") String searchWord);
 
 
-
     //마이페이지-내가 작성한 글목록 조회(제목, 분야, 모집상태, 장소, 조회수, 모집인원, 신청인원, 작성일, 모집마감일)
     @Select("select meeting_id meetingId, user_id userId, title, category, status, application_deadline applicationDeadline, " +
             "views, recruitment_count recruitmentCount, application_count applicationCount, " +
@@ -66,4 +65,10 @@ public interface MeetingMapper {
             "on m.meeting_id = a.meeting_id " +
             "where a.user_id= #{userId}  and m.is_delete = 0;")
     public List<MeetingVO> getMyApplyList(int userId);
+    // 신청시 신청인원 수정
+    @Update("update meeting set application_count = #{applicationCount} where meeting_id=#{meetingId}")
+    public boolean updateApplicationCount(MeetingDTO meetingDTO);
+    @Update("update meeting set title = #{title}, category = #{category}, application_deadline =#{applicationDeadline},recruitment_count = #{recruitment_count},location = #{location},description = #{description},creation_date = #{creationDate},interest_language = #{interestLanguage},interest_framework = #{interestFramework},interest_job = #{interestJob} where meeting_id=#{meetingId}")
+    public boolean updateMeetingById(MeetingDTO meetingDTO);
+
 }
