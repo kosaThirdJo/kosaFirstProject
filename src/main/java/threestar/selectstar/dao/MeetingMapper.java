@@ -30,16 +30,20 @@ public interface MeetingMapper {
     @Update("update meeting set is_delete= 1 where meeting_id=#{meetingId}")
     boolean deleteMeeting(@Param("meetingId") int meetingId);
     // 메인 - 최신글 조회 (ORDER BY) (현재는 4개만 출력)
-    @Select("SELECT * FROM meeting ORDER BY creation_date DESC LIMIT 4")
+    @Select("SELECT meeting_id meetingId, title, status, location, application_deadline applicationDeadline, application_count applicationCount, views "
+        + "FROM meeting WHERE is_delete = 0 ORDER BY creation_date DESC LIMIT 4")
     List<MeetingVO> getLatestMeetings();
 
     // 메인 - 인기글 조회 (RANK) : 최근 일주일간 올라온 글 중에서 조회수 높은 것 10개
-    @Select("SELECT meeting_id meetingId, title FROM meeting WHERE DATEDIFF(NOW(), creation_date) <= 7 ORDER BY views DESC LIMIT 10")
+    @Select("SELECT meeting_id meetingId, title FROM meeting "
+        + "WHERE DATEDIFF(NOW(), creation_date) <= 7 AND is_delete = 0 "
+        + "ORDER BY views DESC LIMIT 10")
     List<MeetingVO> getPopularMeetings();
 
     // 검색 - 모임글 검색 (제목 일치)
     @Select("SELECT meeting_id meetingId, title, category, status, application_deadline applicationDeadline, application_count applicationCount, location "
-        + "FROM meeting WHERE title LIKE CONCAT('%', #{searchWord}, '%')")
+        + "FROM meeting WHERE title LIKE CONCAT('%', #{searchWord}, '%') AND is_delete = 0 "
+        + "ORDER BY creation_date DESC")
     List<MeetingVO> searchMeetings(SearchDTO search);
 
     // 검색 - 모임글 검색 (필터링 적용)
@@ -48,7 +52,7 @@ public interface MeetingMapper {
         "SELECT meeting_id meetingId, title, category, status, application_deadline applicationDeadline,",
         "application_count applicationCount, location",
         "FROM meeting",
-        "WHERE title LIKE CONCAT('%', #{searchWord}, '%')",
+        "WHERE title LIKE CONCAT('%', #{searchWord}, '%') AND is_delete = 0 " ,
         "<if test='searchCategory != null and !searchCategory.isEmpty()'>",
         "   AND category IN",
         "   <foreach collection='searchCategory' item='ct' open='(' separator=',' close=')'>",
@@ -76,6 +80,7 @@ public interface MeetingMapper {
         "       </foreach>",
         "   )",
         "</if>",
+        " ORDER BY creation_date DESC",
         "</script>"
     })
     List<MeetingVO> selectMeetingsByFilter(SearchDTO search);

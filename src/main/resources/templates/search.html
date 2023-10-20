@@ -9,7 +9,6 @@
 <body>
 <!--  content  -->
 <th:block layout:fragment="content">
-
     <div class="search-container">
         <div class="search-result">
             <div class="search-title">
@@ -94,8 +93,8 @@
                 </div>
                 <!-- 결과 출력 시작 -->
                 <div class="search-filter-result">
-                    <th:block th:each="meeting : ${searchMeetingResults}">
-                        <div class="main-left-content-bottom-meeting">
+                    <th:block th:if="${searchMeetingResult != null || searchMeetingResult != ''}" th:each="meeting : ${searchMeetingResults}">
+                        <a th:href="@{/meeting/articles(id=${meeting.meetingId})}" class="search-filter-result-content">
                             <!-- 01-02-01 white box -->
                             <div class="main-left-content-bottom-meeting-white">
                                 <!-- white box - top -->
@@ -167,13 +166,24 @@
                                 </div>
                             </div>
 
-                            <!-- yellowbox - hashtag -->
+                            <!--&lt;!&ndash; yellowbox - hashtag &ndash;&gt;
                             <div class="main-left-content-bottom-meeting-yellow-hashtag">
                                 <div class="main-left-content-bottom-meeting-yellow-hashtag-text">
                                     <span># Java</span>
                                     <span># Spring</span>
                                     <span># 백엔드</span>
                                 </div>
+                            </div>-->
+                        </a>
+                    </th:block>
+                    <th:block th:if="${searchMeetingResult == null || searchMeetingResult == ''}">
+                        <div class="search-filter-result-none">
+                            <div class="search-filter-result-none-result">
+                                <span class="search-filter-result-none-searchWord" th:text="${searchWord}"></span>에 대한 모임 결과가 없습니다.
+                            </div>
+                            <div>찾으시는 모임이 없나요? 직접 만들어 보세요!</div>
+                            <div class="search-filter-result-none-btn">
+                                <a th:href="@{/meeting/write}" class="search-filter-result-none-meetingbtn">모임 만들기</a>
                             </div>
                         </div>
                     </th:block>
@@ -307,10 +317,12 @@
                 searchMeetingResultContainer.innerHTML = '';
 
                 meetings.forEach(meeting => {
-                    const meetingElement = document.createElement('div');
-                    meetingElement.classList.add('main-left-content-bottom-meeting');
-                    meetingElement.innerHTML = `
+                    const meetingElement = document.createElement('a');
+                    meetingElement.classList.add('search-filter-result-content');
 
+                    meetingElement.href = '/meeting/articles?id='+meeting.meetingId;
+
+                    meetingElement.innerHTML = `
                         <div class="main-left-content-bottom-meeting-white">
                             <div class="main-left-content-bottom-meeting-white-top">
                                 <div class="main-left-content-bottom-meeting-white-top-category">
@@ -356,14 +368,6 @@
                                     <div class="main-left-content-bottom-meeting-yellow-now-people-text">
                                         현재 <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt">${meeting.applicationCount}</span>명이 참여중입니다!
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="main-left-content-bottom-meeting-yellow-hashtag">
-                                <div class="main-left-content-bottom-meeting-yellow-hashtag-text">
-                                    <span># Java</span>
-                                    <span># Spring</span>
-                                    <span># 백엔드</span>
                                 </div>
                             </div>
                         </div>

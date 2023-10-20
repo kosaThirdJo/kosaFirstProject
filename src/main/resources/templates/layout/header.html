@@ -11,9 +11,8 @@
 
                 <!-- 01 로고 -->
                 <a th:href="@{/}" class="main-header-logo">
-                    <span class="main-header-logo-text">
-                        <span class="main-header-logo-text-1">SELECT</span>
-                        <span class="main-header-logo-text-2">*</span>
+                    <span class="main-header-logo-text">SELECT
+                        <span class="main-header-logo-text-star">*</span>
                     </span>
                 </a>
 
@@ -34,15 +33,15 @@
                     <!-- 02-03 모임 리스트 -->
                     <div class="main-header-nav-meetinglist">
                         <!-- 02-03-01 스터디 -->
-                        <a th:href="@{/}" class="main-header-nav-meetinglist-text">
+                        <a th:href="@{/meeting/category=0}" class="main-header-nav-meetinglist-text">
                             <span>스터디</span>
                         </a>
                         <!-- 02-03-02 프로젝트 -->
-                        <a th:href="@{/}" class="main-header-nav-meetinglist-text">
+                        <a th:href="@{/meeting}" class="main-header-nav-meetinglist-text">
                             <span>프로젝트</span>
                         </a>
                         <!-- 02-03-03 기타 -->
-                        <a th:href="@{/}" class="main-header-nav-meetinglist-text">
+                        <a th:href="@{/meeting}" class="main-header-nav-meetinglist-text">
                             <span>기타</span>
                         </a>
                     </div>

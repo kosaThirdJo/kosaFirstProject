@@ -1,3 +1,4 @@
+/* container */
 .login-container {
   width: 100%;
   display: flex;
@@ -5,301 +6,149 @@
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
-}
-.login-login {
-  gap: 65px;
-  width: 100%;
+  font-family: NanumGothic;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 1);
   height: auto;
-  display: flex;
-  padding: 210px 404px;
-  overflow: hidden;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
-  align-items: center;
-  border-color: rgba(0, 0, 0, 1);
-  border-style: solid;
-  border-width: 1px;
-  flex-direction: column;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 1);
+  margin: 120px 0px 80px;
+  padding: auto;
 }
+.login-content {
+  max-width: 28rem;
+  width: 100%;;
+}
+/* 01 top */
 .login-top {
-  gap: 20px;
-  display: flex;
-  padding: 26px 37px;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+gap: 20px;
+display: flex;
+padding: 26px 37px;
+overflow: hidden;
+align-self: stretch;
+align-items: center;
+flex-direction: column;
+justify-content: center;
 }
-.login-logo {
-  gap: 2px;
-  display: flex;
-  padding: 20px 0;
-  align-items: center;
-  justify-content: center;
+.login-top-logo {
+gap: 2px;
+display: flex;
+padding: 20px 0;
+align-items: center;
+justify-content: center;
+text-decoration: none;
 }
-.login-text {
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  font-size: 80px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
+.login-top-logo-text {
+color: rgba(0, 0, 0, 1);
+height: auto;
+font-size: 60px;
+font-weight: 700;
 }
-.login-text01 {
-  color: rgba(0, 0, 0, 1);
+.login-top-logo-text-star {
+color: #FF9F29;
 }
-.login-text02 {
-  color: rgba(250, 243, 227, 1);
+.login-top-intro1 {
+font-size: 20px;
+font-weight: 500;
 }
-.login-text03 {
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  font-size: 30px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
+.login-top-intro2 {
+color: rgba(113, 112, 112, 1);
+font-size: 15px;
 }
-.login-text05 {
-  color: rgba(113, 112, 112, 1);
-  height: auto;
-  font-size: 20px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
+/* 02 입력 폼 */
+.login-form {
+display: flex;
+flex-direction: column;
 }
-.login-snslogin {
-  gap: 30px;
-  display: flex;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: flex-start;
-  flex-direction: column;
+.login-form-title {
+font-size: 13px;
+color: rgba(113, 112, 112, 1);
+margin: 40px auto;
 }
-.login-text07 {
-  color: rgba(26, 77, 46, 1);
-  height: auto;
-  font-size: 25px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
+
+/* 02-02 회원가입 폼 */
+.login-form-input {
+gap: 30px;
+width: 100%;
+display: flex;
+overflow: hidden;
+align-items: flex-start;
+flex-direction: column;
+margin: 30px auto;
 }
-.login-kakaoimg {
-  gap: 10px;
-  display: flex;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+.login-form-input-box {
+gap: 10px;
+display: flex;
+overflow: hidden;
+align-self: stretch;
+align-items: flex-start;
+flex-direction: column;
+justify-content: center;
 }
-.login-kakaologinmediumnarrow1 {
-  width: 269px;
-  height: 66px;
+.login-form-input-box-title {
+color: #1A4D2E;
+font-size: 15px;
+font-weight: 500;
 }
-.login-or {
-  gap: 10px;
-  width: 591.9865112304688px;
-  display: flex;
+.login-form-input-withbtn {
+gap: 15px;
+display: flex;
+align-self: stretch;
+align-items: center;
+justify-content: space-between;
+}
+.login-form-input-box-content-withbtn {
+width: -webkit-fill-available;
+}
+.login-form-input-box-content, .login-form-input-box-content-withbtn {
+color: rgba(145, 143, 143, 1);
+padding: 0 20px;
+font-size: 15px;
+border-color: rgba(145, 143, 143, 1);
+border-style: solid;
+border-width: 1px;
+border-radius: 10px;
+align-self: stretch;
+min-height: 35px;
+}
+.login-form-input-check-alert{
+  margin-left: 20px;
+  color: rgb(248, 60, 60);
+  font-size: 12px;
+  }
+
+/* 로그인 버튼 */
+.login-form-submit {
   padding: 10px;
-  overflow: hidden;
-  align-items: center;
-  flex-shrink: 0;
-  justify-content: center;
-}
-.login-line1 {
-  width: 257px;
-  height: 1px;
-  flex-grow: 1;
-}
-.login-text09 {
-  color: rgba(145, 143, 143, 1);
-  height: auto;
-  font-size: 20px;
-  font-style: Regular;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
-}
-.login-line2 {
-  width: 257px;
-  height: 1px;
-  flex-grow: 1;
-}
-.login-selectlogin {
-  gap: 5px;
-  display: flex;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: flex-start;
-  flex-direction: column;
-}
-.login-text11 {
-  color: rgba(26, 77, 46, 1);
-  height: auto;
-  font-size: 25px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
-}
-.login-input {
-  gap: 40px;
-  display: flex;
-  padding: 30px 0;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: flex-start;
-  flex-direction: column;
-}
-.login-id {
-  gap: 10px;
-  display: flex;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: center;
-}
-.login-text13 {
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  font-size: 20px;
-  font-style: Regular;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
-}
-.login-idinput {
-  gap: 10px;
-  display: flex;
-  padding: 0 0 20px;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: center;
-  flex-shrink: 0;
-  border-color: rgba(145, 143, 143, 1);
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 10px;
-}
-.login-password {
-  gap: 10px;
-  display: flex;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: center;
-}
-.login-text15 {
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  font-size: 20px;
-  align-self: stretch;
-  font-style: Regular;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
-}
-.login-passwordinput {
-  gap: 10px;
-  display: flex;
-  padding: 0 0 20px;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: center;
-  flex-shrink: 0;
-  border-color: rgba(145, 143, 143, 1);
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 10px;
-}
-.login-loginbtnbutton {
-  gap: 10px;
-  display: flex;
-  padding: 10px;
-  overflow: hidden;
   align-self: stretch;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
-  align-items: center;
-  flex-shrink: 0;
   border-radius: 10px;
-  justify-content: space-between;
   background-color: rgba(26, 77, 46, 1);
+  margin: 30px 0 100px;
+  border: none;
 }
-.login-text17 {
+.login-form-submit-text {
   color: rgba(255, 255, 255, 1);
-  height: auto;
-  font-size: 25px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
+  font-size: 20px;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
 }
-.login-join {
-  gap: 10px;
-  display: flex;
-  padding: 10px 0;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: center;
-  flex-shrink: 0;
-  justify-content: center;
+.login-form-submit:hover{
+  background-color: rgb(44, 125, 75);
 }
-.login-text19 {
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  font-size: 20px;
-  font-style: Regular;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
+
+/* 로그인 페이지 이동 */
+.login-movetoSignup {
+gap: 20px;
+display: flex;
+padding: 10px 0;
+justify-content: center;
+margin: auto;
+color: rgba(0, 0, 0, 1);
+font-size: 18px;
+text-decoration: none;
 }
-.login-text21 {
-  color: rgba(26, 77, 46, 1);
-  height: auto;
-  font-size: 20px;
-  font-style: Regular;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: underline;
+.login-movetoLogin-SignupPg {
+color: rgba(26, 77, 46, 1);
+font-size: 18px;
+text-decoration: underline;
 }

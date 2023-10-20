@@ -54,8 +54,6 @@ public class HomeController {
 		// 회원 검색
 		List<UserVO> searchUserResults = userDao.searchUser(searchdto);
 		model.addAttribute(("searchUserResults"), searchUserResults);
-		System.out.println(searchUserResults);
-
 		return "search";
 	}
 
@@ -87,11 +85,9 @@ public class HomeController {
 			(languages != null && !languages.isEmpty()) ||
 			(frameworks != null && !frameworks.isEmpty()) ||
 			(jobs != null && !jobs.isEmpty())) {
-			System.out.println("filter");
 			// 모임 검색 - 필터링
 			searchMeetingResults = meetingDao.selectMeetingsByFilter(searchdto);
 		} else {
-			System.out.println("non");
 			// 모임 검색 - 제목만
 			searchMeetingResults = meetingDao.searchMeetings(searchdto);
 			System.out.println(searchMeetingResults);

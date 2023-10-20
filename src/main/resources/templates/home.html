@@ -3,7 +3,7 @@
       layout:decorate="layout/default">
 <head>
     <meta charset="UTF-8">
-    <title>메인</title>
+    <title>SELECT *</title>
 </head>
 <body>
 <th:block layout:fragment="content">
@@ -22,7 +22,8 @@
                     <!-- 01-01-01-02 text -->
                     <span class="main-content-left-title-text"><span>ORDER BY</span></span>
                 </div>
-                <!-- 01-01-02 arrow btn -->
+                <!--arrow  버튼 보류
+                &lt;!&ndash; 01-01-02 arrow btn &ndash;&gt;
                 <div class="content-arrow">
                     <div class="content-arrowcircleleft">
                         <img th:src="@{/image/home/arrow_circle_left.png}">
@@ -30,14 +31,14 @@
                     <div class="content-arrowcircleright">
                         <img th:src="@{/image/home/arrow_circle_right.png}">
                     </div>
-                </div>
+                </div>-->
             </div>
 
             <!-- 01-02 bottom (모임 글 출력) -->
             <div class="main-left-content-bottom">
                 <!-- 최신 글 4개 출력 -->
                 <th:block th:each="meeting : ${latestMeetings}">
-                    <div class="main-left-content-bottom-meeting">
+                    <a th:href="@{/meeting/articles(id=${meeting.meetingId})}" class="main-left-content-bottom-meeting">
                         <!-- 01-02-01 white box -->
                         <div class="main-left-content-bottom-meeting-white">
                             <!-- white box - top -->
@@ -119,7 +120,8 @@
                                         <span>0</span>
                                     </div>
                                 </div>
-                                <!-- reply -->
+                                <!--댓글 수, 찜 (보류)
+                                &lt;!&ndash; reply &ndash;&gt;
                                 <div class="main-left-content-bottom-meeting-yellow-now-info-reply">
                                     <div class="main-left-content-bottom-meeting-yellow-now-info-reply-icon">
                                         <img th:src="@{/image/home/chat.png}">
@@ -128,24 +130,24 @@
                                         <span>0</span>
                                     </div>
                                 </div>
-                                <!-- heart -->
+                                &lt;!&ndash; heart &ndash;&gt;
                                 <div class="main-left-content-bottom-meeting-yellow-now-info-heart">
                                     <div class="main-left-content-bottom-meeting-yellow-now-info-view-icon">
                                         <img th:src="@{/image/home/heart.png}">
                                     </div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
 
                         <!-- yellowbox - hashtag -->
-                        <div class="main-left-content-bottom-meeting-yellow-hashtag">
+                        <!--<div class="main-left-content-bottom-meeting-yellow-hashtag">
                             <div class="main-left-content-bottom-meeting-yellow-hashtag-text">
                                 <span># Java</span>
                                 <span># Spring</span>
                                 <span># 백엔드</span>
                             </div>
-                        </div>
-                    </div>
+                        </div>-->
+                    </a>
                 </th:block>
             </div>
 
@@ -184,7 +186,7 @@
                     <th:block th:each="popularMeeting, rank : ${popularMeetings}">
                         <div class="main-content-right-rank-list">
                             <span class="main-content-right-rank-num" th:text="${rank.count}" th:style="${rank.count < 4 ? 'color: rgba(255, 159, 41, 1);' : ''}"></span>
-                            <span class="main-content-right-rank-text" th:text="${popularMeeting.title}"></span>
+                            <a th:href="@{/meeting/articles(id=${popularMeeting.meetingId})}"  class="main-content-right-rank-text"  th:text="${popularMeeting.title}"></a>
                         </div>
                     </th:block>
                 </div>
