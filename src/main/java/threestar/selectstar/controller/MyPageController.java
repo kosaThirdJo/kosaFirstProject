@@ -6,6 +6,7 @@ import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +35,9 @@ public class MyPageController {
     UserMapper userDAO;
     @Autowired
     MeetingMapper meetingDAO;
+
+    @Value("${REST_API_KEY}")
+    private String apiKey;
 
     //다른 이용자 이력 조회
     @GetMapping("/profileinfo")
@@ -69,7 +73,7 @@ public class MyPageController {
         mav.addObject("encodeImg", encodeImg);
 
         mav.addObject("userDTO", userDTO);
-        mav.setViewName("mypage");
+        mav.setViewName("myprofile");
         return mav;
     }
 
@@ -106,6 +110,8 @@ public class MyPageController {
         }
         mav.addObject("encodeImg", encodeImg);
 
+        //지역인증시 필요한 apikey
+        mav.addObject("apiKey", apiKey);
         mav.addObject("userDTO", userDTO);
         mav.setViewName("myinfo");
 
