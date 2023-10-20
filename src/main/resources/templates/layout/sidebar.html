@@ -24,8 +24,8 @@
                 <span class="text-nickname" th:text="${userDTO.nickname}"></span>
                 <span class="text-email" th:text="${userDTO.email}"></span>
                 <input type="hidden" name="userId" th:value="${userDTO.userId}"/>
-                <div>
-                    <label class="input-file-button" for="inputImgFile">업로드</label>
+                <div class="frame-img-button">
+                    <label class="input-file-button" for="inputImgFile">사진 변경</label>
                     <input
                             type="file"
                             id="inputImgFile"
@@ -35,6 +35,7 @@
                             required/>
                     <!--<input type="file" name="profile_photo" accept=".jpg, .png"/>-->
                     <input
+                            id="updateimg"
                             class="input-submit"
                             type="submit"
                             value="수정"/>
@@ -81,7 +82,7 @@
                 var image = document.getElementsByClassName('profile-img');
                 image[0].src = reader.result;
             };
-
+            document.getElementById('updateimg').style.display='block';
             reader.readAsDataURL(input.files[0]);
         }
          // 파일 입력 상태 변경 감지

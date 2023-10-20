@@ -5,46 +5,51 @@
 <head>
     <meta charset="UTF-8">
     <title>SELECT*</title>
-    <style>
-        textarea{
-            width: 60%;
-            height: 300px;
-            resize: none;
-            outline: none;
-        }
-    </style>
+    <link th:href="@{/css/userprofile.css}" rel="stylesheet" />
 </head>
 <body>
     <th:block layout:fragment="content">
-        <h1>프로필</h1>
-        <!--사용자 이미지-->
-        <div>
-            <th:block th:if="${userDTO.profile_photo != null && !#strings.isEmpty(encodeImg)}">
-                <img style="width:5rem; height:5rem; border-radius:9999px";
-                     th:src="@{'data:image/png;base64,' + ${encodeImg}}" alt="Image"><br/>
-            </th:block>
-            <th:block th:if="${userDTO.profile_photo == null || #strings.isEmpty(encodeImg)}">
-                <img style="width:5rem; height:5rem; border-radius:9999px;"
-                     th:src="@{/image/global/userdefaultimg.png}"/><br/>
-            </th:block>
-        </div>
-        <!--사용자 정보(nickname, email, 한줄소개)-->
-        <div>
-            <h4 th:text="${userDTO.nickname}">별명</h4>
-            <h6 th:text="${userDTO.email}">이메일</h6>
-        </div>
-        <div>
-            <p th:text="${userDTO.about_me}"></p>
-        </div><br>
-        <!--사용자 이력 -->
-        <div>
-            <h2>사용자 이력</h2>
-            <textarea
-                    class="infoInput"
-                    name="profile_content"
-                    th:text="${userDTO.profile_content}"
-                    readonly>
-                </textarea>
+        <div class="frame-container">
+            <div class="frame-profile">
+                <div class="profile-title">
+                    <span class="user-nicname-text" th:text="${userDTO.nickname}"></span>님의 프로필
+                </div>
+                <!--사용자 이미지-->
+                <div class="frame-user-img">
+                    <th:block th:if="${userDTO.profile_photo != null && !#strings.isEmpty(encodeImg)}">
+                        <img class="profile-img"
+                             th:src="@{'data:image/png;base64,' + ${encodeImg}}"
+                             alt="Image"/>
+                    </th:block>
+                    <th:block th:if="${userDTO.profile_photo == null || #strings.isEmpty(encodeImg)}">
+                        <img class="profile-img"
+                             th:src="@{/image/global/userdefaultimg.png}"
+                             alt="Image"/>
+                    </th:block>
+                </div>
+                <!--사용자 정보(nickname, email, 한줄소개)-->
+                <div class="frame-profile-info">
+                    <div class="profile-info-text" th:text="${userDTO.nickname}">별명</div>
+                    <div class="profile-info-text" th:text="${userDTO.email}">이메일</div>
+                </div>
+                <div class="frame-profile-oneline">
+                    <div class="profile-oneline-title">한줄소개</div>
+                    <p class="profile-oneline-text" th:text="${userDTO.about_me}"></p>
+                </div>
+            </div>
+            <!--사용자 이력 -->
+            <div class="frame-profile-content">
+                <div class="profile-title">
+                    <span class="user-nicname-text" th:text="${userDTO.nickname}"></span>님의 이력
+                </div>
+                <!--<h2>사용자 이력</h2>-->
+                <textarea
+                        class="profile-info-textarea"
+                        name="profile_content"
+                        th:text="${userDTO.profile_content}"
+                        readonly>
+                    </textarea>
+            </div>
         </div>
     </th:block>
 </body>

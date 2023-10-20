@@ -17,7 +17,9 @@
             </div>
         </div>
         <div class="myinfo-content">
-        <form action="/mypage/updateinfo" method="post">
+        <form th:onsubmit="return confirm('정말 수정하시겠습니까?');"
+              action="/mypage/updateinfo"
+              method="post">
             <input type="hidden" name="userId" th:value="${userDTO.userId}"/>
             <div class="myinfo-input">
                 <!--  02-02-02 비밀번호  -->

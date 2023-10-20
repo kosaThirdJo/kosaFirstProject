@@ -10,35 +10,45 @@
 </head>
 <body>
     <th:block layout:fragment="content">
-        <h1>내가 참여한 모임 - 내가 신청한 글 목록</h1>
-        <div class="mymeeting-body">
+        <div class="frame-applymeeting-title">
+            <div class="applymeeting-title">
+                <span class="applymeeting-title-text">내가 참여한 모임 - 내가 신청한 글 목록</span>
+            </div>
+        </div>
+        <div class="frame-applymeeting-body">
+            <!-- 카테고리(전체, 프로젝트, 스터디, 기타)    메뉴 -->
             <div class="search-filter">
                 <ul class="search-categry">
                     <li class="e-category">
-                        <button th:onclick="" class="button-category">전체</button>
+                        <button
+                                th:onclick="location.href='/mypage/mymeetinglist'" class="button-category">전체</button>
                     </li>
                     <li class="e-category">
-                        <button th:onclick="" value="1"  class="button-category">프로젝트</button>
+                        <button
+                                th:onclick="location.href='/mypage/mymeetinglist/1'" value="1"  class="button-category">프로젝트</button>
                     </li>
                     <li class="e-category">
-                        <button th:onclick="" value="0" class="button-category">스터디</button>
+                        <button
+                                th:onclick="location.href='/mypage/mymeetinglist/0'" value="0" class="button-category">스터디</button>
                     </li>
                     <li class="e-category">
-                        <button th:onclick="" value="2" class="button-category">기타</button>
+                        <button
+                                th:onclick="location.href='/mypage/mymeetinglist/2'" value="2" class="button-category">기타</button>
                     </li>
                 </ul>
             </div>
             <div class="mymeeting-list-container">
+                <!-- 모집상태(전체, 모집중, 모집완료) 메뉴-->
                 <div class="list-container-header">
-                    <ul class="search-status">
+                    <ul class="search-filter-select">
                         <li class="e-status">
-                            <button th:onclick="" class="button-status">전체</button>
+                            <button class="search-filter-select-btn">전체</button>
                         </li>
                         <li class="e-status">
-                            <button class="button-status">모집</button>
+                            <button class="search-filter-select-btn">모집중</button>
                         </li>
                         <li class="e-status">
-                            <button class="button-status">모집완료</button>
+                            <button class="search-filter-select-btn">모집완료</button>
                         </li>
                     </ul>
                 </div>
@@ -51,51 +61,54 @@
                                 <div class="meetinginfo">
                                     <!-- 게시글 항목 status & title-->
                                     <div class="meeting-title">
-                                        <div class="meeting-status">
-                                            <span th:switch="${applyingvo.status}" class="">
-                                                <span th:case="0">모집중</span>
-                                                <span th:case="1">모집완료</span>
-                                            </span>
+                                        <div class="meeting-status" th:switch="${applyingvo.status}">
+                                            <div class="meeting-status-text-ing" th:case="0">모집중</div>
+                                            <div class="meeting-status-text" th:case="1">모집완료</div>
                                         </div>
-                                        <div class="meeting-category">
-                                            <span th:switch="${applyingvo.category}" class="">
-                                                <span th:case="0">스터디</span>
-                                                <span th:case="1">프로젝트</span>
-                                                <span th:case="2">기타</span>
-                                            </span>
+                                        <div class="meeting-category" th:switch="${applyingvo.category}">
+                                            <div class="meeting-category-text" th:case="0">스터디</div>
+                                            <div class="meeting-category-text" th:case="1">프로젝트</div>
+                                            <div class="meeting-category-text" th:case="2">기타</div>
                                         </div>
-                                        <h3 class="title-text">[[${applyingvo.title}]]</h3>
+                                        <div class="meeting-title-div">
+                                            <div class="meeting-title-text" th:text="${applyingvo.title}"></div>
+                                        </div>
                                     </div>
                                     <!--게시글 항목 내용-->
                                     <div class="meeting-body">
-                                        <p class="meeting-body-content">[[${applyingvo.description}]]</p>
+                                        <p class="meeting-body-content" th:text="${applyingvo.description}"></p>
                                     </div>
                                     <!--게시글 항목 하단-->
                                     <div class="meeting-footer">
                                         <div class="meeting-cratedata">
-                                            작성일
-                                            <span th:text="${#temporals.format(applyingvo.creationDate, 'YYYY/MM/dd')}"></span>
+                                            <span class="meeting-footer-text">작성일</span>
+                                            <span class="meeting-footer-content-text"
+                                                  th:text="${#temporals.format(applyingvo.creationDate, 'YYYY/MM/dd')}"></span>
                                         </div>
-                                        <span>&nbsp;</span>
+
                                         <div class="meeing-location">
-                                            장소
-                                            <span>[[${applyingvo.location}]]</span>
+                                            <span class="meeting-footer-text">장소</span>
+                                            <span class="meeting-footer-content-text"
+                                                  th:text="${applyingvo.location}"></span>
                                         </div>
-                                        <span>&nbsp;</span>
+
                                         <div class="meeting-count">
-                                            신청인원
-                                            <span th:text="|${applyingvo.applicationCount}/${applyingvo.recruitmentCount}">
+                                            <span class="meeting-footer-text">신청인원</span>
+                                            <span class="meeting-footer-content-text"
+                                                  th:text="|${applyingvo.applicationCount}/${applyingvo.recruitmentCount}">
                                             </span>
                                         </div>
-                                        <span>&nbsp;</span>
+
                                         <div class="meeting-deadline">
-                                            모집마감일
-                                            <span th:text="${#temporals.format(applyingvo.applicationDeadline, 'YYYY/MM/dd HH:mm')}"></span>
+                                            <span class="meeting-footer-text">모집마감일</span>
+                                            <span class="meeting-footer-content-text"
+                                                  th:text="${#temporals.format(applyingvo.applicationDeadline, 'YYYY/MM/dd HH:mm')}"></span>
                                         </div>
-                                        <span>&nbsp;</span>
+
                                         <div class="meeting-view">
-                                            조회수
-                                            <span th:text="${applyingvo.views}"></span>
+                                            <span class="meeting-footer-text">조회수</span>
+                                            <span class="meeting-footer-content-text"
+                                                  th:text="${applyingvo.views}"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -103,12 +116,11 @@
                             </li>
                         </ul>
                     </th:block>
-                    <!--/* 조회 결과(meetingvoList가 없을 경우 */-->
+                    <!--/* 조회 결과(applyingvoList가 없을 경우 */-->
                     <th:block th:if="${msg}">
-                        <script th:inline="javascript">
-                            alert([[${msg}]]);
-                        </script>
-                        <h2>[[${msg}]]</h2>
+                        <div>
+                            <p class="result-msg" th:text="${msg}"></p>
+                        </div>
                     </th:block>
                 </div>
             </div>
