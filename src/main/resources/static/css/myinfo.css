@@ -1,12 +1,41 @@
-.signup-container {
+/*.signup-container {
   width: 100%;
   display: flex;
   overflow: auto;
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
+}*/
+.myinfoframe-content-title{
+    width: 100%;
+    padding: 5px 10px;
 }
-.signup-content {
+.myinfocontent-title{
+    width: 100%;
+    height: 30px;
+    gap: 30px;
+    display: flex;
+    padding: 20px 25px;
+    overflow: hidden;
+    align-self: stretch;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(26, 77, 46, 1);
+}
+.myinfocontent-title-text{
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 30px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.myinfo-content {
   gap: 65px;
   width: 90%;
   height: auto;
@@ -20,15 +49,7 @@
   justify-content: center;
   background-color: rgba(255, 255, 255, 1);
 }
-.signup-selectsignup {
-  gap: 5px;
-  display: flex;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: flex-start;
-  flex-direction: column;
-}
-.signup-input {
+.myinfo-input {
   gap: 30px;
   width: 100%;
   display: flex;
@@ -38,7 +59,7 @@
   align-items: flex-start;
   flex-direction: column;
 }
-.signup-password { /* 비밀번호 입력  div */
+.myinfo-password { /* 비밀번호 입력  div */
   gap: 10px;
   display: flex;
   overflow: hidden;
@@ -47,7 +68,7 @@
   flex-direction: column;
   justify-content: center;
 }
-.signup-text017 { /* 비밀번호, 이메일 등 소제목 */
+.myinfo-text017 { /* 비밀번호, 이메일 등 소제목 */
   color: rgba(0, 0, 0, 1);
   height: auto;
   font-size: 20px;
@@ -60,8 +81,9 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.signup-input2 { /* 비밀번호 입력 form*/
+.myinfo-input2 { /* 비밀번호 입력 form*/
   gap: 10px;
+  height: 40px;
   color: black;
   display: flex;
   padding: 0 20px;
@@ -78,7 +100,7 @@
   border-width: 1px;
   border-radius: 10px;
 }
-.signup-email {/* 이메일 입력 div*/
+.myinfo-email {/* 이메일 입력 div*/
   gap: 10px;
   display: flex;
   overflow: hidden;
@@ -87,8 +109,9 @@
   flex-direction: column;
   justify-content: center;
 }
-.signup-input3 { /* 이메일, 닉네임 입력 form*/
+.myinfo-input3 { /* 이메일, 닉네임 입력 form*/
   gap: 10px;
+  height: 40px;
   color: black;
   display: flex;
   padding: 0 20px;
@@ -105,7 +128,7 @@
   border-width: 1px;
   border-radius: 10px;
 }
-.signup-nickname { /* nickname 입력 div*/
+.myinfo-nickname { /* nickname 입력 div*/
   gap: 10px;
   display: flex;
   overflow: hidden;
@@ -114,8 +137,9 @@
   flex-direction: column;
   justify-content: center;
 }
-.signup-input4 { /*nickname 입력 form */
+.myinfo-input4 { /*nickname 입력 form */
   gap: 10px;
+  height: 40px;
   color: black;
   display: flex;
   padding: 0 20px;
@@ -132,7 +156,7 @@
   border-width: 1px;
   border-radius: 10px;
 }
-.signup-location { /* 지역  div*/
+.myinfo-location { /* 지역  div*/
   gap: 10px;
   display: flex;
   overflow: hidden;
@@ -141,18 +165,53 @@
   flex-direction: column;
   justify-content: center;
 }
-.signup-geolocation1 { /* 지역 select */
-  gap: 20px;
-  font-size: 20px;
-  height: 30px;
-  display: flex;
+.myinfo-location-content{
+    width: 100%;
+}
+.myinfo-input5 { /*지역 input */
+  gap: 10px;
+  color: black;
+  width: 70%;
+  height: 40px;
+  display: inline-block;
+  padding: 0 20px;
   overflow: hidden;
-  align-self: stretch;
+  flex-grow: 1;
+  font-size: 20px;
+  text-align: left;
   align-items: center;
   flex-shrink: 0;
-  justify-content: center;
+  font-family: NanumGothic;
+  font-weight: 400;
+  border-color: rgba(145, 143, 143, 1);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
 }
-.signup-interest { /* 02-02-06 관심분야 */
+.myinfo-locationbtnbutton { /*지역 버튼*/
+  gap: 10px;
+  display: inline-block;
+  padding: 10px 15px;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: center;
+  background-color: rgba(26, 77, 46, 1);
+}
+.myinfo-text025 { /*지역 span*/
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 20px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.myinfo-interest { /* 02-02-06 관심분야 */
   gap: 10px;
   display: flex;
   overflow: hidden;
@@ -161,7 +220,7 @@
   flex-direction: column;
   justify-content: center;
 }
-.signup-interest-container {
+.myinfo-interest-container {
   display: flex;
   padding: 20px;
   overflow: hidden;
@@ -174,7 +233,7 @@
   flex-direction: column;
   justify-content: center;
 }
-.signup-interest-content { /*각 관심분야 div*/
+.myinfo-interest-content { /*각 관심분야 div*/
   gap: 10px;
   display: flex;
   padding: 10px 0;
@@ -184,7 +243,7 @@
   flex-direction: column;
   justify-content: center;
 }
-.signup-interest-text { /*관심분야, 언어,  fw, 직무 제목*/
+.myinfo-interest-text { /*관심분야, 언어,  fw, 직무 제목*/
   color: rgba(0, 0, 0, 1);
   height: auto;
   font-size: 17px;
@@ -197,7 +256,7 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.signup-select { /* 관심분야 선택박스 div*/
+.myinfo-select { /* 관심분야 선택박스 div*/
   gap: 10px;
   display: flex;
   overflow: hidden;
@@ -206,7 +265,7 @@
   align-items: center;
   flex-shrink: 0;
 }
-.signup-interest-lang-btn, .signup-interest-fw-btn, .signup-interest-job-btn {
+.myinfo-interest-lang-btn, .myinfo-interest-fw-btn, .myinfo-interest-job-btn {
   gap: 10px;
   display: flex;
   padding: 5px 10px;
@@ -218,7 +277,41 @@
   border-radius: 10px;
   justify-content: center;
 }
-.signup-interest-lang-btn.selected, .signup-interest-fw-btn.selected, .signup-interest-job-btn.selected {
+.myinfo-interest-lang-btn.selected, .myinfo-interest-fw-btn.selected, .myinfo-interest-job-btn.selected {
     background-color: green;
     color: white;
+}
+.frame-bottom{
+    width: 90%;
+    height: 70px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    align-items: flex-start;
+    flex-shrink: 0;
+    justify-content:center;
+}
+.button-submit{
+  gap: 10px;
+  width: 100px;
+  height: 40px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 8px;
+  justify-content: center;
+  background-color: rgba(255, 159, 41, 1);
+  color: rgba(250, 243, 227, 1);
+  font-size: 20px;
+  font-style: Semi Bold;
+  text-align: center;
+  font-family: NanumGothic;
+  font-weight: 700;
+  font-stretch: normal;
+  text-decoration: none;
+  cursor: pointer;
 }

@@ -10,6 +10,6 @@ import threestar.selectstar.domain.CommentDTO;
 public interface ApplyMapper {
     @Insert("INSERT INTO apply (user_id, meeting_id, email_address, sns_address, reason, application_date) VALUES (#{userId}, #{meetingId}, #{emailAddress}, #{snsAddress}, #{reason}, #{applicationDate})")
     boolean insertComment(ApplyVO applyVo);
-    @Select("select count(user_id) from apply group by meeting_id having meeting_id = #{meetingId}")
-    int countApplyByMeetingId(int meetingId);
+    @Select("select count(*) from apply where meeting_id = #{meetingId} group by meeting_id")
+    Integer countApplyByMeetingId(int meetingId);
 }

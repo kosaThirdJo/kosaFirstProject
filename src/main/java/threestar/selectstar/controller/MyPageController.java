@@ -6,6 +6,7 @@ import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,15 +36,34 @@ public class MyPageController {
     @Autowired
     MeetingMapper meetingDAO;
 
+    @Value("${REST_API_KEY}")
+    private String apiKey;
+
+    //다른 이용자 이력 조회
+    @GetMapping("/profileinfo")
+    public ModelAndView getUserProfile(@RequestParam("id")Integer userId){
+        UserDTO userDTO = userDAO.getProfileInfo(userId);
+        ModelAndView mav = new ModelAndView();
+        byte[] imgByte = userDTO.getProfile_photo();
+        String encodeImg = null;
+        if(imgByte != null) {
+            encodeImg = Base64.getEncoder().encodeToString(imgByte);
+        }
+        //log.info("encodeImg >>"+encodeImg);
+        mav.addObject("encodeImg", encodeImg);
+        mav.addObject("userDTO", userDTO);
+        mav.setViewName("userprofile");
+        return mav;
+    }
+
     //이력관리 조회
     @GetMapping("/profile")
-    public ModelAndView getUserProfileInfo(HttpSession session, HttpServletRequest req) {
+    public ModelAndView getMyProfileInfo(HttpSession session, HttpServletRequest req) {
         ModelAndView mav = new ModelAndView();
-
-        log.info("session user_id 확인"+session.getAttribute("user_id"));
 
         UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
         userDTO.setUserId((int)session.getAttribute("user_id"));
+
         //마이페이지 side bar -프로필 이미지
         byte[] imgByte = userDTO.getProfile_photo();
         String encodeImg = null;
@@ -53,7 +73,7 @@ public class MyPageController {
         mav.addObject("encodeImg", encodeImg);
 
         mav.addObject("userDTO", userDTO);
-        mav.setViewName("mypage");
+        mav.setViewName("myprofile");
         return mav;
     }
 
@@ -90,6 +110,8 @@ public class MyPageController {
         }
         mav.addObject("encodeImg", encodeImg);
 
+        //지역인증시 필요한 apikey
+        mav.addObject("apiKey", apiKey);
         mav.addObject("userDTO", userDTO);
         mav.setViewName("myinfo");
 

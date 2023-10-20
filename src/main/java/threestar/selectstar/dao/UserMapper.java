@@ -45,6 +45,8 @@ public interface UserMapper {
     public boolean updateUserInfo(UserDTO userDTO);
     @Select("select name from user where user_id= #{userId}")
     public String getNameById(int userId);
+    @Select("select * from user where user_id= #{userId}")
+    public UserVO getProfilePhotoById(int userId);
     @Select("select user_id from user where name= #{name}")
     public int getIdByName(String name);
 
@@ -57,4 +59,7 @@ public interface UserMapper {
     @Update("update user set profile_photo= #{profile_photo} where user_id= #{userId}")
     public boolean updateUserProfileImg(@Param("userId") int userId,@Param("profile_photo") byte[] profile_photo);
 
+    //다른 이용자 프로필 조회
+    @Select("select nickname, email, profile_photo, about_me, profile_content from user where user_id = #{userId}")
+    public UserDTO getProfileInfo(int userId);
 }
