@@ -563,7 +563,7 @@
 
 /* yellowbox */
 .main-left-content-bottom-meeting-yellow-now {
-  gap: 50px;
+  gap: 25px;
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -604,38 +604,38 @@
   color: rgba(255, 159, 41, 1);
 }
 .main-left-content-bottom-meeting-yellow-now-info {
-  gap: 7px;
-  display: flex;
-  overflow: hidden;
-  align-items: center;
-  justify-content: flex-end;
+    gap: 0px;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: flex-end;
 }
 .main-left-content-bottom-meeting-yellow-now-info-view, .main-left-content-bottom-meeting-yellow-now-info-reply, .main-left-content-bottom-meeting-yellow-now-info-heart {
-  gap: 4px;
-  display: flex;
-  opacity: 0.30;
-  padding: 0 4px;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
+    gap: 0px;
+    display: flex;
+    opacity: 0.30;
+    padding: 0 4px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
 }
 .main-left-content-bottom-meeting-yellow-now-info-view-icon, .main-left-content-bottom-meeting-yellow-now-info-reply-icon, .main-left-content-bottom-meeting-yellow-now-info-heart-icon {
-  display: flex;
-  position: relative;
-  align-items: flex-start;
-  flex-shrink: 1;
+    display: flex;
+    position: relative;
+    align-items: flex-start;
+    flex-shrink: 1;
 }
 .main-left-content-bottom-meeting-yellow-now-info-view-cnt, .main-left-content-bottom-meeting-yellow-now-info-reply-cnt {
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  font-size: 13px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
+    color: rgba(0, 0, 0, 1);
+    height: auto;
+    font-size: 13px;
+    font-style: Bold;
+    text-align: left;
+    font-family: NanumGothic;
+    font-weight: 700;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
 }
 
 /* yellow - hashtag */

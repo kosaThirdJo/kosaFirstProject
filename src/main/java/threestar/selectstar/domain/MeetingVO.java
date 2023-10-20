@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import lombok.*;
 
 @Getter
-@Setter
 @ToString
 @NoArgsConstructor
 public class MeetingVO {
