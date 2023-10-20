@@ -1,7 +1,5 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout/default">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 <head>
     <meta charset="UTF-8">
@@ -9,25 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
 
-        font {
-        @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+        .container {
+            display: flex;
+            gap: 30px 50px;
+            flex-direction: row;
+            flex-wrap: wrap
         }
-
-        .nanumgothic * {
-            font-family: 'Nanum Gothic', sans-serif;
-        }
-
-        section {
-            border-radius: 5%;
-            display: inline-block;
-            height: 300px;
-            width: 400px;
-            margin: 10px;
-            background-color: #FAF3E3;
-            cursor: pointer;
-        }
-
-
     </style>
 </head>
 <body>
@@ -43,135 +28,165 @@
         <div style="font-size: 36px">
             <img th:src="@{/image/global/notifications01.png}">
             ORDER BY
+            <a href="/meeting/write" class="btn btn-primary"
+               style="background-color: #FF9F29; color: white; float: right"> 새 글 작성</a>
+            </a>
         </div>
-        <div th:each="meetingOne, meetingStat:${allMeetingList}">
-            <div style="display: flex" th:if="${meetingStat.index %2 == 0}">
-                <section th:id="|section_${allMeetingList.get(meetingStat.index).getMeetingId()}|"
-                         class="border border-dark">
-                    <div class="main-left-content-bottom-meeting">
-                        <div>
-                        <span class="btn btn-primary" style="background-color: #1A4D2E; color: white;"
-                              th:text="${categoryInfo.get(allMeetingList.get(meetingStat.index).getCategory())}">
-                        </span>
-                            <span class="btn btn-primary" style="float: right; background-color: #FF9F29; color: white;"
-                                  th:text="${statusInfo.get(allMeetingList.get(meetingStat.index).getStatus())}">
-                        </span>
-                        </div>
-                        <div>
-                            <img th:src="@{/image/global/location01.png}">
-                            <span th:text="${allMeetingList.get(meetingStat.index).getLocation()}"></span>
-                            <span style="float: right" th:text="|작성자 : ${userDao.getNameById(allMeetingList.get(meetingStat.index).getUserId())}|"></span>
-                        </div>
-                        <div style="font-size: 36px;" th:text="${allMeetingList.get(meetingStat.index).getTitle()}">
-                        </div>
-                        <div>
-                            <img th:src="@{/image/global/end_date01.png}">
-                            마감일
-                        </div>
-                        <div th:text="${timeList.get(meetingStat.index)}">
+        <div class="container">
+            <th:block th:each="meetingDTO, meetingStat:${allMeetingList}">
+                <a th:href="|meeting/articles?id=${meetingDTO.meetingId}|">
+                    <div class="main-left-content-bottom-meeting"
+                         th:style="${meetingDTO.status == 0 ? 'background-color:#FAF3E3;' : 'background-color:#D9D9D9;'}">
+                        <!-- 01-02-01 white box -->
+                        <div class="main-left-content-bottom-meeting-white">
+                            <!-- white box - top -->
+                            <div class="main-left-content-bottom-meeting-white-top">
+                                <!-- white box - top - category -->
+                                <div class="main-left-content-bottom-meeting-white-top-category">
+                                    <!-- 0: 스터디, 1:프로젝트, 2: 기타 -->
+                                    <span th:if="${meetingDTO.category} == 0"
+                                          class="main-left-content-bottom-meeting-white-top-text">
+                                       스터디
+                                    </span>
+                                    <span th:if="${meetingDTO.category} == 1"
+                                          class="main-left-content-bottom-meeting-white-top-text">
+                                       프로젝트
+                                    </span>
+                                    <span th:if="${meetingDTO.category} == 2"
+                                          class="main-left-content-bottom-meeting-white-top-text">
+                                       기타
+                                    </span>
+                                </div>
+                                <!-- white box - top - status -->
+                                <div class="main-left-content-bottom-meeting-white-top-status"
+                                     th:style="${meetingDTO.status == 0 ? 'background-color:#FF9F29;' : 'background-color:#5F5B5B;'}">
+                                    <!-- 0: 모집중, 1:모집완료 -->
+                                    <span th:if="${meetingDTO.status}==0"
+                                          class="main-left-content-bottom-meeting-white-top-text">
+                                        모집중
+                                    </span>
+                                    <!--  스타일 색 다르게-->
+                                    <span th:if="${meetingDTO.status}==1"
+                                          class="main-left-content-bottom-meeting-white-top-text">
+                                        모집 완료
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- white box - bottom -->
+                            <div class="main-left-content-bottom-meeting-white-bottom">
+                                <!-- white box - location -->
+                                <div class="main-left-content-bottom-meeting-white-location">
+                                    <div class="main-left-content-bottom-meeting-white-location-icon">
+                                        <img th:src="@{/image/global/location01.png}">
+                                    </div>
+                                    <span class="main-left-content-bottom-meeting-white-location-text"
+                                          th:text="${meetingDTO.location}">서울특별시</span>
+                                </div>
+
+                                <!-- white box - title -->
+                                <div class="main-left-content-bottom-meeting-white-title"
+                                     th:text="${meetingDTO.title}">제목
+                                </div>
+
+                                <!-- whitebox - deadline -->
+                                <div class="main-left-content-bottom-meeting-white-deadline">
+                                    <div class="main-left-content-bottom-meeting-white-deadline-icon">
+                                        <img th:src="@{/image/global/end_date01.png}">
+                                    </div>
+                                    <span class="main-left-content-bottom-meeting-white-deadline-text">마감일</span>
+                                </div>
+
+                                <!-- whitebox - deadlineText -->
+                                <span class="main-left-content-bottom-meeting-white-deadlineText"
+                                      th:text="|${meetingDTO.applicationDeadline.year}-${meetingDTO.applicationDeadline.monthValue}-${meetingDTO.applicationDeadline.dayOfMonth} ${meetingDTO.applicationDeadline.hour}시 ${meetingDTO.applicationDeadline.minute}분|">9999.09.09</span>
+                            </div>
                         </div>
 
-                    </div>
-                    <div style="">
-                        <img th:src="@{/image/global/member_count.png}">
-                        현재
-                        <span style="color: #FF9F29"
-                              th:text="|${allMeetingList.get(meetingStat.index).getApplicationCount()} 명|">
-                        0명
-                    </span>
-                        <span>
-                        이 참가중입니다.
-                    </span>
-                        <span style=" float: right">
-                        <img th:src="@{/image/global/see_count01.png}">
-                        <span th:text="${allMeetingList.get(meetingStat.index).getViews()}">
-                        </span>
-                    </span>
-                    </div>
-                    <div>
-                        <!--/* 언어 프레임워크 직무 3개 가져와서 띄우기 interestListFrame"*/-->
-                <span th:each="interestOne, interestStat:${interestListLang.get(meetingStat.index)}">
-                    # <span style="color: #1A4D2E" th:if="${interestOne!=null}" th:text="${interestOne}"></span>
-                </span>
-                <span th:each="interestOne, interestStat:${interestListFrame.get(meetingStat.index)}">
-                    # <span style="color: #1A4D2E" th:if="${interestOne!=null}" th:text="${interestOne}"></span>
-                </span>
-                <span th:each="interestOne, interestStat:${interestListJob.get(meetingStat.index)}">
-                    # <span style="color: #1A4D2E" th:if="${interestOne!=null}" th:text="${interestOne}"></span>
-                </span>
-                <span th:if="${interestListJob.get(meetingStat.index).size()==0}"> </span>
-                    </div>
-                </section>
-
-                <section th:id="|section_${allMeetingList.get(meetingStat.index+1).getMeetingId()}|"
-                         th:if="${meetingStat.index <= (meetingStat.size)-2 }"
-                         class="border border-dark">
-                    <div class="main-left-content-bottom-meeting">
-                        <div>
-                        <span class="btn btn-primary" style=" background-color: #1A4D2E; color: white;"
-                              th:text="${categoryInfo.get(allMeetingList.get(meetingStat.index+1).getCategory())}">
-                        </span>
-                            <span class="btn btn-primary"
-                                  style="float: right; background-color: #FF9F29; color: white;"
-                                  th:text="${statusInfo.get(allMeetingList.get(meetingStat.index+1).getStatus())}">
-                        </span>
-                        </div>
-                        <div style="display: inline">
-                            <img th:src="@{/image/global/location01.png}">
-                            <span th:text="${allMeetingList.get(meetingStat.index+1).getLocation()}"></span>
-                            <span style="float: right" th:text="|작성자 : ${userDao.getNameById(allMeetingList.get(meetingStat.index+1).getUserId())}|"></span>
-                        </div>
-                        <div style="font-size: 36px;" th:text="${allMeetingList.get(meetingStat.index+1).getTitle()}">
-                        </div>
-                        <div>
-                            <img th:src="@{/image/global/end_date01.png}">
-                            마감일
-                        </div>
-                        <div th:text="${timeList.get(meetingStat.index+1)}">
+                        <!-- 01-02-02 yellow box -->
+                        <!-- yellowbox - now -->
+                        <div class="main-left-content-bottom-meeting-yellow-now">
+                            <!-- yellowbox - now - people -->
+                            <div class="main-left-content-bottom-meeting-yellow-now-people">
+                                <div class="main-left-content-bottom-meeting-yellow-now-people-icon">
+                                    <img th:src="@{/image/global/member_count.png}">
+                                </div>
+                                <div class="main-left-content-bottom-meeting-yellow-now-people-text">
+                                    현재
+                                    <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt"
+                                          th:text="${meetingDTO.applicationCount}">0</span>명이
+                                    참여중입니다!
+                                </div>
+                            </div>
+                            <!-- yellow - now - info -->
+                            <div class="main-left-content-bottom-meeting-yellow-now-info">
+                                <!-- view -->
+                                <div class="main-left-content-bottom-meeting-yellow-now-info-view">
+                                    <div class="main-left-content-bottom-meeting-yellow-now-info-view-icon">
+                                        <img style="margin-right: 2px; margin-left: 2px;"
+                                             th:src="@{/image/global/see_count01.png}">
+                                    </div>
+                                    <div class="main-left-content-bottom-meeting-yellow-now-info-view-cnt">
+                                        <span th:text="${meetingDTO.views}">0</span>
+                                    </div>
+                                </div>
+                                <!-- reply -->
+                                <div class="main-left-content-bottom-meeting-yellow-now-info-reply">
+                                    <div class="main-left-content-bottom-meeting-yellow-now-info-reply-icon">
+                                        <img style="margin-right: 2px; margin-left: 2px;"
+                                             th:src="@{/image/home/chat.png}">
+                                    </div>
+                                    <div class="main-left-content-bottom-meeting-yellow-now-info-reply-cnt">
+                                        <span th:text="${commentDao.calcCommentCount(meetingDTO.meetingId)}">0</span>
+                                    </div>
+                                </div>
+                                <!-- heart -->
+                                <div class="main-left-content-bottom-meeting-yellow-now-info-heart">
+                                    <div class="main-left-content-bottom-meeting-yellow-now-info-view-icon">
+                                        <img th:src="@{/image/home/heart.png}">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
+                        <!-- yellowbox - hashtag -->
+                        <div class="main-left-content-bottom-meeting-yellow-hashtag">
+                            <div class="main-left-content-bottom-meeting-yellow-hashtag-text">
+                                <span> </span>
+                                <th:block th:each="ele :${interestListLang.get(meetingStat.index)}">
+                                    <span th:text="| ${ele}|"></span>
+                                </th:block>
+                                <th:block th:each="ele :${interestListFrame.get(meetingStat.index)}">
+                                    <span th:text="| ${ele}|"></span>
+                                </th:block>
+                                <th:block th:each="ele :${interestListJob.get(meetingStat.index)}">
+                                    <span th:text="| ${ele}|"></span>
+                                </th:block>
+                            </div>
+                        </div>
                     </div>
-                    <div style="">
-                        <img th:src="@{/image/global/member_count.png}">
-                        현재
-                        <span style="color: #FF9F29"
-                              th:text="|${allMeetingList.get(meetingStat.index+1).getApplicationCount()} 명|">
-                        0명
-                    </span>
-                        <span>
-                        이 참가중입니다.
-                    </span>
-                        <span style=" float: right">
-                        <img th:src="@{/image/global/see_count01.png}">
-                        <span th:text="${allMeetingList.get(meetingStat.index+1).getViews()}">
-                        </span>
-                    </span>
-                    </div>
-                    <div>
-                        <!--/* 언어 프레임워크 직무 3개 가져와서 띄우기 interestListFrame"*/-->
-                        <span th:each="interestOne, interestStat:${interestListLang.get(meetingStat.index+1)}">
-                    # <span style="color: #1A4D2E" th:if="${interestOne!=null}" th:text="${interestOne}"></span>
-                </span>
-                        <span th:each="interestOne, interestStat:${interestListFrame.get(meetingStat.index+1)}">
-                    # <span style="color: #1A4D2E" th:if="${interestOne!=null}" th:text="${interestOne}"></span>
-                </span>
-                        <span th:each="interestOne, interestStat:${interestListJob.get(meetingStat.index+1)}">
-                    # <span style="color: #1A4D2E" th:if="${interestOne!=null}" th:text="${interestOne}"></span>
-                </span>
-                        <span th:if="${interestListJob.get(meetingStat.index+1).size()==0}"> </span>
-                    </div>
-                </section>
-            </div>
+                </a>
+            </th:block>
         </div>
-        <a href="/meeting/write" class="btn btn-primary"
-           style="background-color: #FF9F29; color: white"> 새 글 작성</a>
+        </div>
+        <div style="text-align: center; margin-top: 20px">
+            <a class="btn btn-primary" th:if="${page} != 0" th:href="@{|/meeting?page=${page-1}|}">
+                <span>&lt</span>
+            </a>
+            <a class="btn btn-primary" th:if="${page*12} <= ${allMeetingList.size()+12} " th:href="@{|/meeting?page=${page+1}|}">
+                <span>&gt</span>
+            </a>
+        </div>
+    </article>
+    </div>
+    </div>
 
     </article>
-    <!-- https://kyurasi.tistory.com/entry/footer-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EA%B2%B9%EC%B9%98%EB%8A%94-%EC%98%A4%EB%A5%98-%EC%9E%A1%EA%B8%B0-->
-
+    </div>
     <script th:inline="javascript">
+        // 모집완료 색 바꾸기
         // 모든 섹션 리스트 조회
-        const sectionAll = document.querySelectorAll("section");
+        const sectionAll = document.querySelectorAll('[id*=\"card\"]');
         for (const sectionAllKey in sectionAll) {
             sectionAll[sectionAllKey].addEventListener("click", function () {
                 window.location.href += "/articles?id=" + sectionAll[sectionAllKey].id.split("_")[1];
@@ -179,6 +194,6 @@
         }
     </script>
 </th:block>
-
 </body>
+
 </html>

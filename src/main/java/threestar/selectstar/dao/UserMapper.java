@@ -45,6 +45,8 @@ public interface UserMapper {
     public boolean updateUserInfo(UserDTO userDTO);
     @Select("select name from user where user_id= #{userId}")
     public String getNameById(int userId);
+    @Select("select * from user where user_id= #{userId}")
+    public UserVO getProfilePhotoById(int userId);
     @Select("select user_id from user where name= #{name}")
     public int getIdByName(String name);
 
