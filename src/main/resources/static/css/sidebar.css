@@ -17,10 +17,15 @@
    flex-direction: column;
    background-color: rgba(255, 255, 255, 1);
 }
-.profile-img{
+.profile-img{ /*프로필 이미지 */
     width: 10rem;
     height: 10rem;
     border-radius:9999px;
+}
+.frame-img-button{ /*프로필 등록 수정 버튼 레이아웃*/
+    gap: 3px;
+    display: flex;
+    flex-direction: column;
 }
 /*이미지 업로드 버튼*/
 .input-file-button{
@@ -34,7 +39,7 @@
 }
 /* 이미지 수정 버튼 */
 .input-submit{
-    display: inline-block;
+    display: none;
     padding: 3px 10px;
     background-color:#FF9F29;
     border: none;

@@ -16,7 +16,9 @@
             </div>
         </div>
         <div class="frame-content-body">
-            <form class="form-content-body" action="/mypage/updateprofile" method="post">
+            <form
+                    class="form-content-body"
+                    th:onsubmit="return confirm('정말 수정하시겠습니까?');" action="/mypage/updateprofile" method="post">
                 <input type="hidden" name="userId" th:value="${userDTO.userId}"/>
                 <!-- 한줄 소개 -->
                 <div class="frame-oneline">
@@ -39,12 +41,20 @@
                     </textarea>
                 </div>
                 <div class="frame-bottom">
-                    <input class="button-submit" type="submit" value="수정하기"/>
+                    <input id="submitbutton" class="button-submit" type="submit" value="수정하기"/>
                 </div>
             </form>
         </div>
         <script th:inline="javascript">
             console.log("안녕");
+            /*
+            function updatechk(){
+                var chkresult = confirm("정말 수정하시겠습니까?);
+                if(chkresult){
+                    document.getElemen
+                }
+            }
+            */
         </script>
     </th:block>
 </body>
