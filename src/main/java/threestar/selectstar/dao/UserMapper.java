@@ -51,7 +51,7 @@ public interface UserMapper {
     public int getIdByName(String name);
 
     // 검색 - 회원 닉네임 검색
-    @Select("SELECT user_id, nickname, profile_photo, about_me "
+    @Select("SELECT user_id userId, nickname, profile_photo, about_me "
         + "FROM user WHERE nickname LIKE CONCAT('%', #{searchWord}, '%')")
     List<UserVO> searchUser(SearchDTO search);
 

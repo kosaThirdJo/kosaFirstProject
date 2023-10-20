@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Controller
-@RequestMapping("/meeting")
+@RequestMapping(value = {"/meeting", "meeting?category={category}"})
 public class MeetingController {
     final
     MeetingMapper meetingDao;
@@ -35,13 +35,21 @@ public class MeetingController {
 
     // 메인페이지
     @GetMapping("")
-    public String meetingMain(HttpSession session,@RequestParam(value = "page",required = false,defaultValue = "0") int page,Model model){
+    public String meetingMain(HttpSession session,@RequestParam(value = "page",required = false,defaultValue = "0") int page,Model model, @RequestParam(value = "category",required = false,defaultValue = "0") Integer category){
         // 세션으로
 //        Integer userId = null;
 //        if(session.getAttribute("user_id") != null){
 //            userId = (int) session.getAttribute("user_id");
 //        }
-        List<MeetingVO> allMeetingList = meetingDao.getAllMeetingList(page*12);
+
+        List<MeetingVO> allMeetingList = null;
+        System.out.println(category);
+        if(category == null){
+            allMeetingList = meetingDao.getAllMeetingList(page*12);
+        }else{
+            allMeetingList = meetingDao.getAllMeetingListByCategory(page*12, category);
+        }
+
         // 관심 분야 한곳에 넣기
         List<List<String>> interestListLang = new ArrayList<>();
         List<List<String>> interestListFrame = new ArrayList<>();

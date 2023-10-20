@@ -1,9 +1,11 @@
 /* 00 page 공통 적용 */
     html{
         line-height: 1.5;
+        height: 100%
     }
     body{
         margin: 0;
+        height: 100%
     }
 
     header {
@@ -12,7 +14,10 @@
         left: 0;
         right: 0;
     }
-
+    footer{
+        bottom : 0;
+        width: 100%;
+    }
 /* 01 header */
     .main-header{
         background-color: rgba(255, 255, 255, 1);
@@ -177,7 +182,10 @@
         min-width: 50%;
     }
 }
-
+.main-video{
+    margin: 80px 0 0;
+    text-align: center;
+}
 /*02 main content*/
 .main-content-container {
       gap: 50px;
@@ -395,12 +403,16 @@
   font-size: 15px;
   font-style: Regular;
   text-align: left;
-  font-family: NanumGothic;
   font-weight: 400;
   line-height: 20px;
   font-stretch: normal;
   text-decoration: none;
-  text-overflow : ellipsis;
+  height: 44px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 /* meeting - white box */
@@ -493,7 +505,11 @@
   text-decoration: none;
   margin: 10px auto;
   height: 50px;
-  text-overflow : ellipsis;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .main-left-content-bottom-meeting-white-deadline {

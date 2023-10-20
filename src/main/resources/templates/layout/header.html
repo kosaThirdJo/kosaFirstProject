@@ -33,15 +33,15 @@
                     <!-- 02-03 모임 리스트 -->
                     <div class="main-header-nav-meetinglist">
                         <!-- 02-03-01 스터디 -->
-                        <a th:href="@{/meeting/category=0}" class="main-header-nav-meetinglist-text">
+                        <a th:href="@{/meeting(category=0)}" class="main-header-nav-meetinglist-text">
                             <span>스터디</span>
                         </a>
                         <!-- 02-03-02 프로젝트 -->
-                        <a th:href="@{/meeting}" class="main-header-nav-meetinglist-text">
+                        <a th:href="@{/meeting(category=1)}" class="main-header-nav-meetinglist-text">
                             <span>프로젝트</span>
                         </a>
                         <!-- 02-03-03 기타 -->
-                        <a th:href="@{/meeting}" class="main-header-nav-meetinglist-text">
+                        <a th:href="@{/meeting(category=2)}" class="main-header-nav-meetinglist-text">
                             <span>기타</span>
                         </a>
                     </div>

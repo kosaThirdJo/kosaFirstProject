@@ -93,90 +93,92 @@
                 </div>
                 <!-- 결과 출력 시작 -->
                 <div class="search-filter-result">
-                    <th:block th:if="${searchMeetingResult != null || searchMeetingResult != ''}" th:each="meeting : ${searchMeetingResults}">
-                        <a th:href="@{/meeting/articles(id=${meeting.meetingId})}" class="search-filter-result-content">
-                            <!-- 01-02-01 white box -->
-                            <div class="main-left-content-bottom-meeting-white">
-                                <!-- white box - top -->
-                                <div class="main-left-content-bottom-meeting-white-top">
-                                    <!-- white box - top - category -->
-                                    <div class="main-left-content-bottom-meeting-white-top-category">
-                                        <!-- 0: 스터디, 1:프로젝트, 2: 기타 -->
-                                        <span class="main-left-content-bottom-meeting-white-top-text"
-                                              th:switch="${meeting.category}">
+                    <th:block th:if="${searchMeetingResults}">
+                        <th:block th:each="meeting : ${searchMeetingResults}">
+                            <a th:href="@{/meeting/articles(id=${meeting.meetingId})}" class="search-filter-result-content">
+                                <!-- 01-02-01 white box -->
+                                <div class="main-left-content-bottom-meeting-white">
+                                    <!-- white box - top -->
+                                    <div class="main-left-content-bottom-meeting-white-top">
+                                        <!-- white box - top - category -->
+                                        <div class="main-left-content-bottom-meeting-white-top-category">
+                                            <!-- 0: 스터디, 1:프로젝트, 2: 기타 -->
+                                            <span class="main-left-content-bottom-meeting-white-top-text"
+                                                  th:switch="${meeting.category}">
                                         <span th:case="0">스터디</span>
                                         <span th:case="1">프로젝트</span>
                                         <span th:case="2">기타</span>
                                     </span>
-                                    </div>
-                                    <!-- white box - top - status -->
-                                    <div class="main-left-content-bottom-meeting-white-top-status">
-                                        <!-- 0: 모집중, 1:모집완료 -->
-                                        <span class="main-left-content-bottom-meeting-white-top-text"
-                                              th:switch="${meeting.status}">
+                                        </div>
+                                        <!-- white box - top - status -->
+                                        <div class="main-left-content-bottom-meeting-white-top-status">
+                                            <!-- 0: 모집중, 1:모집완료 -->
+                                            <span class="main-left-content-bottom-meeting-white-top-text"
+                                                  th:switch="${meeting.status}">
                                         <span th:case="0">모집중</span>
                                         <span th:case="1">모집완료</span>
                                     </span>
-                                    </div>
-                                </div>
-
-                                <!-- white box - bottom -->
-                                <div class="main-left-content-bottom-meeting-white-bottom">
-                                    <!-- white box - location -->
-                                    <div class="main-left-content-bottom-meeting-white-location">
-                                        <div class="main-left-content-bottom-meeting-white-location-icon">
-                                            <img th:src="@{/image/global/location01.png}">
                                         </div>
-                                        <span class="main-left-content-bottom-meeting-white-location-text"
-                                              th:text="${meeting.location}"></span>
                                     </div>
 
-                                    <!-- white box - title -->
-                                    <div class="main-left-content-bottom-meeting-white-title"
-                                         th:text="${meeting.title}"></div>
-
-                                    <!-- whitebox - deadline -->
-                                    <div class="main-left-content-bottom-meeting-white-deadline">
-                                        <div class="main-left-content-bottom-meeting-white-deadline-icon">
-                                            <img th:src="@{/image/global/end_date01.png}">
+                                    <!-- white box - bottom -->
+                                    <div class="main-left-content-bottom-meeting-white-bottom">
+                                        <!-- white box - location -->
+                                        <div class="main-left-content-bottom-meeting-white-location">
+                                            <div class="main-left-content-bottom-meeting-white-location-icon">
+                                                <img th:src="@{/image/global/location01.png}">
+                                            </div>
+                                            <span class="main-left-content-bottom-meeting-white-location-text"
+                                                  th:text="${meeting.location}"></span>
                                         </div>
-                                        <span class="main-left-content-bottom-meeting-white-deadline-text">마감일</span>
-                                    </div>
 
-                                    <!-- whitebox - deadlineText -->
-                                    <span class="main-left-content-bottom-meeting-white-deadlineText"
-                                          th:text="${#temporals.format(meeting.applicationDeadline, 'yyyy. MM. dd')}">?</span>
-                                </div>
-                            </div>
+                                        <!-- white box - title -->
+                                        <div class="main-left-content-bottom-meeting-white-title"
+                                             th:text="${meeting.title}"></div>
 
-                            <!-- 01-02-02 yellow box -->
-                            <!-- yellowbox - now -->
-                            <div class="main-left-content-bottom-meeting-yellow-now">
-                                <!-- yellowbox - now - people -->
-                                <div class="main-left-content-bottom-meeting-yellow-now-people">
-                                    <div class="main-left-content-bottom-meeting-yellow-now-people-icon">
-                                        <img th:src="@{/image/global/member_count.png}">
-                                    </div>
-                                    <div class="main-left-content-bottom-meeting-yellow-now-people-text">
-                                        현재
-                                        <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt"
-                                              th:text="${meeting.applicationCount}">0</span>명이
-                                        참여중입니다!
+                                        <!-- whitebox - deadline -->
+                                        <div class="main-left-content-bottom-meeting-white-deadline">
+                                            <div class="main-left-content-bottom-meeting-white-deadline-icon">
+                                                <img th:src="@{/image/global/end_date01.png}">
+                                            </div>
+                                            <span class="main-left-content-bottom-meeting-white-deadline-text">마감일</span>
+                                        </div>
+
+                                        <!-- whitebox - deadlineText -->
+                                        <span class="main-left-content-bottom-meeting-white-deadlineText"
+                                              th:text="${#temporals.format(meeting.applicationDeadline, 'yyyy. MM. dd')}">?</span>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!--&lt;!&ndash; yellowbox - hashtag &ndash;&gt;
-                            <div class="main-left-content-bottom-meeting-yellow-hashtag">
-                                <div class="main-left-content-bottom-meeting-yellow-hashtag-text">
-                                    <span># Java</span>
-                                    <span># Spring</span>
-                                    <span># 백엔드</span>
+                                <!-- 01-02-02 yellow box -->
+                                <!-- yellowbox - now -->
+                                <div class="main-left-content-bottom-meeting-yellow-now">
+                                    <!-- yellowbox - now - people -->
+                                    <div class="main-left-content-bottom-meeting-yellow-now-people">
+                                        <div class="main-left-content-bottom-meeting-yellow-now-people-icon">
+                                            <img th:src="@{/image/global/member_count.png}">
+                                        </div>
+                                        <div class="main-left-content-bottom-meeting-yellow-now-people-text">
+                                            현재
+                                            <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt"
+                                                  th:text="${meeting.applicationCount}">0</span>명이
+                                            참여중입니다!
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>-->
-                        </a>
+
+                                <!--&lt;!&ndash; yellowbox - hashtag &ndash;&gt;
+                                <div class="main-left-content-bottom-meeting-yellow-hashtag">
+                                    <div class="main-left-content-bottom-meeting-yellow-hashtag-text">
+                                        <span># Java</span>
+                                        <span># Spring</span>
+                                        <span># 백엔드</span>
+                                    </div>
+                                </div>-->
+                            </a>
+                        </th:block>
                     </th:block>
-                    <th:block th:if="${searchMeetingResult == null || searchMeetingResult == ''}">
+                    <th:block th:if="${noResult}">
                         <div class="search-filter-result-none">
                             <div class="search-filter-result-none-result">
                                 <span class="search-filter-result-none-searchWord" th:text="${searchWord}"></span>에 대한 모임 결과가 없습니다.
@@ -204,18 +206,24 @@
             <div class="search-nickname-result">
                 <div class="search-nickname-title">회원</div>
                 <div class="search-nickname-content">
-                    <th:block th:if="${searchUserResults != null and not #lists.isEmpty(searchUserResults)}">
-                        <th:block th:each="user : ${searchUserResults}">
-                            <div class="search-nickname-info">
-                                <!-- !! 프로필 이미지 예정-->
-                                <img th:src="@{/image/home/profileImg.png}">
+                    <th:block th:if="${searchUserResults}">
+                        <th:block th:each="user, userStat : ${searchUserResults}">
+                            <a th:href="@{/mypage/profileinfo(id=${user.userId})}"  class="search-nickname-info">
+                                <th:block th:if="${encodeImgList[userStat.index]} != null">
+                                    <img class="search-user-profile-photo"
+                                         th:src="@{'data:image/png;base64,' + ${encodeImgList[userStat.index]}}" alt="Image">
+                                </th:block>
+                                <th:block th:if="${encodeImgList[userStat.index]} == null">
+                                    <img class="search-user-profile-photo"
+                                         th:src="@{/image/global/userdefaultimg.png}"/>
+                                </th:block>
                                 <span class="search-nickname-info-name" th:text="${user.nickname}">닉네임</span>
-                                <span class="search-nickname-info-about" th:text="${user.about_me != null} ? ${user.about_me} : '한줄평 없음'">한줄평</span>
-                            </div>
+                                <span class="search-nickname-info-about" th:text="${user.about_me}">한줄평</span>
+                            </a>
                         </th:block>
-                        <th:block th:unless="${searchUserResults != null and not #lists.isEmpty(searchUserResults)}">
-                            찾으시는 회원이 존재하지 않습니다.
-                        </th:block>
+                    </th:block>
+                    <th:block th:if="${noUser}">
+                        <div class="search-nickname-noUser">찾으시는 회원이 존재하지 않습니다.</div>
                     </th:block>
                 </div>
             </div>
