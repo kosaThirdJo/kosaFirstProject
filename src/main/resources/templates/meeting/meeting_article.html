@@ -134,11 +134,11 @@
     <article>
         <div id="profile" class="border border-dark">
             <div class="meeting-articles-profile">
-                <th:block th:if="${image} != null">
+                <th:block th:if="${!image.isEmpty()}">
                     <img class="meeting-articles-profile-photo"
                          th:src="@{'data:image/png;base64,' + ${image}}" alt="Image"><br/>
                 </th:block>
-                <th:block th:if="${image} == null">
+                <th:block th:if="${image.isEmpty()}">
                     <img style="width:5rem; height:5rem; border-radius:9999px;"
                          th:src="@{/image/global/userdefaultimg.png}"/><br/>
                 </th:block>
