@@ -1,63 +1,91 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
-      xmlns:data="http://www.w3.org/1999/xhtml">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" >
 <!--/* sidebar */-->
+<!--<link th:href="@{/css/sidebar.css}" rel="stylesheet" />-->
 <th:block th:fragment="sidebarFragment">
-    <style>
-        .profile-image{
-            width: 100%;
-
-        }
-        li {
-            list-style-type: none;
-        }
-        a{
-            text-decoration: none;
-            color: black;
-        }
-    </style>
     <aside>
         <!--/* profile Image */-->
-        <div class="profile-image">
-            <form action="/mypage/uploadprofileimg" enctype="multipart/form-data" method="post">
+        <div class="frame-profileinfo">
+            <form
+                    action="/mypage/uploadprofileimg"
+                    enctype="multipart/form-data"
+                    method="post"
+                    class="frame-profile">
                 <th:block th:if="${userDTO.profile_photo != null && !#strings.isEmpty(encodeImg)}">
-                    <img style="width:5rem; height:5rem; border-radius:9999px";
-                         th:src="@{'data:image/png;base64,' + ${encodeImg}}" alt="Image"><br/>
+                    <img class="profile-img"
+                         th:src="@{'data:image/png;base64,' + ${encodeImg}}"
+                         alt="Image"><br/>
                 </th:block>
                 <th:block th:if="${userDTO.profile_photo == null || #strings.isEmpty(encodeImg)}">
-                    <img style="width:5rem; height:5rem; border-radius:9999px;"
-                         th:src="@{/image/global/userdefaultimg.png}"/><br/>
+                    <img class="profile-img"
+                         th:src="@{/image/global/userdefaultimg.png}"
+                         alt="Image"/><br/>
                 </th:block>
-                <span>[[${userDTO.nickname}]]</span><br>
-                <span>[[${userDTO.email}]]</span><br>
+                <span class="text-nickname" th:text="${userDTO.nickname}"></span>
+                <span class="text-email" th:text="${userDTO.email}"></span>
                 <input type="hidden" name="userId" th:value="${userDTO.userId}"/>
-                <input type="file" name="profile_photo" accept=".jpg, .png"/>
-                <input type="submit" value="수정"/>
+                <div>
+                    <label class="input-file-button" for="inputImgFile">업로드</label>
+                    <input
+                            type="file"
+                            id="inputImgFile"
+                            name="profile_photo"
+                            accept=".jpg, .png"
+                            style= "display:none;"
+                            required/>
+                    <!--<input type="file" name="profile_photo" accept=".jpg, .png"/>-->
+                    <input
+                            class="input-submit"
+                            type="submit"
+                            value="수정"/>
+                </div>
             </form>
         </div>
         <!--/* Mypage Menu */-->
-        <h5>홈</h5>
-        <div>
-            <ul>
-                <li>
-                    <a th:href="@{/mypage/profile}">이력 관리</a>
-                </li>
-                <li>
-                    <a th:href="@{/mypage/myinfo}">개인 정보 수정</a>
-                </li>
-            </ul>
+        <div class="frame-sidemenu">
+            <div class="frame-sidemenu-home">
+                <span class="frame-sidemenu-title">내 정보 관리</span>
+                <div>
+                    <ul>
+                        <li class="side-menu-li">
+                            <a class="sidemenu-a" th:href="@{/mypage/profile}">이력 관리</a>
+                        </li>
+                        <li class="side-menu-li">
+                            <a class="sidemenu-a" th:href="@{/mypage/myinfo}">개인 정보 수정</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="frame-sidemenu-meeting">
+                <span class="frame-sidemenu-title">모임</span>
+                <div>
+                    <ul>
+                        <li class="side-menu-li">
+                            <a class="sidemenu-a" th:href="@{/mypage/mymeetinglist}">내가 만든 모임</a>
+                        </li>
+                        <li class="side-menu-li">
+                            <a class="sidemenu-a" th:href="@{/mypage/myapplymeetinglist}">내가 참여한 모임</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <h5>모임</h5>
-        <span>
-            <ul>
-                <li>
-                    <a th:href="@{/mypage/mymeetinglist}">내가 만든 모임</a>
-                </li>
-                <li>
-                    <a th:href="@{/mypage/myapplymeetinglist}">내가 참여한 모임</a>
-                </li>
-            </ul>
-        </span>
     </aside>
+    <script th:inline="javascript">
+        //이미지 수정 시 미리보기
+        function previewImg(event){
+            var input = event.target;
+            var reader = new FileReader();
+
+            reader.onload = function(){
+                var image = document.getElementsByClassName('profile-img');
+                image[0].src = reader.result;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+         // 파일 입력 상태 변경 감지
+        document.getElementById('inputImgFile').addEventListener('change', previewImg);
+    </script>
 </th:block>
 </html>

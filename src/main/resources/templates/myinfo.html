@@ -6,166 +6,207 @@
     <meta charset="UTF-8">
     <title>SELECT*</title>
     <link th:href="@{/css/myinfo.css}" rel="stylesheet" />
+    <link th:href="@{/css/sidebar.css}" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <th:block layout:fragment="content">
-        <h1>개인정보 수정</h1>
-        <div class="signup-content">
+        <div class="myinfoframe-content-title">
+            <div class="myinfocontent-title">
+                <span class="myinfocontent-title-text">개인정보 수정</span>
+            </div>
+        </div>
+        <div class="myinfo-content">
         <form action="/mypage/updateinfo" method="post">
             <input type="hidden" name="userId" th:value="${userDTO.userId}"/>
-            <div class="signup-input">
+            <div class="myinfo-input">
                 <!--  02-02-02 비밀번호  -->
-                <div class="signup-password">
-                    <span class="signup-text017"><span>비밀번호</span></span>
+                <div class="myinfo-password">
+                    <span class="myinfo-text017"><span>비밀번호</span></span>
                     <input
                             type="password"
                             name="password"
                             placeholder="최소 6자 이상(알파벳, 숫자 필수)"
-                            class="signup-input2"
+                            class="myinfo-input2"
                             required
                     />
                 </div>
                 <!--  02-02-03 이메일  -->
-                <div class="signup-email">
-                    <span class="signup-text017"><span>이메일</span></span>
+                <div class="myinfo-email">
+                    <span class="myinfo-text017"><span>이메일</span></span>
                     <input
                             type="email"
                             name="email"
                             th:value="${userDTO.email}"
                             placeholder="honggildong@select.com"
-                            class="signup-input3"
+                            class="myinfo-input3"
                     />
                 </div>
                 <!--  02-02-04 닉네임  -->
-                <div class="signup-nickname">
-                    <span class="signup-text017"><span>닉네임</span></span>
+                <div class="myinfo-nickname">
+                    <span class="myinfo-text017"><span>닉네임</span></span>
                     <input
                             type="text"
                             name="nickname"
                             th:value="${userDTO.nickname}"
                             placeholder="닉네임을 알파벳, 한글, 숫자를 20자 이하로 입력해주세요."
-                            class="signup-input4"
+                            class="myinfo-input4"
                     />
                 </div>
                 <!--  02-02-05 지역  -->
-                <div class="signup-location">
-                    <span class="signup-text017"><span>지역</span></span>
-                    <select name="location1" th:value="${userDTO.location1}" class="signup-geolocation1">
-                        <option class="signup-geolocation1" th:selected="${userDTO.location1}=='seoul'">서울</option>
-                        <option class="signup-geolocation1" th:selected="${userDTO.location1}=='busan'">부산</option>
-                    </select>
+                <div class="myinfo-location">
+                    <span class="myinfo-text017"><span>지역</span></span>
+                    <div class="myinfo-location-content">
+                        <input
+                                th:value="${userDTO.location1}"
+                                type="text" name="location1" placeholder="현재 지역을 인증해주세요."
+                                class="myinfo-input5" id="locationInput" readonly
+                        />
+                        <button type="button" class="myinfo-locationbtnbutton">
+                            <span class="myinfo-text025"><span>지역 인증</span></span>
+                        </button>
+                    </div>
                 </div>
                 <!--  02-02-06 관심 분야  -->
-                <div class="signup-interest">
-                    <span class="signup-text017"><span>관심 분야</span></span>
-                    <div class="signup-interest-container">
+                <div class="myinfo-interest">
+                    <span class="myinfo-text017"><span>관심 분야</span></span>
+                    <div class="myinfo-interest-container">
                         <!--  02-02-06-01 언어  -->
-                        <div class="signup-interest-content">
-                            <span class="signup-interest-text"><span>언어</span></span>
-                            <div class="signup-select">
+                        <div class="myinfo-interest-content">
+                            <span class="myinfo-interest-text"><span>언어</span></span>
+                            <div class="myinfo-select">
                                 <input type="hidden" name="interest_language" id="selected-interests-lang" value="">
-                                <button type="button" class="signup-interest-lang-btn" value="Java">Java</button>
-                                <button type="button"  class="signup-interest-lang-btn" value="Python">Python</button>
-                                <button type="button"  class="signup-interest-lang-btn" value="C">C</button>
-                                <button type="button"  class="signup-interest-lang-btn" value="C++">C++</button>
-                                <button type="button"  class="signup-interest-lang-btn" value="C#">C#</button>
-                                <button type="button"  class="signup-interest-lang-btn" value="JavaScript">JavaScript</button>
+                                <button type="button" class="myinfo-interest-lang-btn" value="Java">Java</button>
+                                <button type="button"  class="myinfo-interest-lang-btn" value="Python">Python</button>
+                                <button type="button"  class="myinfo-interest-lang-btn" value="C">C</button>
+                                <button type="button"  class="myinfo-interest-lang-btn" value="C++">C++</button>
+                                <button type="button"  class="myinfo-interest-lang-btn" value="C#">C#</button>
+                                <button type="button"  class="myinfo-interest-lang-btn" value="JavaScript">JavaScript</button>
                             </div>
                         </div>
 
                         <!--  02-02-06-02 프레임워크  -->
-                        <div class="signup-interest-content">
-                            <span class="signup-interest-text"><span>프레임워크</span></span>
-                            <div class="signup-select">
+                        <div class="myinfo-interest-content">
+                            <span class="myinfo-interest-text"><span>프레임워크</span></span>
+                            <div class="myinfo-select">
                                 <input type="hidden" name="interest_framework" id="selected-interests-fw" value="">
-                                <button type="button" class="signup-interest-fw-btn" value="Spring">Spring</button>
-                                <button type="button"  class="signup-interest-fw-btn" value="Django">Django</button>
-                                <button type="button"  class="signup-interest-fw-btn" value="Flask">Flask</button>
-                                <button type="button"  class="signup-interest-fw-btn" value="Vue.js">Vue.js</button>
-                                <button type="button"  class="signup-interest-fw-btn" value="Laravel">Laravel</button>
+                                <button type="button" class="myinfo-interest-fw-btn" value="Spring">Spring</button>
+                                <button type="button"  class="myinfo-interest-fw-btn" value="Django">Django</button>
+                                <button type="button"  class="myinfo-interest-fw-btn" value="Flask">Flask</button>
+                                <button type="button"  class="myinfo-interest-fw-btn" value="Vue.js">Vue.js</button>
+                                <button type="button"  class="myinfo-interest-fw-btn" value="Laravel">Laravel</button>
                             </div>
                         </div>
 
                         <!--  02-02-06-01 직무  -->
-                        <div class="signup-interest-content">
-                            <span class="signup-interest-text"><span>직무</span></span>
-                            <div class="signup-select">
+                        <div class="myinfo-interest-content">
+                            <span class="myinfo-interest-text"><span>직무</span></span>
+                            <div class="myinfo-select">
                                 <input type="hidden" name="interest_job" id="selected-interests-job" value="">
-                                <button type="button" class="signup-interest-job-btn" value="front">프론트엔드</button>
-                                <button type="button"  class="signup-interest-job-btn" value="back">백엔드</button>
-                                <button type="button"  class="signup-interest-job-btn" value="full">풀스택</button>
-                                <button type="button"  class="signup-interest-job-btn" value="android">Android</button>
-                                <button type="button"  class="signup-interest-job-btn" value="IOS">IOS</button>
-                                <button type="button"  class="signup-interest-job-btn" value="designer">디자이너</button>
+                                <button type="button" class="myinfo-interest-job-btn" value="front">프론트엔드</button>
+                                <button type="button"  class="myinfo-interest-job-btn" value="back">백엔드</button>
+                                <button type="button"  class="myinfo-interest-job-btn" value="full">풀스택</button>
+                                <button type="button"  class="myinfo-interest-job-btn" value="android">Android</button>
+                                <button type="button"  class="myinfo-interest-job-btn" value="IOS">IOS</button>
+                                <button type="button"  class="myinfo-interest-job-btn" value="designer">디자이너</button>
                             </div>
                         </div>
 
                     </div>
                 </div>
-
             </div>
-            <input type="submit" value="수정하기"/>
+            <div class="frame-bottom">
+                <input class="button-submit" type="submit" value="수정하기"/>
+            </div>
         </form>
         </div>
-        <script>
+        <script th:inline="javascript">
+
+            // 지역
+            document.addEventListener('DOMContentLoaded', function() {
+                const locationInput = document.getElementById('locationInput');
+                const locationButton = document.querySelector('.myinfo-locationbtnbutton');
+
+                locationButton.addEventListener('click', function(event) {
+                    event.preventDefault(); // 버튼 클릭 시 폼 제출 막음
+
+                    var apiKey = [[${apiKey}]];
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            var x = position.coords.longitude;
+                            var y = position.coords.latitude;
+                            if (x && y) {
+                                axios.get(
+                                    `https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${x}&y=${y}`,
+                                    {headers:{Authorization:`KakaoAK ${apiKey}`}}
+                                ).then((result) => {
+                                    console.log(result.data);
+                                    console.log(result.data.documents[0].region_1depth_name);
+                                    var location = result.data.documents[0].region_1depth_name;
+                                    locationInput.value = location;
+                                    locationInput.placeholder = location;
+                                })
+                            }
+                        });
+                    } else {
+                        alert('브라우저가 위치 정보를 지원하지 않습니다.');
+                    }
+                });
+            });
             // 언어
-            const interestLangButtons = document.querySelectorAll('.signup-interest-lang-btn');
+            const interestLangButtons = document.querySelectorAll('.myinfo-interest-lang-btn');
             const selectedInterestsLangInput = document.getElementById('selected-interests-lang');
             let selectedInterestsLang = [];
             selectInterests(interestLangButtons, selectedInterestsLang, selectedInterestsLangInput);
             // 프레임워크
-            const interestFwButtons = document.querySelectorAll('.signup-interest-fw-btn');
+            const interestFwButtons = document.querySelectorAll('.myinfo-interest-fw-btn');
             const selectedInterestsFwInput = document.getElementById('selected-interests-fw');
             let selectedInterestsFw = [];
             selectInterests(interestFwButtons, selectedInterestsFw, selectedInterestsFwInput);
             // 직무
-            const interestJobButtons = document.querySelectorAll('.signup-interest-job-btn');
+            const interestJobButtons = document.querySelectorAll('.myinfo-interest-job-btn');
             const selectedInterestsJobInput = document.getElementById('selected-interests-job');
             let selectedInterestsJob = [];
             selectInterests(interestJobButtons, selectedInterestsJob, selectedInterestsJobInput);
 
-            console.log("[[${userDTO.interest_language}]]");
-            console.log("[[${userDTO.interest_framework}]]");
-            console.log("[[${userDTO.interest_job}]]");
-
             //언어 문자열에서 "_"을 제외한 문자열 배열 생성 후 배열에서 "" 삭제
-            let langarr = "[[${userDTO.interest_language}]]".split("_");
+            let langarr = [[${userDTO.interest_language}]].split("_");
             let langs = langarr.filter((element) => element !== "");
             //프레임워크
-            let fwarr = "[[${userDTO.interest_framework}]]".split("_");
+            let fwarr = [[${userDTO.interest_framework}]].split("_");
             let fws = fwarr.filter((element) => element !== "");
             //직무
-            let jobarr = "[[${userDTO.interest_job}]]".split("_");
+            let jobarr = [[${userDTO.interest_job}]].split("_");
             let jobs = jobarr.filter((element) => element !== "");
 
             //관심분야(언어, 프레임워크, 직무) 기존 데이터 화면 출력
             window.onload = function(){
                 //관심 언어
-                let langButtons = document.querySelectorAll('.signup-interest-lang-btn');
+                let langButtons = document.querySelectorAll('.myinfo-interest-lang-btn');
                 for(let lang of langs){
                     for(let langBtn of langButtons){
                         if(lang == langBtn.value){
-                           langBtn.className = "signup-interest-lang-btn selected";
+                           langBtn.className = "myinfo-interest-lang-btn selected";
                            selectedInterestsLang.push(langBtn.value);
                         }
                     }
                 }
                 //관심 프레임워크
-                let fwButtons = document.querySelectorAll('.signup-interest-fw-btn');
+                let fwButtons = document.querySelectorAll('.myinfo-interest-fw-btn');
                 for(let fw of fws){
                     for(let fwBtn of fwButtons){
                         if(fw == fwBtn.value){
-                            fwBtn.className = "signup-interest-fw-btn selected";
+                            fwBtn.className = "myinfo-interest-fw-btn selected";
                             selectedInterestsFw.push(fwBtn.value);
                         }
                     }
                 }
                 //관심 직무
-                let jobButtons = document.querySelectorAll('.signup-interest-job-btn');
+                let jobButtons = document.querySelectorAll('.myinfo-interest-job-btn');
                 for(let job of jobs){
                     for(let jobBtn of jobButtons){
                         if(job == jobBtn.value){
-                            jobBtn.className ="signup-interest-job-btn selected";
+                            jobBtn.className ="myinfo-interest-job-btn selected";
                             selectedInterestsJob.push(jobBtn.value);
                         }
                     }
@@ -185,10 +226,12 @@
                         }
                         selectedInterestsInput.value = selectedInterests.join('_');
                         button.classList.toggle('selected');  // 버튼 상태 토글
-                        //선택된 버튼은 class가 signup-interest-lang-btn selected 됨
+                        //선택된 버튼은 class가 myinfo-interest-lang-btn selected 됨
                     });
                 });
             }
+
+
         </script>
     </th:block>
 </body>

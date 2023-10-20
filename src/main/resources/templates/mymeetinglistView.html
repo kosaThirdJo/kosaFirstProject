@@ -5,17 +5,32 @@
 <head>
     <meta charset="UTF-8">
     <title>SELECT*</title>
+    <link th:href="@{/css/sidebar.css}" rel="stylesheet" />
     <link th:href="@{/css/mymeetinglistView.css}" rel="stylesheet" />
+    <style>
+        li{
+            list-style-type: none;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+    </style>
 </head>
 <body>
     <th:block layout:fragment="content">
-        <h1>내가 만든 모임 - 내가 작성한 글 목록</h1>
-        <div class="mymeeting-body">
+        <div class="frame-mymeeting-title">
+            <div class="mymeeting-title">
+                <span class="mymeeting-title-text">내가 만든 모임 - 내가 작성한 글 목록</span>
+            </div>
+        </div>
+        <div class="frame-mymeeting-body">
             <!-- 카테고리(전체, 프로젝트, 스터디, 기타)    메뉴 -->
             <div class="search-filter">
                 <ul class="search-categry">
                     <li class="e-category">
-                        <button th:onclick="location.href='/mypage/mymeetinglist'" class="button-category">전체</button>
+                        <button
+                                th:onclick="location.href='/mypage/mymeetinglist'" class="button-category">전체</button>
                     </li>
                     <li class="e-category">
                         <button th:onclick="location.href='/mypage/mymeetinglist/1'" value="1"  class="button-category">프로젝트</button>
@@ -34,13 +49,13 @@
                 <div class="list-container-header">
                     <ul class="search-filter-select">
                         <li class="e-status">
-                            <button class="search-filter-select-btn-selected">전체</button>
+                            <button class="search-filter-select-btn">전체</button>
                         </li>
                         <li class="e-status">
-                            <button class="search-filter-select-btn-nonselected">모집중</button>
+                            <button class="search-filter-select-btn">모집중</button>
                         </li>
                         <li class="e-status">
-                            <button class="search-filter-select-btn-nonselected">모집완료</button>
+                            <button class="search-filter-select-btn">모집완료</button>
                         </li>
                     </ul>
                 </div>
@@ -49,29 +64,27 @@
                     <!--/* 조회 결과(meetingvoList)가 있을 경우 */-->
                     <th:block th:if="${meetingvoList}">
                         <ul class="mymeeting-list">
-                            <li th:each="meetingvo : ${meetingvoList}" th:withclass="mymeeting-container">
+                            <li th:each="meetingvo : ${meetingvoList}" class="mymeeting-container">
                                 <a th:href="@{/meeting/articles(id=${meetingvo.meetingId})}" class="click-meetingpost">
                                 <div class="meetinginfo">
                                     <!-- 게시글 항목 status & title-->
                                     <div class="meeting-title">
-                                        <div class="meeting-status">
-                                            <span th:switch="${meetingvo.status}" class="">
-                                                <span th:case="0">모집중</span>
-                                                <span th:case="1">모집완료</span>
-                                            </span>
+                                        <div class="meeting-status" th:switch="${meetingvo.status}">
+                                            <div class="meeting-status-text-ing" th:case="0">모집중</div>
+                                            <div class="meeting-status-text" th:case="1">모집완료</div>
                                         </div>
-                                        <div class="meeting-category">
-                                            <span th:switch="${meetingvo.category}" class="">
-                                                <span th:case="0">스터디</span>
-                                                <span th:case="1">프로젝트</span>
-                                                <span th:case="2">기타</span>
-                                            </span>
+                                        <div class="meeting-category" th:switch="${meetingvo.category}">
+                                            <div class="meeting-category-text" th:case="0">스터디</div>
+                                            <div class="meeting-category-text" th:case="1">프로젝트</div>
+                                            <div class="meeting-category-text" th:case="2">기타</div>
                                         </div>
-                                        <h3 class="title-text">[[${meetingvo.title}]]</h3>
+                                        <div class="meeting-title-div">
+                                            <div class="meeting-title-text" th:text="${meetingvo.title}"></div>
+                                        </div>
                                     </div>
                                     <!--게시글 항목 내용-->
                                     <div class="meeting-body">
-                                        <p class="meeting-body-content">[[${meetingvo.description}]]</p>
+                                        <p class="meeting-body-content" th:text="${meetingvo.description}"></p>
                                     </div>
                                     <!--게시글 항목 하단-->
                                     <div class="meeting-footer">

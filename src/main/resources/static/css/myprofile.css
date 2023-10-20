@@ -1,0 +1,159 @@
+
+.frame-content-title{ /* content title div (이력관리) */
+    width: 100%;
+    padding: 5px 10px;
+}
+.content-title{  /*title */
+    width: 100%;
+    height: 30px;
+    gap: 30px;
+    display: flex;
+    padding: 20px 25px;
+    overflow: hidden;
+    align-self: stretch;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(26, 77, 46, 1);
+}
+.content-title-text{ /*이력관리 span */
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 30px;
+  font-style: Bold;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 700;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.frame-content-body {
+    width: 90%;
+    padding: 30px 5%;
+    margin: auto;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    flex-shrink: 0;
+    flex-direction: column;
+    justify-content: center;
+}
+.form-content-body{
+    width: 100%;
+    gap: 10px;
+}
+.frame-oneline{
+  gap: 10px;
+  width: 90%;
+  height: 100px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: center;
+}
+.frame-oneline-titletext, .frame-profilecontent-titletext {
+  color: rgba(0, 0, 0, 1);
+  height: auto;
+  font-size: 20px;
+  align-self: stretch;
+  font-style: Regular;
+  text-align: left;
+  font-family: NanumGothic;
+  font-weight: 400;
+  line-height: normal;
+  font-stretch: normal;
+  text-decoration: none;
+}
+.input-oneline{
+    width: 80%;
+    height: 40px;
+    border-radius : 5px;
+    gap: 10px;
+    color: black;
+    display: flex;
+    padding: 0 10px;
+    overflow: hidden;
+    font-size: 18px;
+    align-self: stretch;
+    text-align: left;
+    align-items: center;
+    flex-shrink: 0;
+    font-family: NanumGothic;
+    font-weight: 400;
+    border-color: rgba(145, 143, 143, 1);
+    border-style: solid;
+    border-width: 1px;
+}
+.frame-profilecontent{
+  gap: 10px;
+  width: 90%;
+  height: 500px;
+  margin-top: 20px;
+  display: flex;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: center;
+}
+.input-profilecontent{
+    width: 80%;
+    border-radius : 5px;
+    height: 400px;
+    gap: 10px;
+    color: black;
+    display: flex;
+    padding: 5px 10px;
+    overflow: hidden;
+    font-size: 18px;
+    align-self: stretch;
+    text-align: left;
+    align-items: center;
+    flex-shrink: 0;
+    font-family: NanumGothic;
+    font-weight: 400;
+    border-color: rgba(145, 143, 143, 1);
+    border-style: solid;
+    border-width: 1px;
+    resize: none;
+    outline: none;
+}
+.frame-bottom{
+    width: 90%;
+    height: 70px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    align-items: flex-start;
+    flex-shrink: 0;
+    justify-content:center;
+}
+.button-submit{
+  gap: 10px;
+  width: 100px;
+  height: 40px;
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 8px;
+  justify-content: center;
+  background-color: rgba(255, 159, 41, 1);
+  color: rgba(250, 243, 227, 1);
+  font-size: 20px;
+  font-style: Semi Bold;
+  text-align: center;
+  font-family: NanumGothic;
+  font-weight: 700;
+  font-stretch: normal;
+  text-decoration: none;
+  cursor: pointer;
+}
