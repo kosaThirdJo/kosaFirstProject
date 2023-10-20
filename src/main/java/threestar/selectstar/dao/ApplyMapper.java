@@ -12,4 +12,7 @@ public interface ApplyMapper {
     boolean insertComment(ApplyVO applyVo);
     @Select("select count(*) from apply where meeting_id = #{meetingId} group by meeting_id")
     Integer countApplyByMeetingId(int meetingId);
+    @Select("select count(*) from apply where user_id = #{userId} and meeting_id = #{meetingId}")
+    Integer countApplyByMeetingIDAndUserId(ApplyVO applyVO);
+
 }
