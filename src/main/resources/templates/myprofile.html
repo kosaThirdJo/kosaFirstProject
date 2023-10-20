@@ -18,7 +18,9 @@
         <div class="frame-content-body">
             <form
                     class="form-content-body"
-                    th:onsubmit="return confirm('정말 수정하시겠습니까?');" action="/mypage/updateprofile" method="post">
+                    th:onsubmit="return confirm('정말 수정하시겠습니까?');"
+                    action="/mypage/updateprofile"
+                    method="post">
                 <input type="hidden" name="userId" th:value="${userDTO.userId}"/>
                 <!-- 한줄 소개 -->
                 <div class="frame-oneline">
