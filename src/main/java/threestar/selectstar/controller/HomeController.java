@@ -1,5 +1,7 @@
 package threestar.selectstar.controller;
 
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,13 +51,30 @@ public class HomeController {
 
 		// 모임 검색
 		List<MeetingVO> searchMeetingResults = meetingDao.searchMeetings(searchdto);
-		model.addAttribute("searchMeetingResults", searchMeetingResults);
+		if(searchMeetingResults.size() != 0){
+			model.addAttribute("searchMeetingResults", searchMeetingResults);
+		}else{
+			model.addAttribute("noResult", searchMeetingResults);
+		}
 
 		// 회원 검색
 		List<UserVO> searchUserResults = userDao.searchUser(searchdto);
-		model.addAttribute(("searchUserResults"), searchUserResults);
-		System.out.println(searchUserResults);
+		if(searchUserResults.size() != 0){
+			model.addAttribute("searchUserResults", searchUserResults);
 
+			List<String> encodeImgList = new ArrayList<>();
+			for (UserVO user : searchUserResults) {
+				if (user.getProfile_photo() != null) {
+					String encodeImg = Base64.getEncoder().encodeToString(user.getProfile_photo());
+					encodeImgList.add(encodeImg);
+				} else {
+					encodeImgList.add(null);
+				}
+			}
+			model.addAttribute("encodeImgList", encodeImgList);
+		}else{
+			model.addAttribute("noUser", searchUserResults);
+		}
 		return "search";
 	}
 
@@ -87,11 +106,9 @@ public class HomeController {
 			(languages != null && !languages.isEmpty()) ||
 			(frameworks != null && !frameworks.isEmpty()) ||
 			(jobs != null && !jobs.isEmpty())) {
-			System.out.println("filter");
 			// 모임 검색 - 필터링
 			searchMeetingResults = meetingDao.selectMeetingsByFilter(searchdto);
 		} else {
-			System.out.println("non");
 			// 모임 검색 - 제목만
 			searchMeetingResults = meetingDao.searchMeetings(searchdto);
 			System.out.println(searchMeetingResults);

@@ -11,14 +11,14 @@ body{
 }
 .search-result {
   gap: 44px;
-  width: 1168px;
   display: flex;
-  padding: 60px 0 40px;
+  padding: 120px 0;
   overflow: hidden;
   align-items: center;
   flex-shrink: 0;
   flex-direction: column;
   justify-content: center;
+  width: 90%;
 }
 .search-title {
   gap: 10px;
@@ -30,26 +30,14 @@ body{
 }
 .search-title-word {
   color: rgba(255, 159, 41, 1);
-  height: auto;
   font-size: 30px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 .search-title-result {
   color: rgba(0, 0, 0, 1);
-  height: auto;
   font-size: 30px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 .search-meeting-result {
@@ -97,10 +85,7 @@ body{
   height: auto;
   font-size: 30px;
   text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 .search-filter-btn {
@@ -133,12 +118,7 @@ body{
   color: rgba(0, 0, 0, 1);
   height: auto;
   font-size: 15px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 .search-filter-btn-dropdown {
@@ -192,12 +172,7 @@ body{
   width: 95px;
   height: auto;
   font-size: 20px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 .search-filter-select-category {
@@ -224,12 +199,7 @@ body{
   color: rgba(84, 82, 82, 1);
   height: auto;
   font-size: 15px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 
@@ -273,25 +243,10 @@ body{
   color: rgba(0, 0, 0, 1);
   height: auto;
   font-size: 15px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
-.search-filter-result {
-  gap: 30px 60px;
-  display: flex;
-  padding: 10px;
-  overflow: hidden;
-  align-items: center;
-  flex-shrink: 0;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-}
+
 /* 검색 더보기 */
 .search-morebtn {
   gap: 10px;
@@ -339,6 +294,7 @@ body{
   flex-direction: column;
   justify-content: center;
   background-color: rgba(255, 255, 255, 1);
+  font-family: NanumGothic;
 }
 .search-nickname-title {
   gap: 10px;
@@ -360,7 +316,6 @@ body{
   text-decoration: none;
 }
 .search-nickname-content {
-  gap: 40px;
   display: flex;
   padding: 20px 10px;
   overflow: hidden;
@@ -369,9 +324,10 @@ body{
   align-items: center;
   flex-shrink: 0;
 }
+
 .search-nickname-info {
   gap: 13px;
-  width: 25%;
+  width: 20%;
   display: flex;
   padding: 20px;
   overflow: hidden;
@@ -381,11 +337,13 @@ body{
   border-radius: 10px;
   flex-direction: column;
   background-color: rgba(252, 243, 234, 1);
-  margin: 10px;
+  margin: 20px calc(2.5%);
+  text-decoration: none;
 }
-.search-profiel-profileImg {
-  width: 87px;
-  height: 87px;
+.search-user-profile-photo{
+width:5rem;
+height:5rem;
+border-radius:9999px;
 }
 .search-nickname-info-name {
   color: rgba(0, 0, 0, 1);
@@ -401,7 +359,7 @@ body{
 }
 .search-nickname-info-about {
   color: rgba(95, 91, 91, 1);
-  height: auto;
+  height: 50px;
   font-size: 14px;
   font-style: Bold;
   text-align: left;
@@ -411,11 +369,23 @@ body{
   font-stretch: normal;
   text-decoration: none;
 }
-
+.search-nickname-noUser{
+margin: 0 auto;
+}
 
 
 /*모임 결과 출력*/
-.main-left-content-bottom-meeting {
+.search-filter-result {
+  display: flex;
+  padding: 10px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.search-filter-result-content {
   gap: 10px;
   display: flex;
   padding: 23px;
@@ -426,6 +396,35 @@ body{
   flex-direction: column;
   background-color: rgba(250, 243, 227, 1);
   width: 25%;
+  text-decoration: none;
+  margin: 20px calc(4%);
+}
+/* 모임 검색 결과 없음*/
+.search-filter-result-none{
+margin: 0 auto;
+text-align: center;
+font-size: 18px;
+}
+.search-filter-result-none-result{
+font-size: 20px;
+margin: 10px;
+}
+.search-filter-result-none-searchWord{
+font-weight: 700;
+color: #FF9F29;
+}
+.search-filter-result-none-btn{
+margin: 40px;
+}
+.search-filter-result-none-meetingbtn{
+text-decoration: none;
+background-color: #1A4D2E;
+color: white;
+padding: 15px 40px;
+border-radius: 20px;
+}
+.search-filter-result-none-meetingbtn:hover{
+background-color: rgb(44, 125, 75);
 }
 /* meeting - white box */
 .main-left-content-bottom-meeting-white {
@@ -498,7 +497,6 @@ body{
   font-size: 11px;
   font-style: Bold;
   text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
   line-height: normal;
   font-stretch: normal;
@@ -507,17 +505,20 @@ body{
 /* whitebox - bottom - title */
 .main-left-content-bottom-meeting-white-title {
   color: rgba(0, 0, 0, 1);
-  height: auto;
   font-size: 18px;
   text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
   line-height: 22px;
   font-stretch: normal;
   text-decoration: none;
   margin: 10px auto;
-  height: 50px;
+  height: 44px;
   text-overflow : ellipsis;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .main-left-content-bottom-meeting-white-deadline {
@@ -544,21 +545,11 @@ body{
   text-align: left;
   font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
 }
 .main-left-content-bottom-meeting-white-deadlineText {
   color: rgba(0, 0, 0, 1);
   height: auto;
   font-size: 12px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
 }
 
 
@@ -591,15 +582,7 @@ body{
 
 .main-left-content-bottom-meeting-yellow-now-people-text {
   color: rgba(0, 0, 0, 1);
-  height: auto;
   font-size: 13px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
 }
 .main-left-content-bottom-meeting-yellow-now-people-text-cnt {
   color: rgba(255, 159, 41, 1);
@@ -628,15 +611,8 @@ body{
 }
 .main-left-content-bottom-meeting-yellow-now-info-view-cnt, .main-left-content-bottom-meeting-yellow-now-info-reply-cnt {
   color: rgba(0, 0, 0, 1);
-  height: auto;
   font-size: 13px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
 }
 
 /* yellow - hashtag */
@@ -650,14 +626,9 @@ body{
 }
 .main-left-content-bottom-meeting-yellow-hashtag-text {
   color: rgba(26, 77, 46, 1);
-  height: auto;
   font-size: 13px;
   text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
 }
 .main-left-content-bottom-meeting-yellow-hashtag-text span{
   margin-right: 10px;

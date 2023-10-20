@@ -14,6 +14,9 @@ public interface MeetingMapper {
     // 모든 미팅 조회 상태가 2(삭제면) 조회안함 , 10글자 이상시 생략 후 ... 붙임
     @Select("select meeting_id meetingId, user_id userId, if(CHAR_LENGTH(title) > 10,concat(substr(title,1,10),'...'),title) as title, category, status, application_deadline applicationDeadline, views, recruitment_count recruitmentCount, application_count applicationCount, location, description, creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where is_delete = 0 order by meeting_id desc limit 12 offset #{offset}")
     List<MeetingVO> getAllMeetingList(int offset);
+    // 카테고리 별로 모든 미팅 조회
+    @Select("select meeting_id meetingId, user_id userId, if(CHAR_LENGTH(title) > 10,concat(substr(title,1,10),'...'),title) as title, category, status, application_deadline applicationDeadline, views, recruitment_count recruitmentCount, application_count applicationCount, location, description, creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where is_delete = 0 and category= #{category} order by meeting_id desc limit 12 offset #{offset}")
+    List<MeetingVO> getAllMeetingListByCategory(@Param("offset") int offset, @Param("category") int category);
     // 단건 미팅 조회 상태가 2(삭제면) 조회안함
     @Select("select meeting_id meetingId, user_id userId, title,category,status,application_deadline applicationDeadline,views,recruitment_count recruitmentCount,application_count applicationCount,location,description,creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where meeting_id= #{meetingId} and is_delete = 0")
     MeetingDTO getMeetingArticleById(int meetingId);
@@ -30,16 +33,20 @@ public interface MeetingMapper {
     @Update("update meeting set is_delete= 1 where meeting_id=#{meetingId}")
     boolean deleteMeeting(@Param("meetingId") int meetingId);
     // 메인 - 최신글 조회 (ORDER BY) (현재는 4개만 출력)
-    @Select("SELECT * FROM meeting ORDER BY creation_date DESC LIMIT 4")
+    @Select("SELECT meeting_id meetingId, title, status, location, application_deadline applicationDeadline, application_count applicationCount, views "
+        + "FROM meeting WHERE is_delete = 0 ORDER BY creation_date DESC LIMIT 4")
     List<MeetingVO> getLatestMeetings();
 
     // 메인 - 인기글 조회 (RANK) : 최근 일주일간 올라온 글 중에서 조회수 높은 것 10개
-    @Select("SELECT meeting_id meetingId, title FROM meeting WHERE DATEDIFF(NOW(), creation_date) <= 7 ORDER BY views DESC LIMIT 10")
+    @Select("SELECT meeting_id meetingId, title FROM meeting "
+        + "WHERE DATEDIFF(NOW(), creation_date) <= 7 AND is_delete = 0 "
+        + "ORDER BY views DESC LIMIT 10")
     List<MeetingVO> getPopularMeetings();
 
     // 검색 - 모임글 검색 (제목 일치)
     @Select("SELECT meeting_id meetingId, title, category, status, application_deadline applicationDeadline, application_count applicationCount, location "
-        + "FROM meeting WHERE title LIKE CONCAT('%', #{searchWord}, '%')")
+        + "FROM meeting WHERE title LIKE CONCAT('%', #{searchWord}, '%') AND is_delete = 0 "
+        + "ORDER BY creation_date DESC")
     List<MeetingVO> searchMeetings(SearchDTO search);
 
     // 검색 - 모임글 검색 (필터링 적용)
@@ -48,7 +55,7 @@ public interface MeetingMapper {
         "SELECT meeting_id meetingId, title, category, status, application_deadline applicationDeadline,",
         "application_count applicationCount, location",
         "FROM meeting",
-        "WHERE title LIKE CONCAT('%', #{searchWord}, '%')",
+        "WHERE title LIKE CONCAT('%', #{searchWord}, '%') AND is_delete = 0 " ,
         "<if test='searchCategory != null and !searchCategory.isEmpty()'>",
         "   AND category IN",
         "   <foreach collection='searchCategory' item='ct' open='(' separator=',' close=')'>",
@@ -76,6 +83,7 @@ public interface MeetingMapper {
         "       </foreach>",
         "   )",
         "</if>",
+        " ORDER BY creation_date DESC",
         "</script>"
     })
     List<MeetingVO> selectMeetingsByFilter(SearchDTO search);

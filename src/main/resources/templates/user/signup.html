@@ -12,98 +12,116 @@
     <div class="signup-content">
         <!--      01 상단 텍스트 : 로고, 설명 -->
         <div class="signup-top">
-            <div class="signup-logo">
-                    <span class="signup-text">
-                        <span class="signup-text001">SELECT</span>
-                        <span class="signup-text002">*</span>
-                    </span>
-            </div>
-            <span class="signup-text003">
-                    <span>SELECT *에 오신것을 환영합니다.</span>
-                </span>
-            <span class="signup-text005">
-                    <span>SELECT *는 개발자를 위한 모임 커뮤니티입니다.</span>
-                </span>
+            <a th:href="@{/}" class="signup-top-logo">
+                  <span class="signup-top-logo-text">
+                      SELECT <span class="signup-top-logo-text-star">*</span>
+                  </span>
+            </a>
+            <span class="signup-top-intro1">
+                  <span>SELECT*에 오신것을 환영합니다.</span>
+              </span>
+            <span class="signup-top-intro2">
+                  <span>SELECT*는 개발자를 위한 모임 커뮤니티입니다.</span>
+              </span>
         </div>
 
         <!--       02 입력 폼-->
-        <div class="signup-selectsignup">
+        <div class="signup-form">
 
             <!--  02-01 회원 가입 문구  -->
-            <span class="signup-text-notification">
-                  <span>회원가입에 필요한 기본정보를 입력해주세요.</span>
-                </span>
+            <!-- <div class="signup-form-title">
+              <hr>
+              <span>회원가입에 필요한 기본정보를 입력해주세요.</span>
+            </div> -->
+
 
             <!--  02-02 회원 가입 form  -->
-            <form action="/signup" method="post">
-                <div class="signup-input">
+            <form action="/signup" method="post" id="signupForm">
+                <div class="signup-form-input">
                     <!--  02-02-01 아이디  -->
-                    <div class="signup-id">
-                        <span class="signup-text013"><span>아이디</span></span>
-                        <input
-                                type="text"
-                                name="name"
-                                placeholder="4~15자 이내로 입력해주세요"
-                                class="signup-input1"
-                        />
+                    <div class="signup-form-input-box">
+                        <span class="signup-form-input-box-title">아이디</span>
+                        <div class="signup-form-input-withbtn">
+                            <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="4~15자 이내로 입력해주세요"
+                                    class="signup-form-input-box-content-withbtn"
+                            />
+                        </div>
+                        <div class="sign-up-form-input-check-alert" id="checkId">
+                            <span></span>
+                        </div>
                     </div>
 
                     <!--  02-02-02 비밀번호  -->
-                    <div class="signup-password">
-                        <span class="signup-text017"><span>비밀번호</span></span>
+                    <div class="signup-form-input-box">
+                        <span class="signup-form-input-box-title">비밀번호</span>
                         <input
                                 type="password"
                                 name="password"
                                 placeholder="최소 6자 이상(알파벳, 숫자 필수)"
-                                class="signup-input2"
+                                class="signup-form-input-box-content"
                         />
+                        <div class="sign-up-form-input-check-alert" id="checkPassword">
+                            <span></span>
+                        </div>
                     </div>
 
                     <!--  02-02-03 이메일  -->
-                    <div class="signup-email">
-                        <span class="signup-text019"><span>이메일</span></span>
-                        <input
-                                type="email"
-                                name="email"
-                                placeholder="honggildong@select.com"
-                                class="signup-input3"
-                        />
+                    <div class="signup-form-input-box">
+                        <span class="signup-form-input-box-title">이메일</span>
+                        <div class="signup-form-input-withbtn">
+                            <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="honggildong@select.com"
+                                    class="signup-form-input-box-content-withbtn"
+                            />
+                        </div>
+                        <div class="sign-up-form-input-check-alert" id="checkEmail">
+                            <span></span>
+                        </div>
                     </div>
 
                     <!--  02-02-04 닉네임  -->
-                    <div class="signup-nickname">
-                        <span class="signup-text021"><span>닉네임</span></span>
+                    <div class="signup-form-input-box">
+                        <span class="signup-form-input-box-title"><span>닉네임</span></span>
                         <input
                                 type="text"
                                 name="nickname"
                                 placeholder="닉네임을 알파벳, 한글, 숫자를 20자 이하로 입력해주세요."
-                                class="signup-input4"
+                                class="signup-form-input-box-content"
                         />
+                        <div class="sign-up-form-input-check-alert" id="checkNickname">
+                            <span></span>
+                        </div>
                     </div>
 
                     <!--  02-02-05 지역  -->
-                    <div class="signup-location">
-                        <span class="signup-location-text"><span>지역</span></span>
-                        <div class="signup-geolocation">
+                    <div class="signup-form-input-box">
+                        <span class="signup-form-input-box-title"><span>지역</span></span>
+                        <div class="signup-form-input-withbtn">
                             <input
                                     type="text" name="location1" placeholder="현재 지역을 인증해주세요."
-                                    class="signup-input5" id="locationInput" readonly
+                                    class="signup-form-input-box-content-withbtn" id="locationInput" readonly
                             />
-                            <button type="button" class="signup-locationbtnbutton">
-                                <span class="signup-text025"><span>지역 인증</span></span>
-                            </button>
+                            <button type="button" class="signup-form-input-location-btn">지역 인증</button>
+                        </div>
+                        <div class="sign-up-form-input-check-alert" id="checkLocation">
+                          <span></span>
                         </div>
                     </div>
 
 
                     <!--  02-02-06 관심 분야  -->
-                    <div class="signup-interest">
-                        <span class="signup-text029"><span>관심 분야</span></span>
-                        <div class="signup-interest-container">
+                    <div class="signup-form-input-box">
+                        <span class="signup-form-input-box-title"><span>관심 분야</span></span>
+                        <div class="signup-form-input-box-content" style="padding-bottom: 10px;">
                             <!--  02-02-06-01 언어  -->
-                            <div class="signup-interest-content">
-                                <span class="signup-interest-text"><span>언어</span></span>
-                                <div class="signup-select">
+                            <div class="signup-form-select-interest">
+                                <span class="signup-form-select-interest-title"><span>Language</span></span>
+                                <div class="signup-form-select-interest-button">
                                     <input type="hidden" name="interest_language" id="selected-interests-lang" value="">
                                     <button type="button" class="signup-interest-lang-btn" value="Java">Java</button>
                                     <button type="button"  class="signup-interest-lang-btn" value="Python">Python</button>
@@ -115,9 +133,9 @@
                             </div>
 
                             <!--  02-02-06-02 프레임워크  -->
-                            <div class="signup-interest-content">
-                                <span class="signup-interest-text"><span>프레임워크</span></span>
-                                <div class="signup-select">
+                            <div class="signup-form-select-interest">
+                                <span class="signup-form-select-interest-title">Framework</span>
+                                <div class="signup-form-select-interest-button">
                                     <input type="hidden" name="interest_framework" id="selected-interests-fw" value="">
                                     <button type="button" class="signup-interest-fw-btn" value="Spring">Spring</button>
                                     <button type="button"  class="signup-interest-fw-btn" value="Django">Django</button>
@@ -128,9 +146,9 @@
                             </div>
 
                             <!--  02-02-06-01 직무  -->
-                            <div class="signup-interest-content">
-                                <span class="signup-interest-text"><span>직무</span></span>
-                                <div class="signup-select">
+                            <div class="signup-form-select-interest">
+                                <span class="signup-form-select-interest-title">Role</span>
+                                <div class="signup-form-select-interest-button">
                                     <input type="hidden" name="interest_job" id="selected-interests-job" value="">
                                     <button type="button" class="signup-interest-job-btn" value="front">프론트엔드</button>
                                     <button type="button"  class="signup-interest-job-btn" value="back">백엔드</button>
@@ -145,99 +163,159 @@
                     </div>
 
                 </div>
-                <!--  02-02-07 약관 동의  -->
 
-                <!--  02-02-08 회원 가입 버튼  -->
-                <button class="signup-signupbtnbutton" type="submit">
-                    <span class="signup-text106"><span>회원가입</span></span>
-                </button>
             </form>
-
+            <!--  02-02-08 회원 가입 버튼  -->
+            <div class="signup-signupbtn"><a href="#" onclick="submitSignupForm()"></a></div>
 
             <!--03 로그인 페이지 이동-->
-            <div class="signup-join">
-                            <span class="signup-text108">
-                              <span>이미 회원이신가요?</span>
-                            </span>
-                <span class="signup-text110"><span>로그인</span></span>
+            <div class="signup-movetoLogin">
+                <span>이미 회원이신가요?</span>
+                <a th:href="@{/login}" class="signup-movetoLogin-loginPg">로그인</a>
             </div>
         </div>
     </div>
 </div>
 
-<!-- 회원가입 성공 알림창 -->
-<script th:if="${not #strings.isEmpty(successMsg)}">
-    alert([[${successMessage}]]);
-</script>
-
 <script th:inline="javascript">
+
     // 관심 분야 선택
-    // 버튼 목록, 선택된 관심사 배열, hidden input에 저장
-    function selectInterests(buttons, selectedInterests, selectedInterestsInput) {
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {  // click될 때마다 실행
-                const interest = button.value;  // 클릭된 버튼 value
+        // 버튼 목록, 선택된 관심사 배열, hidden input에 저장
+        function selectInterests(buttons, selectedInterests, selectedInterestsInput) {
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {  // click될 때마다 실행
+                    const interest = button.value;  // 클릭된 버튼 value
 
-                if (selectedInterests.includes(interest)) {  // 선택되어있으면, 배열에서 제거
-                    selectedInterests = selectedInterests.filter(item => item != interest);
-                } else {  // 선택되어있지않으면, 배열에 추가
-                    selectedInterests.push(interest);
+                    if (selectedInterests.includes(interest)) {  // 선택되어있으면, 배열에서 제거
+                        selectedInterests = selectedInterests.filter(item => item != interest);
+                    } else {  // 선택되어있지않으면, 배열에 추가
+                        selectedInterests.push(interest);
+                    }
+
+                    selectedInterestsInput.value = `_${selectedInterests.join('_')}_`;  // 언더바(_) 추가
+                    button.classList.toggle('selected');  // 버튼 상태 토글
+                });
+            });
+        }
+
+            // 언어
+            const interestLangButtons = document.querySelectorAll('.signup-interest-lang-btn');
+            const selectedInterestsLangInput = document.getElementById('selected-interests-lang');
+            let selectedInterestsLang = [];
+            selectInterests(interestLangButtons, selectedInterestsLang, selectedInterestsLangInput);
+            // 프레임워크
+            const interestFwButtons = document.querySelectorAll('.signup-interest-fw-btn');
+            const selectedInterestsFwInput = document.getElementById('selected-interests-fw');
+            let selectedInterestsFw = [];
+            selectInterests(interestFwButtons, selectedInterestsFw, selectedInterestsFwInput);
+            // 직무
+            const interestJobButtons = document.querySelectorAll('.signup-interest-job-btn');
+            const selectedInterestsJobInput = document.getElementById('selected-interests-job');
+            let selectedInterestsJob = [];
+            selectInterests(interestJobButtons, selectedInterestsJob, selectedInterestsJobInput);
+
+    // 지역 인증
+        document.addEventListener('DOMContentLoaded', function() {
+            const locationInput = document.getElementById('locationInput');
+            const locationButton = document.querySelector('.signup-form-input-location-btn');
+
+            locationButton.addEventListener('click', function(event) {
+                event.preventDefault(); // 버튼 클릭 시 폼 제출 막음
+
+                var apiKey = [[${apiKey}]];
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var x = position.coords.longitude;
+                        var y = position.coords.latitude;
+                        if (x && y) {
+                            axios.get(
+                                `https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${x}&y=${y}`,
+                                {headers:{Authorization:`KakaoAK ${apiKey}`}}
+                            ).then((result) => {
+                                console.log(result.data);
+                                console.log(result.data.documents[0].region_1depth_name);
+                                var location = result.data.documents[0].region_1depth_name;
+                                locationInput.value = location;
+                                locationInput.placeholder = location;
+                            })
+                        }
+                    });
+                } else {
+                    alert('브라우저가 위치 정보를 지원하지 않습니다.');
                 }
-
-                selectedInterestsInput.value = `_${selectedInterests.join('_')}_`;  // 언더바(_) 추가
-                button.classList.toggle('selected');  // 버튼 상태 토글
             });
         });
-    }
 
-    // 언어
-    const interestLangButtons = document.querySelectorAll('.signup-interest-lang-btn');
-    const selectedInterestsLangInput = document.getElementById('selected-interests-lang');
-    let selectedInterestsLang = [];
-    selectInterests(interestLangButtons, selectedInterestsLang, selectedInterestsLangInput);
-    // 프레임워크
-    const interestFwButtons = document.querySelectorAll('.signup-interest-fw-btn');
-    const selectedInterestsFwInput = document.getElementById('selected-interests-fw');
-    let selectedInterestsFw = [];
-    selectInterests(interestFwButtons, selectedInterestsFw, selectedInterestsFwInput);
-    // 직무
-    const interestJobButtons = document.querySelectorAll('.signup-interest-job-btn');
-    const selectedInterestsJobInput = document.getElementById('selected-interests-job');
-    let selectedInterestsJob = [];
-    selectInterests(interestJobButtons, selectedInterestsJob, selectedInterestsJobInput);
-
-    // 지역
-    document.addEventListener('DOMContentLoaded', function() {
-        const locationInput = document.getElementById('locationInput');
-        const locationButton = document.querySelector('.signup-locationbtnbutton');
-
-        locationButton.addEventListener('click', function(event) {
-            event.preventDefault(); // 버튼 클릭 시 폼 제출 막음
-
-            var apiKey = [[${apiKey}]];
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var x = position.coords.longitude;
-                    var y = position.coords.latitude;
-                    if (x && y) {
-                        axios.get(
-                            `https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${x}&y=${y}`,
-                            {headers:{Authorization:`KakaoAK ${apiKey}`}}
-                        ).then((result) => {
-                            console.log(result.data);
-                            console.log(result.data.documents[0].region_1depth_name);
-                            var location = result.data.documents[0].region_1depth_name;
-                            locationInput.value = location;
-                            locationInput.placeholder = location;
-                        })
-                    }
-                });
-            } else {
-                alert('브라우저가 위치 정보를 지원하지 않습니다.');
+    // 유효성 검사
+        // 아이디
+        function validateId(name) {
+            var alertElement = document.getElementById('checkId');
+            if (name.length < 4 || name.length > 15) {
+                alertElement.querySelector('span').textContent = "아이디를 4자 이상, 15자 이하로 입력해주세요.";
+                return false;
             }
-        });
-    });
+            alertElement.querySelector('span').textContent = "";
+            return true;
+        }
 
+        // 비밀번호
+        function validatePassword(password) {
+            var alertElement = document.getElementById('checkPassword');
+            if (password.length < 6 || !/[a-zA-Z]/.test(password) || !/\d/.test(password)) {
+                alertElement.querySelector('span').textContent = "비밀번호는 최소 6자 이상, 알파벳과 숫자를 포함해야 합니다.";
+                return false;
+            }
+            alertElement.querySelector('span').textContent = "";
+            return true;
+        }
+
+        // 이메일
+        function validateEmail(email) {
+            var alertElement = document.getElementById('checkEmail');
+            var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (!emailRegex.test(email)) {
+                alertElement.querySelector('span').textContent = "올바른 이메일 주소를 입력해주세요.";
+                return false;
+            }
+            alertElement.querySelector('span').textContent = "";
+            return true;
+        }
+
+        // 닉네임
+        function validateNickname(nickname) {
+            var alertElement = document.getElementById('checkNickname');
+            if (nickname.length > 20) {
+                alertElement.querySelector('span').textContent = "닉네임은 20자 이하로 입력해주세요.";
+                return false;
+            }
+            alertElement.querySelector('span').textContent = "";
+            return true;
+        }
+
+        // 지역 인증
+        function validateLocation(location) {
+            var alertElement = document.getElementById('checkLocation');
+            if (location.trim() == '') {
+                alertElement.querySelector('span').textContent = "지역 인증이 필요합니다.";
+                return false;
+            }
+            alertElement.querySelector('span').textContent = "";
+            return true;
+        }
+
+        // 폼 제출
+        function submitSignupForm() {
+            var name = document.querySelector('input[name="name"]').value;
+            var password = document.querySelector('input[name="password"]').value;
+            var email = document.querySelector('input[name="email"]').value;
+            var nickname = document.querySelector('input[name="nickname"]').value;
+            var location = document.querySelector('input[name="location1"]').value;
+
+            if (validateId(name) && validatePassword(password) && validateEmail(email) && validateNickname(nickname) && validateLocation(location)) {
+                document.getElementById('signupForm').submit();
+            }
+        }
 </script>
 </body>
 </html>

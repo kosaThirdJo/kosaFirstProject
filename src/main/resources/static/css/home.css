@@ -1,10 +1,11 @@
 /* 00 page 공통 적용 */
     html{
         line-height: 1.5;
+        height: 100%
     }
     body{
         margin: 0;
-        padding: 100px 6%;
+        height: 100%
     }
 
     header {
@@ -13,7 +14,10 @@
         left: 0;
         right: 0;
     }
-
+    footer{
+        bottom : 0;
+        width: 100%;
+    }
 /* 01 header */
     .main-header{
         background-color: rgba(255, 255, 255, 1);
@@ -34,9 +38,7 @@
 /* header - logo */
     .main-header-logo-text {
         color: rgba(0, 0, 0, 1);
-        font-size: 24px;
         font-size: 30px;
-        font-style: Bold;
         text-align: left;
         font-weight: 700;
         line-height: normal;
@@ -44,8 +46,9 @@
         text-decoration: none;
         display: inline-flex;
     }
-    .main-header-logo-text-2{
+    .main-header-logo-text-star{
         color: rgb(255, 179, 0);
+        margin-left: 5px;
     }
 
 /* header - nav */
@@ -55,7 +58,6 @@
         border: 1px solid black;
         height: auto;
         font-size: 16px;
-        font-style: Bold;
         text-align: center;
         font-weight: 700;
         line-height: normal;
@@ -95,13 +97,6 @@
             justify-content: center;
             border-left: 1px solid black;
         }
-
-    /*.main-header-nav-hr{
-        height: 100%;
-        width: 1px;
-        border-width: 0;
-        background-color: #8d8d8d;
-    }*/
 
 /* header - search */
 .main-header-searchAndBtn{
@@ -187,29 +182,18 @@
         min-width: 50%;
     }
 }
-
+.main-video{
+    margin: 80px 0 0;
+    text-align: center;
+}
 /*02 main content*/
 .main-content-container {
-  /*gap: 50px;
-  width: 100%;
-  height: auto;
-  display: flex;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: flex-start;
-  flex-shrink: 0;
-  justify-content: center;
-  padding: 30px 0px;*/
       gap: 50px;
-      /* width: 100%; */
-      /* height: auto; */
       display: flex;
-      /* overflow: hidden; */
       align-self: stretch;
-      /* align-items: flex-start; */
       flex-shrink: 0;
       justify-content: center;
-      padding: 30px 0px;
+      padding: 120px 0px;
 }
 .main-content-left {
   gap: 17px;
@@ -282,6 +266,7 @@
   flex-direction: column;
   background-color: rgba(250, 243, 227, 1);
   width: 350px;
+  text-decoration: none;
 }
 
 .main-content-right {
@@ -418,12 +403,16 @@
   font-size: 15px;
   font-style: Regular;
   text-align: left;
-  font-family: NanumGothic;
   font-weight: 400;
   line-height: 20px;
   font-stretch: normal;
   text-decoration: none;
-  text-overflow : ellipsis;
+  height: 44px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 /* meeting - white box */
@@ -516,7 +505,11 @@
   text-decoration: none;
   margin: 10px auto;
   height: 50px;
-  text-overflow : ellipsis;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .main-left-content-bottom-meeting-white-deadline {
@@ -660,4 +653,72 @@
 }
 .main-left-content-bottom-meeting-yellow-hashtag-text span{
   margin-right: 10px;
+}
+
+
+/*footer*/
+.footer-container {
+  gap: 20px;
+  height: auto;
+  display: flex;
+  padding: 39px 72px;
+  overflow: hidden;
+  align-items: center;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(26, 77, 46, 1);
+  font-family: NanumGothic;
+}
+.footer-menu {
+  gap: 173px;
+  display: flex;
+  padding: 0 30px;
+  align-self: stretch;
+  align-items: center;
+  flex-shrink: 0;
+  justify-content: space-between;
+}
+.footer-logo {
+  gap: 2px;
+  width: 185px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.footer-logo-text {
+  color: rgba(255, 255, 255, 1);
+  height: auto;
+  font-size: 40px;
+  font-style: Bold;
+  text-align: left;
+  font-weight: 700;
+}
+.footer-logo-text-star {
+  color: #FF9F29;
+}
+.footer-policy {
+  gap: 70px;
+  display: flex;
+  padding: 1px 0;
+  overflow: hidden;
+  align-items: center;
+}
+.footer-policy-text {
+  color: white;
+  height: auto;
+  text-align: left;
+  line-height: 24px;
+}
+.footer-hr{
+  margin: 0;
+  width: 100%;
+  padding: 0 30px;
+}
+.footer-bottom-text {
+  color: white;
+  height: auto;
+  text-align: center;
+  line-height: 22px;
 }

@@ -7,49 +7,99 @@
 </head>
 <body>
 <div class="login-container">
-    <div class="login-login">
+    <div class="login-content">
         <div class="login-top">
-            <div class="login-logo">
-              <span class="login-text">
-                <span class="login-text01">SELECT</span>
-                <span class="login-text02">*</span>
+            <a th:href="@{/}" class="login-top-logo">
+                  <span class="login-top-logo-text">
+                      SELECT <span class="login-top-logo-text-star">*</span>
+                  </span>
+            </a>
+            <span class="login-top-intro1">
+                  <span>SELECT*에 오신것을 환영합니다.</span>
               </span>
-            </div>
-            <span class="login-text03">
-              <span>SELECT *에 오신것을 환영합니다.</span>
-            </span>
-            <span class="login-text05">
-              <span>SELECT *는 개발자를 위한 모임 커뮤니티입니다.</span>
-            </span>
+            <span class="login-top-intro2">
+                  <span>SELECT*는 개발자를 위한 모임 커뮤니티입니다.</span>
+              </span>
         </div>
 
-        <div class="login-selectlogin">
-            <span class="login-text11">
-              <span>SELECT * 아이디로 로그인</span>
-            </span>
-            <form action="/logincheck" method="post">
-                <div class="login-input">
-                    <div class="login-id">
-                        <span class="login-text13"><span>아이디</span></span>
-                        <input type="text" id="name" name="loginName" placeholder="아이디를 입력해주세요" class="login-idinput" />
+        <div class="login-form">
+            <!-- 로그인 form  -->
+            <form action="/logincheck" method="post" id="loginForm">
+                <div class="login-form-input">
+                    <!--  아이디  -->
+                    <div class="login-form-input-box">
+                        <span class="login-form-input-box-title">아이디</span>
+                        <div class="login-form-input-withbtn">
+                            <input
+                                    type="text" id="name" name="loginName" class="login-form-input-box-content-withbtn" />
+                        </div>
+                        <div class="login-form-input-check-alert" id="checkId">
+                            <span></span>
+                        </div>
                     </div>
-                    <div class="login-password">
-                        <span class="login-text15"><span>비밀번호</span></span>
-                        <input type="password" id="password" name="loginPassword" placeholder="" class="login-passwordinput" />
+
+                    <!--  비밀번호  -->
+                    <div class="login-form-input-box">
+                        <span class="login-form-input-box-title">비밀번호</span>
+                        <input type="password" id="password" name="loginPassword" class="login-form-input-box-content" />
+                        <div class="login-form-input-check-alert" id="checkPassword">
+                            <span></span>
+                        </div>
                     </div>
-                    <button type="submit" class="login-loginbtnbutton">
-                        <span class="login-text17"><span>로그인</span></span>
+                    <!-- 로그인 버튼 -->
+                    <button type="button" onclick="submitLoginForm()" class="login-form-submit">
+                        <span class="login-form-submit-text"><span>로그인</span></span>
                     </button>
-                    <div class="login-join">
-                    <span class="login-text19">
-                      <span>아직 회원이 아니신가요?</span>
-                    </span>
-                        <span class="login-text21"><span>회원가입</span></span>
-                    </div>
                 </div>
             </form>
+
+            <!-- 회원가입 페이지 이동-->
+            <div class="login-movetoSignup">
+                <span>아직 회원이 아니신가요?</span>
+                <a th:href="@{/signup}" class="login-movetoLogin-SignupPg">회원가입</a>
+            </div>
         </div>
     </div>
 </div>
+<script>
+    // 유효성 검사
+       // 아이디
+       function validateId(name) {
+           var alertElement = document.getElementById('checkId');
+           if (name.length < 1) {
+               alertElement.querySelector('span').textContent = "아이디를 입력해주세요.";
+               return false;
+           }
+           alertElement.querySelector('span').textContent = "";
+           return true;
+       }
+
+       // 비밀번호
+       function validatePassword(password) {
+           var alertElement = document.getElementById('checkPassword');
+           if (password.length < 1) {
+               alertElement.querySelector('span').textContent = "비밀번호를 입력해주세요.";
+               return false;
+           }
+           alertElement.querySelector('span').textContent = "";
+           return true;
+       }
+
+        // 폼 제출
+        function submitLoginForm() {
+            var name = document.querySelector('input[name="loginName"]').value;
+            var password = document.querySelector('input[name="loginPassword"]').value;
+
+            if (validateId(name) && validatePassword(password)) {
+                document.getElementById('loginForm').submit();
+            }
+        }
+
+     document.getElementById('loginForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var searchQuery = document.querySelector('.main-header-search-input').value;
+                window.location.href = '/search?searchWord=' + searchQuery;
+            });
+</script>
 </body>
 </html>
