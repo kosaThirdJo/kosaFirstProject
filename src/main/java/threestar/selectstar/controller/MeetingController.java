@@ -117,6 +117,12 @@ public class MeetingController {
         Integer sessionId = null;
         if (session.getAttribute("user_id") != null) {
             sessionId = (Integer) session.getAttribute("user_id");
+            int checkApply = applyDao.countApplyByMeetingIDAndUserId(ApplyVO.builder()
+                    .userId(sessionId)
+                    .meetingId(meetingId)
+                    .build());
+
+            model.addAttribute("checkApply",checkApply);
         }
         //
         if (meetingId != null) {
@@ -132,16 +138,18 @@ public class MeetingController {
             if(profile_photo != null) {
                 encodeImg = Base64.getEncoder().encodeToString(profile_photo);
             }
+
+
             // 조회를 위한 값 저장
             model.addAttribute("requestURI", request.getRequestURI());
             model.addAttribute("meetingDTO", meetingDTO);
             model.addAttribute("commentListByMeetingId", commentListByMeetingId);
             model.addAttribute("userDao",userDao);
             model.addAttribute("count_comment",commentDao.calcCommentCount(meetingId));
+            model.addAttribute("applyDao",applyDao);
             model.addAttribute("false","isFail");
             model.addAttribute("image",encodeImg);
             model.addAttribute("user_id",sessionId);
-
             // 만약 신청게시물 작성자면...
             return "meeting/meeting_article";
         }
@@ -149,7 +157,7 @@ public class MeetingController {
         return "meeting/meeting_article";
     }
     @PostMapping("/articles/{id}")
-    public String addMeetingComment(HttpSession session,@PathVariable("id") int meetingId,String commentUserName,String commentContent, HttpServletRequest request, Model model){
+    public String addMeetingComment(HttpSession session,@PathVariable("id") int meetingId,String commentContent, HttpServletRequest request, Model model){
         Integer userId = null;
         if (session.getAttribute("user_id") != null){
             userId = (Integer)session.getAttribute("user_id");
@@ -260,9 +268,14 @@ public class MeetingController {
     public String deleteArticle(Model model, HttpSession session, @PathVariable("id") int meetingId){
         // 게시글에서 작성한 아이디가 새션 아이디랑 같을시
         if (session.getAttribute("user_id").equals(meetingDao.getMeetingArticleById(meetingId).getUserId())){
+            if (meetingDao.getMeetingArticleById(meetingId).getApplicationCount() !=0){
+                model.addAttribute("msg","신청한 인원이 있습니다.");
+                return "redirect:/meeting/articles?id="+meetingId;
+            }
             model.addAttribute("user_id",session.getAttribute("user_id"));
             meetingDao.deleteMeeting(meetingId);
         }
+
         // 엘스 비정상정인 접근입니다.
         return "redirect:/meeting";
     }

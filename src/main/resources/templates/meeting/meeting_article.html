@@ -30,14 +30,30 @@
         #content_description{
             margin-top: 20px;
             margin-bottom: 20px;
-            min-height: 600px;
+            min-height: 250px;
         }
 
         .nanumgothic * {
             font-family: 'Nanum Gothic', sans-serif;
         }
+        #end_date_line{
+            margin: 20px 0 20px;
+        }
+        #location{
+            margin: 20px 0 20px;
+        }
+
+
 
         #profile {
+            float: right;
+            background-color: #FAF3E3;
+            width: 300px;
+            height: 200px;
+            margin-right: 50px;
+            margin-top: 50px;
+        }
+        #apply{
             float: right;
             background-color: #FAF3E3;
             width: 300px;
@@ -62,11 +78,35 @@
             padding: 20px 20px 20px 20px;
         }
 
-        #comment_input_line {
-            margin: 5px 5px 5px;
+        .comment{
+            padding-bottom: 5px;
+        }
+        .comment-content{
+            padding-bottom: 10px;
         }
 
-        #comment_input {
+        #comment_input_line {
+            margin: 5px 5px 50px;
+            display: flex;
+            gap: 0px 18px;
+        }
+        #modal-button{
+            float: right;
+        }
+
+        #comment-input {
+            display: flex;
+            outline: none;
+            border-radius: 10px;
+            border: none;
+            margin: 20px 0 20px 0;
+        }
+        .modal-input{
+            border-radius: 5px;
+            border: #888888;
+            margin: 5px 0 10px 0;
+        }
+        .input-border-radius{
             outline: none;
             border-radius: 10px;
             border: none;
@@ -77,6 +117,7 @@
             padding-left: 10px;
             background-color: white;
             margin-bottom: 5px;
+            magin-top: 10px;
         }
 
         #comment_title {
@@ -86,6 +127,7 @@
 
         article {
             margin-left: 200px;
+            margin-top:100px;
         }
 
         header {
@@ -101,28 +143,40 @@
 
 <body>
 
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    const msg = [[${msg}]];
+    alert(msg)
+    if (msg != null){
+        alert(msg)
+    }
+    /*]]>*/
+</script>
+
 <th:block layout:fragment="content">
+
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <form th:action="|/meeting/apply/${meetingDTO.meetingId}|" , method="post">
                 <div class="modal-content">
                     <div class="modal-header">
+
                         <h4 class="modal-title" id="myModalLabel">신청하시려면 양식을 작성해 주세요!</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input name="emailAddress" placeholder="연락받을 이메일 주소를 입력해 주세요" size="50">
+                        <input class="modal-input" name="emailAddress"  placeholder="연락받을 이메일 주소를 입력해 주세요" size="50" required />
                         <br>
-                        <input name="reason" placeholder="신청 사유를 입력해 주세요" size="50">
+                        <input class="modal-input" name="reason"  placeholder="신청 사유를 입력해 주세요" size="50" required />
                         <br>
-                        <input name="snsAddress" placeholder="Github, 블로그 등 주소를 입력해 주세요" size="50">
+                        <input class="modal-input" name="snsAddress"  placeholder="Github, 블로그 등 주소를 입력해 주세요" size="50" required />
                         <!-- 모달 내용 -->
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-secondary">신청</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">닫기</button>
                         <!-- 추가적인 버튼 등 -->
                     </div>
                 </div>
@@ -130,78 +184,101 @@
         </div>
     </div>
 
-
-    <article>
-        <div id="profile" class="border border-dark">
-            <div class="meeting-articles-profile">
-                <th:block th:if="${image} != null">
-                    <img class="meeting-articles-profile-photo"
-                         th:src="@{'data:image/png;base64,' + ${image}}" alt="Image"><br/>
-                </th:block>
-                <th:block th:if="${image} == null">
-                    <img style="width:5rem; height:5rem; border-radius:9999px;"
-                         th:src="@{/image/global/userdefaultimg.png}"/><br/>
-                </th:block>
-                <div th:text="${userDao.getNameById(meetingDTO.userId)}"></div>
-                <div th:text="${userDao.getUserProfileInfo(meetingDTO.userId).about_me}"></div>
-            </div>
-        </div>
+    <article class="">
         <section id="content_box">
             <div>
-                <span class="badge bg-secondary">모집중</span>
+                <sapn th:if="${meetingDTO.status}==0" th:style="'background-color: #FAF3E3'" class="btn">모집중</sapn>
+                <span th:if="${meetingDTO.status}==1" th:style="'background-color: gray; color: white'" class="btn">모집완료</span>
                 <h2 id="content_title" style="display: inline" th:text="${meetingDTO.title}"></h2>
-                <button th:if="${user_id!= null} and ${meetingDTO.userId != user_id}" type="button" data-toggle="modal"
-                        data-target="#myModal">신청하기
-                </button>
-                <a th:href="|/meeting/finish/${meetingDTO.meetingId}|">
-                    <span th:if="${meetingDTO.userId == user_id}" class="badge bg-secondary" style="float: right"
-                          th:text="모집완료"></span>
-                </a>
-                <a th:href="|/meeting/fix/${meetingDTO.meetingId}|">
-                    <span th:if="${meetingDTO.userId == user_id}" class="badge bg-secondary" style="float: right"
-                          th:text="수정하기"></span>
-                </a>
-                <a th:href="|/meeting/remove/${meetingDTO.meetingId}|">
-                    <span th:if="${meetingDTO.userId == user_id}" class="badge bg-secondary" style="float: right"
-                          th:text="삭제하기"></span>
-                </a>
-            </div>
+                <th:block th:if="${checkApply} != 1">
+                    <button id="modal-button" class="btn btn-primary" th:if="${user_id!= null} and ${meetingDTO.userId != user_id}" type="button" data-toggle="modal"
+                            data-target="#myModal" data->신청하기
+                    </button>
+                </th:block>
+                <th:block th:if="${checkApply} != 0">
+                    <button class="btn btn-primary" th:if="${user_id!= null} and ${meetingDTO.userId != user_id}" style="float: right" disabled type="button">신청하기
+                    </button>
+                </th:block>
+                <th:block th:if="${meetingDTO.status}==0">
+                    <a th:href="|/meeting/fix/${meetingDTO.meetingId}|">
+                        <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
+                                th:text="수정하기"></button>
+                    </a>
+                    <a th:href="|/meeting/remove/${meetingDTO.meetingId}|">
+                        <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
+                                th:text="삭제하기"></button>
+                    </a>
+
+                    <a th:href="|/meeting/finish/${meetingDTO.meetingId}|">
+                        <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
+                                th:text="모집완료" ></button>
+                    </a>
+                </th:block>
+                <th:block th:if="${meetingDTO.status}==1">
+                    <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
+                          th:text="수정하기" disabled></button>
+                    <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
+                            th:text="삭제하기" disabled></button>
+                    <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
+                            th:text="모집완료" disabled></button>
+                </th:block>
             <div>
-                <span style="margin-left: 10px"
+                <span style="margin-left: 10px;"
                       th:text="|${meetingDTO.creationDate.getYear()}년 ${meetingDTO.creationDate.monthValue}월 ${meetingDTO.creationDate.dayOfMonth}일|"></span>
                 <span> 조회수 </span>
                 <span th:text="${meetingDTO.views}"></span>
-                <span style="float: right" th:text="|${userDao.getNameById(meetingDTO.userId)}|">사용자 이름</span>
             </div>
             <div id="content_description" th:text="${meetingDTO.description}">
             </div>
             <div id="end_date_line">
                 <img th:src="@{/image/global/end_date01.png}">
-                <span>마감일</span>
+                <span style="margin-right: 20px">마감일</span>
                 <span th:text="|${meetingDTO.applicationDeadline.getYear()}년 ${meetingDTO.applicationDeadline.monthValue}월 ${meetingDTO.applicationDeadline.dayOfMonth}일|">
             </span>
             </div>
             <div id="location">
                 <img th:src="@{/image/global/location01.png}">
-                <span>모집장소</span>
+                <span style="margin-right: 20px">모집장소</span>
+                <span th:text="${meetingDTO.location}"></span>
+            </div>
+        </div>
+            <div>
+                <div id="profile" class="border border-dark">
+                    <div class="meeting-articles-profile">
+                        <th:block th:if="${!image.isEmpty()}">
+                            <img class="meeting-articles-profile-photo"
+                                 th:src="@{'data:image/png;base64,' + ${image}}" alt="Image"><br/>
+                        </th:block>
+                        <th:block th:if="${image.isEmpty()}">
+                            <img style="width:5rem; height:5rem; border-radius:9999px;"
+                                 th:src="@{/image/global/userdefaultimg.png}"/><br/>
+                        </th:block>
+                        <div th:text="${userDao.getNameById(meetingDTO.userId)}"></div>
+                        <div th:text="${userDao.getUserProfileInfo(meetingDTO.userId).about_me}"></div>
+                    </div>
+                </div>
+                <div id="apply" class="border border-dark">
+                    <span>현재 이 프로젝트에서 <span style="color: #FF9F29" th:text="${applyDao.countApplyByMeetingId(meetingDTO.meetingId)}">0</span>명이 참여중입니다.</span>
+                </div>
             </div>
         </section>
         <section id="comment_box">
             <div>댓글 <span style="color: #1A4D2E" th:text="${count_comment}"></span>
             </div>
             <div id="comment_input_line">
-                <form th:action="|${requestURI}/${meetingDTO.meetingId}|" method=post>
-                    <input type="hidden" name="commentUserName" th:value="test1">
-                    <input id="comment_input" type="text" name="commentContent" placeholder=" 댓글을 작성해 보세요 버튼 주황색 글씨 흰색"
-                           size=80% maxlength=8>
-                    <button type="submit" id="comment_button" class="btn btn-primary" >등록</button>
+                <form th:if="${user_id!=null}" th:action="|${requestURI}/${meetingDTO.meetingId}|" method=post>
+                    <div  id="comment-input">
+                    <input class="input-border-radius" type="text" name="commentContent" placeholder=" 댓글을 작성해 보세요"
+                           size=77% maxlength=8 required />
+                    <button style="float: right" type="submit" id="comment_button" class="btn btn-primary" >등록</button>
+                    </div>
                 </form>
             </div>
-            <div class="main-content-container" th:each="ele : ${commentListByMeetingId}">
-                <div id="comment_list">
-                    <div id="comment_title" th:text="${userDao.getNameById(ele.userId)}"></div>
-                    <div th:text="|${ele.creationDate.getYear()}년 ${ele.creationDate.monthValue}월 ${ele.creationDate.dayOfMonth}일|"></div>
-                    <div th:text="${ele.content}"></div>
+            <div th:each="ele : ${commentListByMeetingId}">
+                <div style="padding-bottom: 10px" id="comment_list">
+                    <div class="comment" id="comment_title" th:text="${userDao.getNameById(ele.userId)}"></div>
+                    <div class="comment" th:text="|${ele.creationDate.getYear()}년 ${ele.creationDate.monthValue}월 ${ele.creationDate.dayOfMonth}일|"></div>
+                    <div class="comment-content" th:text="${ele.content}"></div>
                 </div>
             </div>
         </section>
