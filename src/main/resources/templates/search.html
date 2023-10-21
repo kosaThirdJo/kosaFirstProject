@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>검색</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link th:href="@{/css/search.css}" rel="stylesheet"/>
 </head>
 <body>
@@ -49,35 +50,45 @@
                         <div class="search-filter-select-list-language">
                             <span class="search-filter-select-title">언어</span>
                             <div class="search-filter-select-category">
-                                <button type="button" class="search-filter-select-btn" data-category="languages" value="Java">Java</button>
-                                <button type="button" class="search-filter-select-btn" data-category="languages" value="Python">Python</button>
-                                <button type="button" class="search-filter-select-btn" data-category="languages" value="C">C</button>
-                                <button type="button" class="search-filter-select-btn" data-category="languages" value="C++">C++</button>
-                                <button type="button" class="search-filter-select-btn" data-category="languages" value="JavaScript">JavaScript</button>
-                                <button type="button" class="search-filter-select-btn" data-category="languages" value="Kotiln">Kotiln</button>
-                                <button type="button" class="search-filter-select-btn" data-category="languages" value="TypeScript">TypeScript</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="1">Java</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="2">Python</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="3">C#</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="4">C++</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="5">JavaScript</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="6">Ruby</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="7">Swift</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="8">TypeScript</button>
+                                <button type="button" class="search-filter-select-btn" data-category="languages" value="9">PHP</button>
                             </div>
                         </div>
                         <!-- search filter select framework category -->
                         <div class="search-filter-select-list-framework">
                             <span class="search-filter-select-title">프레임워크</span>
                             <div class="search-filter-select-category" value="frameworks">
-                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="Spring">Spring</button>
-                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="Django">Django</button>
-                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="Flask">Flask</button>
-                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="Laravel">Laravel</button>
-                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="Vue.js">Vue.js</button>
+                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="1">Spring</button>
+                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="2">React</button>
+                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="3">Angular</button>
+                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="4">Vue.js</button>
+                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="5">Express.js</button>
+                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="6">Django</button>
+                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="7">Ruby on Rails</button>
+                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="8">Flask</button>
+                                <button type="button" class="search-filter-select-btn" data-category="frameworks" value="9">Laravel</button>
                             </div>
                         </div>
                         <!-- search filter select job category -->
                         <div class="search-filter-select-list-job">
                             <span class="search-filter-select-title">직무</span>
                             <div class="search-filter-select-category" value="jobs">
-                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="frontend">프론트엔드</button>
-                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="backend">백엔드</button>
-                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="full">풀스택</button>
-                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="Android">Android</button>
-                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="IOS">IOS</button>
+                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="1">프론트엔드</button>
+                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="2">백엔드</button>
+                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="3">풀스택</button>
+                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="4">모바일 앱 개발</button>
+                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="5">게임 개발</button>
+                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="6">데이터베이스</button>
+                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="7">데브옵스</button>
+                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="8">디자이너</button>
+                                <button type="button" class="search-filter-select-btn" data-category="jobs" value="9">기획자</button>
                             </div>
                         </div>
 
@@ -95,7 +106,8 @@
                 <div class="search-filter-result">
                     <th:block th:if="${searchMeetingResults}">
                         <th:block th:each="meeting : ${searchMeetingResults}">
-                            <a th:href="@{/meeting/articles(id=${meeting.meetingId})}" class="search-filter-result-content">
+                            <a th:href="@{/meeting/articles(id=${meeting.meetingId})}" class="search-filter-result-content"
+                               th:style="${meeting.status == 0 ? 'background-color:#FAF3E3;' : 'background-color:#D9D9D9;'}">
                                 <!-- 01-02-01 white box -->
                                 <div class="main-left-content-bottom-meeting-white">
                                     <!-- white box - top -->
@@ -103,21 +115,20 @@
                                         <!-- white box - top - category -->
                                         <div class="main-left-content-bottom-meeting-white-top-category">
                                             <!-- 0: 스터디, 1:프로젝트, 2: 기타 -->
-                                            <span class="main-left-content-bottom-meeting-white-top-text"
-                                                  th:switch="${meeting.category}">
-                                        <span th:case="0">스터디</span>
-                                        <span th:case="1">프로젝트</span>
-                                        <span th:case="2">기타</span>
-                                    </span>
+                                            <span class="main-left-content-bottom-meeting-white-top-text" th:switch="${meeting.category}">
+                                                <span th:case="0">스터디</span>
+                                                <span th:case="1">프로젝트</span>
+                                                <span th:case="2">기타</span>
+                                            </span>
                                         </div>
                                         <!-- white box - top - status -->
-                                        <div class="main-left-content-bottom-meeting-white-top-status">
+                                        <div class="main-left-content-bottom-meeting-white-top-status"
+                                             th:style="${meeting.status == 0 ? 'background-color:#FF9F29;' : 'background-color:#5F5B5B;'}">
                                             <!-- 0: 모집중, 1:모집완료 -->
-                                            <span class="main-left-content-bottom-meeting-white-top-text"
-                                                  th:switch="${meeting.status}">
-                                        <span th:case="0">모집중</span>
-                                        <span th:case="1">모집완료</span>
-                                    </span>
+                                            <span class="main-left-content-bottom-meeting-white-top-text" th:switch="${meeting.status}">
+                                                <span th:case="0">모집중</span>
+                                                <span th:case="1">모집완료</span>
+                                            </span>
                                         </div>
                                     </div>
 
@@ -125,9 +136,7 @@
                                     <div class="main-left-content-bottom-meeting-white-bottom">
                                         <!-- white box - location -->
                                         <div class="main-left-content-bottom-meeting-white-location">
-                                            <div class="main-left-content-bottom-meeting-white-location-icon">
-                                                <img th:src="@{/image/global/location01.png}">
-                                            </div>
+                                            <span class="material-icons" style="font-size: 15px;">location_on</span>
                                             <span class="main-left-content-bottom-meeting-white-location-text"
                                                   th:text="${meeting.location}"></span>
                                         </div>
@@ -138,15 +147,13 @@
 
                                         <!-- whitebox - deadline -->
                                         <div class="main-left-content-bottom-meeting-white-deadline">
-                                            <div class="main-left-content-bottom-meeting-white-deadline-icon">
-                                                <img th:src="@{/image/global/end_date01.png}">
-                                            </div>
+                                            <span class="material-icons" style="font-size: 12px;">calendar_today</span>
                                             <span class="main-left-content-bottom-meeting-white-deadline-text">마감일</span>
                                         </div>
 
                                         <!-- whitebox - deadlineText -->
                                         <span class="main-left-content-bottom-meeting-white-deadlineText"
-                                              th:text="${#temporals.format(meeting.applicationDeadline, 'yyyy. MM. dd')}">?</span>
+                                              th:text="${#temporals.format(meeting.applicationDeadline, 'yyyy. MM. dd HH:mm')}"></span>
                                     </div>
                                 </div>
 
@@ -155,14 +162,9 @@
                                 <div class="main-left-content-bottom-meeting-yellow-now">
                                     <!-- yellowbox - now - people -->
                                     <div class="main-left-content-bottom-meeting-yellow-now-people">
-                                        <div class="main-left-content-bottom-meeting-yellow-now-people-icon">
-                                            <img th:src="@{/image/global/member_count.png}">
-                                        </div>
+                                        <span class="material-icons" style="color: #1A4D2E; font-size: 20px;">group</span>
                                         <div class="main-left-content-bottom-meeting-yellow-now-people-text">
-                                            현재
-                                            <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt"
-                                                  th:text="${meeting.applicationCount}">0</span>명이
-                                            참여중입니다!
+                                            현재 <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt">[[${meeting.applicationCount}]]명</span>이 참여중입니다!
                                         </div>
                                     </div>
                                 </div>
@@ -324,50 +326,46 @@
                 const searchMeetingResultContainer = document.querySelector('.search-filter-result');
                 searchMeetingResultContainer.innerHTML = '';
 
-                meetings.forEach(meeting => {
-                    const meetingElement = document.createElement('a');
-                    meetingElement.classList.add('search-filter-result-content');
+                if (meetings.length > 0) {
+                    meetings.forEach(meeting => {
+                        const meetingElement = document.createElement('a');
 
-                    meetingElement.href = '/meeting/articles?id='+meeting.meetingId;
+                        meetingElement.href = '/meeting/articles?id=' + meeting.meetingId;
 
-                    meetingElement.innerHTML = `
-                        <div class="main-left-content-bottom-meeting-white">
-                            <div class="main-left-content-bottom-meeting-white-top">
-                                <div class="main-left-content-bottom-meeting-white-top-category">
-                                    <span class="main-left-content-bottom-meeting-white-top-text">
-                                        ${meeting.category == 0 ? '스터디' : meeting.category == 1 ? '프로젝트' : '기타'}
-                                    </span>
+                        const meetingStatusStyle = meeting.status == 0 ? 'background-color:#FF9F29;' : 'background-color:#5F5B5B;';
+                        const meetingCategory = meeting.category == 0 ? '스터디' : meeting.category == 1 ? '프로젝트' : '기타';
+                        const meetingStatus = meeting.status == 0 ? '모집중' : '모집완료';
+                        const deadlineFormatted = new Date(meeting.applicationDeadline).toISOString().slice(0, 16).replace("T", " ");
+
+                        if (meeting.status == 1) {
+                            meetingElement.classList.add('search-filter-result-content-status-1');
+                        } else {
+                            meetingElement.classList.add('search-filter-result-content');
+                        }
+
+                        meetingElement.innerHTML = `
+                            <div class="main-left-content-bottom-meeting-white">
+                                <div class="main-left-content-bottom-meeting-white-top">
+                                    <div class="main-left-content-bottom-meeting-white-top-category">
+                                        <span class="main-left-content-bottom-meeting-white-top-text">${meetingCategory}</span>
+                                    </div>
+                                    <div class="main-left-content-bottom-meeting-white-top-status" style="${meetingStatusStyle}">
+                                        <span class="main-left-content-bottom-meeting-white-top-text">${meetingStatus}</span>
+                                    </div>
                                 </div>
-                                <div class="main-left-content-bottom-meeting-white-top-status">
-                                    <span class="main-left-content-bottom-meeting-white-top-text">
-                                        ${meeting.status == 0 ? '모집중' : '모집완료'}
-                                    </span>
-                                </div>
-                            </div>
                                 <div class="main-left-content-bottom-meeting-white-bottom">
                                     <div class="main-left-content-bottom-meeting-white-location">
-                                        <div class="main-left-content-bottom-meeting-white-location-icon">
-                                            <img src="/image/global/location01.png">
-                                        </div>
+                                        <span class="material-icons" style="font-size: 15px;">location_on</span>
                                         <span class="main-left-content-bottom-meeting-white-location-text">${meeting.location}</span>
                                     </div>
-
                                     <div class="main-left-content-bottom-meeting-white-title">${meeting.title}</div>
-
-
                                     <div class="main-left-content-bottom-meeting-white-deadline">
-                                        <div class="main-left-content-bottom-meeting-white-deadline-icon">
-                                            <img src="/image/global/end_date01.png">
-                                        </div>
+                                        <span class="material-icons" style="font-size: 12px;">calendar_today</span>
                                         <span class="main-left-content-bottom-meeting-white-deadline-text">마감일</span>
                                     </div>
-
-                                    <span class="main-left-content-bottom-meeting-white-deadlineText">
-                                        <span>${meeting.applicationDeadline}</span>
-                                    </span>
+                                    <span class="main-left-content-bottom-meeting-white-deadlineText">${deadlineFormatted}</span>
                                 </div>
                             </div>
-
                             <div class="main-left-content-bottom-meeting-yellow-now">
                                 <div class="main-left-content-bottom-meeting-yellow-now-people">
                                     <div class="main-left-content-bottom-meeting-yellow-now-people-icon">
@@ -378,10 +376,25 @@
                                     </div>
                                 </div>
                             </div>
+                        `;
+
+                        searchMeetingResultContainer.appendChild(meetingElement);
+                    });
+                } else {
+                    const noResultElement = document.createElement('div');
+                    noResultElement.classList.add('search-filter-result-none');
+
+                    noResultElement.innerHTML = `
+                        <div class="search-filter-result-none-result">
+                            <span class="search-filter-result-none-searchWord">${searchWord}</span>에 대한 모임 결과가 없습니다.
+                        </div>
+                        <div>찾으시는 모임이 없나요? 직접 만들어 보세요!</div>
+                        <div class="search-filter-result-none-btn">
+                            <a href="/meeting/write" class="search-filter-result-none-meetingbtn">모임 만들기</a>
                         </div>
                     `;
-                    searchMeetingResultContainer.appendChild(meetingElement);
-                });
+                    searchMeetingResultContainer.appendChild(noResultElement);
+                }
             }
         });
     </script>

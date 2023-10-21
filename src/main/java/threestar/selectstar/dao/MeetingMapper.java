@@ -33,8 +33,10 @@ public interface MeetingMapper {
     @Update("update meeting set is_delete= 1 where meeting_id=#{meetingId}")
     boolean deleteMeeting(@Param("meetingId") int meetingId);
     // 메인 - 최신글 조회 (ORDER BY) (현재는 4개만 출력)
-    @Select("SELECT meeting_id meetingId, title, status, location, application_deadline applicationDeadline, application_count applicationCount, views "
-        + "FROM meeting WHERE is_delete = 0 ORDER BY creation_date DESC LIMIT 4")
+    @Select(
+        "SELECT M.meeting_id meetingId, M.title, M.status, M.location, M.application_deadline applicationDeadline, M.application_count applicationCount, M.views, COUNT(C.comment_id) commentCount "
+        + "FROM meeting M LEFT JOIN comment C ON M.meeting_id = C.meeting_id "
+        + "WHERE M.is_delete = 0 GROUP BY M.meeting_id ORDER BY M.creation_date DESC LIMIT 4")
     List<MeetingVO> getLatestMeetings();
 
     // 메인 - 인기글 조회 (RANK) : 최근 일주일간 올라온 글 중에서 조회수 높은 것 10개
@@ -87,7 +89,6 @@ public interface MeetingMapper {
         "</script>"
     })
     List<MeetingVO> selectMeetingsByFilter(SearchDTO search);
-
 
     //마이페이지-내가 작성한 글목록 조회(제목, 분야, 모집상태, 장소, 조회수, 모집인원, 신청인원, 작성일, 모집마감일)
     @Select("select meeting_id meetingId, user_id userId, title, category, status, application_deadline applicationDeadline, " +
