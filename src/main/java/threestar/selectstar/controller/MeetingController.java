@@ -35,20 +35,22 @@ public class MeetingController {
 
     // 메인페이지
     @GetMapping("")
-    public String meetingMain(HttpSession session,@RequestParam(value = "page",required = false,defaultValue = "0") int page,Model model, @RequestParam(value = "category",required = false,defaultValue = "0") Integer category){
+    public String meetingMain(HttpSession session,@RequestParam(value = "page",required = false,defaultValue = "0") int page,Model model, @RequestParam(value = "category",required = false) Integer category, @RequestParam(value = "order",required = false,defaultValue = "meeting_id")String order){
         // 세션으로
 //        Integer userId = null;
 //        if(session.getAttribute("user_id") != null){
 //            userId = (int) session.getAttribute("user_id");
 //        }
-
         List<MeetingVO> allMeetingList = null;
-        System.out.println(category);
+        int allMeetingListCount = 0;
         if(category == null){
-            allMeetingList = meetingDao.getAllMeetingList(page*12);
+            allMeetingList = meetingDao.getAllMeetingList(page*12,order);
+            allMeetingListCount = meetingDao.getAllMeetingCountList();
         }else{
-            allMeetingList = meetingDao.getAllMeetingListByCategory(page*12, category);
+            allMeetingList = meetingDao.getAllMeetingListByCategory(page*12, category,order);
+            allMeetingListCount = meetingDao.getAllMeetingCountListByCategory(category);
         }
+        System.out.println(allMeetingList);
 
         // 관심 분야 한곳에 넣기
         List<List<String>> interestListLang = new ArrayList<>();
@@ -101,14 +103,18 @@ public class MeetingController {
             timeList.add(meetingDaoOne.getCreationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         }
         // 모델에 넣기
+        model.addAttribute("allMeetingListCount",allMeetingListCount);
         model.addAttribute("allMeetingList",allMeetingList);
         model.addAttribute("interestListLang",interestListLang);
         model.addAttribute("interestListFrame",interestListFrame);
         model.addAttribute("interestListJob",interestListJob);
         model.addAttribute("applyDao",applyDao);
-//        model.addAttribute("userDao",userDao); // 신청중
+        model.addAttribute("userDao",userDao); // 신청중
         model.addAttribute("commentDao",commentDao);
         model.addAttribute("page",page);
+        model.addAttribute("pageCategory",category);
+        model.addAttribute("now",LocalDateTime.now());
+        model.addAttribute("order",order);
         return "meeting/meeting_home";
     }
     @GetMapping("/articles")
@@ -149,6 +155,7 @@ public class MeetingController {
             model.addAttribute("applyDao",applyDao);
             model.addAttribute("false","isFail");
             model.addAttribute("image",encodeImg);
+            model.addAttribute("now",LocalDateTime.now());
             model.addAttribute("user_id",sessionId);
             // 만약 신청게시물 작성자면...
             return "meeting/meeting_article";
@@ -283,8 +290,8 @@ public class MeetingController {
     @PostMapping("/apply/{id}")
     public String addApply(HttpSession session,String emailAddress,
                            @PathVariable("id") int meetingId ,
-                           String reason,String snsAddress
-                           ) {
+                           String reason,String snsAddress,
+                           @PathVariable String category) {
 
         if (session.getAttribute("user_id") != null) {
             // 신청 데이터 추가
@@ -309,8 +316,12 @@ public class MeetingController {
         }
                 return "redirect:/meeting/articles?id=" + meetingId;
     }
-
-
+    @ResponseBody
+    @RequestMapping(value = "/write/cbb", method =RequestMethod.POST)
+    public String checkValidate(@RequestBody MeetingDTO meetingDTO ){
+        System.out.println();
+        return "test";
+    }
 
 
 }
