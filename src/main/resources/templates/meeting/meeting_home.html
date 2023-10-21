@@ -28,15 +28,15 @@
         <div style="font-size: 36px;padding-right: 15%; padding-left: 15%; margin-top: 20px; margin-bottom: 20px;">
             <div style="display: flex">
                 <img th:src="@{/image/global/notifications01.png}">
-            <span>
+                <span>
             ORDER BY
             </span>
-            <form name=move  method=post>
-                <select name=url onchange="mover(this.value);" defa>
-                <option value="meeting_id">최신순</option>
-                <option value="views">조회순</option>
-                </select>
-            </form>
+                <form name=move  method=post>
+                    <select name=url onchange="mover(this.value);" defa>
+                        <option value="meeting_id">최신순</option>
+                        <option value="views">조회순</option>
+                    </select>
+                </form>
             </div>
         </div>
         <div class="container">
@@ -189,10 +189,10 @@
             </th:block>
         </div>
         </div>
-        <div style="text-align: center; margin-top: 20px">
+        <div style="text-align: center; margin: 40px 0 50px 0">
             <span style="padding-right: 10px" id="page_list"></span>
             <a href="/meeting/write" class="btn btn-primary"
-               style="background-color: #FF9F29; color: white; float: right; margin-right: 25%"> 새 글 작성</a>
+               style="background-color: #FF9F29; color: white; float: right; margin-right: 25% "> 새 글 작성</a>
             </a>
         </div>
 
@@ -209,14 +209,14 @@
         const page = /*[[${page}]]*/
         const pageCategory = /*[[${pageCategory}]]*/
         const order = /*[[${order}]]*/
-          function mover(url) {
-              if (pageCategory != null) {
-                  location.href = "/meeting?page=" + page + "&category=" + pageCategory + "&order=" + url
-              } else {
-                  location.href = "/meeting?page=" + page + "&order=" + url
-              }
+            function mover(url) {
+                if (pageCategory != null) {
+                    location.href = "/meeting?page=" + page + "&category=" + pageCategory + "&order=" + url
+                } else {
+                    location.href = "/meeting?page=" + page + "&order=" + url
+                }
 
-          }
+            }
         // 정렬기준
         for (const orderElement of document.querySelectorAll("option")) {
             if (orderElement.value === order){
