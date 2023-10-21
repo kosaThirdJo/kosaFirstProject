@@ -12,11 +12,16 @@ import java.util.Map;
 @Mapper
 public interface MeetingMapper {
     // 모든 미팅 조회 상태가 2(삭제면) 조회안함 , 10글자 이상시 생략 후 ... 붙임
-    @Select("select meeting_id meetingId, user_id userId, if(CHAR_LENGTH(title) > 10,concat(substr(title,1,10),'...'),title) as title, category, status, application_deadline applicationDeadline, views, recruitment_count recruitmentCount, application_count applicationCount, location, description, creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where is_delete = 0 order by meeting_id desc limit 12 offset #{offset}")
-    List<MeetingVO> getAllMeetingList(int offset);
+    @Select("select meeting_id meetingId, user_id userId, if(CHAR_LENGTH(title) > 10,concat(substr(title,1,10),'...'),title) as title, category, status, application_deadline applicationDeadline, views, recruitment_count recruitmentCount, application_count applicationCount, location, description, creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where is_delete = 0 order by ${order} desc limit 12 offset #{offset}")
+    List<MeetingVO> getAllMeetingList(@Param("offset")int offset,@Param("order") String order);
+    @Select("select meeting_id meetingId, user_id userId, if(CHAR_LENGTH(title) > 10,concat(substr(title,1,10),'...'),title) as title, category, status, application_deadline applicationDeadline, views, recruitment_count recruitmentCount, application_count applicationCount, location, description, creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where is_delete = 0 and category= #{category} order by ${order} desc limit 12 offset #{offset}")
+    List<MeetingVO> getAllMeetingListByCategory(@Param("offset") int offset, @Param("category") int category,@Param("order")String order);
+    @Select("select count(*) from meeting where is_delete = 0")
+    int getAllMeetingCountList();
+    @Select("select count(*) from meeting where is_delete = 0 and category=#{category}")
+    int getAllMeetingCountListByCategory(@Param("category") int category);
     // 카테고리 별로 모든 미팅 조회
-    @Select("select meeting_id meetingId, user_id userId, if(CHAR_LENGTH(title) > 10,concat(substr(title,1,10),'...'),title) as title, category, status, application_deadline applicationDeadline, views, recruitment_count recruitmentCount, application_count applicationCount, location, description, creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where is_delete = 0 and category= #{category} order by meeting_id desc limit 12 offset #{offset}")
-    List<MeetingVO> getAllMeetingListByCategory(@Param("offset") int offset, @Param("category") int category);
+
     // 단건 미팅 조회 상태가 2(삭제면) 조회안함
     @Select("select meeting_id meetingId, user_id userId, title,category,status,application_deadline applicationDeadline,views,recruitment_count recruitmentCount,application_count applicationCount,location,description,creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where meeting_id= #{meetingId} and is_delete = 0")
     MeetingDTO getMeetingArticleById(int meetingId);
