@@ -25,18 +25,25 @@
         </script>
     </div>
     <article id="content_list">
-        <div style="font-size: 36px">
-            <img th:src="@{/image/global/notifications01.png}">
+        <div style="font-size: 36px;padding-right: 15%; padding-left: 15%; margin-top: 20px; margin-bottom: 20px;">
+            <div style="display: flex">
+                <img th:src="@{/image/global/notifications01.png}">
+            <span>
             ORDER BY
-            <a href="/meeting/write" class="btn btn-primary"
-               style="background-color: #FF9F29; color: white; float: right"> 새 글 작성</a>
-            </a>
+            </span>
+            <form name=move  method=post>
+                <select name=url onchange="mover(this.value);" defa>
+                <option value="meeting_id">최신순</option>
+                <option value="views">조회순</option>
+                </select>
+            </form>
+            </div>
         </div>
         <div class="container">
             <th:block th:each="meetingDTO, meetingStat:${allMeetingList}">
                 <a th:href="|meeting/articles?id=${meetingDTO.meetingId}|">
                     <div class="main-left-content-bottom-meeting"
-                         th:style="${meetingDTO.status == 0 ? 'background-color:#FAF3E3;' : 'background-color:#D9D9D9;'}">
+                         th:style="${meetingDTO.status == 1|| now >= meetingDTO.applicationDeadline  ? 'background-color:#D9D9D9;' : 'background-color:#FAF3E3;'}">
                         <!-- 01-02-01 white box -->
                         <div class="main-left-content-bottom-meeting-white">
                             <!-- white box - top -->
@@ -59,17 +66,25 @@
                                 </div>
                                 <!-- white box - top - status -->
                                 <div class="main-left-content-bottom-meeting-white-top-status"
-                                     th:style="${meetingDTO.status == 0 ? 'background-color:#FF9F29;' : 'background-color:#5F5B5B;'}">
+                                     th:style="${meetingDTO.status == 1|| now >= meetingDTO.applicationDeadline ? 'background-color:#5F5B5B;' : 'background-color:#FF9F29;'}">
                                     <!-- 0: 모집중, 1:모집완료 -->
-                                    <span th:if="${meetingDTO.status}==0"
-                                          class="main-left-content-bottom-meeting-white-top-text">
-                                        모집중
-                                    </span>
-                                    <!--  스타일 색 다르게-->
-                                    <span th:if="${meetingDTO.status}==1"
-                                          class="main-left-content-bottom-meeting-white-top-text">
-                                        모집 완료
-                                    </span>
+                                    <th:block th:if="${now}<${meetingDTO.applicationDeadline}">
+                                        <span th:if="${meetingDTO.status}==0"
+                                              class="main-left-content-bottom-meeting-white-top-text">
+                                            모집중
+                                        </span>
+                                        <!--  스타일 색 다르게-->
+                                        <span th:if="${meetingDTO.status}==1"
+                                              class="main-left-content-bottom-meeting-white-top-text">
+                                            모집 완료
+                                        </span>
+                                    </th:block>
+                                    <th:block th:if="${now}>=${meetingDTO.applicationDeadline}">
+                                          <span class="main-left-content-bottom-meeting-white-top-text">
+                                              모집 완료
+                                        </span>
+
+                                    </th:block>
                                 </div>
                             </div>
 
@@ -85,8 +100,13 @@
                                 </div>
 
                                 <!-- white box - title -->
-                                <div class="main-left-content-bottom-meeting-white-title"
-                                     th:text="${meetingDTO.title}">제목
+                                <div class="main-left-content-bottom-meeting-white-title">
+                                    <span th:text="${meetingDTO.title}">제목
+                                    </span>
+
+                                    <span class="main-left-content-bottom-meeting-white-title" style="font-size: small" th:text="| 작성자 : ${userDao.getNameById(meetingDTO.userId)}|">
+                                    </span> 작성자
+
                                 </div>
 
                                 <!-- whitebox - deadline -->
@@ -170,13 +190,12 @@
         </div>
         </div>
         <div style="text-align: center; margin-top: 20px">
-            <a class="btn btn-primary" th:if="${page} != 0" th:href="@{|/meeting?page=${page-1}|}">
-                <span>&lt</span>
-            </a>
-            <a class="btn btn-primary" th:if="${page*12} <= ${allMeetingList.size()+12} " th:href="@{|/meeting?page=${page+1}|}">
-                <span>&gt</span>
+            <span style="padding-right: 10px" id="page_list"></span>
+            <a href="/meeting/write" class="btn btn-primary"
+               style="background-color: #FF9F29; color: white; float: right; margin-right: 25%"> 새 글 작성</a>
             </a>
         </div>
+
     </article>
     </div>
     </div>
@@ -184,14 +203,69 @@
     </article>
     </div>
     <script th:inline="javascript">
-        // 모집완료 색 바꾸기
+        /*<![CDATA[*/
+        // 정렬 페이지 이동
+
+        const page = /*[[${page}]]*/
+        const pageCategory = /*[[${pageCategory}]]*/
+        const order = /*[[${order}]]*/
+          function mover(url) {
+              if (pageCategory != null) {
+                  location.href = "/meeting?page=" + page + "&category=" + pageCategory + "&order=" + url
+              } else {
+                  location.href = "/meeting?page=" + page + "&order=" + url
+              }
+
+          }
+        // 정렬기준
+        for (const orderElement of document.querySelectorAll("option")) {
+            if (orderElement.value === order){
+                orderElement.selected = true
+            }
+        }
+
+
+
         // 모든 섹션 리스트 조회
         const sectionAll = document.querySelectorAll('[id*=\"card\"]');
-        for (const sectionAllKey in sectionAll) {
-            sectionAll[sectionAllKey].addEventListener("click", function () {
-                window.location.href += "/articles?id=" + sectionAll[sectionAllKey].id.split("_")[1];
+        for (const sectionEle of sectionAll) {
+            sectionEle.addEventListener("click", function () {
+                window.location.href += "/articles?id=" + sectionEle.id.split("_")[1];
             });
         }
+
+        pageDom = document.getElementById("page_list")
+        // page_list 처리
+        const minPage = Math.max(0,page-4);
+        const length = /*[[${allMeetingListCount}]]*/
+
+        var endPage = length / 12
+
+        if ((length %12) !== 0){
+            endPage += 1
+        }
+        const pageAdresss = "/meeting"
+
+        const maxPage = Math.min(page+4, endPage-2)
+
+
+
+        for (let i = minPage; i <= maxPage; i++) {
+
+            var newLink = document.createElement("a")
+            newLink.className = "btn btn-primary";
+            newLink.style = "margin: 10px; color: black; background-color: #FAF3E3;";
+            if (page != i) {
+                newLink.href = pageAdresss + "?page=" + (i)
+                if (pageCategory != null){
+                    newLink.href += "&category=" + (pageCategory)
+                }
+                newLink.href += "&order=" + order
+            }
+            newLink.textContent = "" + i
+            pageDom.appendChild(newLink);
+        }
+        /*]]>*/
     </script>
 </th:block>
 </body>

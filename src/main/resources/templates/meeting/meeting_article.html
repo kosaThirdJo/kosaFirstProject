@@ -11,6 +11,7 @@
             /* 생략 */
         }
         .meeting-articles-profile{
+
             padding-top: 20px;
             text-align: center;
             gap: 5px;
@@ -45,6 +46,7 @@
             height: 200px;
             margin-right: 50px;
             margin-top: 50px;
+            border-radius: 20%;
         }
         #apply{
             float: right;
@@ -53,6 +55,7 @@
             height: 200px;
             margin-right: 50px;
             margin-top: 50px;
+            border-radius: 20%;
         }
 
         #content_box {
@@ -177,22 +180,23 @@
         </div>
     </div>
 
-    <article class="">
+    <article style="display: flex">
+        <div>
         <section id="content_box">
             <div>
-                <sapn th:if="${meetingDTO.status}==0" th:style="'background-color: #FAF3E3'" class="btn">모집중</sapn>
-                <span th:if="${meetingDTO.status}==1" th:style="'background-color: gray; color: white'" class="btn">모집완료</span>
+                <sapn th:if="${meetingDTO.status == 0 && now < meetingDTO.applicationDeadline }" th:style="'background-color: #FAF3E3'" class="btn">모집중</sapn>
+                <span th:if="${meetingDTO.status ==1 || now >= meetingDTO.applicationDeadline}" th:style="'background-color: gray; color: white'" class="btn">모집완료</span>
                 <h2 id="content_title" style="display: inline" th:text="${meetingDTO.title}"></h2>
-                <th:block th:if="${checkApply} != 1">
+                <th:block th:if="${checkApply == 0 && now < meetingDTO.applicationDeadline}  ">
                     <button id="modal-button" class="btn btn-primary" th:if="${user_id!= null} and ${meetingDTO.userId != user_id}" type="button" data-toggle="modal"
-                            data-target="#myModal" data->신청하기
+                            data-target="#myModa" data->신청하기
                     </button>
                 </th:block>
-                <th:block th:if="${checkApply} != 0">
+                <th:block th:if="${checkApply== 1 || now >= meetingDTO.applicationDeadline}">
                     <button class="btn btn-primary" th:if="${user_id!= null} and ${meetingDTO.userId != user_id}" style="float: right" disabled type="button">신청하기
                     </button>
                 </th:block>
-                <th:block th:if="${meetingDTO.status}==0">
+                <th:block th:if="${meetingDTO.status== 0 &&  now < meetingDTO.applicationDeadline}">
                     <a th:href="|/meeting/fix/${meetingDTO.meetingId}|">
                         <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
                                 th:text="수정하기"></button>
@@ -207,7 +211,7 @@
                                 th:text="모집완료" ></button>
                     </a>
                 </th:block>
-                <th:block th:if="${meetingDTO.status}==1">
+                <th:block th:if="${meetingDTO.status==1 || now >= meetingDTO.applicationDeadline}">
                     <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
                           th:text="수정하기" disabled></button>
                     <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
@@ -221,8 +225,9 @@
                 <span> 조회수 </span>
                 <span th:text="${meetingDTO.views}"></span>
             </div>
-            <div id="content_description" th:text="${meetingDTO.description}">
-            </div>
+            <textarea id="content_description" th:text="${meetingDTO.description}"
+            readonly style="border: none; resize: none;">
+            </textarea>
             <div id="end_date_line">
                 <img th:src="@{/image/global/end_date01.png}">
                 <span style="margin-right: 20px">마감일</span>
@@ -235,25 +240,7 @@
                 <span th:text="${meetingDTO.location}"></span>
             </div>
         </div>
-            <div>
-                <div id="profile" class="border border-dark">
-                    <div class="meeting-articles-profile">
-                        <th:block th:if="${!image.isEmpty()}">
-                            <img class="meeting-articles-profile-photo"
-                                 th:src="@{'data:image/png;base64,' + ${image}}" alt="Image"><br/>
-                        </th:block>
-                        <th:block th:if="${image.isEmpty()}">
-                            <img style="width:5rem; height:5rem; border-radius:9999px;"
-                                 th:src="@{/image/global/userdefaultimg.png}"/><br/>
-                        </th:block>
-                        <div th:text="${userDao.getNameById(meetingDTO.userId)}"></div>
-                        <div th:text="${userDao.getUserProfileInfo(meetingDTO.userId).about_me}"></div>
-                    </div>
-                </div>
-                <div id="apply" class="border border-dark">
-                    <span>현재 이 프로젝트에서 <span style="color: #FF9F29" th:text="${applyDao.countApplyByMeetingId(meetingDTO.meetingId)}">0</span>명이 참여중입니다.</span>
-                </div>
-            </div>
+
         </section>
         <section id="comment_box">
             <div>댓글 <span style="color: #1A4D2E" th:text="${count_comment}"></span>
@@ -275,6 +262,33 @@
                 </div>
             </div>
         </section>
+        </div>
+        <div style="
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin-left: 30px;
+        ">
+            <div id="profile" class="border border-dark">
+                <div class="meeting-articles-profile">
+                    <th:block th:if="${!image.isEmpty()}">
+                        <img class="meeting-articles-profile-photo"
+                             th:src="@{'data:image/png;base64,' + ${image}}" alt="Image"><br/>
+                    </th:block>
+                    <th:block th:if="${image.isEmpty()}">
+                        <img style="width:5rem; height:5rem; border-radius:9999px;"
+                             th:src="@{/image/global/userdefaultimg.png}"/><br/>
+                    </th:block>
+                    <div th:text="${userDao.getNameById(meetingDTO.userId)}"></div>
+                    <div th:text="${userDao.getUserProfileInfo(meetingDTO.userId).about_me}"></div>
+                </div>
+            </div>
+            <div  id="apply" class="border border-dark">
+                <div style="margin: 20px">
+                <span >현재 이 프로젝트에서 <span style="color: #FF9F29" th:text="${applyDao.countApplyByMeetingId(meetingDTO.meetingId)==null  ? 0 : applyDao.countApplyByMeetingId(meetingDTO.meetingId) }">0</span>명이 참여중입니다.</span>
+                </div>
+            </div>
+        </div>
     </article>
 </th:block>
 </body>

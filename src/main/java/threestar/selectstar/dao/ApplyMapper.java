@@ -4,7 +4,6 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import threestar.selectstar.domain.ApplyVO;
-import threestar.selectstar.domain.CommentDTO;
 
 @Mapper
 public interface ApplyMapper {
