@@ -29,8 +29,6 @@ a{
   color: rgba(255, 255, 255, 1);
   height: auto;
   font-size: 30px;
-  font-style: Bold;
-  text-align: left;
   font-weight: 700;
   line-height: normal;
   font-stretch: normal;
@@ -62,16 +60,11 @@ a{
     border: none;
     color: rgba(0, 0, 0, 1);
     font-size: 20px;
-    font-style: Bold;
     text-align: center;
     font-weight: 700;
 }
 .e-category button:hover{
   cursor: pointer;
-}
-.filter-button-selected{
- color: #FF9F29;
- font-weight: 800;
 }
 .mymeeting-list-container{ /* 목록 frame*/
     width: 100%;
@@ -91,7 +84,7 @@ a{
     display: inline;
     list-style-type: none;
 }
-.e-status button{ /* 모집상태 button */
+.search-filter-select-btn{ /* 모집상태 button */
     width: 100px;
     height: 40px;
     background: none;
@@ -137,7 +130,7 @@ a{
 .meeting-status{ /*meeting 모집여부 칸*/
     display: flex;
     justify-content: center;
-    width: 85px;
+    width: 10%;
     margin-right: 5px;
     line-height: 30px;
 }
@@ -188,7 +181,7 @@ a{
 }
 .meeting-body{ /*meeting 내용 칸*/
     height: 50px;
-    width: 100%;
+    width: 90%;
     display: flex;
     align-items: center;
 }
