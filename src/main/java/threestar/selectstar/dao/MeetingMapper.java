@@ -113,8 +113,43 @@ public interface MeetingMapper {
             "from meeting m " +
             "join apply a " +
             "on m.meeting_id = a.meeting_id " +
-            "where a.user_id= #{userId}  and m.is_delete = 0;")
+            "where a.user_id= #{userId}  and m.is_delete = 0 " +
+            "order by application_date DESC;")
     public List<MeetingVO> getMyApplyList(int userId);
+
+    //마이페이지-내가 신청한 글 목록 카테고리별 조회
+    @Select("select m.meeting_id meetingId, m.title, m.is_delete isDelete, m.category, m.status, " +
+            "m.application_deadline applicationDeadline, m.views, m.recruitment_count recruitmentCount, " +
+            "m.application_count applicationCount, m.creation_date creationDate, m.location, m.description " +
+            "from meeting m " +
+            "join apply a " +
+            "on m.meeting_id = a.meeting_id " +
+            "where a.user_id= #{userId}  and m.is_delete = 0 and m.category= #{category} " +
+            "order by application_date DESC;")
+    public List<MeetingVO> getMyApplyListByCategory(@Param("userId") int userId, @Param("category") int category);
+
+    //마이페이지-내가 신청한 글 목록 모집상태별 조회
+    @Select("select m.meeting_id meetingId, m.title, m.is_delete isDelete, m.category, m.status, " +
+            "m.application_deadline applicationDeadline, m.views, m.recruitment_count recruitmentCount, " +
+            "m.application_count applicationCount, m.creation_date creationDate, m.location, m.description " +
+            "from meeting m " +
+            "join apply a " +
+            "on m.meeting_id = a.meeting_id " +
+            "where a.user_id= #{userId}  and m.is_delete = 0 and m.status= #{status}" +
+            "order by application_date DESC;")
+    public List<MeetingVO> getMyApplyListByStatus(@Param("userId") int userId, @Param("status") int status);
+
+    //마이페이지-내가 신청한 글 목록 카테고리별&상태별 조회
+    @Select("select m.meeting_id meetingId, m.title, m.is_delete isDelete, m.category, m.status, " +
+            "m.application_deadline applicationDeadline, m.views, m.recruitment_count recruitmentCount, " +
+            "m.application_count applicationCount, m.creation_date creationDate, m.location, m.description " +
+            "from meeting m " +
+            "join apply a " +
+            "on m.meeting_id = a.meeting_id " +
+            "where a.user_id= #{userId}  and m.is_delete = 0 and m.category= #{category} and m.status= #{status} " +
+            "order by application_date DESC;")
+    public List<MeetingVO> getMyApplyListByCateStatus(@Param("userId") int userId, @Param("category") int category, @Param("status") int status);
+    
     // 신청시 신청인원 수정
     @Update("update meeting set application_count = #{applicationCount} where meeting_id=#{meetingId}")
     public boolean updateApplicationCount(MeetingDTO meetingDTO);

@@ -1,3 +1,6 @@
+*{
+  font-family: NanumGothic;
+}
 li{
     list-style-type: none;
 }
@@ -6,7 +9,7 @@ a{
     color: black;
 }
 .frame-applymeeting-title{ /* title div frame */
-    width: 100%;
+    width: 80%;
     padding: 5px 10px;
 }
 .applymeeting-title{ /* title div */
@@ -28,14 +31,13 @@ a{
   font-size: 30px;
   font-style: Bold;
   text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
   line-height: normal;
   font-stretch: normal;
   text-decoration: none;
 }
 .frame-applymeeting-body{ /* body frame*/
-    width: 100%;
+    width: 80%;
     padding: 5px 10px;
 }
 .search-filter{ /* 카테고리 선택 div*/
@@ -50,10 +52,10 @@ a{
   padding-left: 0px;
 }
 .e-category{ /* 카테고리 li */
-    width: 15%;
+    width: 10%;
     display: inline;
 }
-.button-category{/* 카테고리 메뉴(전체/프로젝트/스터디/기타) 버튼 */
+.e-category button{/* 카테고리 메뉴(전체/프로젝트/스터디/기타) 버튼 */
     width: 100px;
     height: 40px;
     background: none;
@@ -62,11 +64,14 @@ a{
     font-size: 20px;
     font-style: Bold;
     text-align: center;
-    font-family: NanumGothic;
     font-weight: 700;
 }
-.button-category:hover{
+.e-category button:hover{
   cursor: pointer;
+}
+.filter-button-selected{
+ color: #FF9F29;
+ font-weight: 800;
 }
 .mymeeting-list-container{ /* 목록 frame*/
     width: 100%;
@@ -86,7 +91,7 @@ a{
     display: inline;
     list-style-type: none;
 }
-.search-filter-select-btn{ /* 모집상태 button */
+.e-status button{ /* 모집상태 button */
     width: 100px;
     height: 40px;
     background: none;
@@ -94,9 +99,13 @@ a{
     color: black;
     font-size: 18px;
     text-align: center;
-    font-family: NanumGothic;
     font-weight: 500;
 }
+
+.e-status button:hover{
+  cursor: pointer;
+}
+
 .mymeeting-list{ /*목록 ul*/
     list-style:none;
     padding-left: 0;
@@ -112,9 +121,8 @@ a{
     flex-direction: column;
 }
 .meetinginfo{ /*li 내부 frame div*/
-/*    width: 100%;*/
     height: 140px;
-    padding: 0px 30px;
+    padding: 0px 15px;
     display: flex;
     gap: 3px;
     flex-direction: column;
@@ -122,7 +130,6 @@ a{
 .meeting-title{ /*meeting title frame*/
     width: 100%;
     height: 50px;
-    gap: 5px;
     display: flex;
     overflow: hidden;
     align-items: center;
@@ -130,7 +137,7 @@ a{
 .meeting-status{ /*meeting 모집여부 칸*/
     display: flex;
     justify-content: center;
-    width: 10%;
+    width: 85px;
     margin-right: 5px;
     line-height: 30px;
 }
@@ -142,7 +149,6 @@ a{
    color: white;
    font-size: 14px;
    text-align: center;
-   font-family: NanumGothic;
    font-weight: 500;
 }
 .meeting-status-text-ing{ /* 모집중 */
@@ -153,21 +159,18 @@ a{
     color: white;
     font-size: 14px;
     text-align: center;
-    font-family: NanumGothic;
     font-weight: 500;
 }
 .meeting-category{ /*meeting 카테고리 칸*/
     display: flex;
     justify-content: center;
-    width: 10%;
-    margin-right: 5px;
+    width: 85px;
 }
 .meeting-category-text{ /*meeting 카테고리 text */
    height: 30px;
    color: rgba(26, 77, 46, 1);
    font-size: 14px;
    text-align: center;
-   font-family: NanumGothic;
    font-weight: 700;
    line-height: 27px;
 }
@@ -181,12 +184,11 @@ a{
    font-size: 20px;
    font-style: Bold;
    text-align: center;
-   font-family: NanumGothic;
    font-weight: 600;
 }
 .meeting-body{ /*meeting 내용 칸*/
     height: 50px;
-    width: 90%;
+    width: 100%;
     display: flex;
     align-items: center;
 }
@@ -197,12 +199,11 @@ a{
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: 14px;
-    font-family: NanumGothic;
     font-weight: 300;
 }
 .meeting-footer{/*meeting title frame*/
     height: 50px;
-    gap: 20px;
+    gap: 40px;
     display: flex;
     overflow: hidden;
     align-items: center;
@@ -211,14 +212,12 @@ a{
    color: #41644A;
    font-size: 14px;
    text-align: center;
-   font-family: NanumGothic;
    font-weight: 700;
 }
 .meeting-footer-content-text{
    color: black;
    font-size: 14px;
    text-align: center;
-   font-family: NanumGothic;
    font-weight: 500;
 }
 .meeting-footer div{
@@ -228,7 +227,6 @@ a{
    font-style: Bold;
    font-size: 20px;
    text-align: center;
-   font-family: NanumGothic;
    font-weight: 700;
 }
 

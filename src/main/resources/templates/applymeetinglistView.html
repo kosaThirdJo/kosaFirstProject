@@ -9,55 +9,65 @@
     <link th:href="@{/css/applymeetinglistView.css}" rel="stylesheet" />
 </head>
 <body>
-    <th:block layout:fragment="content">
-        <div class="frame-applymeeting-title">
-            <div class="applymeeting-title">
-                <span class="applymeeting-title-text">내가 참여한 모임 - 내가 신청한 글 목록</span>
-            </div>
+<th:block layout:fragment="content">
+    <div class="frame-applymeeting-title">
+        <div class="applymeeting-title">
+            <span class="applymeeting-title-text">내가 참여한 모임 - 내가 신청한 글 목록</span>
         </div>
-        <div class="frame-applymeeting-body">
-            <!-- 카테고리(전체, 프로젝트, 스터디, 기타)    메뉴 -->
-            <div class="search-filter">
-                <ul class="search-categry">
-                    <li class="e-category">
-                        <button
-                                th:onclick="location.href='/mypage/mymeetinglist'" class="button-category">전체</button>
+    </div>
+    <div class="frame-applymeeting-body">
+        <!-- 카테고리(전체, 프로젝트, 스터디, 기타)    메뉴 -->
+        <div class="search-filter">
+            <ul class="search-categry">
+                <li class="e-category">
+                    <button class="filter-button"
+                            data-category="category"
+                            value="all">전체</button>
+                </li>
+                <li class="e-category">
+                    <button class="filter-button"
+                            data-category="category"
+                            value="project">프로젝트</button>
+                </li>
+                <li class="e-category">
+                    <button class="filter-button"
+                            data-category="category"
+                            value="study">스터디</button>
+                </li>
+                <li class="e-category">
+                    <button class="filter-button"
+                            data-category="category"
+                            value="etc">기타</button>
+                </li>
+            </ul>
+        </div>
+        <div class="mymeeting-list-container">
+            <!-- 모집상태(전체, 모집중, 모집완료) 메뉴-->
+            <div class="list-container-header">
+                <ul class="search-filter-select">
+                    <li class="e-status">
+                        <button class="filter-button"
+                                data-category="status"
+                                value="all">전체</button>
                     </li>
-                    <li class="e-category">
-                        <button
-                                th:onclick="location.href='/mypage/mymeetinglist/1'" value="1"  class="button-category">프로젝트</button>
+                    <li class="e-status">
+                        <button class="filter-button"
+                                data-category="status"
+                                value="statusing">모집중</button>
                     </li>
-                    <li class="e-category">
-                        <button
-                                th:onclick="location.href='/mypage/mymeetinglist/0'" value="0" class="button-category">스터디</button>
-                    </li>
-                    <li class="e-category">
-                        <button
-                                th:onclick="location.href='/mypage/mymeetinglist/2'" value="2" class="button-category">기타</button>
+                    <li class="e-status">
+                        <button class="filter-button"
+                                data-category="status"
+                                value="statused">모집완료</button>
                     </li>
                 </ul>
             </div>
-            <div class="mymeeting-list-container">
-                <!-- 모집상태(전체, 모집중, 모집완료) 메뉴-->
-                <div class="list-container-header">
-                    <ul class="search-filter-select">
-                        <li class="e-status">
-                            <button class="search-filter-select-btn">전체</button>
-                        </li>
-                        <li class="e-status">
-                            <button class="search-filter-select-btn">모집중</button>
-                        </li>
-                        <li class="e-status">
-                            <button class="search-filter-select-btn">모집완료</button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="list-container-body">
-                    <!--/* 조회 결과(meetingvoList가 있을 경우 */-->
-                    <th:block th:if="${applyingvoList}">
-                        <ul class="mymeeting-list">
-                            <li th:each="applyingvo : ${applyingvoList}" class="mymeeting-container">
-                                <a th:href="@{/meeting/articles(id=${applyingvo.meetingId})}" class="click-meetingpost">
+            <div class="list-container-body">
+                <!--/* 조회 결과(meetingvoList가 있을 경우 */-->
+                <th:block th:if="${applyingvoList}">
+                    <ul class="mymeeting-list">
+                        <li th:each="applyingvo : ${applyingvoList}" class="mymeeting-container">
+                            <a th:href="@{/meeting/articles(id=${applyingvo.meetingId})}" class="click-meetingpost">
                                 <div class="meetinginfo">
                                     <!-- 게시글 항목 status & title-->
                                     <div class="meeting-title">
@@ -112,19 +122,184 @@
                                         </div>
                                     </div>
                                 </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </th:block>
-                    <!--/* 조회 결과(applyingvoList가 없을 경우 */-->
-                    <th:block th:if="${msg}">
-                        <div>
-                            <p class="result-msg" th:text="${msg}"></p>
-                        </div>
-                    </th:block>
-                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </th:block>
+                <!--/* 조회 결과(applyingvoList가 없을 경우 */-->
+                <th:block th:if="${msg}">
+                    <div>
+                        <p class="result-msg" th:text="${msg}"></p>
+                    </div>
+                </th:block>
             </div>
         </div>
-    </th:block>
+    </div>
+    <script th:inline="javascript">
+        console.log("내가 신청한 글");
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var selectedFilters2 = {};
+
+            function toggleFilter(button) {
+                var filterCategory = button.getAttribute('data-category');  // 필터 카테고리 가져오기 (category, status)
+                var filterValue = button.getAttribute('value');
+                var btns = document.querySelectorAll('button[data-category=filterCategory]');
+                var cateBtns = document.querySelectorAll('button[data-category=category]');
+                var statusBtns = document.querySelectorAll('button[data-category=status]');
+
+                if(!filterValue){
+                    console.log("null");
+                    selectedFilters2[filterCategory] = "all";
+                }else{
+                    selectedFilters2[filterCategory] = filterValue;
+
+                    /*
+                    for(let cbtn of cateBtns){
+                        if(cbtn.value == filterValue){
+                            cbtn.style.color = '#FF9F29';
+                        }else{
+                            cbtn.style.color = 'black';
+                        }
+                    }
+                    for(let sbtn of statusBtns){
+                        if(sbtn.value == filterValue){
+                            sbtn.style.color = '#FF9F29';
+                        }else{
+                            sbtn.style.color = 'black';
+                        }
+                    }
+                    */
+                }
+
+                for(let cbtn of cateBtns){
+                    if(cbtn.value == filterValue){
+                        cbtn.style.color = '#FF9F29';
+                    }else{
+                        cbtn.style.color = 'black';
+                    }
+                }
+                for(let sbtn of statusBtns){
+                    if(sbtn.value == filterValue){
+                        sbtn.style.color = '#FF9F29';
+                    }else{
+                        sbtn.style.color = 'black';
+                    }
+                }
+
+                console.log(selectedFilters2);
+            }
+
+            //검색 조건 버튼(카테고리별(전체/스터디/프로젝트/기타), 모집여부(전체/모집중/모집완료) )
+            var filterButtons = document.querySelectorAll('.filter-button');
+
+            filterButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    toggleFilter(this);
+                    sendAjaxRequest();
+                });
+            });
+
+            function sendAjaxRequest() {
+               var xhr = new XMLHttpRequest();
+               var url = "/mypage/myapplyingfilter?";
+
+               var selectedLen = Object.keys(selectedFilters2).length;
+               for(let i=0; i<selectedLen; i++){
+                    url += Object.keys(selectedFilters2)[i] + "=" + Object.values(selectedFilters2)[i];
+                    if(i < selectedLen-1){
+                        url += "&";
+                    }
+               }
+               console.log(url);
+
+               xhr.onreadystatechange = function () {
+                    if (xhr.status == 200) {
+                        const applyfilterResults = JSON.parse(xhr.responseText);
+                        //console.log(applyfilterResults);
+                        updateFillterResults(applyfilterResults);
+                    }
+                };
+                xhr.open('GET', url, true);
+                xhr.send();
+            }
+
+            function updateFillterResults(meetings) {
+                const filteringResultContainer = document.querySelector('.list-container-body');
+                filteringResultContainer.innerHTML = '';
+
+                meetings.forEach(applyingvo => {
+                    const meetingElement = document.createElement('a');
+                    meetingElement.classList.add('click-meetingpost');
+
+                    meetingElement.href = '/meeting/articles?id='+applyingvo.meetingId;
+
+                    meetingElement.innerHTML = `
+                        <div class="meetinginfo">
+                            <!-- 게시글 항목 status & title-->
+                            <div class="meeting-title">
+                                <div class="meeting-status">
+                                    <div class="meeting-status-text">
+                                        ${applyingvo.status  == 0 ? '모집중' : '모집완료'}
+                                    </div>
+                                </div>
+                                <div class="meeting-category">
+                                    <div class="meeting-category-text">
+                                        ${applyingvo.category == 0 ? '스터디' : applyingvo.category == 1 ? '프로젝트' : '기타'}
+                                    </div>
+                                </div>
+                                <div class="meeting-title-div">
+                                    <div class="meeting-title-text">${applyingvo.title}</div>
+                                </div>
+                            </div>
+                            <!--게시글 항목 내용-->
+                            <div class="meeting-body">
+                                <p class="meeting-body-content">${applyingvo.description}</p>
+                            </div>
+                            <!--게시글 항목 하단-->
+                            <div class="meeting-footer">
+                                <div class="meeting-cratedata">
+                                    <span class="meeting-footer-text">작성일</span>
+                                    <span class="meeting-footer-content-text">
+                                        ${new Date(applyingvo.creationDate).toISOString().split('T')[0]}
+                                    </span>
+                                </div>
+
+                                <div class="meeing-location">
+                                    <span class="meeting-footer-text">장소</span>
+                                    <span class="meeting-footer-content-text">${applyingvo.location}</span>
+                                </div>
+
+                                <div class="meeting-count">
+                                    <span class="meeting-footer-text">신청인원</span>
+                                    <span class="meeting-footer-content-text">
+                                          ${applyingvo.applicationCount}/${applyingvo.recruitmentCount}
+                                    </span>
+                                </div>
+
+                                <div class="meeting-deadline">
+                                    <span class="meeting-footer-text">모집마감일</span>
+                                    <span class="meeting-footer-content-text">
+                                        ${new Date(applyingvo.applicationDeadline).toISOString().split('T')[0]}
+                                    </span>
+                                    <span class="meeting-footer-content-text">
+                                        ${new Date(applyingvo.applicationDeadline).toTimeString().split(':')[0] + ":"
+                                        + new Date(applyingvo.applicationDeadline).toTimeString().split(':')[1]}
+                                    </span>
+                                </div>
+
+                                <div class="meeting-view">
+                                    <span class="meeting-footer-text">조회수</span>
+                                    <span class="meeting-footer-content-text">${applyingvo.views}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    filteringResultContainer.appendChild(meetingElement);
+                });
+            }
+    });
+    </script>
+</th:block>
 </body>
 </html>
