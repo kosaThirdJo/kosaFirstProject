@@ -37,20 +37,20 @@
     </div>
     <article>
         <form action="/meeting/write" method=post>
-            <h2><input name="title" placeholder="제목을 입력해 주세요"></h2>
+            <h2><input style="width: 50%" name="title" placeholder="제목을 입력해 주세요" maxlength=20 minlength="2" required></h2>
             <section>
                 <div id="content_type">
                     <div>
-                        카테코리
-                        <input type="radio" name="category" value=0> 프로젝트
+                        카테고리
+                        <input type="radio" name="category" value=0 checked> 프로젝트
                         <input type="radio" name="category" value=1> 스터디
                         <input type="radio" name="category" value=2> 기타
                     </div>
                     <div>마감일
-                        <input name="endDate" type="datetime-local">
+                        <input name="endDate" type="datetime-local" required>
                     </div>
                     <div>모집 장소
-                        <select name="location" id="loc">
+                        <select name="location" id="loc" required>
                             <option value="서울">서울</option>
                             <option value="경기도">경기도</option>
                             <option value="강원도">강원도</option>
@@ -67,7 +67,7 @@
                         </select>
                     </div>
                     <div>모집인원수
-                        <input name="recruitNum" type="number" placeholder="XX명">
+                        <input name="recruitNum" type="number" placeholder="XX명" min="0" max="100"  required>
                     </div>
                     <!--  02-02-06 관심 분야  -->
                     <div class="signup-interest">
@@ -125,16 +125,29 @@
             <section>
                 <div id="content">
                     <div>소개</div>
-                    <textarea name="content" placeholder="내용을 입력해 주세요!"></textarea>
+                    <textarea id="description" name="content" placeholder="내용을 입력해 주세요!" required></textarea>
+                    <div id="text-length-check">글자수 : </div>
                 </div>
             </section>
-            <button class="btn btn-primary"
+            <button id="submit-button"  type="submit" class="btn btn-primary"
                     style="background-color: #FF9F29; color: white; margin-top: 30px;">등록하기
             </button>
+<!--            <button hidden id="submit-button"  type="submit" class="btn btn-primary"-->
+<!--                    style="display : none; background-color: #FF9F29; color: white; margin-top: 30px;">등록하기-->
+<!--            </button>-->
         </form>
+<!--        <button id="check-button" class="btn btn-primary"-->
+<!--                style="background-color: #FF9F29; color: white; margin-top: 30px;">등록하기-->
+<!--        </button>-->
     </article>
     </body>
     <script>
+        // 글자수 세기
+        text_check_dom = document.querySelector("#text-length-check")
+        text_dom = document.querySelector("#description")
+        window.addEventListener("keyup" ,e => {
+            text_check_dom.innerText = "글자수 :" + text_dom.value.length
+        })
         // 언어
         const interestLangButtons = document.querySelectorAll('.signup-interest-lang-btn');
         const selectedInterestsLangInput = document.getElementById('selected-interests-lang');
@@ -214,6 +227,24 @@
                 });
             });
         }
+        // document.getElementById("check-button").addEventListener("click",function () {
+        //         alert("click")
+        //     var xhr = new XMLHttpRequest();
+        //     xhr.onreadystatechange = function () {
+        //         alert(xhr.status)
+        //         if (xhr.readyState === XMLHttpRequest.DONE) {
+        //             if (xhr.status === 200) {
+        //                 var data = JSON.parse(xhr.responseText);
+        //                 // document.getElementById("submit-button").click();
+        //             } else {
+        //                 alert("데이터를 입력해 주세요!")
+        //             }
+        //         }
+        //     }
+        //     xhr.open("POST", "write/check");
+        //     xhr.setRequestHeader("")
+        // }
+        // )
     </script>
 
 

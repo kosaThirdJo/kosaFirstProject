@@ -39,7 +39,7 @@
     <form th:action="|/meeting/fix/${meetingVO.getMeetingId()}|" method=post>
 
       <input type="hidden" name="creationDate" th:value="${meetingVO.getCreationDate()}">
-      <h2><input name="title" placeholder="제목을 입력해 주세요" th:value="${meetingVO.getTitle()}"></h2>
+      <h2><inputr style="width: 50%" name="title" placeholder="제목을 입력해 주세요" th:value="${meetingVO.getTitle()}"  maxlength=20 minlength="2"  required></h2>
       <section>
         <div id="content_type">
           <div>
@@ -49,7 +49,7 @@
             <input id="radio2" type="radio" name="category" value=2> 기타
           </div>
           <div>마감일
-            <input name="endDate" type="datetime-local" th:value="${meetingVO.getApplicationDeadline()}">
+            <input name="endDate" type="datetime-local" th:value="${meetingVO.getApplicationDeadline()}" required>
           </div>
           <div>모집 장소
             <select name="location" id="loc" th:value="${meetingVO.getApplicationDeadline()}">
@@ -69,7 +69,7 @@
             </select>
           </div>
           <div>모집인원수
-            <input name="recruitNum" type="number" placeholder="XX명" th:value="${meetingVO.getRecruitmentCount()}">
+            <input name="recruitNum" type="number" placeholder="최대100명" min="0" max="100"  th:value="${meetingVO.getRecruitmentCount()}" required>
           </div>
           <!--  02-02-06 관심 분야  -->
           <div class="signup-interest">
@@ -128,8 +128,8 @@
         <div id="content">
           <div>소개</div>
 <!--          기본값 텍스트-->
-          <textarea id="description" name="content" placeholder="내용을 입력해 주세요!" th:text="${meetingVO.getDescription()}"></textarea>
-          <div id="text-length-check">글자수 :</div>
+          <textarea id="description" name="content" placeholder="내용을 입력해 주세요!" th:text="${meetingVO.getDescription()}" required></textarea>
+          <div id="text-length-check">글자수 : 0</div>
         </div>
       </section>
       <button class="btn btn-primary"

@@ -9,7 +9,7 @@
     }
 
     header {
-/*        position: fixed;*/
+        /*position: fixed;*/
         top: 0;
         left: 0;
         right: 0;
@@ -459,6 +459,18 @@
   line-height: normal;
   font-stretch: normal;
   text-decoration: none;
+}
+main-left-content-bottom-meeting-white-top-text-right{
+    color: rgba(255, 255, 255, 1);
+    height: auto;
+    font-size: 13px;
+    font-style: Bold;
+    text-align: left;
+    font-family: NanumGothic;
+    font-weight: 700;
+    line-height: normal;
+    font-stretch: normal;
+    text-decoration: none;
 }
 
 /* whitebox - bottom */
