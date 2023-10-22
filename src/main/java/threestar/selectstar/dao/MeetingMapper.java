@@ -140,7 +140,7 @@ public interface MeetingMapper {
             "from meeting m " +
             "join apply a " +
             "on m.meeting_id = a.meeting_id " +
-            "where a.user_id= #{userId}  and m.is_delete = 0 and m.status= #{status}" +
+            "where a.user_id= #{userId}  and m.is_delete = 0 and m.status= #{status} " +
             "order by application_date DESC;")
     public List<MeetingVO> getMyApplyListByStatus(@Param("userId") int userId, @Param("status") int status);
 

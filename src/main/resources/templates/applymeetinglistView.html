@@ -145,8 +145,11 @@
                 var filterCategory = button.getAttribute('data-category');  // 필터 카테고리 가져오기 (category, status)
                 var filterValue = button.getAttribute('value');
                 var btns = document.querySelectorAll('button[data-category=filterCategory]');
+
                 var cateBtns = document.querySelectorAll('button[data-category=category]');
                 var statusBtns = document.querySelectorAll('button[data-category=status]');
+
+
 
                 if(!filterValue){
                     console.log("null");
@@ -171,6 +174,15 @@
                     }
                     */
                 }
+                for(let b of btns){
+                    if(b.value == filterValue){
+                        console.log(b.value);
+                        b.style.color = '#FF9F29';
+                    }else{
+                        b.style.color = 'black';
+                    }
+                }
+
                 //재수정 예정
                 for(let cbtn of cateBtns){
                     if(cbtn.value == filterValue){
