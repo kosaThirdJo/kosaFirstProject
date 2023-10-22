@@ -55,10 +55,7 @@
     font-size: 23px;
     font-style: Bold;
     text-align: center;
-    font-family: NanumGothic;
     font-weight: 500;
-    line-height: normal;
-    font-stretch: normal;
     text-decoration: none;
 }
 .text-email{
@@ -68,10 +65,7 @@
     font-size: 15px;
     font-style: Bold;
     text-align: center;
-    font-family: NanumGothic;
     font-weight: 200;
-    line-height: normal;
-    font-stretch: normal;
     text-decoration: none;
 }
 /* sidebar-메뉴 */
@@ -92,10 +86,7 @@
   align-self: stretch;
   font-style: Bold;
   text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 .side-menu-li {
@@ -108,7 +99,6 @@
     font-size: 15px;
     align-self: stretch;
     text-align: left;
-    font-family: NanumGothic;
     font-weight: 400;
     line-height: normal;
     font-stretch: normal;

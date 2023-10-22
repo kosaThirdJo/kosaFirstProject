@@ -5,14 +5,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link th:href="@{/css/meeting/meeting_home.css}" rel="stylesheet"/>
     <style>
-
-        .container {
-            display: flex;
-            gap: 30px 50px;
-            flex-direction: row;
-            flex-wrap: wrap
-        }
     </style>
 </head>
 <body>
@@ -25,174 +20,168 @@
         </script>
     </div>
     <article id="content_list">
-        <div style="font-size: 36px;padding-right: 15%; padding-left: 15%; margin-top: 20px; margin-bottom: 20px;">
-            <div style="display: flex">
-                <img th:src="@{/image/global/notifications01.png}">
-                <span>
-            ORDER BY
-            </span>
-                <form name=move  method=post>
-                    <select name=url onchange="mover(this.value);" defa>
-                        <option value="meeting_id">최신순</option>
-                        <option value="views">조회순</option>
-                    </select>
-                </form>
+        <div class="content_list_title">
+            <div class="content_list_title_display">
+                <div class="main-content-left-title-text">
+                    <span class="material-icons" style="color: #F4CE14;">notifications</span>
+                    <span class="main-content-left-title-text">ORDER BY</span>
+                    <form name=move  method=post style="margin: 10px;">
+                        <select name=url onchange="mover(this.value);" class="content_select">
+                            <option value="meeting_id">최신순</option>
+                            <option value="views">조회순</option>
+                        </select>
+                    </form>
+                </div>
+                <a href="/meeting/write" class="content_list_btn make-meeting">
+                    <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">모임 만들기</span>
+                </a>
             </div>
         </div>
         <div class="container">
             <th:block th:each="meetingDTO, meetingStat:${allMeetingList}">
-                <a th:href="|meeting/articles?id=${meetingDTO.meetingId}|">
-                    <div class="main-left-content-bottom-meeting"
-                         th:style="${meetingDTO.status == 1|| now >= meetingDTO.applicationDeadline  ? 'background-color:#D9D9D9;' : 'background-color:#FAF3E3;'}">
-                        <!-- 01-02-01 white box -->
-                        <div class="main-left-content-bottom-meeting-white">
-                            <!-- white box - top -->
-                            <div class="main-left-content-bottom-meeting-white-top">
-                                <!-- white box - top - category -->
-                                <div class="main-left-content-bottom-meeting-white-top-category">
-                                    <!-- 0: 스터디, 1:프로젝트, 2: 기타 -->
-                                    <span th:if="${meetingDTO.category} == 0"
-                                          class="main-left-content-bottom-meeting-white-top-text">
+                <div class="container-content">
+                    <a th:href="|meeting/articles?id=${meetingDTO.meetingId}|">
+                        <div class="main-left-content-bottom-meeting"
+                             th:style="${meetingDTO.status == 1|| now >= meetingDTO.applicationDeadline  ? 'background-color:#D9D9D9;' : 'background-color:#FAF3E3;'}">
+                            <!-- 01-02-01 white box -->
+                            <div class="main-left-content-bottom-meeting-white">
+                                <!-- white box - top -->
+                                <div class="main-left-content-bottom-meeting-white-top">
+                                    <!-- white box - top - category -->
+                                    <div class="main-left-content-bottom-meeting-white-top-category">
+                                        <!-- 0: 스터디, 1:프로젝트, 2: 기타 -->
+                                        <span th:if="${meetingDTO.category} == 0"
+                                              class="main-left-content-bottom-meeting-white-top-text">
                                        스터디
                                     </span>
-                                    <span th:if="${meetingDTO.category} == 1"
-                                          class="main-left-content-bottom-meeting-white-top-text">
+                                        <span th:if="${meetingDTO.category} == 1"
+                                              class="main-left-content-bottom-meeting-white-top-text">
                                        프로젝트
                                     </span>
-                                    <span th:if="${meetingDTO.category} == 2"
-                                          class="main-left-content-bottom-meeting-white-top-text">
+                                        <span th:if="${meetingDTO.category} == 2"
+                                              class="main-left-content-bottom-meeting-white-top-text">
                                        기타
                                     </span>
-                                </div>
-                                <!-- white box - top - status -->
-                                <div class="main-left-content-bottom-meeting-white-top-status"
-                                     th:style="${meetingDTO.status == 1|| now >= meetingDTO.applicationDeadline ? 'background-color:#5F5B5B;' : 'background-color:#FF9F29;'}">
-                                    <!-- 0: 모집중, 1:모집완료 -->
-                                    <th:block th:if="${now}<${meetingDTO.applicationDeadline}">
+                                    </div>
+                                    <!-- white box - top - status -->
+                                    <div class="main-left-content-bottom-meeting-white-top-status"
+                                         th:style="${meetingDTO.status == 1|| now >= meetingDTO.applicationDeadline ? 'background-color:#5F5B5B;' : 'background-color:#FF9F29;'}">
+                                        <!-- 0: 모집중, 1:모집완료 -->
+                                        <th:block th:if="${now}<${meetingDTO.applicationDeadline}">
                                         <span th:if="${meetingDTO.status}==0"
                                               class="main-left-content-bottom-meeting-white-top-text">
                                             모집중
                                         </span>
-                                        <!--  스타일 색 다르게-->
-                                        <span th:if="${meetingDTO.status}==1"
-                                              class="main-left-content-bottom-meeting-white-top-text">
+                                            <!--  스타일 색 다르게-->
+                                            <span th:if="${meetingDTO.status}==1"
+                                                  class="main-left-content-bottom-meeting-white-top-text">
                                             모집 완료
                                         </span>
-                                    </th:block>
-                                    <th:block th:if="${now}>=${meetingDTO.applicationDeadline}">
+                                        </th:block>
+                                        <th:block th:if="${now}>=${meetingDTO.applicationDeadline}">
                                           <span class="main-left-content-bottom-meeting-white-top-text">
                                               모집 완료
                                         </span>
 
+                                        </th:block>
+                                    </div>
+                                </div>
+
+                                <!-- white box - bottom -->
+                                <div class="main-left-content-bottom-meeting-white-bottom">
+                                    <!-- white box - location -->
+                                    <div class="main-left-content-bottom-meeting-white-location">
+                                        <span class="material-icons" style="font-size: 15px;">location_on</span>
+                                        <span class="main-left-content-bottom-meeting-white-location-text"
+                                              th:text="${meetingDTO.location}">서울특별시</span>
+                                    </div>
+
+                                    <!-- white box - title -->
+                                    <div class="main-left-content-bottom-meeting-white-title">
+                                        <span th:text="${meetingDTO.title}">제목</span>
+                                    </div>
+
+                                    <!--  작성자  -->
+                                    <div class="main-left-content-bottom-meeting-white-deadline">
+                                        <span class="material-icons" style="font-size: 12px;">edit</span>
+                                        <span class="main-left-content-bottom-meeting-white-deadline-text">작성자</span>
+                                        <span class="main-left-content-bottom-meeting-white-deadlineText" style="margin-left: 10px;" th:text="${userDao.getNameById(meetingDTO.userId)}">작성자</span>
+                                    </div>
+
+                                    <!-- whitebox - deadline -->
+                                    <div class="main-left-content-bottom-meeting-white-deadline">
+                                        <span class="material-icons" style="font-size: 12px;">calendar_today</span>
+                                        <span class="main-left-content-bottom-meeting-white-deadline-text">마감일</span>
+                                        <span class="main-left-content-bottom-meeting-white-deadlineText" style="margin-left: 10px;"
+                                          th:text="|${meetingDTO.applicationDeadline.year}-${meetingDTO.applicationDeadline.monthValue}-${meetingDTO.applicationDeadline.dayOfMonth} ${meetingDTO.applicationDeadline.hour}시 ${meetingDTO.applicationDeadline.minute}분|">9999.09.09</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 01-02-02 yellow box -->
+                            <!-- yellowbox - now -->
+                            <div class="main-left-content-bottom-meeting-yellow-now">
+                                <!-- yellowbox - now - people -->
+                                <div class="main-left-content-bottom-meeting-yellow-now-people">
+                                    <span class="material-icons" style="color: #1A4D2E; font-size: 20px;">group</span>
+                                    <div class="main-left-content-bottom-meeting-yellow-now-people-text">
+                                        현재 <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt">[[${meetingDTO.applicationCount}]]명</span>이 참여중입니다!
+                                    </div>
+                                </div>
+                                <!-- yellow - now - info -->
+                                <div class="main-left-content-bottom-meeting-yellow-now-info">
+                                    <!-- view -->
+                                    <div class="main-left-content-bottom-meeting-yellow-now-info-view">
+                                        <span class="material-icons" style="font-size: 17px;">visibility</span>
+                                        <div class="main-left-content-bottom-meeting-yellow-now-info-view-cnt" th:text="${meetingDTO.views}">
+                                            <span>0</span>
+                                        </div>
+                                    </div>
+                                    <!-- reply -->
+                                    <div class="main-left-content-bottom-meeting-yellow-now-info-reply">
+                                        <span class="material-icons" style="font-size: 14px;">chat</span>
+                                        <div class="main-left-content-bottom-meeting-yellow-now-info-reply-cnt" th:text="${commentDao.calcCommentCount(meetingDTO.meetingId)}">
+                                            <span>0</span>
+                                        </div>
+                                    </div>
+                                    <!--&lt;!&ndash; heart &ndash;&gt;
+                                    <div class="main-left-content-bottom-meeting-yellow-now-info-heart">
+                                        <div class="main-left-content-bottom-meeting-yellow-now-info-view-icon">
+                                            <img th:src="@{/image/home/heart.png}">
+                                        </div>
+                                    </div>-->
+                                </div>
+                            </div>
+
+                            <!-- yellowbox - hashtag -->
+                            <div class="main-left-content-bottom-meeting-yellow-hashtag">
+                                <div class="main-left-content-bottom-meeting-yellow-hashtag-text">
+                                    <span> </span>
+                                    <th:block th:each="ele :${interestListLang.get(meetingStat.index)}">
+                                        <span th:text="| ${ele}|"></span>
+                                    </th:block>
+                                    <th:block th:each="ele :${interestListFrame.get(meetingStat.index)}">
+                                        <span th:text="| ${ele}|"></span>
+                                    </th:block>
+                                    <th:block th:each="ele :${interestListJob.get(meetingStat.index)}">
+                                        <span th:text="| ${ele}|"></span>
                                     </th:block>
                                 </div>
                             </div>
-
-                            <!-- white box - bottom -->
-                            <div class="main-left-content-bottom-meeting-white-bottom">
-                                <!-- white box - location -->
-                                <div class="main-left-content-bottom-meeting-white-location">
-                                    <div class="main-left-content-bottom-meeting-white-location-icon">
-                                        <img th:src="@{/image/global/location01.png}">
-                                    </div>
-                                    <span class="main-left-content-bottom-meeting-white-location-text"
-                                          th:text="${meetingDTO.location}">서울특별시</span>
-                                </div>
-
-                                <!-- white box - title -->
-                                <div class="main-left-content-bottom-meeting-white-title">
-                                    <span th:text="${meetingDTO.title}">제목
-                                    </span>
-
-                                    <span class="main-left-content-bottom-meeting-white-title" style="font-size: small" th:text="| 작성자 : ${userDao.getNameById(meetingDTO.userId)}|">
-                                    </span> 작성자
-
-                                </div>
-
-                                <!-- whitebox - deadline -->
-                                <div class="main-left-content-bottom-meeting-white-deadline">
-                                    <div class="main-left-content-bottom-meeting-white-deadline-icon">
-                                        <img th:src="@{/image/global/end_date01.png}">
-                                    </div>
-                                    <span class="main-left-content-bottom-meeting-white-deadline-text">마감일</span>
-                                </div>
-
-                                <!-- whitebox - deadlineText -->
-                                <span class="main-left-content-bottom-meeting-white-deadlineText"
-                                      th:text="|${meetingDTO.applicationDeadline.year}-${meetingDTO.applicationDeadline.monthValue}-${meetingDTO.applicationDeadline.dayOfMonth} ${meetingDTO.applicationDeadline.hour}시 ${meetingDTO.applicationDeadline.minute}분|">9999.09.09</span>
-                            </div>
                         </div>
-
-                        <!-- 01-02-02 yellow box -->
-                        <!-- yellowbox - now -->
-                        <div class="main-left-content-bottom-meeting-yellow-now">
-                            <!-- yellowbox - now - people -->
-                            <div class="main-left-content-bottom-meeting-yellow-now-people">
-                                <div class="main-left-content-bottom-meeting-yellow-now-people-icon">
-                                    <img th:src="@{/image/global/member_count.png}">
-                                </div>
-                                <div class="main-left-content-bottom-meeting-yellow-now-people-text">
-                                    현재
-                                    <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt"
-                                          th:text="${meetingDTO.applicationCount}">0</span>명이
-                                    참여중입니다!
-                                </div>
-                            </div>
-                            <!-- yellow - now - info -->
-                            <div class="main-left-content-bottom-meeting-yellow-now-info">
-                                <!-- view -->
-                                <div class="main-left-content-bottom-meeting-yellow-now-info-view">
-                                    <div class="main-left-content-bottom-meeting-yellow-now-info-view-icon">
-                                        <img style="margin-right: 2px; margin-left: 2px;"
-                                             th:src="@{/image/global/see_count01.png}">
-                                    </div>
-                                    <div class="main-left-content-bottom-meeting-yellow-now-info-view-cnt">
-                                        <span th:text="${meetingDTO.views}">0</span>
-                                    </div>
-                                </div>
-                                <!-- reply -->
-                                <div class="main-left-content-bottom-meeting-yellow-now-info-reply">
-                                    <div class="main-left-content-bottom-meeting-yellow-now-info-reply-icon">
-                                        <img style="margin-right: 2px; margin-left: 2px;"
-                                             th:src="@{/image/home/chat.png}">
-                                    </div>
-                                    <div class="main-left-content-bottom-meeting-yellow-now-info-reply-cnt">
-                                        <span th:text="${commentDao.calcCommentCount(meetingDTO.meetingId)}">0</span>
-                                    </div>
-                                </div>
-                                <!-- heart -->
-                                <div class="main-left-content-bottom-meeting-yellow-now-info-heart">
-                                    <div class="main-left-content-bottom-meeting-yellow-now-info-view-icon">
-                                        <img th:src="@{/image/home/heart.png}">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- yellowbox - hashtag -->
-                        <div class="main-left-content-bottom-meeting-yellow-hashtag">
-                            <div class="main-left-content-bottom-meeting-yellow-hashtag-text">
-                                <span> </span>
-                                <th:block th:each="ele :${interestListLang.get(meetingStat.index)}">
-                                    <span th:text="| ${ele}|"></span>
-                                </th:block>
-                                <th:block th:each="ele :${interestListFrame.get(meetingStat.index)}">
-                                    <span th:text="| ${ele}|"></span>
-                                </th:block>
-                                <th:block th:each="ele :${interestListJob.get(meetingStat.index)}">
-                                    <span th:text="| ${ele}|"></span>
-                                </th:block>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </th:block>
         </div>
         </div>
-        <div style="text-align: center; margin: 40px 0 50px 0">
+
+        <div style="text-align: center; margin-top: 20px">
             <span style="padding-right: 10px" id="page_list"></span>
             <a href="/meeting/write" class="btn btn-primary"
-               style="background-color: #FF9F29; color: white; float: right; margin-right: 25% "> 새 글 작성</a>
+               style="background-color: #FF9F29; color: white; float: right; margin-right: 25%"> 새 글 작성</a>
             </a>
         </div>
 
@@ -209,14 +198,14 @@
         const page = /*[[${page}]]*/
         const pageCategory = /*[[${pageCategory}]]*/
         const order = /*[[${order}]]*/
-            function mover(url) {
-                if (pageCategory != null) {
-                    location.href = "/meeting?page=" + page + "&category=" + pageCategory + "&order=" + url
-                } else {
-                    location.href = "/meeting?page=" + page + "&order=" + url
-                }
+          function mover(url) {
+              if (pageCategory != null) {
+                  location.href = "/meeting?page=" + page + "&category=" + pageCategory + "&order=" + url
+              } else {
+                  location.href = "/meeting?page=" + page + "&order=" + url
+              }
 
-            }
+          }
         // 정렬기준
         for (const orderElement of document.querySelectorAll("option")) {
             if (orderElement.value === order){

@@ -22,7 +22,6 @@
   font-size: 30px;
   font-style: Bold;
   text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
   line-height: normal;
   font-stretch: normal;
@@ -60,12 +59,7 @@
   height: auto;
   font-size: 20px;
   align-self: stretch;
-  font-style: Regular;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 400;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 .input-oneline{
@@ -81,8 +75,6 @@
     align-self: stretch;
     text-align: left;
     align-items: center;
-    flex-shrink: 0;
-    font-family: NanumGothic;
     font-weight: 400;
     border-color: rgba(145, 143, 143, 1);
     border-style: solid;
@@ -112,10 +104,7 @@
     overflow: hidden;
     font-size: 18px;
     align-self: stretch;
-    text-align: left;
     align-items: center;
-    flex-shrink: 0;
-    font-family: NanumGothic;
     font-weight: 400;
     border-color: rgba(145, 143, 143, 1);
     border-style: solid;
@@ -149,9 +138,7 @@
   background-color: rgba(255, 159, 41, 1);
   color: rgba(250, 243, 227, 1);
   font-size: 20px;
-  font-style: Semi Bold;
   text-align: center;
-  font-family: NanumGothic;
   font-weight: 700;
   font-stretch: normal;
   text-decoration: none;
