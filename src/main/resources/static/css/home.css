@@ -66,6 +66,7 @@
     .main-header-nav a:hover{
         color: #FF9F29;
     }
+
     .main-header-nav-from, .main-header-nav-meeting {
         display: flex;
         padding: 10px 20px;
@@ -140,25 +141,45 @@
     flex-shrink: 0;
     border-radius: 8px;
     justify-content: center;
-    background-color: rgba(255, 159, 41, 1);
     min-height: 44px;
     cursor: pointer;
     border: none;
 }
-.main-header-button-login-text, .main-header-button-signup-text, .main-header-button-logout-text {
-    color: rgb(255, 255, 255);
-    width: 75px;
-    font-size: 16px;
-    text-align: center;
-    font-weight: 500;
-    font-stretch: normal;
-    text-decoration: none;
+.main-header-button-login{
+    background-color: white;
+    color: #FF9F29;
+    border: 3px solid #FF9F29;
 }
-.main-header-button-signup {
-    background-color: rgba(84, 82, 82, 1);
+.main-header-button-login:hover{
+    background-color: #FF9F29;
+    color: white;
+    border: 3px solid #FF9F29;
+}
+.main-header-button-signup{
+    background-color: white;
+    color: #1A4D2E;
+    border: 3px solid #1A4D2E;
+}
+.main-header-button-signup:hover{
+    background-color: #1A4D2E;
+    color: white;
+    border: 3px solid #1A4D2E;
 }
 .main-header-button-logout{
-    background-color: rgba(26, 77, 46, 1);
+    background-color: white;
+    color: rgb(84 82 82);
+    border: 3px solid rgb(84 82 82);
+}
+.main-header-button-logout:hover{
+    background-color: rgb(84 82 82);
+    color: white;
+    border: 3px solid rgb(84 82 82);
+}
+
+.main-header-button-login-text, .main-header-button-signup-text, .main-header-button-logout-text {
+   width: 75px;
+   font-size: 18px;
+   font-weight: 600;
 }
 
 /* 미디어 쿼리를 사용하여 화면 크기에 따라 스타일 변경 */
@@ -396,6 +417,7 @@ margin-left: 5px;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 1);
   flex-direction: column;
+  padding: 15px;
 }
 /* meeting - white box - top */
 .main-left-content-bottom-meeting-white-top {
@@ -413,7 +435,6 @@ margin-left: 5px;
   border-radius: 10px;
   justify-content: center;
   background-color: rgba(26, 77, 46, 1);
-  margin: 10px 15px;
 }
 
 .main-left-content-bottom-meeting-white-top-status {
@@ -433,7 +454,12 @@ margin-left: 5px;
 
 /* whitebox - bottom */
 .main-left-content-bottom-meeting-white-bottom {
-  margin: 5px 15px 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px 5px 0;
 }
 
 /* whitebox - bottom - location */

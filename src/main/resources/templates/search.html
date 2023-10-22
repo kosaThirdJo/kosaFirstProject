@@ -26,12 +26,15 @@
                         <button class="search-filter-btn">
                             <div class="search-filter-btn-title">
                                 <div class="search-filter-btn-title-icon">
-                                    <img th:src="@{/image/home/filter.png}">
+                                    <span class="material-icons">tune</span>
                                 </div>
                                 <span class="search-filter-btn-title-text"><span>검색 필터</span></span>
                             </div>
                             <div class="search-filter-btn-dropdown">
-                                <img th:src="@{/image/home/arrow_drop_down.png}">
+                                <a class="arrow-icon">
+                                    <span class="left-bar"></span>
+                                    <span class="right-bar"></span>
+                                </a>
                             </div>
                         </button>
                     </div>
@@ -396,6 +399,11 @@
                     searchMeetingResultContainer.appendChild(noResultElement);
                 }
             }
+        });
+
+
+        $( ".arrow-icon" ).click(function() {
+          $(this).toggleClass("open");
         });
     </script>
 </th:block>
