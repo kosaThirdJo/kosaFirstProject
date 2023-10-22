@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
+    <script type="text/javascript" th:src="@{/js/header.js}"></script>
 </head>
-<body>
 <th:block th:fragment="header">
     <header>
         <div class="main-header">
@@ -11,9 +11,10 @@
 
                 <!-- 01 로고 -->
                 <a th:href="@{/}" class="main-header-logo">
-                    <span class="main-header-logo-text">SELECT
-                        <span class="main-header-logo-text-star">*</span>
-                    </span>
+                    <div class="main-header-logo-text">
+                        <div>SELECT</div>
+                        <div class="main-header-logo-text-star">*</div>
+                    </div>
                 </a>
 
                 <!-- 02 nav -->
@@ -46,10 +47,8 @@
                         </a>
                     </div>
                     <!-- 02-04 마이페이지 -->
-                    <a th:href="@{/mypage/profile}"  class="main-header-nav-mypage" th:if="${session.user_id}">
-                        <div class="main-header-nav-meetinglist-text">
+                    <a th:href="@{/mypage/profile}"  class="main-header-nav-mypage main-header-nav-meetinglist-text" th:if="${session.user_id}">
                             <span>마이페이지</span>
-                        </div>
                     </a>
                 </div>
 
@@ -103,5 +102,5 @@
         </script>
     </header>
 </th:block>
-</body>
+
 </html>

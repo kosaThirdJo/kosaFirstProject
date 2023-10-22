@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.servlet.http.HttpSession;
+import threestar.selectstar.dao.CommentMapper;
 import threestar.selectstar.dao.MeetingMapper;
 import threestar.selectstar.dao.UserMapper;
+import threestar.selectstar.domain.CommentDTO;
 import threestar.selectstar.domain.MeetingVO;
 import threestar.selectstar.domain.SearchDTO;
 import threestar.selectstar.domain.UserVO;
@@ -28,9 +30,7 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String home(HttpSession session, Model model) {
-		if(session.getAttribute("user_id") != null){
-			int userId = (int) session.getAttribute("user_id");
-		}
+
 		// 최신글 조회 (ORDER BY) (현재는 4개만 출력)
 		List<MeetingVO> latestMeetings = meetingDao.getLatestMeetings();
 		model.addAttribute("latestMeetings", latestMeetings);
@@ -100,8 +100,13 @@ public class HomeController {
 		searchdto.setSearchFrameworks(frameworks);
 		searchdto.setSearchJobs(jobs);
 
+		System.out.println(category);
+		System.out.println(languages);
+		System.out.println(frameworks);
+		System.out.println(jobs);
 		List<MeetingVO> searchMeetingResults;
 
+		// 모임 검색
 		if ((category != null && !category.isEmpty()) ||
 			(languages != null && !languages.isEmpty()) ||
 			(frameworks != null && !frameworks.isEmpty()) ||
@@ -111,9 +116,13 @@ public class HomeController {
 		} else {
 			// 모임 검색 - 제목만
 			searchMeetingResults = meetingDao.searchMeetings(searchdto);
-			System.out.println(searchMeetingResults);
 		}
-		model.addAttribute("searchMeetingResults", searchMeetingResults);
+		System.out.println(searchMeetingResults);
+		if(searchMeetingResults.size() != 0){
+			model.addAttribute("searchMeetingResults", searchMeetingResults);
+		}else{
+			model.addAttribute("noResult", searchMeetingResults);
+		}
 
 		return searchMeetingResults;
 	}

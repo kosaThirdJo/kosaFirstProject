@@ -29,13 +29,10 @@ a{
   color: rgba(255, 255, 255, 1);
   height: auto;
   font-size: 30px;
+
   font-style: Bold;
   text-align: left;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
-}
+
 .frame-applymeeting-body{ /* body frame*/
     width: 80%;
     padding: 5px 10px;
@@ -62,7 +59,6 @@ a{
     border: none;
     color: rgba(0, 0, 0, 1);
     font-size: 20px;
-    font-style: Bold;
     text-align: center;
     font-weight: 700;
 }

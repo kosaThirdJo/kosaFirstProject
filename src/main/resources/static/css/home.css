@@ -1,31 +1,34 @@
 /* 00 page 공통 적용 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+    *{
+        font-family: Pretendard,'Noto Sans KR', sans-serif;
+    }
     html{
         line-height: 1.5;
         height: 100%
     }
     body{
         margin: 0;
-        height: 100%
+        overflow-x : hidden;
+        overflow-y : scroll;
     }
 
     header {
-        /*position: fixed;*/
+        position: sticky;
+        z-index: 10;
         top: 0;
-        left: 0;
-        right: 0;
-    }
-    footer{
-        bottom : 0;
-        width: 100%;
-    }
-/* 01 header */
-    .main-header{
         background-color: rgba(255, 255, 255, 1);
-        font-family: NanumGothic;
         white-space: nowrap;
         padding: 20px 6%;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
     }
+    footer{
+        bottom : 0;
+        width: 100%;
+        margin-top: 90px;
+    }
+
+/* 01 header */
     .main-header a{
         text-decoration: none;
     }
@@ -39,12 +42,10 @@
     .main-header-logo-text {
         color: rgba(0, 0, 0, 1);
         font-size: 30px;
-        text-align: left;
         font-weight: 700;
-        line-height: normal;
-        font-stretch: normal;
         text-decoration: none;
-        display: inline-flex;
+        display: flex;
+        align-items: center;
     }
     .main-header-logo-text-star{
         color: rgb(255, 179, 0);
@@ -60,10 +61,12 @@
         font-size: 16px;
         text-align: center;
         font-weight: 700;
-        line-height: normal;
-        font-stretch: normal;
         text-decoration: none;
     }
+    .main-header-nav a:hover{
+        color: #FF9F29;
+    }
+
     .main-header-nav-from, .main-header-nav-meeting {
         display: flex;
         padding: 10px 20px;
@@ -103,12 +106,8 @@
     display: flex;
 }
 .main-header-search{
-    display: flex;
-    align-self: stretch;
-    align-items: center;
     background-color: rgba(246, 246, 246, 1);
     padding: 10px 20px;
-    gap: 20px;
 }
 .main-header-search-input{
     color: #000;
@@ -142,26 +141,45 @@
     flex-shrink: 0;
     border-radius: 8px;
     justify-content: center;
-    background-color: rgba(255, 159, 41, 1);
     min-height: 44px;
     cursor: pointer;
     border: none;
 }
-.main-header-button-login-text, .main-header-button-signup-text, .main-header-button-logout-text {
-    color: rgb(255, 255, 255);
-    width: 75px;
-    font-size: 16px;
-    text-align: center;
-    font-weight: 500;
-    font-stretch: normal;
-    text-decoration: none;
-    font-family: NanumGothic;
+.main-header-button-login{
+    background-color: white;
+    color: #FF9F29;
+    border: 3px solid #FF9F29;
 }
-.main-header-button-signup {
-    background-color: rgba(84, 82, 82, 1);
+.main-header-button-login:hover{
+    background-color: #FF9F29;
+    color: white;
+    border: 3px solid #FF9F29;
+}
+.main-header-button-signup{
+    background-color: white;
+    color: #1A4D2E;
+    border: 3px solid #1A4D2E;
+}
+.main-header-button-signup:hover{
+    background-color: #1A4D2E;
+    color: white;
+    border: 3px solid #1A4D2E;
 }
 .main-header-button-logout{
-    background-color: rgba(26, 77, 46, 1);
+    background-color: white;
+    color: rgb(84 82 82);
+    border: 3px solid rgb(84 82 82);
+}
+.main-header-button-logout:hover{
+    background-color: rgb(84 82 82);
+    color: white;
+    border: 3px solid rgb(84 82 82);
+}
+
+.main-header-button-login-text, .main-header-button-signup-text, .main-header-button-logout-text {
+   width: 75px;
+   font-size: 18px;
+   font-weight: 600;
 }
 
 /* 미디어 쿼리를 사용하여 화면 크기에 따라 스타일 변경 */
@@ -179,26 +197,23 @@
     .main-header-search,
     .main-header-button {
         margin-top: 10px;
-        min-width: 50%;
     }
 }
 .main-video{
-    margin: 80px 0 0;
+    margin: 60px 0;
     text-align: center;
 }
 /*02 main content*/
-.main-content-container {
-      gap: 50px;
-      display: flex;
-      align-self: stretch;
-      flex-shrink: 0;
-      justify-content: center;
-      padding: 120px 0px;
+.main-content-all{
+  gap: 50px;
+  display: flex;
+  align-self: stretch;
+  flex-shrink: 0;
+  justify-content: center;
 }
 .main-content-left {
   gap: 17px;
   display: flex;
-  padding: 12px 0;
   overflow: hidden;
   align-items: flex-start;
   flex-shrink: 0;
@@ -213,26 +228,22 @@
   flex-shrink: 0;
   justify-content: space-between;
 }
-.main-content-left-title-img{
-  margin: 10px;
-  align-items: center;
-}
 .main-content-left-title {
-  display: flex;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
+gap: 4px;
+overflow: hidden;
+display: flex;
+flex-direction: column;
 }
-
+.main-content-left-title-text, .main-content-right-rank-title-text{
+display: flex;
+align-items: center;
+gap: 10px;
+}
 .main-content-left-title-text {
   color: rgba(0, 0, 0, 1);
   height: auto;
   font-size: 30px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
   font-stretch: normal;
   text-decoration: none;
 }
@@ -246,14 +257,12 @@
 }
 
 .main-left-content-bottom {
-  gap: 40px;
-  width: 832px;
-  display: flex;
-  padding: 10px;
-  overflow: hidden;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  flex-shrink: 0;
+    gap: 60px;
+    width: 800px;
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 .main-left-content-bottom-meeting {
   gap: 10px;
@@ -277,7 +286,6 @@
   flex-direction: column;
 }
 .main-content-right-intro {
-  gap: 20px;
   display: flex;
   padding: 30px 0;
   overflow: hidden;
@@ -299,13 +307,9 @@
 }
 .main-content-right-intro-text1, .main-content-right-intro-text2 {
   color: rgba(255, 255, 255, 1);
-  height: auto;
   font-size: 16px;
-  font-style: Regular;
   text-align: left;
-  font-family: NanumGothic;
   font-weight: 400;
-  line-height: normal;
   font-stretch: normal;
   text-decoration: none;
 }
@@ -314,34 +318,23 @@
   font-style: Bold;
   font-weight: 700;
 }
-.main-content-right-intro-circle {
-  gap: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.content-ellipse {
-  width: 10px;
-  height: 10px;
-}
-
 .main-content-right-rank {
   gap: 16px;
   width: 314px;
   display: flex;
-  padding: 12px 0;
   overflow: hidden;
   align-items: flex-start;
   flex-shrink: 0;
   flex-direction: column;
+  background-color: #f8f8f8;
+  padding: 25px;
+  border-radius: 10px;
 }
 .main-content-right-rank-title {
   gap: 4px;
-  display: flex;
-  padding: 0 6px;
   overflow: hidden;
-  align-items: center;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 .main-content-right-rank-title-img {
   width: 35px;
@@ -355,17 +348,12 @@
   color: rgba(0, 0, 0, 1);
   height: auto;
   font-size: 30px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
   line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 .main-content-right-rank-listbox {
-  gap: 10px;
-  width: 315px;
+  gap: 6px;
   display: flex;
   padding: 10px 15px;
   overflow: hidden;
@@ -383,36 +371,40 @@
   flex-shrink: 0;
   min-height: 40px;
 }
+.main-content-right-rank-list a:hover{
+    color: #FF9F29;
+}
 .main-content-right-rank-num {
   color: rgba(0, 0, 0, 1);
   width: 19px;
   height: auto;
   font-size: 15px;
   font-style: ExtraBold;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 800;
   line-height: 20px;
-  font-stretch: normal;
   text-decoration: none;
 }
 .main-content-right-rank-text {
   color: rgba(0, 0, 0, 1);
-  width: 252px;
-  height: auto;
+  width: 210px;
   font-size: 15px;
-  font-style: Regular;
-  text-align: left;
   font-weight: 400;
   line-height: 20px;
-  font-stretch: normal;
   text-decoration: none;
-  height: 44px;
+  height: 40px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+}
+.main-content-right-rank-info{
+color: #94969b;
+font-size: 13px;
+display: flex;
+align-items: center;
+gap: 5px;
+margin-left: 5px;
 }
 
 /* meeting - white box */
@@ -425,6 +417,7 @@
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 1);
   flex-direction: column;
+  padding: 15px;
 }
 /* meeting - white box - top */
 .main-left-content-bottom-meeting-white-top {
@@ -442,7 +435,6 @@
   border-radius: 10px;
   justify-content: center;
   background-color: rgba(26, 77, 46, 1);
-  margin: 10px 15px;
 }
 
 .main-left-content-bottom-meeting-white-top-status {
@@ -454,69 +446,43 @@
   font-size: 13px;
   font-style: Bold;
   text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
   line-height: normal;
   font-stretch: normal;
   text-decoration: none;
 }
-main-left-content-bottom-meeting-white-top-text-right{
-    color: rgba(255, 255, 255, 1);
-    height: auto;
-    font-size: 13px;
-    font-style: Bold;
-    text-align: left;
-    font-family: NanumGothic;
-    font-weight: 700;
-    line-height: normal;
-    font-stretch: normal;
-    text-decoration: none;
-}
 
 /* whitebox - bottom */
 .main-left-content-bottom-meeting-white-bottom {
-  margin: 5px 15px 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px 5px 0;
 }
 
 /* whitebox - bottom - location */
 .main-left-content-bottom-meeting-white-location {
-  gap: 6px;
+  gap: 4px;
   display: flex;
   align-items: center;
+  color: #1A4D2E;
 }
-.main-left-content-bottom-meeting-white-location-icon {
-  display: flex;
-  align-items: flex-start;
-  flex-shrink: 1;
-  width: 8px;
-  height: 13px;
-}
-
 .main-left-content-bottom-meeting-white-location-text {
-  color: rgba(26, 77, 46, 1);
-  height: auto;
-  font-size: 11px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
+  font-size: 12px;
+  font-weight: 600;
   text-decoration: none;
 }
 /* whitebox - bottom - title */
 .main-left-content-bottom-meeting-white-title {
   color: rgba(0, 0, 0, 1);
-  height: auto;
   font-size: 18px;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
   line-height: 22px;
-  font-stretch: normal;
   text-decoration: none;
-  margin: 10px auto;
-  height: 50px;
+  margin: 5px 0 15px;
+  height: 45px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -528,40 +494,21 @@ main-left-content-bottom-meeting-white-top-text-right{
   gap: 6px;
   display: flex;
   align-items: center;
-  flex-shrink: 0;
-}
-.main-left-content-bottom-meeting-white-deadline-ico {
-  width: 12px;
-  height: 13px;
-  display: flex;
-  position: relative;
-  align-items: flex-start;
-  flex-shrink: 1;
-  background-color: rgba(26, 77, 46, 1);
+  color: #1A4D2E;
 }
 
 .main-left-content-bottom-meeting-white-deadline-text {
   color: rgba(26, 77, 46, 1);
   height: auto;
   font-size: 11px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 .main-left-content-bottom-meeting-white-deadlineText {
   color: rgba(0, 0, 0, 1);
   height: auto;
   font-size: 12px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 
@@ -577,32 +524,21 @@ main-left-content-bottom-meeting-white-top-text-right{
   flex-shrink: 0;
 }
 .main-left-content-bottom-meeting-yellow-now-people {
-  gap: 5px;
-  width: 172px;
-  display: flex;
-  overflow: hidden;
-  align-items: center;
-  flex-shrink: 0;
+width: 172px;
+display: flex;
+overflow: hidden;
+flex-shrink: 0;
+display: flex;
+align-items: center;
+gap: 5px;
+margin-left: 5px;
 }
-.main-left-content-bottom-meeting-yellow-now-people-icon {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  position: relative;
-  align-items: center;
-  flex-shrink: 1;
-}
-
 .main-left-content-bottom-meeting-yellow-now-people-text {
   color: rgba(0, 0, 0, 1);
   height: auto;
   font-size: 13px;
   font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 .main-left-content-bottom-meeting-yellow-now-people-text-cnt {
@@ -616,30 +552,16 @@ main-left-content-bottom-meeting-white-top-text-right{
     justify-content: flex-end;
 }
 .main-left-content-bottom-meeting-yellow-now-info-view, .main-left-content-bottom-meeting-yellow-now-info-reply, .main-left-content-bottom-meeting-yellow-now-info-heart {
-    gap: 0px;
+    gap: 5px;
     display: flex;
-    opacity: 0.30;
     padding: 0 4px;
-    overflow: hidden;
     align-items: center;
     justify-content: center;
-}
-.main-left-content-bottom-meeting-yellow-now-info-view-icon, .main-left-content-bottom-meeting-yellow-now-info-reply-icon, .main-left-content-bottom-meeting-yellow-now-info-heart-icon {
-    display: flex;
-    position: relative;
-    align-items: flex-start;
-    flex-shrink: 1;
+    color: #B4B4B3;
 }
 .main-left-content-bottom-meeting-yellow-now-info-view-cnt, .main-left-content-bottom-meeting-yellow-now-info-reply-cnt {
-    color: rgba(0, 0, 0, 1);
-    height: auto;
     font-size: 13px;
-    font-style: Bold;
-    text-align: left;
-    font-family: NanumGothic;
-    font-weight: 700;
-    line-height: normal;
-    font-stretch: normal;
+    font-weight: 500;
     text-decoration: none;
 }
 
@@ -656,11 +578,7 @@ main-left-content-bottom-meeting-white-top-text-right{
   color: rgba(26, 77, 46, 1);
   height: auto;
   font-size: 13px;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 .main-left-content-bottom-meeting-yellow-hashtag-text span{
@@ -676,11 +594,9 @@ main-left-content-bottom-meeting-white-top-text-right{
   padding: 39px 72px;
   overflow: hidden;
   align-items: center;
-  flex-shrink: 0;
   flex-direction: column;
   justify-content: space-between;
   background-color: rgba(26, 77, 46, 1);
-  font-family: NanumGothic;
 }
 .footer-menu {
   gap: 173px;
@@ -727,6 +643,7 @@ main-left-content-bottom-meeting-white-top-text-right{
   margin: 0;
   width: 100%;
   padding: 0 30px;
+  background-color: white;
 }
 .footer-bottom-text {
   color: white;

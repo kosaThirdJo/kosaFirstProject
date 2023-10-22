@@ -1,3 +1,7 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+    *{
+        font-family: Pretendard,'Noto Sans KR', sans-serif;
+    }
 /* container */
 .signup-container {
   width: 100%;
@@ -6,9 +10,6 @@
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
-  font-family: NanumGothic;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
   color: rgba(0, 0, 0, 1);
   height: auto;
@@ -120,7 +121,6 @@ font-size: 12px;
 background-color: #1A4D2EB3;
 }
 .signup-form-input-box-content, .signup-form-input-box-content-withbtn {
-color: rgba(145, 143, 143, 1);
 padding: 0 20px;
 font-size: 15px;
 border-color: rgba(145, 143, 143, 1);
@@ -133,18 +133,16 @@ min-height: 35px;
 
 /* 02-02-05 지역 */
 .signup-form-input-location-btn {
-padding: 9px 15px;
-align-items: center;
+padding: 11px 15px;
 border-radius: 10px;
-justify-content: center;
-background-color: #FF9F29;
+background-color: #1A4D2E;
 color: rgba(255, 255, 255, 1);
-font-weight: 700;
+font-weight: 600;
 border: none;
 width: 110px;
 }
 .signup-form-input-location-btn:hover{
-background-color: #FF9F29B3;
+background-color: #1A4D2EB3;
 }
 
 /* 02-02-06 관심분야 */
@@ -153,19 +151,19 @@ gap: 10px;
 display: flex;
 padding: 20px 0;
 overflow: hidden;
-align-self: stretch;
 align-items: center;
 flex-direction: column;
 justify-content: center;
 }
 .signup-form-select-interest-title {
-color: rgba(0, 0, 0, 1);
-height: auto;
 font-size: 13px;
 align-self: stretch;
-font-style: Regular;
-text-align: left;
-font-weight: 400;
+font-weight: 500;
+background-color: #FF9F29;
+color: white;
+padding: 3px 10px;
+width: 65px;
+text-align: center;
 }
 .signup-form-select-interest-button {
 gap: 15px 10px;
@@ -180,19 +178,19 @@ flex-shrink: 0;
 .signup-interest-lang-btn, .signup-interest-lang-btn.selected,
 .signup-interest-fw-btn, .signup-interest-fw-btn.selected,
 .signup-interest-job-btn, .signup-interest-job-btn.selected {
-  border: 1px solid #1A4D2EB3;
+  border: 0;
   border-radius: 5px;
   color: #000000;
   font-weight: 500;
   font-size: 12px;
-  background-color: white;
-  box-shadow: 0 8px #1A4D2EB3;
+  background-color: #DEDFE4;
+  box-shadow: 0 6px #55565B;
   padding: 5px 10px;
 }
 .signup-interest-lang-btn:hover,
 .signup-interest-fw-btn:hover,
 .signup-interest-job-btn:hover {
-  background-color: #1A4D2E;
+  background-color: #919297;
   color: white;
   cursor: pointer;
 }
@@ -205,17 +203,17 @@ flex-shrink: 0;
 .signup-interest-fw-btn:active,
 .signup-interest-job-btn:active {
   transform: translateY(4px);
-  box-shadow: 0 3px #1A4D2EB3;
+  box-shadow: 0 3px #55565B;
 }
 
 .signup-interest-lang-btn.selected,
 .signup-interest-fw-btn.selected,
 .signup-interest-job-btn.selected {
-  background-color: #1A4D2E;
+  background-color: #919297;
   color: white;
   cursor: pointer;
   transform: translateY(4px);
-  box-shadow: 0 3px #1A4D2EB3;
+  box-shadow: 0 3px #55565B;
 }
 
 /* 회원가입 버튼 */

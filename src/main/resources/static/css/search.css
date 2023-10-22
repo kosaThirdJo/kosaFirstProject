@@ -12,7 +12,7 @@ body{
 .search-result {
   gap: 44px;
   display: flex;
-  padding: 120px 0;
+  padding: 60px 0;
   overflow: hidden;
   align-items: center;
   flex-shrink: 0;
@@ -108,11 +108,6 @@ body{
 }
 .search-filter-btn-title-icon {
   display: flex;
-  position: relative;
-  align-items: flex-start;
-  flex-shrink: 1;
-  width: 16px;
-  height: 16px;
 }
 .search-filter-btn-title-text {
   color: rgba(0, 0, 0, 1);
@@ -122,13 +117,13 @@ body{
   text-decoration: none;
 }
 .search-filter-btn-dropdown {
-  gap: 30px;
+  /*gap: 30px;
   width: 24px;
   height: 24px;
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-end;*/
 }
 .search-filter-btn-dropdown-box {
   top: 0px;
@@ -176,36 +171,43 @@ body{
   text-decoration: none;
 }
 .search-filter-select-category {
-  gap: 10px;
-  display: flex;
-  overflow: hidden;
-  flex-grow: 1;
-  flex-wrap: wrap;
-  align-self: stretch;
-  align-items: center;
-}
-.search-filter-select-btn {
-  gap: 10px;
-  display: flex;
-  padding: 7px 12px;
-  overflow: hidden;
-  align-items: center;
-  border-color: rgba(26, 77, 46, 1);
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 12px;
-  justify-content: center;
-  background-color: rgba(250, 243, 227, 1);
-  color: rgba(84, 82, 82, 1);
-  height: auto;
-  font-size: 15px;
-  font-weight: 700;
-  text-decoration: none;
+    gap: 20px;
+    display: flex;
+    flex-grow: 1;
+    align-self: stretch;
+    align-items: center;
+    margin-bottom: 6px;
 }
 
+/* 관심분야 select 버튼 */
+.search-filter-select-btn, search-filter-select-btn.selected{
+  border: 0;
+  border-radius: 5px;
+  color: #000000;
+  font-weight: 500;
+  font-size: 15px;
+  background-color: #DEDFE4;
+  box-shadow: 0 6px #55565B;
+  padding: 5px 10px;
+}
+.search-filter-select-btn:hover {
+  background-color: #919297;
+  color: white;
+  cursor: pointer;
+}
+.search-filter-select-btn:focus {
+  outline: none;
+}
+.search-filter-select-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 3px #55565B;
+}
 .search-filter-select-btn.selected {
-  background-color: rgba(26, 77, 46, 1);
-  color: rgba(255, 255, 255, 1);
+  background-color: #919297;
+  color: white;
+  cursor: pointer;
+  transform: translateY(4px);
+  box-shadow: 0 3px #55565B;
 }
 
 .search-filter-select-reset {
@@ -268,12 +270,8 @@ body{
   color: rgba(84, 82, 82, 1);
   height: auto;
   font-size: 25px;
-  font-style: Bold;
   text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 
@@ -294,7 +292,6 @@ body{
   flex-direction: column;
   justify-content: center;
   background-color: rgba(255, 255, 255, 1);
-  font-family: NanumGothic;
 }
 .search-nickname-title {
   gap: 10px;
@@ -307,12 +304,7 @@ body{
   color: rgba(1, 1, 1, 1);
   height: auto;
   font-size: 30px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 .search-nickname-content {
@@ -351,10 +343,7 @@ border-radius:9999px;
   font-size: 14px;
   font-style: Bold;
   text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 .search-nickname-info-about {
@@ -363,16 +352,12 @@ border-radius:9999px;
   font-size: 14px;
   font-style: Bold;
   text-align: left;
-  font-family: NanumGothic;
   font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
   text-decoration: none;
 }
 .search-nickname-noUser{
 margin: 0 auto;
 }
-
 
 /*모임 결과 출력*/
 .search-filter-result {
@@ -394,7 +379,21 @@ margin: 0 auto;
   align-items: flex-start;
   border-radius: 10px;
   flex-direction: column;
-  background-color: rgba(250, 243, 227, 1);
+  background-color: #FAF3E3;
+  width: 25%;
+  text-decoration: none;
+  margin: 20px calc(4%);
+}
+.search-filter-result-content-status-1{
+  gap: 10px;
+  display: flex;
+  padding: 23px;
+  overflow: hidden;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) ;
+  align-items: flex-start;
+  border-radius: 10px;
+  flex-direction: column;
+  background-color: #D9D9D9;
   width: 25%;
   text-decoration: none;
   margin: 20px calc(4%);
@@ -426,211 +425,61 @@ border-radius: 20px;
 .search-filter-result-none-meetingbtn:hover{
 background-color: rgb(44, 125, 75);
 }
-/* meeting - white box */
-.main-left-content-bottom-meeting-white {
-  width: 100%;
-  display: flex;
-  overflow: hidden;
-  align-items: flex-start;
-  flex-shrink: 0;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 1);
-  flex-direction: column;
-}
-/* meeting - white box - top */
-.main-left-content-bottom-meeting-white-top {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-.main-left-content-bottom-meeting-white-top-category, .main-left-content-bottom-meeting-white-top-status {
-  gap: 10px;
-  width: 85px;
-  height: 30px;
-  display: flex;
-  padding: 6px 13px;
-  align-items: center;
-  border-radius: 10px;
-  justify-content: center;
-  background-color: rgba(26, 77, 46, 1);
-  margin: 10px 15px;
-}
 
-.main-left-content-bottom-meeting-white-top-status {
-  background-color: rgba(255, 159, 41, 1);
-}
-.main-left-content-bottom-meeting-white-top-text {
-  color: rgba(255, 255, 255, 1);
-  height: auto;
-  font-size: 13px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
-}
-
-/* whitebox - bottom */
-.main-left-content-bottom-meeting-white-bottom {
-  margin: 5px 15px 10px;
-}
-
-/* whitebox - bottom - location */
-.main-left-content-bottom-meeting-white-location {
-  gap: 6px;
-  display: flex;
-  align-items: center;
-}
-.main-left-content-bottom-meeting-white-location-icon {
-  display: flex;
-  align-items: flex-start;
-  flex-shrink: 1;
-  width: 8px;
-  height: 13px;
-}
-
-.main-left-content-bottom-meeting-white-location-text {
-  color: rgba(26, 77, 46, 1);
-  height: auto;
-  font-size: 11px;
-  font-style: Bold;
-  text-align: left;
-  font-weight: 700;
-  line-height: normal;
-  font-stretch: normal;
-  text-decoration: none;
-}
-/* whitebox - bottom - title */
-.main-left-content-bottom-meeting-white-title {
-  color: rgba(0, 0, 0, 1);
-  font-size: 18px;
-  text-align: left;
-  font-weight: 700;
-  line-height: 22px;
-  font-stretch: normal;
-  text-decoration: none;
-  margin: 10px auto;
-  height: 44px;
-  text-overflow : ellipsis;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.main-left-content-bottom-meeting-white-deadline {
-  gap: 6px;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.main-left-content-bottom-meeting-white-deadline-ico {
-  width: 12px;
-  height: 13px;
-  display: flex;
+/* 검색 필터 화살표 버튼*/
+.arrow-icon {
+  display: block;
   position: relative;
-  align-items: flex-start;
-  flex-shrink: 1;
-  background-color: rgba(26, 77, 46, 1);
+  cursor: pointer;
+  border-radius: 4px;
 }
 
-.main-left-content-bottom-meeting-white-deadline-text {
-  color: rgba(26, 77, 46, 1);
-  height: auto;
-  font-size: 11px;
-  font-style: Bold;
-  text-align: left;
-  font-family: NanumGothic;
-  font-weight: 700;
+.left-bar {
+  background-color: black;
+  width: 40px;
+  height: 10px;
+  display: block;
+  transform: rotate(35deg);
+  border-radius: 2px;
 }
-.main-left-content-bottom-meeting-white-deadlineText {
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  font-size: 12px;
-}
+/*.left-bar:after {
+  content: "";
+  background-color: black;
+  width: 40px;
+  height: 10px;
+  display: block;
+  float: right;
+  border-radius: 6px 10px 10px 6px;
+  transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
+  z-index: -1;
+}*/
 
+.right-bar {
+  background-color: black;
+  left: 26px;
+  width: 40px;
+  height: 10px;
+  display: block;
+  transform: rotate(-35deg);
+  border-radius: 2px;
+}
+/*.right-bar:after {
+  content: "";
+  background-color: white;
+  width: 40px;
+  height: 10px;
+  display: block;
+  float: right;
+  border-radius: 10px 6px 6px 10px;
+  transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
+  z-index: -1;
+}*/
 
-/* yellowbox */
-.main-left-content-bottom-meeting-yellow-now {
-  gap: 50px;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  display: flex;
-  overflow: hidden;
-  flex-shrink: 0;
+/*.open .left-bar:after {
+  transform-origin: center center;
+  transform: rotate(-70deg);
 }
-.main-left-content-bottom-meeting-yellow-now-people {
-  gap: 5px;
-  width: 172px;
-  display: flex;
-  overflow: hidden;
-  align-items: center;
-  flex-shrink: 0;
-}
-.main-left-content-bottom-meeting-yellow-now-people-icon {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  position: relative;
-  align-items: center;
-  flex-shrink: 1;
-}
-
-.main-left-content-bottom-meeting-yellow-now-people-text {
-  color: rgba(0, 0, 0, 1);
-  font-size: 13px;
-}
-.main-left-content-bottom-meeting-yellow-now-people-text-cnt {
-  color: rgba(255, 159, 41, 1);
-}
-.main-left-content-bottom-meeting-yellow-now-info {
-  gap: 7px;
-  display: flex;
-  overflow: hidden;
-  align-items: center;
-  justify-content: flex-end;
-}
-.main-left-content-bottom-meeting-yellow-now-info-view, .main-left-content-bottom-meeting-yellow-now-info-reply, .main-left-content-bottom-meeting-yellow-now-info-heart {
-  gap: 4px;
-  display: flex;
-  opacity: 0.30;
-  padding: 0 4px;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-}
-.main-left-content-bottom-meeting-yellow-now-info-view-icon, .main-left-content-bottom-meeting-yellow-now-info-reply-icon, .main-left-content-bottom-meeting-yellow-now-info-heart-icon {
-  display: flex;
-  position: relative;
-  align-items: flex-start;
-  flex-shrink: 1;
-}
-.main-left-content-bottom-meeting-yellow-now-info-view-cnt, .main-left-content-bottom-meeting-yellow-now-info-reply-cnt {
-  color: rgba(0, 0, 0, 1);
-  font-size: 13px;
-  font-weight: 700;
-}
-
-/* yellow - hashtag */
-.main-left-content-bottom-meeting-yellow-hashtag {
-  gap: 10px;
-  display: flex;
-  padding: 4px 6px;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-}
-.main-left-content-bottom-meeting-yellow-hashtag-text {
-  color: rgba(26, 77, 46, 1);
-  font-size: 13px;
-  text-align: left;
-  font-weight: 700;
-}
-.main-left-content-bottom-meeting-yellow-hashtag-text span{
-  margin-right: 10px;
-}
-
+.open .right-bar:after {
+  transform-origin: center center;
+  transform: rotate(70deg);
+}*/
