@@ -8,23 +8,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link th:href="@{/css/signup.css}" rel="stylesheet"/>
-    <style>
-
-        article {
-            margin-left: 15%;
-            margin-top: 20px;
-            margin-right: 20%;
-        }
-
-        #content_type, #content {
-            border: #1A4D2E solid 5px;
-        }
-
-        textarea {
-            width: 70%;
-            height: 600px;
-        }
-    </style>
+    <link th:href="@{/css/meeting/meeting_form.css}" rel="stylesheet"/>
 </head>
 
 <th:block layout:fragment="content">
@@ -40,93 +24,118 @@
             <h2><input style="width: 50%" name="title" placeholder="제목을 입력해 주세요" maxlength=20 minlength="2" required></h2>
             <section>
                 <div id="content_type">
-                    <div>
-                        카테고리
-                        <input type="radio" name="category" value=0 checked> 프로젝트
-                        <input type="radio" name="category" value=1> 스터디
-                        <input type="radio" name="category" value=2> 기타
-                    </div>
-                    <div>마감일
-                        <input name="endDate" type="datetime-local" required>
-                    </div>
-                    <div>모집 장소
-                        <select name="location" id="loc" required>
-                            <option value="서울">서울</option>
-                            <option value="경기도">경기도</option>
-                            <option value="강원도">강원도</option>
-                            <option value="대전">대전</option>
-                            <option value="인천">인천</option>
-                            <option value="경상북도">경상북도</option>
-                            <option value="경상남도">경상남도</option>
-                            <optionm value="전라북도">전라북도</optionm>
-                            <option value="전라남도">전라남도</option>
-                            <option value="충청북도">충청북도</option>
-                            <option value="충청남도">충청남도</option>
-                            <option value="부산">부산</option>
-                            <option value="울산">울산</option>
-                        </select>
-                    </div>
-                    <div>모집인원수
-                        <input name="recruitNum" type="number" placeholder="XX명" min="0" max="100"  required>
-                    </div>
-                    <!--  02-02-06 관심 분야  -->
-                    <div class="signup-interest">
-                        <span class="signup-text017"><span>관심 분야</span></span>
-                        <div class="signup-interest-container">
-                            <!--  02-02-06-01 언어  -->
-                            <div class="signup-interest-content">
-                                <span class="signup-interest-text"><span>언어</span></span>
-                                <div class="signup-select">
-                                    <input type="hidden" name="interest_language" id="selected-interests-lang" value="">
-                                    <button type="button" class="signup-interest-lang-btn" value="Java">Java</button>
-                                    <button type="button" class="signup-interest-lang-btn" value="Python">Python
-                                    </button>
-                                    <button type="button" class="signup-interest-lang-btn" value="C">C</button>
-                                    <button type="button" class="signup-interest-lang-btn" value="C++">C++</button>
-                                    <button type="button" class="signup-interest-lang-btn" value="C#">C#</button>
-                                    <button type="button" class="signup-interest-lang-btn" value="JavaScript">
-                                        JavaScript
-                                    </button>
-                                </div>
-                            </div>
+                    <table>
+                        <tr>
+                            <th>카테고리</th>
+                            <td>
+                                <input type="radio" name="category" value=0 checked> 프로젝트
+                                <input type="radio" name="category" value=1> 스터디
+                                <input type="radio" name="category" value=2> 기타
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>마감일</th>
+                            <td>
+                                <input name="endDate" type="datetime-local" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>모집 장소</th>
+                            <td>
+                                <select name="location" id="loc" required>
+                                    <option value="서울">서울</option>
+                                    <option value="경기도">경기도</option>
+                                    <option value="강원도">강원도</option>
+                                    <option value="대전">대전</option>
+                                    <option value="인천">인천</option>
+                                    <option value="경상북도">경상북도</option>
+                                    <option value="경상남도">경상남도</option>
+                                    <optionm value="전라북도">전라북도</optionm>
+                                    <option value="전라남도">전라남도</option>
+                                    <option value="충청북도">충청북도</option>
+                                    <option value="충청남도">충청남도</option>
+                                    <option value="부산">부산</option>
+                                    <option value="울산">울산</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>모집 인원 수</th>
+                            <td>
+                                <input name="recruitNum" type="number" placeholder="XX명" min="0" max="100"  required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>관심 분야</th>
+                            <td style="padding: 0px 10px 10px 0px;">
+                                <div class="signup-form-input-box-content" style="padding-bottom: 10px;">
+                                    <!--  02-02-06-01 언어  -->
+                                    <div class="signup-form-select-interest">
+                                        <span class="signup-form-select-interest-title">Language</span>
+                                        <div class="signup-form-select-interest-button">
+                                            <input type="hidden" name="interest_language" id="selected-interests-lang" value="">
+                                            <button type="button" class="signup-interest-lang-btn" value="1">Java</button>
+                                            <button type="button"  class="signup-interest-lang-btn" value="2">Python</button>
+                                            <button type="button"  class="signup-interest-lang-btn" value="3">C#</button>
+                                            <button type="button"  class="signup-interest-lang-btn" value="4">C++</button>
+                                            <button type="button"  class="signup-interest-lang-btn" value="5">JavaScript</button>
+                                            <button type="button"  class="signup-interest-lang-btn" value="6">Ruby</button>
+                                            <button type="button"  class="signup-interest-lang-btn" value="7">Swift</button>
+                                            <button type="button"  class="signup-interest-lang-btn" value="8">TypeScript</button>
+                                            <button type="button"  class="signup-interest-lang-btn" value="9">PHP</button>
+                                        </div>
+                                    </div>
 
-                            <!--  02-02-06-02 프레임워크  -->
-                            <div class="signup-interest-content">
-                                <span class="signup-interest-text"><span>프레임워크</span></span>
-                                <div class="signup-select">
-                                    <input type="hidden" name="interest_framework" id="selected-interests-fw" value="">
-                                    <button type="button" class="signup-interest-fw-btn" value="Spring">Spring</button>
-                                    <button type="button" class="signup-interest-fw-btn" value="Django">Django</button>
-                                    <button type="button" class="signup-interest-fw-btn" value="Flask">Flask</button>
-                                    <button type="button" class="signup-interest-fw-btn" value="Vue.js">Vue.js</button>
-                                    <button type="button" class="signup-interest-fw-btn" value="Laravel">Laravel
-                                    </button>
-                                </div>
-                            </div>
+                                    <!--  02-02-06-02 프레임워크  -->
+                                    <div class="signup-form-select-interest">
+                                        <span class="signup-form-select-interest-title">Framework</span>
+                                        <div class="signup-form-select-interest-button">
+                                            <input type="hidden" name="interest_framework" id="selected-interests-fw" value="">
+                                            <button type="button" class="signup-interest-fw-btn" value="1">Spring</button>
+                                            <button type="button"  class="signup-interest-fw-btn" value="2">React</button>
+                                            <button type="button"  class="signup-interest-fw-btn" value="3">Angular</button>
+                                            <button type="button"  class="signup-interest-fw-btn" value="4">Vue.js</button>
+                                            <button type="button"  class="signup-interest-fw-btn" value="5">Express.js</button>
+                                            <button type="button"  class="signup-interest-fw-btn" value="6">Django</button>
+                                            <button type="button"  class="signup-interest-fw-btn" value="7">Ruby on Rails</button>
+                                            <button type="button"  class="signup-interest-fw-btn" value="8">Flask</button>
+                                            <button type="button"  class="signup-interest-fw-btn" value="9">Laravel</button>
+                                        </div>
+                                    </div>
 
-                            <!--  02-02-06-01 직무  -->
-                            <div class="signup-interest-content">
-                                <span class="signup-interest-text"><span>직무</span></span>
-                                <div class="signup-select">
-                                    <input type="hidden" name="interest_job" id="selected-interests-job" value="">
-                                    <button type="button" class="signup-interest-job-btn" value="front">프론트엔드</button>
-                                    <button type="button" class="signup-interest-job-btn" value="back">백엔드</button>
-                                    <button type="button" class="signup-interest-job-btn" value="full">풀스택</button>
-                                    <button type="button" class="signup-interest-job-btn" value="android">Android
-                                    </button>
-                                    <button type="button" class="signup-interest-job-btn" value="IOS">IOS</button>
-                                    <button type="button" class="signup-interest-job-btn" value="designer">디자이너</button>
+                                    <!--  02-02-06-01 직무  -->
+                                    <div class="signup-form-select-interest">
+                                        <span class="signup-form-select-interest-title">Role</span>
+                                        <div class="signup-form-select-interest-button">
+                                            <input type="hidden" name="interest_job" id="selected-interests-job" value="">
+                                            <button type="button" class="signup-interest-job-btn" value="1">프론트엔드</button>
+                                            <button type="button"  class="signup-interest-job-btn" value="2">백엔드</button>
+                                            <button type="button"  class="signup-interest-job-btn" value="3">풀스택</button>
+                                            <button type="button"  class="signup-interest-job-btn" value="4">모바일 앱 개발</button>
+                                            <button type="button"  class="signup-interest-job-btn" value="5">게임 개발</button>
+                                            <button type="button"  class="signup-interest-job-btn" value="6">데이터베이스</button>
+                                            <button type="button"  class="signup-interest-job-btn" value="7">데브옵스</button>
+                                            <button type="button"  class="signup-interest-job-btn" value="8">디자이너</button>
+                                            <button type="button"  class="signup-interest-job-btn" value="9">기획자</button>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </section>
             <section>
                 <div id="content">
-                    <div>소개</div>
-                    <textarea id="description" name="content" placeholder="내용을 입력해 주세요!" required></textarea>
-                    <div id="text-length-check">글자수 : </div>
+                    <table>
+                        <tr>
+                            <th>소개</th>
+                            <td>
+                                <textarea id="description" name="content" placeholder="내용을 입력해 주세요!" required></textarea>
+                                <div id="text-length-check">글자수 : </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </section>
             <button id="submit-button"  type="submit" class="btn btn-primary"
