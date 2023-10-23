@@ -202,7 +202,7 @@
                 <h2 id="content_title" style="display: inline" th:text="${meetingDTO.title}"></h2>
                 <th:block th:if="${checkApply == 0 && now < meetingDTO.applicationDeadline}  ">
                     <button id="modal-button" class="btn btn-primary" th:if="${user_id!= null} and ${meetingDTO.userId != user_id}" type="button" data-toggle="modal"
-                            data-target="#myModa" data->신청하기
+                            data-target="#myModal" data->신청하기
                     </button>
                 </th:block>
                 <th:block th:if="${checkApply== 1 || now >= meetingDTO.applicationDeadline}">
