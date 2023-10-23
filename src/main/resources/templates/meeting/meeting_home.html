@@ -128,7 +128,7 @@
                                 <div class="main-left-content-bottom-meeting-yellow-now-people">
                                     <span class="material-icons" style="color: #1A4D2E; font-size: 20px;">group</span>
                                     <div class="main-left-content-bottom-meeting-yellow-now-people-text">
-                                        현재 <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt">[[${meetingDTO.applicationCount}]]명</span>이 참여중입니다!
+                                        현재 <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt" th:text="${applyDao.countApplyByMeetingId(meetingDTO.meetingId) == null ? 0 : applyDao.countApplyByMeetingId(meetingDTO.meetingId)}"></span>명이 참여중입니다!
                                     </div>
                                 </div>
                                 <!-- yellow - now - info -->
