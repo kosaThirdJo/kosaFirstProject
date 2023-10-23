@@ -290,7 +290,7 @@
                         <img class="meeting-articles-profile-photo" style="width:5rem; height:5rem; border-radius:9999px;"
                              th:src="@{/image/global/userdefaultimg.png}"/>
                     </th:block>
-                    <div class="writer-nickname-text" th:text="${userDao.getNameById(meetingDTO.userId)}"></div>
+                    <div class="writer-nickname-text" th:text="${userDao.getProfileInfo(meetingDTO.userId).getNickname()}"></div>
                     <div class="writer-oneline-text" th:text="${userDao.getUserProfileInfo(meetingDTO.userId).about_me}"></div>
                 </div>
                 </a>
