@@ -196,12 +196,12 @@
                 <sapn th:if="${meetingDTO.status == 0 && now < meetingDTO.applicationDeadline }" th:style="'background-color: #FAF3E3'" class="btn">모집중</sapn>
                 <span th:if="${meetingDTO.status ==1 || now >= meetingDTO.applicationDeadline}" th:style="'background-color: gray; color: white'" class="btn">모집완료</span>
                 <h2 id="content_title" style="display: inline" th:text="${meetingDTO.title}"></h2>
-                <th:block th:if="${checkApply == 0 && now < meetingDTO.applicationDeadline}  ">
+                <th:block th:if="${checkApply == 0 && meetingDTO.status==0 && now < meetingDTO.applicationDeadline}  ">
                     <button id="modal-button" class="btn btn-primary" th:if="${user_id!= null} and ${meetingDTO.userId != user_id}" type="button" data-toggle="modal"
                             data-target="#myModal" data->신청하기
                     </button>
                 </th:block>
-                <th:block th:if="${checkApply== 1 || now >= meetingDTO.applicationDeadline}">
+                <th:block th:if="${checkApply== 1 || meetingDTO.status == 1 || now >= meetingDTO.applicationDeadline}">
                     <button class="btn btn-primary" th:if="${user_id!= null} and ${meetingDTO.userId != user_id}" style="float: right; background-color:#282828;border:#282828;" disabled type="button">신청하기
                     </button>
                 </th:block>
@@ -271,7 +271,7 @@
             </div>
             <div th:each="ele : ${commentListByMeetingId}">
                 <div style="padding-bottom: 10px" id="comment_list">
-                    <div class="comment" id="comment_title" th:text="${userDao.getNameById(ele.userId)}"></div>
+                    <div class="comment" id="comment_title" th:text="${userDao.getUserInfo(ele.userId).getNickname()}"></div>
                     <div class="comment" th:text="|${ele.creationDate.getYear()}년 ${ele.creationDate.monthValue}월 ${ele.creationDate.dayOfMonth}일|"></div>
                     <div class="comment-content" th:text="${ele.content}"></div>
                 </div>
