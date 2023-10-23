@@ -95,10 +95,15 @@
         </div>
         <script>
             document.getElementById('searchForm').addEventListener('submit', function(event) {
-                event.preventDefault();
                 var searchQuery = document.querySelector('.main-header-search-input').value;
-                window.location.href = '/search?searchWord=' + searchQuery;
+                if (!searchQuery) {  // 검색어 없을 경우
+                    alert('검색어를 입력해주세요!');
+                    event.preventDefault();
+                } else {
+                    window.location.href = '/search?searchWord=' + searchQuery;
+                }
             });
+
         </script>
     </header>
 </th:block>

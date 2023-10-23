@@ -27,7 +27,6 @@
 
         <!--       02 입력 폼-->
         <div class="signup-form">
-
             <!--  02-01 회원 가입 문구  -->
             <!-- <div class="signup-form-title">
               <hr>
@@ -41,14 +40,15 @@
                     <!--  02-02-01 아이디  -->
                     <div class="signup-form-input-box">
                         <span class="signup-form-input-box-title">아이디</span>
-                        <div class="signup-form-input-withbtn">
+<!--                        <div class="`signup-form-input`">-->
                             <input
                                     type="text"
                                     name="name"
-                                    placeholder="4~15자 이내로 입력해주세요"
-                                    class="signup-form-input-box-content-withbtn"
+                                    placeholder="4~15자 이내로 입력해주세요."
+                                    class="signup-form-input-box-content"
                             />
-                        </div>
+                           <!-- <button type="button" class="signup-form-input-check-btn" onclick="checkDuplicate('name')">중복 확인</button>-->
+<!--                        </div>-->
                         <div class="sign-up-form-input-check-alert" id="checkId">
                             <span></span>
                         </div>
@@ -60,7 +60,7 @@
                         <input
                                 type="password"
                                 name="password"
-                                placeholder="최소 6자 이상(알파벳, 숫자 필수)"
+                                placeholder="최소 6자 이상, 알파벳과 숫자로 입력해주세요."
                                 class="signup-form-input-box-content"
                         />
                         <div class="sign-up-form-input-check-alert" id="checkPassword">
@@ -71,14 +71,12 @@
                     <!--  02-02-03 이메일  -->
                     <div class="signup-form-input-box">
                         <span class="signup-form-input-box-title">이메일</span>
-                        <div class="signup-form-input-withbtn">
                             <input
                                     type="email"
                                     name="email"
                                     placeholder="honggildong@select.com"
-                                    class="signup-form-input-box-content-withbtn"
+                                    class="signup-form-input-box-content"
                             />
-                        </div>
                         <div class="sign-up-form-input-check-alert" id="checkEmail">
                             <span></span>
                         </div>
@@ -87,12 +85,15 @@
                     <!--  02-02-04 닉네임  -->
                     <div class="signup-form-input-box">
                         <span class="signup-form-input-box-title"><span>닉네임</span></span>
-                        <input
-                                type="text"
-                                name="nickname"
-                                placeholder="닉네임을 알파벳, 한글, 숫자를 20자 이하로 입력해주세요."
-                                class="signup-form-input-box-content"
-                        />
+<!--                        <div class="signup-form-input">-->
+                            <input
+                                    type="text"
+                                    name="nickname"
+                                    placeholder="닉네임을 20자 이하로 입력해주세요."
+                                    class="signup-form-input-box-content"
+                            />
+                            <!--<button type="button" class="signup-form-input-check-btn" onclick="checkDuplicate('nickname')">중복 확인</button>-->
+<!--                        </div>-->
                         <div class="sign-up-form-input-check-alert" id="checkNickname">
                             <span></span>
                         </div>
@@ -170,9 +171,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </form>
             <!--  02-02-08 회원 가입 버튼  -->
             <div class="signup-signupbtn"><a href="#" onclick="submitSignupForm()"></a></div>
@@ -187,7 +186,6 @@
 </div>
 
 <script th:inline="javascript">
-
     // 관심 분야 선택
         // 버튼 목록, 선택된 관심사 배열, hidden input에 저장
         function selectInterests(buttons, selectedInterests, selectedInterestsInput) {
@@ -313,7 +311,34 @@
             return true;
         }
 
-        // 폼 제출
+        // 중복 확인 (보류)
+        function checkDuplicate(type) {
+            var value = document.querySelector('input[name="' + type + '"]').value;
+            var alertElement = document.getElementById('checkId');
+            console.log(value);
+            if(!value){
+                alertElement.querySelector('span').textContent = "이미 존재하는 아이디입니다.";
+           }else{
+                var xhr = new XMLHttpRequest();
+                var url = "/checkDuplicate?type=" + type + "&value=" + value;
+                xhr.open('GET', url, true);
+                xhr.send();
+                xhr.onreadystatechange = function () {
+                    if (xhr.status == 200) {
+                        if (xhr.responseText) {
+                            try {
+                                const result = JSON.parse(xhr.responseText);
+                                console.log(result);
+
+                            } catch (error) {}
+                        }
+                    }
+                };
+           }
+
+       }
+
+    // 폼 제출
         function submitSignupForm() {
             var name = document.querySelector('input[name="name"]').value;
             var password = document.querySelector('input[name="password"]').value;

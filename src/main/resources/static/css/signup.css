@@ -101,24 +101,10 @@ justify-content: space-between;
 .signup-form-input-box-content-withbtn {
 width: -webkit-fill-available;
 }
-.signup-form-input-check-btn {
-padding: 9px 15px;
-align-items: center;
-border-radius: 10px;
-justify-content: center;
-background-color: rgba(26, 77, 46, 1);
-color: rgba(255, 255, 255, 1);
-font-weight: 700;
-border: none;
-width: 110px;
-}
 .sign-up-form-input-check-alert{
 margin-left: 20px;
 color: rgb(248, 60, 60);
 font-size: 12px;
-}
-.signup-form-input-check-btn:hover{
-background-color: #1A4D2EB3;
 }
 .signup-form-input-box-content, .signup-form-input-box-content-withbtn {
 padding: 0 20px;
@@ -132,7 +118,7 @@ min-height: 35px;
 }
 
 /* 02-02-05 지역 */
-.signup-form-input-location-btn {
+.signup-form-input-location-btn, .signup-form-input-check-btn {
 padding: 11px 15px;
 border-radius: 10px;
 background-color: #1A4D2E;
@@ -140,11 +126,18 @@ color: rgba(255, 255, 255, 1);
 font-weight: 600;
 border: none;
 width: 110px;
+cursor: pointer;
 }
 .signup-form-input-location-btn:hover{
 background-color: #1A4D2EB3;
 }
-
+.signup-form-input-check-btn {
+background-color: #FF9F29;
+color: rgba(255, 255, 255, 1);
+}
+.signup-form-input-check-btn:hover{
+background-color: #FF9F29B3;
+}
 /* 02-02-06 관심분야 */
 .signup-form-select-interest {
 gap: 10px;
