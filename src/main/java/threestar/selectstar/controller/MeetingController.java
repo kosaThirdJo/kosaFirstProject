@@ -199,7 +199,7 @@ public class MeetingController {
             // 조회를 위한 값 저장
             model.addAttribute("requestURI", request.getRequestURI());
             model.addAttribute("meetingDTO", meetingDTO);
-            model.addAttribute("description",meetingDTO.getDescription().replace("\r\n","<br>"));
+            model.addAttribute("description",meetingDTO.getDescription().replace("\r\n","<br>").replace(" ","&nbsp"));
             model.addAttribute("commentListByMeetingId", commentListByMeetingId);
             model.addAttribute("userDao",userDao);
             model.addAttribute("count_comment",commentDao.calcCommentCount(meetingId));
