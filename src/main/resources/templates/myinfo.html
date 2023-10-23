@@ -47,15 +47,19 @@
                 <!--  02-02-04 닉네임  -->
                 <div class="myinfo-nickname">
                     <span class="myinfo-text017"><span>닉네임</span></span>
-                    <input
-                            id="inputNickname"
-                            type="text"
-                            name="nickname"
-                            th:value="${userDTO.nickname}"
-                            placeholder="닉네임을 알파벳, 한글, 숫자를 20자 이하로 입력해주세요."
-                            class="myinfo-input4"
-                    />
-                    <button onclick="chkNickname()">중복 확인</button>
+                    <div class="myinfo-nickname-content">
+                        <input
+                                id="inputNickname"
+                                type="text"
+                                name="nickname"
+                                th:value="${userDTO.nickname}"
+                                placeholder="닉네임을 알파벳, 한글, 숫자를 20자 이하로 입력해주세요."
+                                class="myinfo-input4"
+                        />
+                        <button class="nickname-checkbtn" onclick="chkNickname()">
+                            <span class="myinfo-text025"><span>중복 확인</span></span>
+                        </button>
+                    </div>
                 </div>
                 <div id="showResult"></div>
                 <!--  02-02-05 지역  -->
