@@ -50,18 +50,17 @@ a{
     width: 10%;
     display: inline;
 }
-.button-category{/* 카테고리 메뉴(전체/프로젝트/스터디/기타) 버튼 */
+.e-category button{/* 카테고리 메뉴(전체/프로젝트/스터디/기타) 버튼 */
     width: 100px;
     height: 40px;
     background: none;
     border: none;
     color: rgba(0, 0, 0, 1);
     font-size: 20px;
-    font-style: Bold;
     text-align: center;
     font-weight: 700;
 }
-.button-category:hover{
+.e-category button:hover{
   cursor: pointer;
 }
 .mymeeting-list-container{ /* 목록 frame*/
@@ -82,7 +81,7 @@ a{
     display: inline;
     list-style-type: none;
 }
-.search-filter-select-btn{ /* 모집상태 button */
+.e-status button{ /* 모집상태 button */
     width: 100px;
     height: 40px;
     background: none;
@@ -92,19 +91,23 @@ a{
     text-align: center;
     font-weight: 500;
 }
+.e-status button:hover{
+  cursor: pointer;
+}
 .mymeeting-list{ /*목록 ul*/
     list-style:none;
     padding-left: 0;
 }
 .mymeeting-container { /*목록 li*/
     list-style-type: none;
-    padding: 10px 0px;
-    border-top: solid 1px #888888;
+    /*padding: 10px 0px;
+    border-top: solid 1px #888888;*/
 }
 .click-meetingpost{  /*li의 a태그*/
-    padding: 5px 0px;
+    padding: 10px 0px;
     display:flex;
     flex-direction: column;
+    border-top: solid 1px #888888;
 }
 .meetinginfo{ /*li 내부 frame div*/
     height: 140px;

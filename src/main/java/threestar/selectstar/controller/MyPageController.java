@@ -186,68 +186,9 @@ public class MyPageController {
         mav.setViewName("mymeetinglistView");
         return mav;
     }
-    //내가 참여한 모임(내가 신청한 글)
-    @GetMapping("/myapplymeetinglist")
-    public ModelAndView getMyApplyMeeting(HttpSession session){
-        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
-        userDTO.setUserId((int)session.getAttribute("user_id"));
-
-        ModelAndView mav = new ModelAndView();
-        mav.addObject("userDTO", userDTO);
-        List<MeetingVO> applylist = meetingDAO.getMyApplyList((int)session.getAttribute("user_id"));
-
-        //마이페이지 side bar -프로필 이미지
-        byte[] imgByte = userDTO.getProfile_photo();
-        String encodeImg = null;
-        if(imgByte != null) {
-            encodeImg = Base64.getEncoder().encodeToString(imgByte);
-        }
-        mav.addObject("encodeImg", encodeImg);
-
-        if(applylist.size() != 0){
-            mav.addObject("applyingvoList", applylist);
-        }else{
-            mav.addObject("msg", "조회된 글이 없습니다.");
-        }
-        mav.addObject("applyingvoList", applylist);
-        mav.setViewName("applymeetinglistView");
-        return mav;
-    }
-
-    //내가 참여한 모임(내가 신청한 글) 카테고리별 조회
-    @GetMapping("/myapplymeetinglist/{category}")
-    public ModelAndView getMyApplyMeetingByCategory(@PathVariable int category, HttpSession session){
-        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
-        userDTO.setUserId((int)session.getAttribute("user_id"));
-
-        ModelAndView mav = new ModelAndView();
-        mav.addObject("userDTO", userDTO);
-        List<MeetingVO> list = meetingDAO.getMyApplyListByCategory((int)session.getAttribute("user_id"), category);
-        //List<MeetingVO> list = meetingDAO.getMyApplyList((int)session.getAttribute("user_id"));
-        log.info("list  >>"+list.get(0));
-
-        //마이페이지 side bar -프로필 이미지
-        byte[] imgByte = userDTO.getProfile_photo();
-        String encodeImg = null;
-        if(imgByte != null) {
-            encodeImg = Base64.getEncoder().encodeToString(imgByte);
-        }
-        mav.addObject("encodeImg", encodeImg);
-
-        if(list.size() != 0){
-            mav.addObject("applyingvoList", list);
-        }else{
-            mav.addObject("msg", "조회된 글이 없습니다.");
-        }
-        log.info("list  >", list);
-        mav.addObject("applyingvoList", list);
-        mav.setViewName("applymeetinglistView");
-        return mav;
-    }
-
-    //내가 참여한 모임(내가 신청한 글) 카테고리별 - 모집상태별 조회
-    @GetMapping(value = "/myapplyingfilter", produces = "application/json; charset=utf-8")
-    public @ResponseBody List<MeetingVO> getMyApplyMeetingBySearch(
+    //내가 작성한 글(수정)
+    @GetMapping(value = "/mymeetingbyfilter", produces = "application/json; charset=utf-8")
+    public @ResponseBody List<MeetingVO> getMyMeetingListBySearch(
             @RequestParam(name = "category", required = false) String strCategory,
             @RequestParam(name="status", required = false) String strStatus,
             Model model, HttpSession session){
@@ -292,22 +233,124 @@ public class MyPageController {
         List<MeetingVO> list;
         if((strStatus != null && !strStatus.isEmpty()) && (strCategory != null && !strCategory.isEmpty())){
             // 카테고리(프로젝트/스터디/기타)와 모집여부(모집중/모집완료) 선택 시
-            list = meetingDAO.getMyApplyListByCateStatus((int)session.getAttribute("user_id"), category, status);
+            list = meetingDAO.getMyMeetingListByCateStatus((int)session.getAttribute("user_id"), category, status);
             System.out.println(0);
         }else if((strStatus == null) && (strCategory != null && !strCategory.isEmpty())){
             // 카테고리(전체) 와 모집여부(모집중/모집완료) 선택 시
-            list = meetingDAO.getMyApplyListByCategory((int)session.getAttribute("user_id"), category);
+            list = meetingDAO.getMyMeetingListByCategory((int)session.getAttribute("user_id"), category);
             System.out.println(1);
         }else if((strStatus != null && !strStatus.isEmpty()) && (strCategory == null)){
             // 카테고리(프로젝트/스터디/기타)와 모집여부(전체) 선택 시
-            list = meetingDAO.getMyApplyListByStatus((int)session.getAttribute("user_id"), status);
+            list = meetingDAO.getMyMeetingListByStatus((int)session.getAttribute("user_id"), status);
             System.out.println(2);
         }else{
             //카테고리(전체)와 모집여부(전체) 선택 시
-            list = meetingDAO.getMyApplyList((int)session.getAttribute("user_id"));
+            list = meetingDAO.getMyMeetingList((int)session.getAttribute("user_id"));
             System.out.println(list.get(0));
         }
-        System.out.println(list);
+
+        //마이페이지 side bar -프로필 이미지
+        byte[] imgByte = userDTO.getProfile_photo();
+        String encodeImg = null;
+        if(imgByte != null) {
+            encodeImg = Base64.getEncoder().encodeToString(imgByte);
+        }
+        model.addAttribute("userDTO", userDTO);
+        model.addAttribute("encodeImg", encodeImg);
+        model.addAttribute("userId", (int)session.getAttribute("user_id"));
+
+        if(list.size() != 0){
+            model.addAttribute("meetingvoList", list);
+        }else{
+            model.addAttribute("msg", "조회된 글이 없습니다.");
+        }
+        return list;
+    }
+
+    //내가 참여한 모임(내가 신청한 글)
+    @GetMapping("/myapplymeetinglist")
+    public ModelAndView getMyApplyMeeting(HttpSession session){
+        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
+        userDTO.setUserId((int)session.getAttribute("user_id"));
+
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("userDTO", userDTO);
+        List<MeetingVO> applylist = meetingDAO.getMyApplyList((int)session.getAttribute("user_id"));
+
+        //마이페이지 side bar -프로필 이미지
+        byte[] imgByte = userDTO.getProfile_photo();
+        String encodeImg = null;
+        if(imgByte != null) {
+            encodeImg = Base64.getEncoder().encodeToString(imgByte);
+        }
+        mav.addObject("encodeImg", encodeImg);
+
+        if(applylist.size() != 0){
+            mav.addObject("applyingvoList", applylist);
+        }else{
+            mav.addObject("msg", "조회된 글이 없습니다.");
+        }
+        mav.addObject("applyingvoList", applylist);
+        mav.setViewName("applymeetinglistView");
+        return mav;
+    }
+
+    //내가 참여한 모임(내가 신청한 글) 카테고리별 - 모집상태별 조회
+    @GetMapping(value = "/myapplyingfilter", produces = "application/json; charset=utf-8")
+    public @ResponseBody List<MeetingVO> getMyApplyMeetingBySearch(
+            @RequestParam(name = "category", required = false) String strCategory,
+            @RequestParam(name="status", required = false) String strStatus,
+            Model model, HttpSession session){
+        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
+        userDTO.setUserId((int)session.getAttribute("user_id"));
+
+        int category = 0;
+        int status = 0;
+
+        if(strCategory != null) {
+            switch (strCategory) {
+                case "project":
+                    category = 1;
+                    break;
+                case "study":
+                    category = 0;
+                    break;
+                case "etc":
+                    category = 2;
+                    break;
+                case "all":
+                    strCategory = null;
+                    break;
+            }
+        }
+        if(strStatus != null) {
+            switch (strStatus) {
+                case "statusing":
+                    status = 0;
+                    break;
+                case "statused":
+                    status = 1;
+                    break;
+                case "all":
+                    strStatus = null;
+                    break;
+            }
+        }
+        List<MeetingVO> list;
+        if((strStatus != null && !strStatus.isEmpty()) && (strCategory != null && !strCategory.isEmpty())){
+            // 카테고리(프로젝트/스터디/기타)와 모집여부(모집중/모집완료) 선택 시
+            list = meetingDAO.getMyApplyListByCateStatus((int)session.getAttribute("user_id"), category, status);
+        }else if((strStatus == null) && (strCategory != null && !strCategory.isEmpty())){
+            // 카테고리(전체) 와 모집여부(모집중/모집완료) 선택 시
+            list = meetingDAO.getMyApplyListByCategory((int)session.getAttribute("user_id"), category);
+        }else if((strStatus != null && !strStatus.isEmpty()) && (strCategory == null)){
+            // 카테고리(프로젝트/스터디/기타)와 모집여부(전체) 선택 시
+            list = meetingDAO.getMyApplyListByStatus((int)session.getAttribute("user_id"), status);
+        }else{
+            //카테고리(전체)와 모집여부(전체) 선택 시
+            list = meetingDAO.getMyApplyList((int)session.getAttribute("user_id"));
+        }
+
         //마이페이지 side bar -프로필 이미지
         byte[] imgByte = userDTO.getProfile_photo();
         String encodeImg = null;
@@ -323,7 +366,6 @@ public class MyPageController {
         }else{
             model.addAttribute("msg", "조회된 글이 없습니다.");
         }
-
         return list;
     }
     

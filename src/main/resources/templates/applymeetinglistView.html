@@ -136,28 +136,44 @@
         </div>
     </div>
     <script th:inline="javascript">
-        console.log("내가 신청한 글");
-
         document.addEventListener('DOMContentLoaded', function() {
             var selectedFilters2 = {};
+            selectedFilters2.category = "all";
+            selectedFilters2.status = "all";
+
+            var allCBtn = document.querySelector('button[data-category=category][value="all"]');
+            allCBtn.style.color = '#FF9F29';
+            var allSBtn = document.querySelector('button[data-category=status][value="all"]');
+            allSBtn.style.color = '#FF9F29';
+            sendAjaxRequest();
 
             function toggleFilter(button) {
                 var filterCategory = button.getAttribute('data-category');  // 필터 카테고리 가져오기 (category, status)
                 var filterValue = button.getAttribute('value');
-                var btns = document.querySelectorAll('button[data-category=filterCategory]');
 
                 var cateBtns = document.querySelectorAll('button[data-category=category]');
                 var statusBtns = document.querySelectorAll('button[data-category=status]');
 
+                selectedFilters2[filterCategory] = filterValue;
 
+                //다른 카테고리 선택 시 모집상태 전체로 변경
+                if(filterCategory != selectedFilters2.category){
+                    selectedFilters2.status = "all";
+                    for(let sbtn of statusBtns){
+                        if(sbtn.value == "all"){
+                            sbtn.style.color = '#FF9F29';
+                        }else{
+                            sbtn.style.color = 'black';
+                        }
+                    }
+                }
 
-                if(!filterValue){
-                    console.log("null");
-                    selectedFilters2[filterCategory] = "all";
-                }else{
-                    selectedFilters2[filterCategory] = filterValue;
+                 if(filterCategory == "status"){
+                    selectedFilters2.status = filterValue;
+                }
 
-                    /*
+                //선택한 버튼만 색상 변경
+                if(filterCategory == "category"){
                     for(let cbtn of cateBtns){
                         if(cbtn.value == filterValue){
                             cbtn.style.color = '#FF9F29';
@@ -165,6 +181,7 @@
                             cbtn.style.color = 'black';
                         }
                     }
+                }else if(filterCategory == "status"){
                     for(let sbtn of statusBtns){
                         if(sbtn.value == filterValue){
                             sbtn.style.color = '#FF9F29';
@@ -172,33 +189,7 @@
                             sbtn.style.color = 'black';
                         }
                     }
-                    */
                 }
-                for(let b of btns){
-                    if(b.value == filterValue){
-                        console.log(b.value);
-                        b.style.color = '#FF9F29';
-                    }else{
-                        b.style.color = 'black';
-                    }
-                }
-
-                //재수정 예정
-                for(let cbtn of cateBtns){
-                    if(cbtn.value == filterValue){
-                        cbtn.style.color = '#FF9F29';
-                    }else{
-                        cbtn.style.color = 'black';
-                    }
-                }
-                for(let sbtn of statusBtns){
-                    if(sbtn.value == filterValue){
-                        sbtn.style.color = '#FF9F29';
-                    }else{
-                        sbtn.style.color = 'black';
-                    }
-                }
-
                 console.log(selectedFilters2);
             }
 
@@ -239,20 +230,24 @@
             function updateFillterResults(meetings) {
                 const filteringResultContainer = document.querySelector('.list-container-body');
                 filteringResultContainer.innerHTML = '';
-
+                console.log(meetings);
+                if(meetings.length > 0){
                 meetings.forEach(applyingvo => {
                     const meetingElement = document.createElement('a');
                     meetingElement.classList.add('click-meetingpost');
 
                     meetingElement.href = '/meeting/articles?id='+applyingvo.meetingId;
 
+                    const applyingvoStatusStyle = applyingvo.status == 0 ? 'background-color:#1A4D2E;' : 'background-color:#5F5B5B;';
+                    const applyingvoStatus = applyingvo.status == 0 ? '모집중' : '모집완료';
+
                     meetingElement.innerHTML = `
                         <div class="meetinginfo">
                             <!-- 게시글 항목 status & title-->
                             <div class="meeting-title">
                                 <div class="meeting-status">
-                                    <div class="meeting-status-text">
-                                        ${applyingvo.status  == 0 ? '모집중' : '모집완료'}
+                                    <div class="meeting-status-text" style="${applyingvoStatusStyle}">
+                                        ${applyingvoStatus}
                                     </div>
                                 </div>
                                 <div class="meeting-category">
@@ -309,6 +304,15 @@
                     `;
                     filteringResultContainer.appendChild(meetingElement);
                 });
+                }else{
+                    const noResultElement = document.createElement('div')
+                    noResultElement.innerHTML = `
+                    <div>
+                        <p class="result-msg">찾으시는 결과가 없습니다.</p>
+                    </div>
+                     `;
+                    filteringResultContainer.appendChild(noResultElement);
+                }
             }
     });
     </script>
