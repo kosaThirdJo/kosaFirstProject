@@ -91,7 +91,6 @@ public class MeetingController {
             allMeetingList = meetingDao.getAllMeetingListByCategory(page*12, category,order);
             allMeetingListCount = meetingDao.getAllMeetingCountListByCategory(category);
         }
-        System.out.println(allMeetingList);
 
         // 관심 분야 한곳에 넣기
         List<List<String>> interestListLang = new ArrayList<>();
@@ -115,7 +114,7 @@ public class MeetingController {
                         SplitInterestLanguage) {
                     if (splitEle != null && !splitEle.equals("")) {
                         if (interestMap.langMap.containsKey(splitEle)) {
-                            interestListLangEle.add(splitEle);
+                            interestListLangEle.add(interestMap.langMap.get(splitEle));
                         }
 
                     }
@@ -127,7 +126,7 @@ public class MeetingController {
                         SplitInterestFramework) {
                     if (splitEle != null &&!splitEle.equals("")) {
                         if (interestMap.frameworkMap.containsKey(splitEle)) {
-                            interestListFrameEle.add(splitEle);
+                            interestListFrameEle.add(interestMap.frameworkMap.get(splitEle));
                         }
                     }
                 }
@@ -138,16 +137,19 @@ public class MeetingController {
                         SplitInterestJob) {
                     if (splitEle != null &&!splitEle.equals("")) {
                         if (interestMap.jobMap.containsKey(splitEle)) {
-                            interestListJobEle.add(splitEle);
+                            interestListJobEle.add(interestMap.jobMap.get(splitEle));
                         }
                     }
                 }
             }
-
+            //섞기
+            Collections.shuffle(interestListLangEle);
+            Collections.shuffle(interestListFrameEle);
+            Collections.shuffle(interestListJobEle);
             // 관심분야를 다시 리스트에 넣기
-            interestListLang.add(interestListLangEle);
-            interestListFrame.add(interestListFrameEle);
-            interestListJob.add(interestListJobEle);
+            interestListLang.add(interestListLangEle.subList(0,Math.min(3,interestListLangEle.size())));
+            interestListFrame.add(interestListFrameEle.subList(0,Math.min(3,interestListFrameEle.size())));
+            interestListJob.add(interestListJobEle.subList(0,Math.min(3,interestListJobEle.size())));
             timeList.add(meetingDaoOne.getCreationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         }
         // 모델에 넣기
@@ -197,6 +199,7 @@ public class MeetingController {
             // 조회를 위한 값 저장
             model.addAttribute("requestURI", request.getRequestURI());
             model.addAttribute("meetingDTO", meetingDTO);
+            model.addAttribute("description",meetingDTO.getDescription().replace("\r\n","<br>"));
             model.addAttribute("commentListByMeetingId", commentListByMeetingId);
             model.addAttribute("userDao",userDao);
             model.addAttribute("count_comment",commentDao.calcCommentCount(meetingId));
@@ -231,6 +234,7 @@ public class MeetingController {
     public String writeArticleForm(HttpSession session,Model model){
         model.addAttribute("user_id",session.getAttribute("user_id"));
         model.addAttribute("location",userDao.getUserInfo((int)session.getAttribute("user_id")).getLocation1());
+        model.addAttribute("now",LocalDateTime.now());
         return "meeting/meeting_form";
     }
     @PostMapping("/write")
