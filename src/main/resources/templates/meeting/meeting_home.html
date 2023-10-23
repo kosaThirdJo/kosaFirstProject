@@ -108,7 +108,7 @@
                                     <div class="main-left-content-bottom-meeting-white-deadline">
                                         <span class="material-icons" style="font-size: 12px;">edit</span>
                                         <span class="main-left-content-bottom-meeting-white-deadline-text">작성자</span>
-                                        <span class="main-left-content-bottom-meeting-white-deadlineText" style="margin-left: 10px;" th:text="${userDao.getNameById(meetingDTO.userId)}">작성자</span>
+                                        <span class="main-left-content-bottom-meeting-white-deadlineText" style="margin-left: 10px;" th:text="${userDao.getUserProfileInfo(meetingDTO.userId).getNickname()}">작성자</span>
                                     </div>
 
                                     <!-- whitebox - deadline -->
