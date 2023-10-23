@@ -34,7 +34,8 @@
     background-color:#1A4D2E;
     border-radius: 4px;
     color: white;
-    font-weight: 200;
+    font-size: 15px;
+    font-weight: 300;
     cursor: pointer;
 }
 /* 이미지 수정 버튼 */
@@ -46,14 +47,15 @@
     border: none;
     border-radius: 4px;
     color: white;
-    font-weight: 200;
+    font-size: 15px;
+    font-weight: 300;
     cursor: pointer;
 }
 .text-nickname{
     color: rgba(0, 0, 0, 1);
     width: 100%;
     height: auto;
-    font-size: 23px;
+    font-size: 25px;
     font-style: Bold;
     text-align: center;
     font-weight: 500;
@@ -63,10 +65,10 @@
     color: rgba(0, 0, 0, 1);
     width: 100%;
     height: auto;
-    font-size: 15px;
+    font-size: 18px;
     font-style: Bold;
     text-align: center;
-    font-weight: 200;
+    font-weight: 300;
     text-decoration: none;
 }
 /* sidebar-메뉴 */
@@ -83,7 +85,7 @@
 .frame-sidemenu-title{
   color: rgba(26, 77, 46, 1);
   height: auto;
-  font-size: 20px;
+  font-size: 25px;
   align-self: stretch;
   font-style: Bold;
   text-align: left;
@@ -97,7 +99,7 @@
     text-decoration: none;
     color: black;
     height: auto;
-    font-size: 15px;
+    font-size: 20px;
     align-self: stretch;
     text-align: left;
     font-weight: 400;

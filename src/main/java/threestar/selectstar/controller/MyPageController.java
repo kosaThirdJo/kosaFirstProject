@@ -121,7 +121,7 @@ public class MyPageController {
     //개인정보수정
     @PostMapping("/updateinfo")
     public String updateUserInfo(UserDTO userDTO){
-        log.info("userId  : "+userDTO.getUserId());
+        log.info("userDTO  :"+userDTO);
         boolean result = userDAO.updateUserInfo(userDTO);
         log.info("update userinfo result >> "+result);
         return "redirect:/mypage/myinfo";
