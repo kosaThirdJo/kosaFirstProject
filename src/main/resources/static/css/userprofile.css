@@ -1,6 +1,6 @@
 .frame-container{ /* 전체 프레임 컨테이너*/
     width: 100%;
-    padding: 20px;
+    padding: 40px 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -47,7 +47,7 @@
 .profile-info-text{
   font-size: 20px;
   text-align: center;
-  font-weight: 400;
+  font-weight: 500;
 }
 .frame-profile-oneline{
    width: 100%;
@@ -55,7 +55,7 @@
 .profile-oneline-title{
     color: #1A4D2E;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 700;
 }
 .profile-oneline-text{
     color: black;

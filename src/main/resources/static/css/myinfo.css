@@ -1,4 +1,4 @@
-/*.signup-container {
+/*.myinfo-container {
   width: 100%;
   display: flex;
   overflow: auto;
@@ -212,72 +212,95 @@
   font-stretch: normal;
   text-decoration: none;
 }
-.myinfo-interest { /* 02-02-06 관심분야 */
-  gap: 10px;
-  display: flex;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+/* 02-02-06 관심분야 */
+.myinfo-form-input-box-title span {
+color: #1A4D2E;
+font-size: 20px;
+font-weight: 500;
 }
-.myinfo-interest-container {
-  display: flex;
-  padding: 20px;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: center;
-  border-color: rgba(145, 144, 144, 1);
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 10px;
-  flex-direction: column;
-  justify-content: center;
+.myinfo-form-select-interest {
+gap: 10px;
+display: flex;
+padding: 20px 0;
+overflow: hidden;
+align-items: center;
+flex-direction: column;
+justify-content: center;
 }
-.myinfo-interest-content { /*각 관심분야 div*/
-  gap: 10px;
-  display: flex;
-  padding: 10px 0;
-  overflow: hidden;
-  align-self: stretch;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+.myinfo-form-select-interest-title {
+font-size: 13px;
+align-self: stretch;
+font-weight: 500;
+background-color: #1A4D2E;
+color: white;
+padding: 3px 10px;
+width: 65px;
+text-align: center;
 }
-.myinfo-interest-text { /*관심분야, 언어,  fw, 직무 제목*/
-  color: rgba(0, 0, 0, 1);
-  height: auto;
-  font-size: 17px;
-  align-self: stretch;
-  font-style: Regular;
-  text-align: left;
-  font-weight: 400;
-  text-decoration: none;
+.myinfo-form-select-interest-button {
+gap: 15px 10px;
+display: flex;
+flex-wrap: wrap;
+align-self: stretch;
+align-items: center;
+flex-shrink: 0;
 }
-.myinfo-select { /* 관심분야 선택박스 div*/
-  gap: 10px;
-  display: flex;
-  overflow: hidden;
-  flex-wrap: wrap;
-  align-self: stretch;
-  align-items: center;
-  flex-shrink: 0;
-}
-.myinfo-interest-lang-btn, .myinfo-interest-fw-btn, .myinfo-interest-job-btn {
-  gap: 10px;
-  display: flex;
+
+/* 관심분야 select 버튼 */
+.myinfo-interest-lang-btn,
+.myinfo-interest-fw-btn,
+.myinfo-interest-job-btn {
+  border: 0;
+  border-radius: 5px;
+  color: #000000;
+  font-weight: 500;
+  font-size: 12px;
+  background-color: #DEDFE4;
+  box-shadow: 0 6px #55565B;
   padding: 5px 10px;
-  overflow: hidden;
-  align-items: center;
-  border-color: rgba(167, 166, 166, 1);
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 10px;
-  justify-content: center;
 }
-.myinfo-interest-lang-btn.selected, .myinfo-interest-fw-btn.selected, .myinfo-interest-job-btn.selected {
-    background-color: green;
-    color: white;
+.myinfo-interest-lang-btn:hover,
+.myinfo-interest-fw-btn:hover,
+.myinfo-interest-job-btn:hover {
+  background-color: #919297;
+  color: white;
+  cursor: pointer;
+}
+.myinfo-interest-lang-btn:focus,
+.myinfo-interest-fw-btn:focus,
+.myinfo-interest-job-btn:focus {
+  outline: none;
+}
+.myinfo-interest-lang-btn:active,
+.myinfo-interest-fw-btn:active,
+.myinfo-interest-job-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 3px #55565B;
+}
+.myinfo-interest-lang-btn.selected{
+   border: 0;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 5px 10px;
+  background-color: #919297;
+  color: white;
+  cursor: pointer;
+  transform: translateY(4px);
+  box-shadow: 0 3px #55565B;
+}
+.myinfo-interest-fw-btn.selected,
+.myinfo-interest-job-btn.selected {
+  border: 0;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 5px 10px;
+  background-color: #919297;
+  color: white;
+  cursor: pointer;
+  transform: translateY(4px);
+  box-shadow: 0 3px #55565B;
 }
 .frame-bottom{
     width: 90%;
@@ -289,7 +312,15 @@
     flex-shrink: 0;
     justify-content:center;
 }
-.button-submit{
+/*myinfo-myinfobtn a{
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform .25s;
+  font-family: 'Montserrat', sans-serif;
+}*/
+.myinfo-updatebtn a {
   gap: 10px;
   width: 100px;
   height: 40px;

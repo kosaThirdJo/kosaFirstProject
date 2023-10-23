@@ -200,7 +200,7 @@
                     } else {  // 선택되어있지않으면, 배열에 추가
                         selectedInterests.push(interest);
                     }
-
+                    console.log(selectedInterests);
                     selectedInterestsInput.value = `_${selectedInterests.join('_')}_`;  // 언더바(_) 추가
                     button.classList.toggle('selected');  // 버튼 상태 토글
                 });
