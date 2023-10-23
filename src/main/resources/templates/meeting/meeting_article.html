@@ -32,25 +32,24 @@
             margin: 20px 0 20px;
         }
 
-
-
-        #profile {
+        .frame-writer-profile {
             float: right;
             background-color: #FAF3E3;
             width: 300px;
-            height: 200px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
             margin-right: 50px;
             margin-top: 50px;
+            border: none;
             border-radius: 20%;
         }
-        #apply{
+        .frame-showapplicant{
             float: right;
-            background-color: #FAF3E3;
+            background-color: white;
             width: 300px;
-            height: 200px;
-            margin-right: 50px;
-            margin-top: 50px;
-            border-radius: 20%;
+            text-align: center;
+            margin-top: 20px;
         }
 
         #content_box {
@@ -120,7 +119,34 @@
             margin-left: 200px;
             margin-top:100px;
         }
-
+        .frame-writer {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin-left: 30px;
+          }
+          .click-profile{
+            text-decoration: none;
+            color: black;
+            margin: 10px 0px;
+          }
+          .meeting-articles-profile {
+            display: flex;
+            text-align: center;
+            gap: 10px;
+            flex-direction: column;
+        }
+        .meeting-articles-profile-photo {
+            width: 10rem;
+            height: 10rem;
+            border-radius: 9999px;
+            text-align: center;
+            margin: auto;
+        }
+        .writer-nickname-text{
+            font-size: 18px;
+            font-weight: 700;
+        }
 
     </style>
 </head>
@@ -138,7 +164,6 @@
 </script>
 
 <th:block layout:fragment="content">
-
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <form th:action="|/meeting/apply/${meetingDTO.meetingId}|" , method="post">
@@ -171,7 +196,7 @@
     <article style="display: flex">
         <div>
         <section id="content_box">
-            <div>
+            <div class="frame-content">
                 <sapn th:if="${meetingDTO.status == 0 && now < meetingDTO.applicationDeadline }" th:style="'background-color: #FAF3E3'" class="btn">모집중</sapn>
                 <span th:if="${meetingDTO.status ==1 || now >= meetingDTO.applicationDeadline}" th:style="'background-color: gray; color: white'" class="btn">모집완료</span>
                 <h2 id="content_title" style="display: inline" th:text="${meetingDTO.title}"></h2>
@@ -181,31 +206,31 @@
                     </button>
                 </th:block>
                 <th:block th:if="${checkApply== 1 || now >= meetingDTO.applicationDeadline}">
-                    <button class="btn btn-primary" th:if="${user_id!= null} and ${meetingDTO.userId != user_id}" style="float: right" disabled type="button">신청하기
+                    <button class="btn btn-primary" th:if="${user_id!= null} and ${meetingDTO.userId != user_id}" style="float: right; background-color:#282828;border:#282828;" disabled type="button">신청하기
                     </button>
                 </th:block>
                 <th:block th:if="${meetingDTO.status== 0 &&  now < meetingDTO.applicationDeadline}">
                     <a th:href="|/meeting/fix/${meetingDTO.meetingId}|">
-                        <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
+                        <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right;margin-left:3px;"
                                 th:text="수정하기"></button>
                     </a>
                     <a th:href="|/meeting/remove/${meetingDTO.meetingId}|">
-                        <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
+                        <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right;margin-left:3px;"
                                 th:text="삭제하기"></button>
                     </a>
 
                     <a th:href="|/meeting/finish/${meetingDTO.meetingId}|">
-                        <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
+                        <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right;margin-left:3px;background-color:#FF9F29;border:#FF9F29;"
                                 th:text="모집완료" ></button>
                     </a>
                 </th:block>
                 <th:block th:if="${meetingDTO.status==1 || now >= meetingDTO.applicationDeadline}">
-                    <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
+                    <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right;margin-left:3px;"
                           th:text="수정하기" disabled></button>
-                    <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
+                    <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right;margin-left:3px;"
                             th:text="삭제하기" disabled></button>
-                    <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right"
-                            th:text="모집완료" disabled></button>
+                    <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right;margin-left:3px;background-color:#282828;border:#282828;"
+                            th:text="완료됨" disabled></button>
                 </th:block>
             <div>
                 <span style="margin-left: 10px;"
@@ -251,31 +276,25 @@
             </div>
         </section>
         </div>
-        <div style="
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            margin-left: 30px;">
-            <div id="profile" class="border border-dark">
-                <a th:href="|/mypage/profileinfo?id=${meetingDTO.userId}|" style="text-decoration: none;color: black;">
+        <div class="frame-writer">
+            <div id="profile" class="frame-writer-profile">
+                <a class="click-profile" th:href="|/mypage/profileinfo?id=${meetingDTO.userId}|">
                 <div class="meeting-articles-profile">
                     <th:block th:if="${!image.isEmpty()}">
                         <img class="meeting-articles-profile-photo"
-                             th:src="@{'data:image/png;base64,' + ${image}}" alt="Image"><br/>
+                             th:src="@{'data:image/png;base64,' + ${image}}" alt="Image">
                     </th:block>
                     <th:block th:if="${image.isEmpty()}">
                         <img style="width:5rem; height:5rem; border-radius:9999px;"
-                             th:src="@{/image/global/userdefaultimg.png}"/><br/>
+                             th:src="@{/image/global/userdefaultimg.png}"/>
                     </th:block>
-                    <div th:text="${userDao.getNameById(meetingDTO.userId)}"></div>
-                    <div th:text="${userDao.getUserProfileInfo(meetingDTO.userId).about_me}"></div>
+                    <div class="writer-nickname-text" th:text="${userDao.getNameById(meetingDTO.userId)}"></div>
+                    <div class="writer-oneline-text" th:text="${userDao.getUserProfileInfo(meetingDTO.userId).about_me}"></div>
                 </div>
                 </a>
             </div>
-            <div  id="apply" class="border border-dark">
-                <div style="margin: 20px">
-                <span >현재 이 프로젝트에서 <span style="color: #FF9F29" th:text="${applyDao.countApplyByMeetingId(meetingDTO.meetingId)==null  ? 0 : applyDao.countApplyByMeetingId(meetingDTO.meetingId) }">0</span>명이 참여중입니다.</span>
-                </div>
+            <div  id="apply" class="frame-showapplicant">
+                <span >현재 이 프로젝트에서 <span style="color: #FF9F29; font-weight: 800;" th:text="${applyDao.countApplyByMeetingId(meetingDTO.meetingId)==null  ? 0 : applyDao.countApplyByMeetingId(meetingDTO.meetingId) }">0</span>명이 참여중입니다.</span>
             </div>
         </div>
     </article>

@@ -18,8 +18,8 @@
    background-color: rgba(255, 255, 255, 1);
 }
 .profile-img{ /*프로필 이미지 */
-    width: 10rem;
-    height: 10rem;
+    width: 12rem;
+    height: 12rem;
     border-radius:9999px;
 }
 .frame-img-button{ /*프로필 등록 수정 버튼 레이아웃*/
@@ -94,6 +94,7 @@
 }
 .side-menu-li {
     list-style-type: none;
+    margin: 10px;
 }
 .sidemenu-a {
     text-decoration: none;
@@ -106,4 +107,8 @@
     line-height: normal;
     font-stretch: normal;
     text-decoration: none;
+}
+.sidemenu-a:hover {
+    color: #FF9F29;
+    font-weight: 500;
 }
