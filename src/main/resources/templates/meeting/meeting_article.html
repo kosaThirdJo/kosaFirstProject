@@ -25,13 +25,9 @@
             min-height: 250px;
         }
 
-        #end_date_line{
+        .sub-info{
             margin: 20px 0 20px;
         }
-        #location{
-            margin: 20px 0 20px;
-        }
-
         .frame-writer-profile {
             float: right;
             background-color: #FAF3E3;
@@ -241,13 +237,19 @@
             <div id="content_description" th:utext="${description}"
              style="border: none; resize: none;">
             </div>
-            <div id="end_date_line">
+
+                <div class="sub-info" >
+                    <img style="width: 16px; height: 16px;" th:src="@{/image/global/user_count.png}">
+                    <span style="margin-right: 20px">모집인원</span>
+                    <span th:text="|${meetingDTO.recruitmentCount}|">
+                    </span>
+            <div class="sub-info">
                 <img th:src="@{/image/global/end_date01.png}">
                 <span style="margin-right: 20px">마감일</span>
                 <span th:text="|${meetingDTO.applicationDeadline.getYear()}년 ${meetingDTO.applicationDeadline.monthValue}월 ${meetingDTO.applicationDeadline.dayOfMonth}일|">
             </span>
             </div>
-            <div id="location">
+            <div class="sub-info">
                 <img th:src="@{/image/global/location01.png}">
                 <span style="margin-right: 20px">모집장소</span>
                 <span th:text="${meetingDTO.location}"></span>

@@ -76,7 +76,7 @@ public class MeetingController {
 
     // 메인페이지
     @GetMapping("")
-    public String meetingMain(HttpSession session,@RequestParam(value = "page",required = false,defaultValue = "0") int page,Model model, @RequestParam(value = "category",required = false) Integer category, @RequestParam(value = "order",required = false,defaultValue = "meeting_id")String order){
+    public String meetingMain(HttpSession session,@RequestParam(value = "page",required = false,defaultValue = "0") int page,Model model, @RequestParam(value = "category",required = false) Integer category, @RequestParam(value = "order",required = false,defaultValue = "creation_date")String order){
         // 세션으로
 //        Integer userId = null;
 //        if(session.getAttribute("user_id") != null){
@@ -84,6 +84,9 @@ public class MeetingController {
 //        }
         List<MeetingVO> allMeetingList = null;
         int allMeetingListCount = 0;
+        if (order.equals("meeting_id")){
+            order = "creation_date";
+        }
         if(category == null){
             allMeetingList = meetingDao.getAllMeetingList(page*12,order);
             allMeetingListCount = meetingDao.getAllMeetingCountList();
