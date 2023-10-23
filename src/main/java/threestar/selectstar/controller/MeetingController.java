@@ -343,8 +343,7 @@ public class MeetingController {
     @PostMapping("/apply/{id}")
     public String addApply(HttpSession session,String emailAddress,
                            @PathVariable("id") int meetingId ,
-                           String reason,String snsAddress,
-                           @PathVariable String category) {
+                           String reason,String snsAddress) {
 
         if (session.getAttribute("user_id") != null) {
             // 신청 데이터 추가
