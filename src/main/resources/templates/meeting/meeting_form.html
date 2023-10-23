@@ -36,7 +36,7 @@
                         <tr>
                             <th>마감일</th>
                             <td>
-                                <input name="endDate" type="datetime-local" required>
+                                <input name="endDate" type="datetime-local" th:attr="min=${ #temporals.format ( now , 'yyyy-MM-dd' ) + 'T' + #temporals.format ( now , 'HH:mm:ss' ) }" required/>
                             </td>
                         </tr>
                         <tr>
@@ -153,9 +153,7 @@
     </body>
     <script th:inline="javascript">
         /*<![CDATA[*/
-        // enddate
-
-
+        // endDate
         // select 기본값 설정
         defaultLocation = /*[[${defaultLocation}]]*/;
         const options = document.querySelectorAll("option")

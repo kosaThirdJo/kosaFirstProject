@@ -282,6 +282,7 @@ public class MeetingController {
         MeetingDTO meetingVO = meetingDao.getMeetingArticleById(meetingId);
         model.addAttribute("user_id",session.getAttribute("user_id"));
         model.addAttribute("meetingVO",meetingVO);
+        model.addAttribute("now",LocalDateTime.now());
         return "meeting/meeting_form_fix";
     }
     // 게시글 수정
