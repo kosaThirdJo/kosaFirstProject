@@ -182,6 +182,7 @@ public class MeetingController {
     @GetMapping("/write")
     public String writeArticleForm(HttpSession session,Model model){
         model.addAttribute("user_id",session.getAttribute("user_id"));
+        model.addAttribute("location",userDao.getUserInfo((int)session.getAttribute("user_id")).getLocation1());
         return "meeting/meeting_form";
     }
     @PostMapping("/write")

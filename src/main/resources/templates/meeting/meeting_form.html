@@ -42,20 +42,21 @@
                         <tr>
                             <th>모집 장소</th>
                             <td>
-                                <select name="location" id="loc" required>
-                                    <option value="서울">서울</option>
+                                <select name="location" id="loc" required th:default="${location == '' || location == null ? '' : location}">
+                                    <option value="서울특별시">서울특별시</option>
                                     <option value="경기도">경기도</option>
                                     <option value="강원도">강원도</option>
-                                    <option value="대전">대전</option>
-                                    <option value="인천">인천</option>
+                                    <option value="대전광역시">대전광역시</option>
+                                    <option value="인천광역시">인천광역시</option>
                                     <option value="경상북도">경상북도</option>
                                     <option value="경상남도">경상남도</option>
-                                    <optionm value="전라북도">전라북도</optionm>
+                                    <option value="전라북도">전라북도</option>
                                     <option value="전라남도">전라남도</option>
                                     <option value="충청북도">충청북도</option>
                                     <option value="충청남도">충청남도</option>
-                                    <option value="부산">부산</option>
-                                    <option value="울산">울산</option>
+                                    <option value="부산광역시">부산광역시</option>
+                                    <option value="울산광역시">울산광역시</option>
+                                    <option value="광주광역시">광주광역시</option>
                                 </select>
                             </td>
                         </tr>
@@ -141,13 +142,13 @@
             <button id="submit-button"  type="submit" class="btn btn-primary"
                     style="background-color: #FF9F29; color: white; margin-top: 30px;">등록하기
             </button>
-<!--            <button hidden id="submit-button"  type="submit" class="btn btn-primary"-->
-<!--                    style="display : none; background-color: #FF9F29; color: white; margin-top: 30px;">등록하기-->
-<!--            </button>-->
+            <!--            <button hidden id="submit-button"  type="submit" class="btn btn-primary"-->
+            <!--                    style="display : none; background-color: #FF9F29; color: white; margin-top: 30px;">등록하기-->
+            <!--            </button>-->
         </form>
-<!--        <button id="check-button" class="btn btn-primary"-->
-<!--                style="background-color: #FF9F29; color: white; margin-top: 30px;">등록하기-->
-<!--        </button>-->
+        <!--        <button id="check-button" class="btn btn-primary"-->
+        <!--                style="background-color: #FF9F29; color: white; margin-top: 30px;">등록하기-->
+        <!--        </button>-->
     </article>
     </body>
     <script>
