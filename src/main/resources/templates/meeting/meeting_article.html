@@ -263,8 +263,8 @@
             <div id="comment_input_line">
                 <form th:if="${user_id!=null}" th:action="|${requestURI}/${meetingDTO.meetingId}|" method=post>
                     <div  id="comment-input">
-                    <input class="input-border-radius" type="text" name="commentContent" placeholder=" 댓글을 작성해 보세요(30자)"
-                           size=77% maxlength=30 required />
+                    <input class="input-border-radius" type="text" name="commentContent" placeholder=" 댓글을 작성해 보세요"
+                           size=77% maxlength=200자 required />
                     <button style="float: right" type="submit" id="comment_button" class="btn btn-primary" >등록</button>
                     </div>
                 </form>
