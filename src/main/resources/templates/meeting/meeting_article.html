@@ -177,7 +177,7 @@
                 <h2 id="content_title" style="display: inline" th:text="${meetingDTO.title}"></h2>
                 <th:block th:if="${checkApply == 0 && now < meetingDTO.applicationDeadline}  ">
                     <button id="modal-button" class="btn btn-primary" th:if="${user_id!= null} and ${meetingDTO.userId != user_id}" type="button" data-toggle="modal"
-                            data-target="#myModa" data->신청하기
+                            data-target="#myModal" data->신청하기
                     </button>
                 </th:block>
                 <th:block th:if="${checkApply== 1 || now >= meetingDTO.applicationDeadline}">
@@ -255,8 +255,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            margin-left: 30px;
-        ">
+            margin-left: 30px;">
             <div id="profile" class="border border-dark">
                 <a th:href="|/mypage/profileinfo?id=${meetingDTO.userId}|" style="text-decoration: none;color: black;">
                 <div class="meeting-articles-profile">
