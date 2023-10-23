@@ -42,7 +42,7 @@
                         <tr>
                             <th>모집 장소</th>
                             <td>
-                                <select name="location" id="loc" required th:default="${location == '' || location == null ? '' : location}">
+                                <select name="location" id="loc" required th:default="${location == '' || location == null ? '서울특별시' : location}">
                                     <option value="서울특별시">서울특별시</option>
                                     <option value="경기도">경기도</option>
                                     <option value="강원도">강원도</option>
