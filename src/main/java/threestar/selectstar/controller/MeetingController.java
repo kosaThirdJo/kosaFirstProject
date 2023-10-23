@@ -331,10 +331,12 @@ public class MeetingController {
     public String deleteArticle(Model model, HttpSession session, @PathVariable("id") int meetingId){
         // 게시글에서 작성한 아이디가 새션 아이디랑 같을시
         if (session.getAttribute("user_id").equals(meetingDao.getMeetingArticleById(meetingId).getUserId())){
-            if (meetingDao.getMeetingArticleById(meetingId).getApplicationCount() !=0){
+            Integer result = applyDao.countApplyByMeetingId(meetingId);
+            if (result != null && result !=0){
                 model.addAttribute("msg","신청한 인원이 있습니다.");
                 return "redirect:/meeting/articles?id="+meetingId;
             }
+
             model.addAttribute("user_id",session.getAttribute("user_id"));
             meetingDao.deleteMeeting(meetingId);
         }
