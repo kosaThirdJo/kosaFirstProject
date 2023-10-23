@@ -227,8 +227,8 @@
         // page_list 처리
         const minPage = Math.max(0,page-4);
         const length = /*[[${allMeetingListCount}]]*/
-
         var endPage = length / 12
+
 
         if ((length %12) !== 0){
             endPage += 1
@@ -238,8 +238,7 @@
         const maxPage = Math.min(page+4, endPage-2)
 
 
-
-        for (let i = minPage; i <= maxPage; i++) {
+        for (let i = minPage; i <= maxPage+1; i++) {
 
             var newLink = document.createElement("a")
             newLink.className = "btn btn-primary";
@@ -251,7 +250,7 @@
                 }
                 newLink.href += "&order=" + order
             }
-            newLink.textContent = "" + (i+1)
+            newLink.textContent = "" + (i+1);
             pageDom.appendChild(newLink);
         }
         /*]]>*/
