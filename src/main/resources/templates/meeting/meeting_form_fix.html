@@ -39,7 +39,7 @@
     <form th:action="|/meeting/fix/${meetingVO.getMeetingId()}|" method=post>
 
       <input type="hidden" name="creationDate" th:value="${meetingVO.getCreationDate()}">
-      <h2><input style="width: 50%" name="title" placeholder="제목을 입력해 주세요" th:value="${meetingVO.getTitle()}"  maxlength=20 minlength="2"  required></h2>
+      <h2><input style="width: 50%" name="title" placeholder="제목을 입력해 주세요" th:value="${meetingVO.getTitle()}"  maxlength=50 minlength="2"  required></h2>
       <section>
         <div id="content_type">
           <div>
