@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>미팅페이지입니다.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link th:href="@{/css/meeting/meeting_home.css}" rel="stylesheet"/>
@@ -251,7 +251,7 @@
                 }
                 newLink.href += "&order=" + order
             }
-            newLink.textContent = "" + i
+            newLink.textContent = "" + (i+1)
             pageDom.appendChild(newLink);
         }
         /*]]>*/
