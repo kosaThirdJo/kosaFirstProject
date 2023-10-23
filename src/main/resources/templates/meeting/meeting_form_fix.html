@@ -49,7 +49,9 @@
             <input id="radio2" type="radio" name="category" value=2> 기타
           </div>
           <div>마감일
-            <input name="endDate" type="datetime-local" th:value="${meetingVO.getApplicationDeadline()}" required>
+            <div>
+              <input name="endDate" type="datetime-local" th:attr="min=${ #temporals.format ( now , 'yyyy-MM-dd' ) + 'T' + #temporals.format ( now , 'HH:mm:ss' ) }" />
+            </div>
           </div>
           <div>모집 장소
             <select name="location" id="loc" th:value="${meetingVO.getApplicationDeadline()}">
