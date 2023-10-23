@@ -1,3 +1,4 @@
+
 li{
     list-style-type: none;
 }
@@ -6,7 +7,7 @@ a{
     color: black;
 }
 .frame-applymeeting-title{ /* title div frame */
-    width: 100%;
+    width: 80%;
     padding: 5px 10px;
 }
 .applymeeting-title{ /* title div */
@@ -32,7 +33,8 @@ a{
   text-decoration: none;
 }
 .frame-applymeeting-body{ /* body frame*/
-    width: 100%;
+    width: 80%;
+    min-height: 700px;
     padding: 5px 10px;
 }
 .search-filter{ /* 카테고리 선택 div*/
@@ -47,10 +49,10 @@ a{
   padding-left: 0px;
 }
 .e-category{ /* 카테고리 li */
-    width: 15%;
+    width: 10%;
     display: inline;
 }
-.button-category{/* 카테고리 메뉴(전체/프로젝트/스터디/기타) 버튼 */
+.e-category button{/* 카테고리 메뉴(전체/프로젝트/스터디/기타) 버튼 */
     width: 100px;
     height: 40px;
     background: none;
@@ -60,7 +62,7 @@ a{
     text-align: center;
     font-weight: 700;
 }
-.button-category:hover{
+.e-category button:hover{
   cursor: pointer;
 }
 .mymeeting-list-container{ /* 목록 frame*/
@@ -81,7 +83,7 @@ a{
     display: inline;
     list-style-type: none;
 }
-.search-filter-select-btn{ /* 모집상태 button */
+.e-status button{ /* 모집상태 button */
     width: 100px;
     height: 40px;
     background: none;
@@ -91,24 +93,28 @@ a{
     text-align: center;
     font-weight: 500;
 }
+.e-status button:hover{
+  cursor: pointer;
+}
+
 .mymeeting-list{ /*목록 ul*/
     list-style:none;
     padding-left: 0;
 }
 .mymeeting-container { /*목록 li*/
     list-style-type: none;
-    padding: 10px 0px;
-    border-top: solid 1px #888888;
+    /*padding: 10px 0px;
+    border-top: solid 1px #888888;*/
 }
 .click-meetingpost{  /*li의 a태그*/
-    padding: 5px 0px;
+    padding: 10px 0px;
     display:flex;
     flex-direction: column;
+    border-top: solid 1px #888888;
 }
 .meetinginfo{ /*li 내부 frame div*/
-/*    width: 100%;*/
     height: 140px;
-    padding: 0px 30px;
+    padding: 0px 15px;
     display: flex;
     gap: 3px;
     flex-direction: column;
@@ -116,7 +122,6 @@ a{
 .meeting-title{ /*meeting title frame*/
     width: 100%;
     height: 50px;
-    gap: 5px;
     display: flex;
     overflow: hidden;
     align-items: center;
@@ -191,7 +196,7 @@ a{
 }
 .meeting-footer{/*meeting title frame*/
     height: 50px;
-    gap: 20px;
+    gap: 40px;
     display: flex;
     overflow: hidden;
     align-items: center;

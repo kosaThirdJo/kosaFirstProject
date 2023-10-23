@@ -129,15 +129,19 @@
   flex-direction: column;
   justify-content: center;
 }
+.myinfo-nickname-content{
+    width: 100%;
+}
 .myinfo-input4 { /*nickname 입력 form */
   gap: 10px;
-  height: 40px;
   color: black;
-  display: flex;
+  width: 70%;
+  height: 40px;
+  display: inline-block;
   padding: 0 20px;
   overflow: hidden;
+  flex-grow: 1;
   font-size: 20px;
-  align-self: stretch;
   text-align: left;
   align-items: center;
   font-weight: 400;
@@ -145,6 +149,17 @@
   border-style: solid;
   border-width: 1px;
   border-radius: 10px;
+}
+.nickname-checkbtn{ /* 별명 중복 확인 버튼*/
+  gap: 10px;
+  display: inline-block;
+  padding: 10px 15px;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: center;
+  background-color: rgba(26, 77, 46, 1);
 }
 .myinfo-location { /* 지역  div*/
   gap: 10px;
@@ -187,7 +202,7 @@
   justify-content: center;
   background-color: rgba(26, 77, 46, 1);
 }
-.myinfo-text025 { /*지역 span*/
+.myinfo-text025 { /*지역, 중복확인 span*/
   color: rgba(255, 255, 255, 1);
   height: auto;
   font-size: 20px;

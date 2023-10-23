@@ -47,14 +47,21 @@
                 <!--  02-02-04 닉네임  -->
                 <div class="myinfo-nickname">
                     <span class="myinfo-text017"><span>닉네임</span></span>
-                    <input
-                            type="text"
-                            name="nickname"
-                            th:value="${userDTO.nickname}"
-                            placeholder="닉네임을 알파벳, 한글, 숫자를 20자 이하로 입력해주세요."
-                            class="myinfo-input4"
-                    />
+                    <div class="myinfo-nickname-content">
+                        <input
+                                id="inputNickname"
+                                type="text"
+                                name="nickname"
+                                th:value="${userDTO.nickname}"
+                                placeholder="닉네임을 알파벳, 한글, 숫자를 20자 이하로 입력해주세요."
+                                class="myinfo-input4"
+                        />
+                        <button class="nickname-checkbtn" onclick="chkNickname()">
+                            <span class="myinfo-text025"><span>중복 확인</span></span>
+                        </button>
+                    </div>
                 </div>
+                <div id="showResult"></div>
                 <!--  02-02-05 지역  -->
                 <div class="myinfo-location">
                     <span class="myinfo-text017"><span>지역</span></span>
@@ -123,7 +130,39 @@
         </form>
         </div>
         <script th:inline="javascript">
+            function chkNickname(){
+                var nickname = document.getElementById("inputNickname").value;
+                var url = "/mypage/checknickname?nickname="+nickname;
 
+                console.log(nickname);
+                console.log(url);
+
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            var result = JSON.parse(xhr.responseText);
+                            console.log(result);
+                            displayResult(result);
+                        } else {
+                            console.error("Error: " + xhr.status);
+                        }
+                    }
+                };
+                xhr.open('GET', url, true);
+                xhr.send();
+            }
+            function displayResult(result) {
+                var nicknameResult = document.getElementById("showResult");
+
+                if (result) {
+                    nicknameResult.textContent = "사용 가능한 별명입니다.";
+                    nicknameResult.style.color = "green";
+                } else {
+                    nicknameResult.textContent = "이미 사용 중인 별명입니다.";
+                    nicknameResult.style.color = "red";
+                }
+            }
             // 지역
             document.addEventListener('DOMContentLoaded', function() {
                 const locationInput = document.getElementById('locationInput');

@@ -62,4 +62,8 @@ public interface UserMapper {
     //다른 이용자 프로필 조회
     @Select("select nickname, email, profile_photo, about_me, profile_content from user where user_id = #{userId}")
     public UserDTO getProfileInfo(int userId);
+
+    //개인정보수정-닉네임 중복 검사
+    @Select("select count(nickname) from user where nickname= #{nickname}")
+    public int checkNickname(String nickname);
 }

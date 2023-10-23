@@ -39,6 +39,7 @@
 }
 /* 이미지 수정 버튼 */
 .input-submit{
+    height: 30px;
     display: none;
     padding: 3px 10px;
     background-color:#FF9F29;
