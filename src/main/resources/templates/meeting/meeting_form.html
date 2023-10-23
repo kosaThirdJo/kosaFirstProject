@@ -151,7 +151,17 @@
         <!--        </button>-->
     </article>
     </body>
-    <script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        // select 기본값 설정
+        defaultLocation = /*[[${defaultLocation}]]*/;
+        const options = document.querySelectorAll("option")
+        for (const opt of options) {
+            if (opt.value == defaultLocation){
+                opt.selected = true;
+            }
+        }
+
         // 글자수 세기
         text_check_dom = document.querySelector("#text-length-check")
         text_dom = document.querySelector("#description")
@@ -238,24 +248,7 @@
             });
         }
 
-        // document.getElementById("check-button").addEventListener("click",function () {
-        //         alert("click")
-        //     var xhr = new XMLHttpRequest();
-        //     xhr.onreadystatechange = function () {
-        //         alert(xhr.status)
-        //         if (xhr.readyState === XMLHttpRequest.DONE) {
-        //             if (xhr.status === 200) {
-        //                 var data = JSON.parse(xhr.responseText);
-        //                 // document.getElementById("submit-button").click();
-        //             } else {
-        //                 alert("데이터를 입력해 주세요!")
-        //             }
-        //         }
-        //     }
-        //     xhr.open("POST", "write/check");
-        //     xhr.setRequestHeader("")
-        // }
-        // )
+        /*]]>*/
     </script>
 
 
