@@ -35,8 +35,8 @@
         .frame-writer-profile {
             float: right;
             background-color: #FAF3E3;
-            width: 300px;
-            height: 300px;
+            width: 330px;
+            height: 350px;
             display: flex;
             flex-direction: column;
             margin-right: 50px;
@@ -280,12 +280,12 @@
             <div id="profile" class="frame-writer-profile">
                 <a class="click-profile" th:href="|/mypage/profileinfo?id=${meetingDTO.userId}|">
                 <div class="meeting-articles-profile">
-                    <th:block th:if="${!image.isEmpty()}">
+                    <th:block th:if="${image != null}">
                         <img class="meeting-articles-profile-photo"
                              th:src="@{'data:image/png;base64,' + ${image}}" alt="Image">
                     </th:block>
-                    <th:block th:if="${image.isEmpty()}">
-                        <img style="width:5rem; height:5rem; border-radius:9999px;"
+                    <th:block th:if="${image == null || #strings.isEmpty(image)}">
+                        <img class="meeting-articles-profile-photo" style="width:5rem; height:5rem; border-radius:9999px;"
                              th:src="@{/image/global/userdefaultimg.png}"/>
                     </th:block>
                     <div class="writer-nickname-text" th:text="${userDao.getNameById(meetingDTO.userId)}"></div>
