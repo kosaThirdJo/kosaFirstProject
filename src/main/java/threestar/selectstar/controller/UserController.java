@@ -44,6 +44,19 @@ public class UserController {
 		return mav;
 	}
 
+	/*// 회원 가입 - 중복 확인 (보류)
+	@GetMapping("/checkDuplicate")
+	public Boolean checkDuplicate(@RequestParam String type, @RequestParam String value){
+
+		Boolean result = false;
+		System.out.println(type);
+		System.out.println(value);
+		result = userDAO.checkDuplicate(type, value);
+		System.out.println(result);
+
+		return result;
+	}*/
+
 	// 로그인
 	@GetMapping("/login")
 	public String login() {

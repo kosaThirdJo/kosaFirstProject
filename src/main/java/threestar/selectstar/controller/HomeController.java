@@ -87,12 +87,6 @@ public class HomeController {
 		@RequestParam(name = "jobs", required = false) List<String> jobs,
 		Model model) {
 
-		System.out.println(searchWord);
-		System.out.println(category);
-		System.out.println(languages);
-		System.out.println(frameworks);
-		System.out.println(jobs);
-
 		SearchDTO searchdto = new SearchDTO();
 		searchdto.setSearchWord(searchWord);
 		searchdto.setSearchCategory(category);
@@ -100,10 +94,6 @@ public class HomeController {
 		searchdto.setSearchFrameworks(frameworks);
 		searchdto.setSearchJobs(jobs);
 
-		System.out.println(category);
-		System.out.println(languages);
-		System.out.println(frameworks);
-		System.out.println(jobs);
 		List<MeetingVO> searchMeetingResults;
 
 		// 모임 검색
@@ -117,7 +107,6 @@ public class HomeController {
 			// 모임 검색 - 제목만
 			searchMeetingResults = meetingDao.searchMeetings(searchdto);
 		}
-		System.out.println(searchMeetingResults);
 		if(searchMeetingResults.size() != 0){
 			model.addAttribute("searchMeetingResults", searchMeetingResults);
 		}else{

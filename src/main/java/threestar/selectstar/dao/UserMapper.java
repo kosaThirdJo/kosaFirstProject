@@ -25,6 +25,22 @@ public interface UserMapper {
             + "VALUES (#{name}, #{password}, #{email}, #{nickname}, #{location1}, #{interest_language}, #{interest_framework}, #{interest_job}, NOW())")
     public boolean signupUser(UserDTO dto);
 
+    // 회원 가입 - 아이디 중복 확인
+    @Select("<script>" +
+        "SELECT COUNT(*) > 0 FROM user WHERE " +
+        "<choose>" +
+        "<when test='type == \"name\"'>name</when>" +
+        "<when test='type == \"nickname\"'>nickname</when>" +
+        "</choose>" +
+        " = #{value}" +
+        "</script>")
+    public boolean checkDuplicate(@Param("type") String type, @Param("value") String value);
+
+
+    // 회원 가입 - 닉네임 중복 확인
+    @Select("SELECT COUNT(*) > 0 FROM user WHERE name = #{nickname}")
+    public boolean checkDuplicateNickname(@Param("nickname") String nickname);
+
     // 로그인
     @Select("SELECT user_id FROM user WHERE name = #{name} AND password = #{password}")
     public Integer loginUser(@Param("name") String name, @Param("password") String password);

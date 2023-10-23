@@ -20,7 +20,6 @@ public interface MeetingMapper {
     int getAllMeetingCountList();
     @Select("select count(*) from meeting where is_delete = 0 and category=#{category}")
     int getAllMeetingCountListByCategory(@Param("category") int category);
-    // 카테고리 별로 모든 미팅 조회
 
     // 단건 미팅 조회 상태가 2(삭제면) 조회안함
     @Select("select meeting_id meetingId, user_id userId, title,category,status,application_deadline applicationDeadline,views,recruitment_count recruitmentCount,application_count applicationCount,location,description,creation_date creationDate,interest_language interestLanguage,interest_framework interestFramework,interest_job interestJob from meeting where meeting_id= #{meetingId} and is_delete = 0")
