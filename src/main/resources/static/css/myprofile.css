@@ -144,3 +144,6 @@
   text-decoration: none;
   cursor: pointer;
 }
+main{
+    min-height: 800px;
+}

@@ -238,6 +238,7 @@ public class MeetingController {
         model.addAttribute("user_id",session.getAttribute("user_id"));
         model.addAttribute("location",userDao.getUserInfo((int)session.getAttribute("user_id")).getLocation1());
         model.addAttribute("now",LocalDateTime.now());
+        model.addAttribute("defaultLocation",userDao.getUserInfo((int)session.getAttribute("user_id")).getLocation1());
         return "meeting/meeting_form";
     }
     @PostMapping("/write")
