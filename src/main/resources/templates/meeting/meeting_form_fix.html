@@ -44,8 +44,8 @@
         <div id="content_type">
           <div>
             카테고리
-            <input id="radio0" type="radio" name="category" value=1> 프로젝트
             <input id="radio1" type="radio" name="category" value=0> 스터디
+            <input id="radio0" type="radio" name="category" value=1> 프로젝트
             <input id="radio2" type="radio" name="category" value=2> 기타
           </div>
           <div>마감일
@@ -54,21 +54,8 @@
             </div>
           </div>
           <div>모집 장소
-            <select name="location" id="loc" th:value="${meetingVO.getApplicationDeadline()}">
-              <option value="서울">서울</option>
-              <option value="경기도">경기도</option>
-              <option value="강원도">강원도</option>
-              <option value="대전">대전</option>
-              <option value="인천">인천</option>
-              <option value="경상북도">경상북도</option>
-              <option value="경상남도">경상남도</option>
-              <optionm value="전라북도">전라북도</optionm>
-              <option value="전라남도">전라남도</option>
-              <option value="충청북도">충청북도</option>
-              <option value="충청남도">충청남도</option>
-              <option value="부산">부산</option>
-              <option value="울산">울산</option>
-            </select>
+            <span th:text="${meetingVO.location}"></span>
+            <input type="hidden" th:value="${meetingVO.location}">
           </div>
           <div>모집인원수
             <input name="recruitNum" type="number" placeholder="최대100명" min="0" max="100"  th:value="${meetingVO.getRecruitmentCount()}" required>
@@ -82,7 +69,6 @@
                 <span class="signup-interest-text"><span>언어</span></span>
                 <div class="signup-select">
                   <input type="hidden" name="interest_language" id="selected-interests-lang" th:value="${meetingVO.getInterestLanguage()}">
-                  <button type="button" class="signup-interest-lang-btn" value="Java">Java</button>
                   <button type="button" class="signup-interest-lang-btn" value="1">Java</button>
                   <button type="button"  class="signup-interest-lang-btn" value="2">Python</button>
                   <button type="button"  class="signup-interest-lang-btn" value="3">C#</button>
@@ -92,8 +78,7 @@
                   <button type="button"  class="signup-interest-lang-btn" value="7">Swift</button>
                   <button type="button"  class="signup-interest-lang-btn" value="8">TypeScript</button>
                   <button type="button"  class="signup-interest-lang-btn" value="9">PHP</button>
-                    JavaScript
-                  </button>
+
                 </div>
               </div>
 
@@ -151,7 +136,7 @@
   </body>
   <script>
     // 라디오 박스 체크
-    document.querySelector("#radio"+[[${meetingVO.getStatus()}]]).setAttribute("checked","checked")
+    document.querySelector("#radio"+[[${meetingVO.getCategory()}]]).setAttribute("checked","checked")
     // 글자수 세기
     text_check_dom = document.querySelector("#text-length-check")
     text_dom = document.querySelector("#description")

@@ -150,9 +150,9 @@ public class MeetingController {
             Collections.shuffle(interestListFrameEle);
             Collections.shuffle(interestListJobEle);
             // 관심분야를 다시 리스트에 넣기
-            interestListLang.add(interestListLangEle.subList(0,Math.min(3,interestListLangEle.size())));
-            interestListFrame.add(interestListFrameEle.subList(0,Math.min(3,interestListFrameEle.size())));
-            interestListJob.add(interestListJobEle.subList(0,Math.min(3,interestListJobEle.size())));
+            interestListLang.add(interestListLangEle.subList(0,Math.min(1,interestListLangEle.size())));
+            interestListFrame.add(interestListFrameEle.subList(0,Math.min(1,interestListFrameEle.size())));
+            interestListJob.add(interestListJobEle.subList(0,Math.min(1,interestListJobEle.size())));
             timeList.add(meetingDaoOne.getCreationDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         }
         // 모델에 넣기
@@ -270,6 +270,7 @@ public class MeetingController {
                         .interestFramework(interestFramework)
                         .interestJob(interestJob)
                         .build();
+
                 meetingDao.insertMeeting(meetingDTO);
             }
         return "redirect:" + "/meeting";
