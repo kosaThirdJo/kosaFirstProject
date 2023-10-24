@@ -127,9 +127,16 @@
                                 <!-- yellowbox - now - people -->
                                 <div class="main-left-content-bottom-meeting-yellow-now-people">
                                     <span class="material-icons" style="color: #1A4D2E; font-size: 20px;">group</span>
+                                    <th:block th:unless="${now >=meetingDTO.applicationDeadline||meetingDTO.status == 1}">
                                     <div class="main-left-content-bottom-meeting-yellow-now-people-text">
                                         현재 <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt" th:text="${applyDao.countApplyByMeetingId(meetingDTO.meetingId) == null ? 0 : applyDao.countApplyByMeetingId(meetingDTO.meetingId)}"></span>명이 참여중입니다!
                                     </div>
+                                    </th:block>
+                                    <th:block th:if="${now >=meetingDTO.applicationDeadline||meetingDTO.status == 1}">
+                                        <div class="main-left-content-bottom-meeting-yellow-now-people-text">
+                                            <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt" th:text="${applyDao.countApplyByMeetingId(meetingDTO.meetingId) == null ? 0 : applyDao.countApplyByMeetingId(meetingDTO.meetingId)}"></span>명이 참여했습니다.
+                                        </div>
+                                    </th:block>
                                 </div>
                                 <!-- yellow - now - info -->
                                 <div class="main-left-content-bottom-meeting-yellow-now-info">
@@ -241,8 +248,8 @@
         for (let i = minPage; i <= maxPage+1; i++) {
 
             var newLink = document.createElement("a")
-            newLink.className = "btn btn-primary";
-            newLink.style = "margin: 10px; color: black; background-color: #FAF3E3;";
+            // newLink.className = "btn btn-primary";
+            newLink.style = "margin: 10px; color: black; color: black; text-decoration: none; font-weight: 400";
             if (page != i) {
                 newLink.href = pageAdresss + "?page=" + (i)
                 if (pageCategory != null){

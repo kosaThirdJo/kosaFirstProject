@@ -258,7 +258,7 @@
                 <span th:text="${meetingDTO.location}"></span>
             </div>
         </div>
-
+            </div>
         </section>
         <section id="comment_box">
             <div>댓글 <span style="color: #1A4D2E" th:text="${count_comment}"></span>
@@ -299,8 +299,11 @@
                 </a>
             </div>
             <div  id="apply" class="frame-showapplicant">
-                <span th:text="${applyDao.countApplyByMeetingId(meetingDTO.meetingId)}"></span>
-                <span >현재 이 프로젝트에서 <span style="color: #FF9F29; font-weight: 800;" th:text="${applyDao.countApplyByMeetingId(meetingDTO.meetingId)==null  ? 0 : applyDao.countApplyByMeetingId(meetingDTO.meetingId) }">0</span>명이 참여중입니다.</span>
+                <span>현재 이 프로젝트에서 <span style="color: #FF9F29; font-weight: 800;" th:text="${applyDao.countApplyByMeetingId(meetingDTO.meetingId)==null  ? 0 : applyDao.countApplyByMeetingId(meetingDTO.meetingId) }">0</span>명이 참여중입니다.</span>
+
+                <th:block th:each="applyName:${applyDao.selectAllByMeetingId(meetingDTO.meetingId)}">
+                <div th:text="${applyName}"></div>
+                </th:block>
             </div>
         </div>
     </article>
