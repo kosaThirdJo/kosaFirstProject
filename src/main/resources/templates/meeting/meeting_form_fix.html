@@ -50,12 +50,13 @@
           </div>
           <div>마감일
             <div>
-              <input name="endDate" type="datetime-local" th:attr="min=${ #temporals.format ( now , 'yyyy-MM-dd' ) + 'T' + #temporals.format ( now , 'HH:mm:ss' ) }" />
+<!--              <input name="endDate" type="datetime-local" th:attr="min=${ #temporals.format ( now , 'yyyy-MM-dd' ) + 'T' + #temporals.format ( now , 'HH:mm:ss' ) }" max="2030-12-31T00:00:00" />-->
+              <input name="endDate" th:default="${meetingVO.getApplicationDeadline()}" type="datetime-local"/>
             </div>
           </div>
           <div>모집 장소
             <span th:text="${meetingVO.location}"></span>
-            <input type="hidden" th:value="${meetingVO.location}">
+            <input type="hidden" name="location" th:value="${meetingVO.location}">
           </div>
           <div>모집인원수
             <input name="recruitNum" type="number" placeholder="최대100명" min="0" max="100"  th:value="${meetingVO.getRecruitmentCount()}" required>

@@ -76,7 +76,7 @@ public interface UserMapper {
     public boolean updateUserProfileImg(@Param("userId") int userId,@Param("profile_photo") byte[] profile_photo);
 
     //다른 이용자 프로필 조회
-    @Select("select nickname, email, profile_photo, about_me, profile_content from user where user_id = #{userId}")
+    @Select("select nickname, email, profile_photo, about_me, profile_content,location1 from user where user_id = #{userId}")
     public UserDTO getProfileInfo(int userId);
 
     //개인정보수정-닉네임 중복 검사

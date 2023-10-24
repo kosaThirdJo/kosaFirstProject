@@ -1,9 +1,10 @@
 .frame-container{ /* 전체 프레임 컨테이너*/
     width: 100%;
-    padding: 40px 20px;
+    padding: 40px 60px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    min-height: 1000px;
 }
 .frame-profile{ /*프로필 프레임*/
     width: 30%;

@@ -165,7 +165,8 @@ public class MeetingController {
         model.addAttribute("userDao",userDao); // 신청중
         model.addAttribute("commentDao",commentDao);
         model.addAttribute("page",page);
-        model.addAttribute("pageCategory",category);
+        model.addAttribute(
+                "pageCategory",category);
         model.addAttribute("now",LocalDateTime.now());
         model.addAttribute("order",order);
         return "meeting/meeting_home";
@@ -239,6 +240,7 @@ public class MeetingController {
         model.addAttribute("location",userDao.getUserInfo((int)session.getAttribute("user_id")).getLocation1());
         model.addAttribute("now",LocalDateTime.now());
         model.addAttribute("defaultLocation",userDao.getUserInfo((int)session.getAttribute("user_id")).getLocation1());
+        model.addAttribute("userDao",userDao);
         return "meeting/meeting_form";
     }
     @PostMapping("/write")
@@ -293,7 +295,7 @@ public class MeetingController {
                                 @PathVariable("id") int meetingId,
                                 String title,
                                 int category,
-                                LocalDateTime endDate,
+                                @RequestParam("endDate") LocalDateTime endDate,
                                 LocalDateTime creationDate,
                                 String location,
                                 int recruitNum,
@@ -302,7 +304,7 @@ public class MeetingController {
                                 @RequestParam("interest_framework")String interestFramework,
                                 @RequestParam("interest_job") String interestJob){
         model.addAttribute("user_id",session.getAttribute("user_id"));
-        System.out.println(creationDate);
+        System.out.println(endDate);
         //meetingDao.update
         meetingDao.updateMeetingById(MeetingDTO.builder()
                         .creationDate(creationDate)
