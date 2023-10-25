@@ -49,7 +49,6 @@ public class MyPageController {
         if(imgByte != null) {
             encodeImg = Base64.getEncoder().encodeToString(imgByte);
         }
-        //log.info("encodeImg >>"+encodeImg);
         mav.addObject("encodeImg", encodeImg);
         mav.addObject("userDTO", userDTO);
         mav.setViewName("userprofile");
@@ -79,7 +78,7 @@ public class MyPageController {
 
     //이력관리 수정
     @PostMapping("/updateprofile")
-    public String updateUserProfileInfo(@ModelAttribute UserDTO userDTO, Model model){
+    public String updateMyProfileInfo(@ModelAttribute UserDTO userDTO, Model model){
         log.info("userid "+userDTO.getUserId());
         boolean result = userDAO.updateProfileInfo(userDTO);
 
@@ -94,7 +93,7 @@ public class MyPageController {
     
     //개인정보수정 조회
     @GetMapping("/myinfo")
-    public ModelAndView getUserInfo(HttpSession session){
+    public ModelAndView getMyInfo(HttpSession session){
         ModelAndView mav = new ModelAndView();
 
         log.info("session user_id 확인"+session.getAttribute("user_id"));
@@ -120,7 +119,7 @@ public class MyPageController {
 
     //개인정보수정
     @PostMapping("/updateinfo")
-    public String updateUserInfo(UserDTO userDTO){
+    public String updateMyInfo(UserDTO userDTO){
         log.info("userDTO  :"+userDTO);
         boolean result = userDAO.updateUserInfo(userDTO);
         log.info("update userinfo result >> "+result);
@@ -128,7 +127,7 @@ public class MyPageController {
     }
     //프로필 이미지 수정
     @PostMapping("/uploadprofileimg")
-    public String updateUserImgFile(@RequestParam("userId") int userId, UserImgFileDTO fileDTO){
+    public String updateMyImgFile(@RequestParam("userId") int userId, UserImgFileDTO fileDTO){
 
         byte[] content = null;
         log.info("id >>>"+userId);
@@ -153,19 +152,11 @@ public class MyPageController {
         }
         return result;
     }
-
-    //내가 만든 모임(내가 작성한 글)
-    @GetMapping(value = {"/mymeetinglist", "/mymeetinglist/{category}"})
-    public ModelAndView getMyMeetingList(@PathVariable(value = "category", required = false)Integer category, HttpSession session){
+    @GetMapping("/mymeetinglist")
+    public ModelAndView getMyMeetingList(HttpSession session){
         UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
         userDTO.setUserId((int)session.getAttribute("user_id"));
-        List<MeetingVO> list = null;
-        if(category == null){
-            list = meetingDAO.getMyMeetingList((int)session.getAttribute("user_id"));
-        }else{
-            list = meetingDAO.getMyMeetingListByCategory((int)session.getAttribute("user_id"), category);
-        }
-        log.info("my meeting list "+list);
+
         ModelAndView mav = new ModelAndView();
         mav.addObject("userDTO", userDTO);
 
@@ -176,27 +167,18 @@ public class MyPageController {
             encodeImg = Base64.getEncoder().encodeToString(imgByte);
         }
         mav.addObject("encodeImg", encodeImg);
-
-        if(list.size() != 0){
-            mav.addObject("meetingvoList", list);
-        }else{
-            mav.addObject("msg", "조회된 글이 없습니다.");
-        }
-        mav.addObject("chkcategory", 99);
         mav.setViewName("mymeetinglistView");
         return mav;
     }
+
     //내가 작성한 글(수정)
     @GetMapping(value = "/mymeetingbyfilter", produces = "application/json; charset=utf-8")
-    public @ResponseBody List<MeetingVO> getMyMeetingListBySearch(
+    public @ResponseBody List<MeetingVO> getMyMeetingListByFilter(
             @RequestParam(name = "category", required = false) String strCategory,
             @RequestParam(name="status", required = false) String strStatus,
             Model model, HttpSession session){
         UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
         userDTO.setUserId((int)session.getAttribute("user_id"));
-
-        System.out.println(strCategory);
-        System.out.println(strStatus);
 
         int category = 0;
         int status = 0;
@@ -234,19 +216,15 @@ public class MyPageController {
         if((strStatus != null && !strStatus.isEmpty()) && (strCategory != null && !strCategory.isEmpty())){
             // 카테고리(프로젝트/스터디/기타)와 모집여부(모집중/모집완료) 선택 시
             list = meetingDAO.getMyMeetingListByCateStatus((int)session.getAttribute("user_id"), category, status);
-            System.out.println(0);
         }else if((strStatus == null) && (strCategory != null && !strCategory.isEmpty())){
             // 카테고리(전체) 와 모집여부(모집중/모집완료) 선택 시
             list = meetingDAO.getMyMeetingListByCategory((int)session.getAttribute("user_id"), category);
-            System.out.println(1);
         }else if((strStatus != null && !strStatus.isEmpty()) && (strCategory == null)){
             // 카테고리(프로젝트/스터디/기타)와 모집여부(전체) 선택 시
             list = meetingDAO.getMyMeetingListByStatus((int)session.getAttribute("user_id"), status);
-            System.out.println(2);
         }else{
             //카테고리(전체)와 모집여부(전체) 선택 시
             list = meetingDAO.getMyMeetingList((int)session.getAttribute("user_id"));
-            System.out.println(list.get(0));
         }
 
         //마이페이지 side bar -프로필 이미지
@@ -297,7 +275,7 @@ public class MyPageController {
 
     //내가 참여한 모임(내가 신청한 글) 카테고리별 - 모집상태별 조회
     @GetMapping(value = "/myapplyingfilter", produces = "application/json; charset=utf-8")
-    public @ResponseBody List<MeetingVO> getMyApplyMeetingBySearch(
+    public @ResponseBody List<MeetingVO> getMyApplyMeetingByFilter(
             @RequestParam(name = "category", required = false) String strCategory,
             @RequestParam(name="status", required = false) String strStatus,
             Model model, HttpSession session){
