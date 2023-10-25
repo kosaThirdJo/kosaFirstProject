@@ -49,7 +49,6 @@ public class MyPageController {
         if(imgByte != null) {
             encodeImg = Base64.getEncoder().encodeToString(imgByte);
         }
-        //log.info("encodeImg >>"+encodeImg);
         mav.addObject("encodeImg", encodeImg);
         mav.addObject("userDTO", userDTO);
         mav.setViewName("userprofile");
