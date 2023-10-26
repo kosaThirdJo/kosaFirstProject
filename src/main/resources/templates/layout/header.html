@@ -96,7 +96,7 @@
         <script>
             document.getElementById('searchForm').addEventListener('submit', function(event) {
                 var searchQuery = document.querySelector('.main-header-search-input').value;
-                if (!searchQuery) {  // 검색어 없을 경우
+                if (!searchQuery) {  // 검색어 없을 경우, 검색 안됨
                     alert('검색어를 입력해주세요!');
                     event.preventDefault();
                 } else {

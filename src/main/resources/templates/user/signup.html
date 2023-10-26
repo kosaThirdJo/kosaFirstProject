@@ -7,10 +7,8 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-<!--회원 가입 내용 container-->
 <div class="signup-container">
     <div class="signup-content">
-        <!--      01 상단 텍스트 : 로고, 설명 -->
         <div class="signup-top">
             <a th:href="@{/}" class="signup-top-logo">
                   <span class="signup-top-logo-text">
@@ -25,19 +23,9 @@
               </span>
         </div>
 
-        <!--       02 입력 폼-->
         <div class="signup-form">
-            <!--  02-01 회원 가입 문구  -->
-            <!-- <div class="signup-form-title">
-              <hr>
-              <span>회원가입에 필요한 기본정보를 입력해주세요.</span>
-            </div> -->
-
-
-            <!--  02-02 회원 가입 form  -->
             <form action="/signup" method="post" id="signupForm">
                 <div class="signup-form-input">
-                    <!--  02-02-01 아이디  -->
                     <div class="signup-form-input-box">
                         <span class="signup-form-input-box-title">아이디</span>
 <!--                        <div class="`signup-form-input`">-->
@@ -54,7 +42,6 @@
                         </div>
                     </div>
 
-                    <!--  02-02-02 비밀번호  -->
                     <div class="signup-form-input-box">
                         <span class="signup-form-input-box-title">비밀번호</span>
                         <input
@@ -68,7 +55,6 @@
                         </div>
                     </div>
 
-                    <!--  02-02-03 이메일  -->
                     <div class="signup-form-input-box">
                         <span class="signup-form-input-box-title">이메일</span>
                             <input
@@ -82,7 +68,6 @@
                         </div>
                     </div>
 
-                    <!--  02-02-04 닉네임  -->
                     <div class="signup-form-input-box">
                         <span class="signup-form-input-box-title"><span>닉네임</span></span>
 <!--                        <div class="signup-form-input">-->
@@ -99,7 +84,6 @@
                         </div>
                     </div>
 
-                    <!--  02-02-05 지역  -->
                     <div class="signup-form-input-box">
                         <span class="signup-form-input-box-title"><span>지역</span></span>
                         <div class="signup-form-input-withbtn">
@@ -114,12 +98,9 @@
                         </div>
                     </div>
 
-
-                    <!--  02-02-06 관심 분야  -->
                     <div class="signup-form-input-box">
                         <span class="signup-form-input-box-title"><span>관심 분야</span></span>
                         <div class="signup-form-input-box-content" style="padding-bottom: 10px;">
-                            <!--  02-02-06-01 언어  -->
                             <div class="signup-form-select-interest">
                                 <span class="signup-form-select-interest-title">Language</span>
                                 <div class="signup-form-select-interest-button">
@@ -136,7 +117,6 @@
                                 </div>
                             </div>
 
-                            <!--  02-02-06-02 프레임워크  -->
                             <div class="signup-form-select-interest">
                                 <span class="signup-form-select-interest-title">Framework</span>
                                 <div class="signup-form-select-interest-button">
@@ -153,7 +133,6 @@
                                 </div>
                             </div>
 
-                            <!--  02-02-06-01 직무  -->
                             <div class="signup-form-select-interest">
                                 <span class="signup-form-select-interest-title">Role</span>
                                 <div class="signup-form-select-interest-button">
@@ -173,10 +152,9 @@
                     </div>
                 </div>
             </form>
-            <!--  02-02-08 회원 가입 버튼  -->
+
             <div class="signup-signupbtn"><a href="#" onclick="submitSignupForm()"></a></div>
 
-            <!--03 로그인 페이지 이동-->
             <div class="signup-movetoLogin">
                 <span>이미 회원이신가요?</span>
                 <a th:href="@{/login}" class="signup-movetoLogin-loginPg">로그인</a>
@@ -338,7 +316,7 @@
 
        }
 
-    // 폼 제출
+    // 폼 제출 (유효성 검사 진행 후)
         function submitSignupForm() {
             var name = document.querySelector('input[name="name"]').value;
             var password = document.querySelector('input[name="password"]').value;
