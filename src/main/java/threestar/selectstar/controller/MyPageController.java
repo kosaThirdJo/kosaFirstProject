@@ -2,6 +2,7 @@ package threestar.selectstar.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.catalina.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,10 +28,11 @@ import java.net.http.HttpHeaders;
 import java.util.Base64;
 import java.util.List;
 
+@Slf4j
 @Controller
 @RequestMapping("/mypage")
 public class MyPageController {
-    private static final Logger log = LoggerFactory.getLogger(MyPageController.class);
+
     @Autowired
     UserMapper userDAO;
     @Autowired
@@ -39,16 +41,24 @@ public class MyPageController {
     @Value("${REST_API_KEY}")
     private String apiKey;
 
-    //다른 이용자 이력 조회
-    @GetMapping("/profileinfo")
-    public ModelAndView getUserProfile(@RequestParam("id")Integer userId){
-        UserDTO userDTO = userDAO.getProfileInfo(userId);
-        ModelAndView mav = new ModelAndView();
-        byte[] imgByte = userDTO.getProfile_photo();
+    //회원 이미지 조회
+    public String getProfileImg(UserDTO uDTO){
+        byte[] imgByte = uDTO.getProfile_photo();
         String encodeImg = null;
         if(imgByte != null) {
             encodeImg = Base64.getEncoder().encodeToString(imgByte);
         }
+        return encodeImg;
+    }
+
+
+    //다른 이용자 이력 조회
+    @GetMapping("/profileinfo")
+    public ModelAndView getUserProfile(@RequestParam("id")Integer userId){
+        ModelAndView mav = new ModelAndView();
+        //userId 통해 다른 이용자 이력 조회
+        UserDTO userDTO = userDAO.getProfileInfo(userId);
+        String encodeImg = getProfileImg(userDTO);
         mav.addObject("encodeImg", encodeImg);
         mav.addObject("userDTO", userDTO);
         mav.setViewName("userprofile");
@@ -59,31 +69,22 @@ public class MyPageController {
     @GetMapping("/profile")
     public ModelAndView getMyProfileInfo(HttpSession session, HttpServletRequest req) {
         ModelAndView mav = new ModelAndView();
-
+        //session에 저장된 userid를 통해 userDTO 조회
         UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
         userDTO.setUserId((int)session.getAttribute("user_id"));
-
         //마이페이지 side bar -프로필 이미지
-        byte[] imgByte = userDTO.getProfile_photo();
-        String encodeImg = null;
-        if(imgByte != null) {
-            encodeImg = Base64.getEncoder().encodeToString(imgByte);
-        }
+        String encodeImg = getProfileImg(userDTO);
         mav.addObject("encodeImg", encodeImg);
-
         mav.addObject("userDTO", userDTO);
-        mav.setViewName("myprofile");
+        mav.setViewName("mypage/myprofile");
         return mav;
     }
 
     //이력관리 수정
     @PostMapping("/updateprofile")
     public String updateMyProfileInfo(@ModelAttribute UserDTO userDTO, Model model){
-        log.info("userid "+userDTO.getUserId());
         boolean result = userDAO.updateProfileInfo(userDTO);
-
-        log.info("result >> "+result);
-        if(result) {
+        if(result) { //브라우저에 표출 미완성
             model.addAttribute("updateresult", "이력 수정 완료되었습니다.");
         }else{
             model.addAttribute("updateresult", "이력 수정 실패했습니다.");
@@ -95,42 +96,31 @@ public class MyPageController {
     @GetMapping("/myinfo")
     public ModelAndView getMyInfo(HttpSession session){
         ModelAndView mav = new ModelAndView();
-
-        log.info("session user_id 확인"+session.getAttribute("user_id"));
-
         UserDTO userDTO = userDAO.getUserInfo((int)session.getAttribute("user_id"));
         userDTO.setUserId((int)session.getAttribute("user_id"));
-
         //마이페이지 side bar -프로필 이미지
-        byte[] imgByte = userDTO.getProfile_photo();
-        String encodeImg = null;
-        if(imgByte != null) {
-            encodeImg = Base64.getEncoder().encodeToString(imgByte);
-        }
+        String encodeImg = getProfileImg(userDTO);
         mav.addObject("encodeImg", encodeImg);
-
         //지역인증시 필요한 apikey
         mav.addObject("apiKey", apiKey);
         mav.addObject("userDTO", userDTO);
-        mav.setViewName("myinfo");
-
+        mav.setViewName("mypage/myinfo");
         return mav;
     }
 
     //개인정보수정
     @PostMapping("/updateinfo")
     public String updateMyInfo(UserDTO userDTO){
-        log.info("userDTO  :"+userDTO);
         boolean result = userDAO.updateUserInfo(userDTO);
-        log.info("update userinfo result >> "+result);
         return "redirect:/mypage/myinfo";
     }
+
     //프로필 이미지 수정
     @PostMapping("/uploadprofileimg")
     public String updateMyImgFile(@RequestParam("userId") int userId, UserImgFileDTO fileDTO){
 
+        //MultipartFile profile_photo = null;
         byte[] content = null;
-        log.info("id >>>"+userId);
         try{
             content = fileDTO.getProfile_photo().getBytes();
             boolean result = userDAO.updateUserProfileImg(userId, content);
@@ -141,7 +131,7 @@ public class MyPageController {
         return "redirect:/mypage/myinfo";
     }
 
-    //닉네임 중복 검사
+    /* //닉네임 중복 검사(2차)
     @GetMapping(value = "/checknickname", produces = "application/json; charset=utf-8")
     public @ResponseBody boolean chkNickname(@RequestParam("nickname") String nickname){
         boolean result = false;
@@ -152,22 +142,19 @@ public class MyPageController {
         }
         return result;
     }
+    */
     @GetMapping("/mymeetinglist")
     public ModelAndView getMyMeetingList(HttpSession session){
+        ModelAndView mav = new ModelAndView();
         UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
         userDTO.setUserId((int)session.getAttribute("user_id"));
 
-        ModelAndView mav = new ModelAndView();
         mav.addObject("userDTO", userDTO);
 
         //마이페이지 side bar -프로필 이미지
-        byte[] imgByte = userDTO.getProfile_photo();
-        String encodeImg = null;
-        if(imgByte != null) {
-            encodeImg = Base64.getEncoder().encodeToString(imgByte);
-        }
+        String encodeImg = getProfileImg(userDTO);
         mav.addObject("encodeImg", encodeImg);
-        mav.setViewName("mymeetinglistView");
+        mav.setViewName("mypage/mymeetinglistView");
         return mav;
     }
 
@@ -183,6 +170,7 @@ public class MyPageController {
         int category = 0;
         int status = 0;
 
+        //카테고리 value(전체: all/프로젝트: project/스터디: study/기타: etc)
         if(strCategory != null) {
             switch (strCategory) {
                 case "project":
@@ -199,6 +187,7 @@ public class MyPageController {
                     break;
             }
         }
+        //모집상태 value(전체: all/모집중: statusing/모집완료: statused)
         if(strStatus != null) {
             switch (strStatus) {
                 case "statusing":
@@ -228,11 +217,8 @@ public class MyPageController {
         }
 
         //마이페이지 side bar -프로필 이미지
-        byte[] imgByte = userDTO.getProfile_photo();
-        String encodeImg = null;
-        if(imgByte != null) {
-            encodeImg = Base64.getEncoder().encodeToString(imgByte);
-        }
+        String encodeImg = getProfileImg(userDTO);
+
         model.addAttribute("userDTO", userDTO);
         model.addAttribute("encodeImg", encodeImg);
         model.addAttribute("userId", (int)session.getAttribute("user_id"));
@@ -256,11 +242,7 @@ public class MyPageController {
         List<MeetingVO> applylist = meetingDAO.getMyApplyList((int)session.getAttribute("user_id"));
 
         //마이페이지 side bar -프로필 이미지
-        byte[] imgByte = userDTO.getProfile_photo();
-        String encodeImg = null;
-        if(imgByte != null) {
-            encodeImg = Base64.getEncoder().encodeToString(imgByte);
-        }
+        String encodeImg = getProfileImg(userDTO);
         mav.addObject("encodeImg", encodeImg);
 
         if(applylist.size() != 0){
@@ -269,7 +251,7 @@ public class MyPageController {
             mav.addObject("msg", "조회된 글이 없습니다.");
         }
         mav.addObject("applyingvoList", applylist);
-        mav.setViewName("applymeetinglistView");
+        mav.setViewName("mypage/applymeetinglistView");
         return mav;
     }
 
@@ -284,7 +266,7 @@ public class MyPageController {
 
         int category = 0;
         int status = 0;
-
+        //카테고리 value(전체: all/프로젝트: project/스터디: study/기타: etc)
         if(strCategory != null) {
             switch (strCategory) {
                 case "project":
@@ -301,6 +283,7 @@ public class MyPageController {
                     break;
             }
         }
+        //모집상태 value(전체: all/모집중: statusing/모집완료: statused)
         if(strStatus != null) {
             switch (strStatus) {
                 case "statusing":
@@ -330,11 +313,7 @@ public class MyPageController {
         }
 
         //마이페이지 side bar -프로필 이미지
-        byte[] imgByte = userDTO.getProfile_photo();
-        String encodeImg = null;
-        if(imgByte != null) {
-            encodeImg = Base64.getEncoder().encodeToString(imgByte);
-        }
+        String encodeImg = getProfileImg(userDTO);
         model.addAttribute("userDTO", userDTO);
         model.addAttribute("encodeImg", encodeImg);
         model.addAttribute("userId", (int)session.getAttribute("user_id"));
