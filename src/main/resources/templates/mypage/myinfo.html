@@ -292,6 +292,7 @@
             let selectedInterestsJob = [];
             selectInterests(interestJobButtons, selectedInterestsJob, selectedInterestsJobInput);
 
+            //관심분야(언어, 프레임워크, 직무) 기존 데이터 화면 출력
             //언어   "_"을 제외한 문자열 배열
             let langarr = [[${userDTO.interest_language}]].split("_");
             //프레임워크
@@ -299,7 +300,6 @@
             //직무
             let jobarr = [[${userDTO.interest_job}]].split("_");
 
-            //관심분야(언어, 프레임워크, 직무) 기존 데이터 화면 출력
             window.onload = function(){
                 //관심 언어
                 let langButtons = document.querySelectorAll('.myinfo-interest-lang-btn');

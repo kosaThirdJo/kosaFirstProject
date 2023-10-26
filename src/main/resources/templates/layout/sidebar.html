@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" >
 <!--/* sidebar */-->
-<!--<link th:href="@{/css/sidebar.css}" rel="stylesheet" />-->
 <th:block th:fragment="sidebarFragment">
     <aside>
-        <!--/* profile Image */-->
+        <!--/* 프로필 사진 */-->
         <div class="frame-profileinfo">
             <form
                     action="/mypage/uploadprofileimg"
                     enctype="multipart/form-data"
                     method="post"
                     class="frame-profile">
+                <!-- 등록한 이미지가 있는 경우-->
                 <th:block th:if="${userDTO.profile_photo != null && !#strings.isEmpty(encodeImg)}">
                     <img class="profile-img"
                          th:src="@{'data:image/png;base64,' + ${encodeImg}}"
                          alt="Image"><br/>
                 </th:block>
+                <!-- 등록한 이미지가 없는 경우(default 사용)-->
                 <th:block th:if="${userDTO.profile_photo == null || #strings.isEmpty(encodeImg)}">
                     <img class="profile-img"
                          th:src="@{/image/global/userdefaultimg.png}"
