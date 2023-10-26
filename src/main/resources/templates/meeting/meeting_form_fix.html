@@ -27,6 +27,11 @@
   </style>
 </head>
 
+
+
+
+
+
 <th:block layout:fragment="content">
   <body>
   <div th:if="${user_id==null}">
@@ -36,7 +41,7 @@
     </script>
   </div>
   <article>
-    <form th:action="|/meeting/fix/${meetingVO.getMeetingId()}|" method=post>
+    <form th:action="|/meeting/fix/${meetingVO.getMeetingId()}|" method=post onsubmit="return validateForm()" >
 
       <input type="hidden" name="creationDate" th:value="${meetingVO.getCreationDate()}">
       <h2><input style="width: 100%" name="title" placeholder="제목을 입력해 주세요" th:value="${meetingVO.getTitle()}"  maxlength=50 minlength="2"  required></h2>
@@ -44,14 +49,12 @@
         <div id="content_type">
           <div>
             카테고리
-            <input id="radio1" type="radio" name="category" value=0> 스터디
-            <input id="radio0" type="radio" name="category" value=1> 프로젝트
-            <input id="radio2" type="radio" name="category" value=2> 기타
+              <input id="radio1" type="radio" name="category" value=1 checked> 프로젝트
+              <input id="radio0" type="radio" name="category" value=0> 스터디
+              <input id="radio2" type="radio" name="category" value=2> 기타
           </div>
-          <div>마감일
             <div>
-<!--              <input name="endDate" type="datetime-local" th:attr="min=${ #temporals.format ( now , 'yyyy-MM-dd' ) + 'T' + #temporals.format ( now , 'HH:mm:ss' ) }" max="2030-12-31T00:00:00" />-->
-              <input name="endDate" th:default="${meetingVO.getApplicationDeadline()}" type="datetime-local"/>
+          <input id="endDate" name="endDate" th:default="${meetingVO.getApplicationDeadline()}" type="datetime-local"/>
             </div>
           </div>
           <div>모집 장소
@@ -59,7 +62,7 @@
             <input type="hidden" name="location" th:value="${meetingVO.location}">
           </div>
           <div>모집인원수
-            <input name="recruitNum" type="number" placeholder="최대100명" min="0" max="100"  th:value="${meetingVO.getRecruitmentCount()}" required>
+            <input id="recruitNum" name="recruitNum" type="number" placeholder="(최대 100 명)" min="0" max="100"  th:value="${meetingVO.getRecruitmentCount()}" required>
           </div>
           <!--  02-02-06 관심 분야  -->
           <div class="signup-interest">
@@ -136,7 +139,24 @@
   </article>
   </body>
   <script>
+    function validateForm(){
+      const recurutNum = document.getElementById("recruitNum").value;
+      if (0 < recurutNum && recurutNum <= 100) {
+
+        return true
+      }
+      alert("모집인원을 확인해 주세요!")
+      return false;
+    }
+
+    // 최소 마감일 지정
+    let dateElement = document.getElementById('endDate');
+    let date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, -5);
+    dateElement.value = date;
+    dateElement.setAttribute("min", date);
+
     // 라디오 박스 체크
+    alert([[${meetingVO.getCategory()}]])
     document.querySelector("#radio"+[[${meetingVO.getCategory()}]]).setAttribute("checked","checked")
     // 글자수 세기
     text_check_dom = document.querySelector("#text-length-check")

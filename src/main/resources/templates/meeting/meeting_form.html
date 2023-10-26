@@ -11,6 +11,7 @@
     <link th:href="@{/css/meeting/meeting_form.css}" rel="stylesheet"/>
 </head>
 
+
 <th:block layout:fragment="content">
     <body>
     <div th:if="${user_id==null}">
@@ -20,7 +21,7 @@
         </script>
     </div>
     <article>
-        <form action="/meeting/write" method=post>
+        <form action="/meeting/write" method=post onsubmit="return validateForm()">
             <h2><input style="width: 100%" name="title" placeholder="제목을 입력해 주세요" maxlength=50 minlength="2" required></h2>
             <section>
                 <div id="content_type">
@@ -38,7 +39,7 @@
                             <td>
 <!--                                <input name="endDate" type="datetime-local" th:attr="min=${ #temporals.format ( now , 'yyyy-MM-dd' ) + 'T' + #temporals.format ( now , 'HH:mm:ss' ) }" required/>-->
                                 <label>
-                                    <input name="endDate" type="datetime-local" required/>
+                                    <input id="endDate" name="endDate" type="datetime-local" required/>
                                 </label>
                             </td>
                         </tr>
@@ -70,7 +71,7 @@
                         <tr>
                             <th>모집 인원 수</th>
                             <td>
-                                <input name="recruitNum" type="number" placeholder="XX명" min="0" max="100"  required>
+                                <input id="recruitNum"  name="recruitNum" type="number" placeholder="(최대 100 명)" min="0" max="100"  required>
                             </td>
                         </tr>
                         <tr>
@@ -160,6 +161,26 @@
     </body>
     <script th:inline="javascript">
         /*<![CDATA[*/
+        //
+        function validateForm(){
+            const recurutNum = document.getElementById("recruitNum").value;
+            if (0 < recurutNum && recurutNum <= 100) {
+
+                return true
+            }
+            alert("모집인원을 확인해 주세요!")
+            return false;
+        }
+
+
+
+        // 최소 마감일 지정
+        let dateElement = document.getElementById('endDate');
+        let date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, -5);
+        dateElement.value = date;
+        dateElement.setAttribute("min", date);
+
+
 
         // select 기본값 설정
         defaultLocation = /*[[${defaultLocation}]]*/;
