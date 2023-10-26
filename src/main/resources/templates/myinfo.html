@@ -67,19 +67,36 @@
                     </div>
                 </div>
                 <div id="showResult"></div>
-                <!--  02-02-05 지역  -->
+                <!--  02-02-05 지역 1 -->
                 <div class="myinfo-location">
-                    <span class="myinfo-text017"><span>지역</span></span>
+                    <span class="myinfo-text017"><span>지역1</span></span>
                     <div class="myinfo-location-content">
                         <input
                                 th:value="${userDTO.location1}"
                                 type="text" name="location1" placeholder="현재 지역을 인증해주세요."
-                                class="myinfo-input5" id="locationInput" readonly
+                                class="myinfo-input5" id="locationInput1" readonly
                         />
-                        <button type="button" class="myinfo-locationbtnbutton">
+                        <button type="button" class="myinfo-location1btnbutton">
                             <span class="myinfo-text025"><span>지역 인증</span></span>
                         </button>
                         <div class="sign-up-form-input-check-alert" id="checkLocation">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <!--  02-02-05 지역 2  -->
+                <div class="myinfo-location">
+                    <span class="myinfo-text017"><span>지역2</span></span>
+                    <div class="myinfo-location-content">
+                        <input
+                                th:value="${userDTO.location2}"
+                                type="text" name="location2" placeholder="현재 지역을 인증해주세요."
+                                class="myinfo-input5" id="locationInput2" readonly
+                        />
+                        <button type="button" class="myinfo-location2btnbutton">
+                            <span class="myinfo-text025"><span>지역 인증</span></span>
+                        </button>
+                        <div class="sign-up-form-input-check-alert" id="checkLocation2">
                             <span></span>
                         </div>
                     </div>
@@ -195,10 +212,10 @@
                 alertElement.querySelector('span').textContent = "";
                 return true;
             }
-            // 지역 인증
+            // 지역1 인증
             document.addEventListener('DOMContentLoaded', function() {
-                const locationInput = document.getElementById('locationInput');
-                const locationButton = document.querySelector('.myinfo-locationbtnbutton');
+                const locationInput1 = document.getElementById('locationInput1');
+                const locationButton = document.querySelector('.myinfo-location1btnbutton');
 
                 locationButton.addEventListener('click', function(event) {
                     event.preventDefault(); // 버튼 클릭 시 폼 제출 막음
@@ -216,8 +233,8 @@
                                     console.log(result.data);
                                     console.log(result.data.documents[0].region_1depth_name);
                                     var location = result.data.documents[0].region_1depth_name;
-                                    locationInput.value = location;
-                                    locationInput.placeholder = location;
+                                    locationInput1.value = location;
+                                    locationInput1.placeholder = location;
                                 })
                             }
                         });
@@ -226,7 +243,37 @@
                     }
                 });
             });
+            // 지역2 인증
+            document.addEventListener('DOMContentLoaded', function() {
+                const locationInput2 = document.getElementById('locationInput2');
+                const locationButton2 = document.querySelector('.myinfo-location2btnbutton');
 
+                locationButton2.addEventListener('click', function(event) {
+                    event.preventDefault(); // 버튼 클릭 시 폼 제출 막음
+
+                    var apiKey = [[${apiKey}]];
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function(position) {
+                            var x = position.coords.longitude;
+                            var y = position.coords.latitude;
+                            if (x && y) {
+                                axios.get(
+                                    `https://dapi.kakao.com/v2/local/geo/coord2regioncode.json?x=${x}&y=${y}`,
+                                    {headers:{Authorization:`KakaoAK ${apiKey}`}}
+                                ).then((result) => {
+                                    console.log(result.data);
+                                    console.log(result.data.documents[0].region_1depth_name);
+                                    var location = result.data.documents[0].region_1depth_name;
+                                    locationInput2.value = location;
+                                    locationInput2.placeholder = location;
+                                })
+                            }
+                        });
+                    } else {
+                        alert('브라우저가 위치 정보를 지원하지 않습니다.');
+                    }
+                });
+            });
             // 언어
             const interestLangButtons = document.querySelectorAll('.myinfo-interest-lang-btn');
             const selectedInterestsLangInput = document.getElementById('selected-interests-lang');

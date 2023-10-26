@@ -191,7 +191,18 @@
   border-width: 1px;
   border-radius: 10px;
 }
-.myinfo-locationbtnbutton { /*지역 버튼*/
+.myinfo-location1btnbutton { /*지역1 버튼*/
+  gap: 10px;
+  display: inline-block;
+  padding: 10px 15px;
+  overflow: hidden;
+  align-self: stretch;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: center;
+  background-color: rgba(26, 77, 46, 1);
+}
+.myinfo-location2btnbutton { /*지역2 버튼*/
   gap: 10px;
   display: inline-block;
   padding: 10px 15px;
