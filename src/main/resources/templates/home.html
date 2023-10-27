@@ -16,16 +16,11 @@
             </video>
         </div>
         <div class="main-content-all">
-            <!-- 01 left -->
             <div class="main-content-left">
-                <!-- 01-01 top -->
                 <div class="main-content-left-top">
-                    <!-- 01-01-01 title (order by) -->
                     <div class="main-content-left-title">
                         <div class="main-content-left-title-text">
-                            <!-- 01-01-01-01 icon -->
                             <span class="material-icons" style="color: #F4CE14;">notifications</span>
-                            <!-- 01-01-01-02 text -->
                             <span class="main-content-left-title-text">ORDER BY</span>
                         </div>
                         <div class="main-content-right-rank-info">
@@ -50,22 +45,16 @@
                     <!-- 최신 글 4개 출력 -->
                     <th:block th:each="meeting : ${latestMeetings}">
                         <a th:href="@{/meeting/articles(id=${meeting.meetingId})}" class="main-left-content-bottom-meeting">
-                            <!-- 01-02-01 white box -->
                             <div class="main-left-content-bottom-meeting-white">
-                                <!-- white box - top -->
                                 <div class="main-left-content-bottom-meeting-white-top">
-                                    <!-- white box - top - category -->
                                     <div class="main-left-content-bottom-meeting-white-top-category">
-                                        <!-- 0: 스터디, 1:프로젝트, 2: 기타 -->
                                         <span class="main-left-content-bottom-meeting-white-top-text" th:switch="${meeting.category}">
                                         <span th:case="0">스터디</span>
                                         <span th:case="1">프로젝트</span>
                                         <span th:case="2">기타</span>
                                     </span>
                                     </div>
-                                    <!-- white box - top - status -->
                                     <div class="main-left-content-bottom-meeting-white-top-status">
-                                        <!-- 0: 모집중, 1:모집완료 -->
                                         <span class="main-left-content-bottom-meeting-white-top-text" th:switch="${meeting.status}">
                                             <span th:case="0">모집중</span>
                                             <span th:case="1">모집완료</span>
@@ -73,51 +62,40 @@
                                     </div>
                                 </div>
 
-                                <!-- white box - bottom -->
                                 <div class="main-left-content-bottom-meeting-white-bottom">
-                                    <!-- white box - location -->
                                     <div class="main-left-content-bottom-meeting-white-location">
                                         <span class="material-icons" style="font-size: 15px;">location_on</span>
                                         <span class="main-left-content-bottom-meeting-white-location-text"
                                               th:text="${meeting.location}"></span>
                                     </div>
 
-                                    <!-- white box - title -->
                                     <div class="main-left-content-bottom-meeting-white-title"
                                          th:text="${meeting.title}"></div>
 
-                                    <!-- whitebox - deadline -->
                                     <div class="main-left-content-bottom-meeting-white-deadline">
                                         <span class="material-icons" style="font-size: 12px;">calendar_today</span>
                                         <span class="main-left-content-bottom-meeting-white-deadline-text">마감일</span>
                                     </div>
 
-                                    <!-- whitebox - deadlineText -->
                                     <span class="main-left-content-bottom-meeting-white-deadlineText"
                                           th:text="${#temporals.format(meeting.applicationDeadline, 'yyyy. MM. dd HH시 mm분')}"></span>
                                 </div>
                             </div>
 
-                            <!-- 01-02-02 yellow box -->
-                            <!-- yellowbox - now -->
                             <div class="main-left-content-bottom-meeting-yellow-now">
-                                <!-- yellowbox - now - people -->
                                 <div class="main-left-content-bottom-meeting-yellow-now-people">
                                     <span class="material-icons" style="color: #1A4D2E; font-size: 20px;">group</span>
                                     <div class="main-left-content-bottom-meeting-yellow-now-people-text">
                                         현재 <span class="main-left-content-bottom-meeting-yellow-now-people-text-cnt">[[${meeting.applicationCount}]]명</span>이 참여중입니다!
                                     </div>
                                 </div>
-                                <!-- yellow - now - info -->
                                 <div class="main-left-content-bottom-meeting-yellow-now-info">
-                                    <!-- view -->
                                     <div class="main-left-content-bottom-meeting-yellow-now-info-view">
                                         <span class="material-icons" style="font-size: 17px;">visibility</span>
                                         <div class="main-left-content-bottom-meeting-yellow-now-info-view-cnt" th:text="${meeting.views}">
                                             <span>0</span>
                                         </div>
                                     </div>
-                                    <!-- reply -->
                                     <div class="main-left-content-bottom-meeting-yellow-now-info-reply">
                                         <span class="material-icons" style="font-size: 14px;">chat</span>
                                         <div class="main-left-content-bottom-meeting-yellow-now-info-reply-cnt" th:text="${meeting.commentCount}">
@@ -155,10 +133,8 @@
                 <!-- intro -->
                 <div class="main-content-right-intro">
                     <div class="main-content-right-intro-textbox">
-                        <span class="main-content-right-intro-text1"><span>개발자 모임은</span></span>
-                        <span class="main-content-right-intro-text2">
-              <span>SELECT *에서 찾아보자!</span>
-            </span>
+                        <span class="main-content-right-intro-text1">개발자 모임은</span>
+                        <span class="main-content-right-intro-text2">SELECT *에서 찾아보자!</span>
                     </div>
                     <div class="main-content-right-intro-circle">
 

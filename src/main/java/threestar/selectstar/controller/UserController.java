@@ -25,21 +25,18 @@ public class UserController {
 	@Value("${REST_API_KEY}")
 	private String apiKey;
 
-	// 회원 가입
+	// 회원 가입 페이지 이동
 	@GetMapping("/signup")
-	public String showSignUpPage(Model model){
+	public String goSignup(Model model){
 		model.addAttribute("apiKey", apiKey);
 		return "user/signup";
 	}
 
+	// 회원 가입 진행
 	@PostMapping("/signup")
 	public ModelAndView progressSignup(@ModelAttribute UserDTO userDTO, HttpServletRequest req){
 		boolean result = userDAO.signupUser(userDTO);
 		ModelAndView mav = new ModelAndView();
-		if(result){
-			// 회원가입 성공 시
-			req.setAttribute("successMsg","회원가입이 성공적으로 완료되었습니다.");
-		}
 		mav.setViewName("redirect:/");
 		return mav;
 	}
@@ -57,31 +54,29 @@ public class UserController {
 		return result;
 	}*/
 
-	// 로그인
+	// 로그인 페이지 이동
 	@GetMapping("/login")
 	public String login() {
 		return "user/login";
 	}
 
+	// 로그인 진행
 	@PostMapping("/logincheck")
 	public String progressLogin(@RequestParam("loginName") String name, @RequestParam("loginPassword") String password, HttpSession session) {
-
 		Integer userId = userDAO.loginUser(name, password);
-
 		if (userId != null && userId > 0) {  // 로그인 성공
 			session.setAttribute("user_id", userId);
 			session.setMaxInactiveInterval(60 * 30);  // 세션 30분 동안 유지 ( -1 : 무한대 )
 			return "redirect:/";
-
 		} else {  // 로그인 실패
 			return "user/login";
 		}
 	}
 
-	// 로그아웃
+	// 로그아웃 진행
 	@GetMapping("/logout")
 	public String progressLogout(HttpSession session) {
-		session.invalidate();
+		session.invalidate();  // 세션 무효화
 		return "redirect:/";
 	}
 
