@@ -50,22 +50,6 @@
                                     <span th:text="${userDao.getProfileInfo(user_id).location1}"></span>
                                     <input type="hidden" name="location" th:value="${userDao.getProfileInfo(user_id).location1}">
                                 </div>
-<!--                                <select name="location" id="loc">-->
-<!--                                    <option value="서울특별시">서울특별시</option>-->
-<!--                                    <option value="경기도">경기도</option>-->
-<!--                                    <option value="강원도">강원도</option>-->
-<!--                                    <option value="대전광역시">대전광역시</option>-->
-<!--                                    <option value="인천광역시">인천광역시</option>-->
-<!--                                    <option value="경상북도">경상북도</option>-->
-<!--                                    <option value="경상남도">경상남도</option>-->
-<!--                                    <option value="전라북도">전라북도</option>-->
-<!--                                    <option value="전라남도">전라남도</option>-->
-<!--                                    <option value="충청북도">충청북도</option>-->
-<!--                                    <option value="충청남도">충청남도</option>-->
-<!--                                    <option value="부산광역시">부산광역시</option>-->
-<!--                                    <option value="울산광역시">울산광역시</option>-->
-<!--                                    <option value="광주광역시">광주광역시</option>-->
-<!--                                </select>-->
                             </td>
                         </tr>
                         <tr>
@@ -165,7 +149,6 @@
         function validateForm(){
             const recurutNum = document.getElementById("recruitNum").value;
             if (0 < recurutNum && recurutNum <= 100) {
-
                 return true
             }
             alert("모집인원을 확인해 주세요!")
@@ -180,16 +163,6 @@
         dateElement.value = date;
         dateElement.setAttribute("min", date);
 
-
-
-        // select 기본값 설정
-        defaultLocation = /*[[${defaultLocation}]]*/;
-        const options = document.querySelectorAll("option")
-        for (const opt of options) {
-            if (opt.value == defaultLocation){
-                opt.selected = true;
-            }
-        }
 
         // 글자수 세기
         text_check_dom = document.querySelector("#text-length-check")
