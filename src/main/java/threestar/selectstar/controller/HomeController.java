@@ -23,10 +23,13 @@ import threestar.selectstar.domain.UserVO;
 @Controller
 public class HomeController {
 
-	@Autowired
-	private MeetingMapper meetingDao;
-	@Autowired
-	private UserMapper userDao;
+	private final MeetingMapper meetingDao;
+	private final UserMapper userDao;
+
+	public HomeController(MeetingMapper meetingDao, UserMapper userDao) {
+		this.meetingDao = meetingDao;
+		this.userDao = userDao;
+	}
 
 	// 메인페이지 이동
 	@GetMapping("/")

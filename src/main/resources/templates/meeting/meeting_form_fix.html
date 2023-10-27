@@ -142,7 +142,6 @@
     function validateForm(){
       const recurutNum = document.getElementById("recruitNum").value;
       if (0 < recurutNum && recurutNum <= 100) {
-
         return true
       }
       alert("모집인원을 확인해 주세요!")
@@ -156,7 +155,6 @@
     dateElement.setAttribute("min", date);
 
     // 라디오 박스 체크
-    alert([[${meetingVO.getCategory()}]])
     document.querySelector("#radio"+[[${meetingVO.getCategory()}]]).setAttribute("checked","checked")
     // 글자수 세기
     text_check_dom = document.querySelector("#text-length-check")
