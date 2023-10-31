@@ -109,7 +109,7 @@
                         <div class="myinfo-form-select-interest">
                             <span class="myinfo-form-select-interest-title">Language</span>
                             <div class="myinfo-form-select-interest-button">
-                                <input type="hidden" name="interest_language" id="selected-interests-lang" th:value="${userDTO.interest_language}">
+                                <input type="hidden" name="interestLanguage" id="selected-interests-lang" th:value="${userDTO.interestLanguage}">
                                 <button type="button" class="myinfo-interest-lang-btn" value="1">Java</button>
                                 <button type="button"  class="myinfo-interest-lang-btn" value="2">Python</button>
                                 <button type="button"  class="myinfo-interest-lang-btn" value="3">C#</button>
@@ -126,7 +126,7 @@
                         <div class="myinfo-form-select-interest">
                             <span class="myinfo-form-select-interest-title">Framework</span>
                             <div class="myinfo-form-select-interest-button">
-                                <input type="hidden" name="interest_framework" id="selected-interests-fw" th:value="${userDTO.interest_framework}">
+                                <input type="hidden" name="interestFramework" id="selected-interests-fw" th:value="${userDTO.interestFramework}">
                                 <button type="button" class="myinfo-interest-fw-btn" value="1">Spring</button>
                                 <button type="button"  class="myinfo-interest-fw-btn" value="2">React</button>
                                 <button type="button"  class="myinfo-interest-fw-btn" value="3">Angular</button>
@@ -143,7 +143,7 @@
                         <div class="myinfo-form-select-interest">
                             <span class="myinfo-form-select-interest-title">Role</span>
                             <div class="myinfo-form-select-interest-button">
-                                <input type="hidden" name="interest_job" id="selected-interests-job" th:value="${userDTO.interest_job}">
+                                <input type="hidden" name="interestJob" id="selected-interests-job" th:value="${userDTO.interestJob}">
                                 <button type="button" class="myinfo-interest-job-btn" value="1">프론트엔드</button>
                                 <button type="button"  class="myinfo-interest-job-btn" value="2">백엔드</button>
                                 <button type="button"  class="myinfo-interest-job-btn" value="3">풀스택</button>
@@ -294,11 +294,11 @@
 
             //관심분야(언어, 프레임워크, 직무) 기존 데이터 화면 출력
             //언어   "_"을 제외한 문자열 배열
-            let langarr = [[${userDTO.interest_language}]].split("_");
+            let langarr = [[${userDTO.interestLanguage}]].split("_");
             //프레임워크
-            let fwarr = [[${userDTO.interest_framework}]].split("_");
+            let fwarr = [[${userDTO.interestFramework}]].split("_");
             //직무
-            let jobarr = [[${userDTO.interest_job}]].split("_");
+            let jobarr = [[${userDTO.interestJob}]].split("_");
 
             window.onload = function(){
                 //관심 언어

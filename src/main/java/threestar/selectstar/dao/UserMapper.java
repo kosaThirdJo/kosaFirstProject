@@ -17,7 +17,7 @@ public interface UserMapper {
     public List<UserVO> getAllUserList();
 
     //마이페이지 이력관리 조회
-    @Select("select user_id userId, nickname, email, profile_photo, about_me, profile_content from user where user_id = #{userId}")
+    @Select("select user_id userId, nickname, email, profile_photo profilePhoto, about_Me aboutMe, profile_content profileContent from user where user_id = #{userId}")
     public UserDTO getUserProfileInfo(int userId);
 
     // 회원 가입
@@ -46,18 +46,18 @@ public interface UserMapper {
     public Integer loginUser(@Param("name") String name, @Param("password") String password);
     
     //마이페이지(이력관리) 수정
-    @Update("update user set about_me= #{about_me}, profile_content= #{profile_content} where user_id= #{userId}")
+    @Update("update user set about_me= #{aboutMe}, profile_content= #{profileContent} where user_id= #{userId}")
     public boolean updateProfileInfo(UserDTO userDTO);
 
     //개인정보수정화면 조회
-    @Select("select user_id userId, nickname, email, profile_photo, location1, location2, "
-            + "interest_language, interest_framework, interest_job from user where user_id= #{userId}")
+    @Select("select user_id userId, nickname, email, profile_photo profilePhoto, location1, location2, "
+            + "interest_language interestLanguage, interest_framework interestFramework, interest_job interestJob from user where user_id= #{userId}")
     public UserDTO getUserInfo(int userId);
 
     //개인정보 수정
     @Update("update user set password= #{password}, email= #{email}, nickname= #{nickname}, "
-            +"location1= #{location1}, location2= #{location2}, interest_language= #{interest_language},"
-            + "interest_framework= #{interest_framework}, interest_job= #{interest_job} where user_id= #{userId}")
+            +"location1= #{location1}, location2= #{location2}, interest_language= #{interestLanguage},"
+            + "interest_framework= #{interestFramework}, interest_job= #{interestJob} where user_id= #{userId}")
     public boolean updateUserInfo(UserDTO userDTO);
     @Select("select name from user where user_id= #{userId}")
     public String getNameById(int userId);
@@ -76,7 +76,7 @@ public interface UserMapper {
     public boolean updateUserProfileImg(@Param("userId") int userId,@Param("profile_photo") byte[] profile_photo);
 
     //다른 이용자 프로필 조회
-    @Select("select nickname, email, profile_photo, about_me, profile_content,location1 from user where user_id = #{userId}")
+    @Select("select nickname, email, profile_photo profilePhoto, about_me aboutMe, profile_content profileContent,location1 from user where user_id = #{userId}")
     public UserDTO getProfileInfo(int userId);
 
     //개인정보수정-닉네임 중복 검사
