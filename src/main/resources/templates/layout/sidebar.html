@@ -11,13 +11,13 @@
                     method="post"
                     class="frame-profile">
                 <!-- 등록한 이미지가 있는 경우-->
-                <th:block th:if="${userDTO.profile_photo != null && !#strings.isEmpty(encodeImg)}">
+                <th:block th:if="${userDTO.profilePhoto != null && !#strings.isEmpty(encodeImg)}">
                     <img class="profile-img"
                          th:src="@{'data:image/png;base64,' + ${encodeImg}}"
                          alt="Image"><br/>
                 </th:block>
                 <!-- 등록한 이미지가 없는 경우(default 사용)-->
-                <th:block th:if="${userDTO.profile_photo == null || #strings.isEmpty(encodeImg)}">
+                <th:block th:if="${userDTO.profilePhoto == null || #strings.isEmpty(encodeImg)}">
                     <img class="profile-img"
                          th:src="@{/image/global/userdefaultimg.png}"
                          alt="Image"/><br/>
@@ -30,7 +30,7 @@
                     <input
                             type="file"
                             id="inputImgFile"
-                            name="profile_photo"
+                            name="profilePhoto"
                             accept=".jpg, .png"
                             style= "display:none;"
                             required/>
