@@ -43,7 +43,7 @@ public class MyPageController {
 
     //회원 이미지 조회
     public String getProfileImg(UserDTO uDTO){
-        byte[] imgByte = uDTO.getProfile_photo();
+        byte[] imgByte = uDTO.getProfilePhoto();
         String encodeImg = null;
         if(imgByte != null) {
             encodeImg = Base64.getEncoder().encodeToString(imgByte);
@@ -70,8 +70,8 @@ public class MyPageController {
     public ModelAndView getMyProfileInfo(HttpSession session, HttpServletRequest req) {
         ModelAndView mav = new ModelAndView();
         //session에 저장된 userid를 통해 userDTO 조회
-        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
-        userDTO.setUserId((int)session.getAttribute("user_id"));
+        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("userId"));
+        userDTO.setUserId((int)session.getAttribute("userId"));
         //마이페이지 side bar -프로필 이미지
         String encodeImg = getProfileImg(userDTO);
         mav.addObject("encodeImg", encodeImg);
@@ -96,8 +96,8 @@ public class MyPageController {
     @GetMapping("/myinfo")
     public ModelAndView getMyInfo(HttpSession session){
         ModelAndView mav = new ModelAndView();
-        UserDTO userDTO = userDAO.getUserInfo((int)session.getAttribute("user_id"));
-        userDTO.setUserId((int)session.getAttribute("user_id"));
+        UserDTO userDTO = userDAO.getUserInfo((int)session.getAttribute("userId"));
+        userDTO.setUserId((int)session.getAttribute("userId"));
         //마이페이지 side bar -프로필 이미지
         String encodeImg = getProfileImg(userDTO);
         mav.addObject("encodeImg", encodeImg);
@@ -122,7 +122,7 @@ public class MyPageController {
         //MultipartFile profile_photo = null;
         byte[] content = null;
         try{
-            content = fileDTO.getProfile_photo().getBytes();
+            content = fileDTO.getProfilePhoto().getBytes();
             boolean result = userDAO.updateUserProfileImg(userId, content);
         } catch (Exception e){
             e.printStackTrace();
@@ -146,8 +146,8 @@ public class MyPageController {
     @GetMapping("/mymeetinglist")
     public ModelAndView getMyMeetingList(HttpSession session){
         ModelAndView mav = new ModelAndView();
-        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
-        userDTO.setUserId((int)session.getAttribute("user_id"));
+        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("userId"));
+        userDTO.setUserId((int)session.getAttribute("userId"));
 
         mav.addObject("userDTO", userDTO);
 
@@ -164,8 +164,8 @@ public class MyPageController {
             @RequestParam(name = "category", required = false) String strCategory,
             @RequestParam(name="status", required = false) String strStatus,
             Model model, HttpSession session){
-        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
-        userDTO.setUserId((int)session.getAttribute("user_id"));
+        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("userId"));
+        userDTO.setUserId((int)session.getAttribute("userId"));
 
         int category = 0;
         int status = 0;
@@ -204,16 +204,16 @@ public class MyPageController {
         List<MeetingVO> list;
         if((strStatus != null && !strStatus.isEmpty()) && (strCategory != null && !strCategory.isEmpty())){
             // 카테고리(프로젝트/스터디/기타)와 모집여부(모집중/모집완료) 선택 시
-            list = meetingDAO.getMyMeetingListByCateStatus((int)session.getAttribute("user_id"), category, status);
+            list = meetingDAO.getMyMeetingListByCateStatus((int)session.getAttribute("userId"), category, status);
         }else if((strStatus == null) && (strCategory != null && !strCategory.isEmpty())){
             // 카테고리(전체) 와 모집여부(모집중/모집완료) 선택 시
-            list = meetingDAO.getMyMeetingListByCategory((int)session.getAttribute("user_id"), category);
+            list = meetingDAO.getMyMeetingListByCategory((int)session.getAttribute("userId"), category);
         }else if((strStatus != null && !strStatus.isEmpty()) && (strCategory == null)){
             // 카테고리(프로젝트/스터디/기타)와 모집여부(전체) 선택 시
-            list = meetingDAO.getMyMeetingListByStatus((int)session.getAttribute("user_id"), status);
+            list = meetingDAO.getMyMeetingListByStatus((int)session.getAttribute("userId"), status);
         }else{
             //카테고리(전체)와 모집여부(전체) 선택 시
-            list = meetingDAO.getMyMeetingList((int)session.getAttribute("user_id"));
+            list = meetingDAO.getMyMeetingList((int)session.getAttribute("userId"));
         }
 
         //마이페이지 side bar -프로필 이미지
@@ -221,7 +221,7 @@ public class MyPageController {
 
         model.addAttribute("userDTO", userDTO);
         model.addAttribute("encodeImg", encodeImg);
-        model.addAttribute("userId", (int)session.getAttribute("user_id"));
+        model.addAttribute("userId", (int)session.getAttribute("userId"));
 
         if(list.size() != 0){
             model.addAttribute("meetingvoList", list);
@@ -234,12 +234,12 @@ public class MyPageController {
     //내가 참여한 모임(내가 신청한 글)
     @GetMapping("/myapplymeetinglist")
     public ModelAndView getMyApplyMeeting(HttpSession session){
-        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
-        userDTO.setUserId((int)session.getAttribute("user_id"));
+        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("userId"));
+        userDTO.setUserId((int)session.getAttribute("userId"));
 
         ModelAndView mav = new ModelAndView();
         mav.addObject("userDTO", userDTO);
-        List<MeetingVO> applylist = meetingDAO.getMyApplyList((int)session.getAttribute("user_id"));
+        List<MeetingVO> applylist = meetingDAO.getMyApplyList((int)session.getAttribute("userId"));
 
         //마이페이지 side bar -프로필 이미지
         String encodeImg = getProfileImg(userDTO);
@@ -261,8 +261,8 @@ public class MyPageController {
             @RequestParam(name = "category", required = false) String strCategory,
             @RequestParam(name="status", required = false) String strStatus,
             Model model, HttpSession session){
-        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("user_id"));
-        userDTO.setUserId((int)session.getAttribute("user_id"));
+        UserDTO userDTO = userDAO.getUserProfileInfo((int)session.getAttribute("userId"));
+        userDTO.setUserId((int)session.getAttribute("userId"));
 
         int category = 0;
         int status = 0;
@@ -300,23 +300,23 @@ public class MyPageController {
         List<MeetingVO> list;
         if((strStatus != null && !strStatus.isEmpty()) && (strCategory != null && !strCategory.isEmpty())){
             // 카테고리(프로젝트/스터디/기타)와 모집여부(모집중/모집완료) 선택 시
-            list = meetingDAO.getMyApplyListByCateStatus((int)session.getAttribute("user_id"), category, status);
+            list = meetingDAO.getMyApplyListByCateStatus((int)session.getAttribute("userId"), category, status);
         }else if((strStatus == null) && (strCategory != null && !strCategory.isEmpty())){
             // 카테고리(전체) 와 모집여부(모집중/모집완료) 선택 시
-            list = meetingDAO.getMyApplyListByCategory((int)session.getAttribute("user_id"), category);
+            list = meetingDAO.getMyApplyListByCategory((int)session.getAttribute("userId"), category);
         }else if((strStatus != null && !strStatus.isEmpty()) && (strCategory == null)){
             // 카테고리(프로젝트/스터디/기타)와 모집여부(전체) 선택 시
-            list = meetingDAO.getMyApplyListByStatus((int)session.getAttribute("user_id"), status);
+            list = meetingDAO.getMyApplyListByStatus((int)session.getAttribute("userId"), status);
         }else{
             //카테고리(전체)와 모집여부(전체) 선택 시
-            list = meetingDAO.getMyApplyList((int)session.getAttribute("user_id"));
+            list = meetingDAO.getMyApplyList((int)session.getAttribute("userId"));
         }
 
         //마이페이지 side bar -프로필 이미지
         String encodeImg = getProfileImg(userDTO);
         model.addAttribute("userDTO", userDTO);
         model.addAttribute("encodeImg", encodeImg);
-        model.addAttribute("userId", (int)session.getAttribute("user_id"));
+        model.addAttribute("userId", (int)session.getAttribute("userId"));
 
         if(list.size() != 0){
             model.addAttribute("applyingvoList", list);

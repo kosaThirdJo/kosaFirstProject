@@ -16,12 +16,12 @@
                 </div>
                 <!--사용자 이미지-->
                 <div class="frame-user-img">
-                    <th:block th:if="${userDTO.profile_photo != null && !#strings.isEmpty(encodeImg)}">
+                    <th:block th:if="${userDTO.profilePhoto != null && !#strings.isEmpty(encodeImg)}">
                         <img class="profile-img"
                              th:src="@{'data:image/png;base64,' + ${encodeImg}}"
                              alt="Image"/>
                     </th:block>
-                    <th:block th:if="${userDTO.profile_photo == null || #strings.isEmpty(encodeImg)}">
+                    <th:block th:if="${userDTO.profilePhoto == null || #strings.isEmpty(encodeImg)}">
                         <img class="profile-img"
                              th:src="@{/image/global/userdefaultimg.png}"
                              alt="Image"/>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="frame-profile-oneline">
                     <div class="profile-oneline-title">한줄소개</div>
-                    <p class="profile-oneline-text" th:text="${userDTO.about_me}"></p>
+                    <p class="profile-oneline-text" th:text="${userDTO.aboutMe}"></p>
                 </div>
             </div>
             <!--사용자 이력 -->
@@ -45,8 +45,8 @@
                 <!--<h2>사용자 이력</h2>-->
                 <textarea
                         class="profile-info-textarea"
-                        name="profile_content"
-                        th:text="${userDTO.profile_content}"
+                        name="profileContent"
+                        th:text="${userDTO.profileContent}"
                         readonly>
                     </textarea>
             </div>
