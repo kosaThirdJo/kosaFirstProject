@@ -1,6 +1,4 @@
-![텍스트]("https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=SELECT * &fontSize=90")
-
-
+![텍스트](https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=SELECT_*)
 
 ## SELECT *  v1.0
 >채용연계형 MSA 기반 Full Stack 양성과정 3차
