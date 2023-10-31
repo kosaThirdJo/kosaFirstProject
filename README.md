@@ -30,7 +30,6 @@
 <h4>backend</h4>
 <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> 
 <img src="https://img.shields.io/badge/java-007396?style=for-the-badge&logo=&logoColor=white">
-https://cocoon1787.tistory.com/689
 
 <h4>database</h4>
 <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
