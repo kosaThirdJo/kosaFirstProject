@@ -14,7 +14,7 @@
 
 <th:block layout:fragment="content">
     <body>
-    <div th:if="${user_id==null}">
+    <div th:if="${userId==null}">
         <script>
             alert("로그인을 해 주세요!")
             location.href = "/login"
@@ -47,8 +47,8 @@
                             <th>모집 장소</th>
                             <td>
                                 <div>
-                                    <span th:text="${userDao.getProfileInfo(user_id).location1}"></span>
-                                    <input type="hidden" name="location" th:value="${userDao.getProfileInfo(user_id).location1}">
+                                    <span th:text="${userDao.getProfileInfo(userId).location1}"></span>
+                                    <input type="hidden" name="location" th:value="${userDao.getProfileInfo(userId).location1}">
                                 </div>
                             </td>
                         </tr>
@@ -60,7 +60,7 @@
                         </tr>
                         <tr>
                             <th>관심 분야</th>
-                            <td style="padding: 0px 10px 10px 0px;">
+                            <td style="padding: 0 10px 10px 0;">
                                 <div class="signup-form-input-box-content" style="padding-bottom: 10px;">
                                     <!--  02-02-06-01 언어  -->
                                     <div class="signup-form-select-interest">
