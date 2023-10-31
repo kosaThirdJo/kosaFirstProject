@@ -47,7 +47,7 @@
                         </a>
                     </div>
                     <!-- 02-04 마이페이지 -->
-                    <a th:href="@{/mypage/profile}"  class="main-header-nav-mypage main-header-nav-meetinglist-text" th:if="${session.user_id}">
+                    <a th:href="@{/mypage/profile}"  class="main-header-nav-mypage main-header-nav-meetinglist-text" th:if="${session.userId}">
                             <span>마이페이지</span>
                     </a>
                 </div>
@@ -68,7 +68,7 @@
                     <!-- 04 로그인, 회원가입, 로그아웃 -->
                     <div class="main-header-button">
                         <!-- 로그인하지 않았을 경우 -->
-                        <th:block th:unless="${session.user_id}">
+                        <th:block th:unless="${session.userId}">
                             <button class="main-header-button-login" th:onclick="|location.href='@{/login}'|">
                                 <span class="main-header-button-login-text">
                                     <span>로그인</span>
@@ -82,7 +82,7 @@
                         </th:block>
 
                         <!-- 로그인 했을 경우 -->
-                        <th:block th:if="${session.user_id}">
+                        <th:block th:if="${session.userId}">
                             <button class="main-header-button-logout" th:onclick="|location.href='@{/logout}'|">
                                 <span class="main-header-button-logout-text">
                                     <span>로그아웃</span>

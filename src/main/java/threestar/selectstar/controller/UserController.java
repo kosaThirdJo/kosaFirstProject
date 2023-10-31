@@ -65,7 +65,7 @@ public class UserController {
 	public String progressLogin(@RequestParam("loginName") String name, @RequestParam("loginPassword") String password, HttpSession session) {
 		Integer userId = userDAO.loginUser(name, password);
 		if (userId != null && userId > 0) {  // 로그인 성공
-			session.setAttribute("user_id", userId);
+			session.setAttribute("userId", userId);
 			session.setMaxInactiveInterval(60 * 30);  // 세션 30분 동안 유지 ( -1 : 무한대 )
 			return "redirect:/";
 		} else {  // 로그인 실패

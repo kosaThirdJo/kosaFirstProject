@@ -21,8 +21,8 @@ public interface UserMapper {
     public UserDTO getUserProfileInfo(int userId);
 
     // 회원 가입
-    @Insert("INSERT INTO user (name, password, email, nickname, location1, interest_language, interest_framework, interest_job, join_date) "
-            + "VALUES (#{name}, #{password}, #{email}, #{nickname}, #{location1}, #{interest_language}, #{interest_framework}, #{interest_job}, NOW())")
+    @Insert("INSERT INTO user (name, password, email, nickname, location1, interest_language interestLanguage, interest_framework interestFramework, interest_job interestJob, join_date) "
+            + "VALUES (#{name}, #{password}, #{email}, #{nickname}, #{location1}, #{interestLanguage}, #{interestFramework}, #{interestJob}, NOW())")
     public boolean signupUser(UserDTO dto);
 
     // 회원 가입 - 아이디 중복 확인
