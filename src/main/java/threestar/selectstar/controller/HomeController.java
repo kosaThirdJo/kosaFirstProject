@@ -72,8 +72,8 @@ public class HomeController {
 			// 프로필 이미지까지 List형식으로 보내줌
 			List<String> encodeImgList = new ArrayList<>();
 			for (UserVO user : searchUserResults) {
-				if (user.getProfile_photo() != null) {
-					String encodeImg = Base64.getEncoder().encodeToString(user.getProfile_photo());
+				if (user.getProfilePhoto() != null) {
+					String encodeImg = Base64.getEncoder().encodeToString(user.getProfilePhoto());
 					encodeImgList.add(encodeImg);
 				} else {
 					encodeImgList.add(null);
