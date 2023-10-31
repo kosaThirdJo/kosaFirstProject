@@ -200,10 +200,13 @@ public class MeetingController {
 
     @GetMapping("/write")
     public String writeArticleForm(HttpSession session,Model model){
-        model.addAttribute("userId",session.getAttribute("userId"));
-        model.addAttribute("location",userDao.getUserInfo((int)session.getAttribute("userId")).getLocation1());
-        model.addAttribute("userDao",userDao);
-        return "meeting/meeting_form";
+        if (session.getAttribute("userId") != null) {
+            model.addAttribute("userId", session.getAttribute("userId"));
+            model.addAttribute("location", userDao.getUserInfo((int) session.getAttribute("userId")).getLocation1());
+            model.addAttribute("userDao", userDao);
+            return "meeting/meeting_form";
+        }
+        return "redirect:" + "/login";
     }
     @PostMapping("/write")
     public String writerArticle(String title,
