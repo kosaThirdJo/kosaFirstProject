@@ -74,7 +74,7 @@
         #comment_input_line {
             margin: 5px 5px 50px;
             display: flex;
-            gap: 0px 18px;
+            gap: 0 18px;
         }
         #modal-button{
             float: right;
@@ -125,7 +125,7 @@
           .click-profile{
             text-decoration: none;
             color: black;
-            margin: 10px 0px;
+            margin: 10px 0;
           }
           .meeting-articles-profile {
             display: flex;
@@ -165,7 +165,7 @@
 <th:block layout:fragment="content">
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
-            <form th:action="|/meeting/apply/${meetingDTO.meetingId}|" , method="post">
+            <form th:action="|/meeting/apply/${meetingDTO.meetingId}|" method="post">
                 <div class="modal-content">
                     <div class="modal-header">
 
@@ -201,39 +201,39 @@
             </div>
             <section id="content_box">
             <div class="frame-content">
-                <sapn th:if="${meetingDTO.status == 0 && now < meetingDTO.applicationDeadline }" th:style="'background-color: #FAF3E3'" class="btn">모집중</sapn>
+                <span th:if="${meetingDTO.status == 0 && now < meetingDTO.applicationDeadline }" th:style="'background-color: #FAF3E3'" class="btn">모집중</span>
                 <span th:if="${meetingDTO.status ==1 || now >= meetingDTO.applicationDeadline}" th:style="'background-color: gray; color: white'" class="btn">모집완료</span>
                 <h2 id="content_title" style="display: inline" th:text="${meetingDTO.title}"></h2>
                 <th:block th:if="${checkApply == 0 && meetingDTO.status==0 && now < meetingDTO.applicationDeadline}  ">
-                    <button id="modal-button" class="btn btn-primary" th:if="${user_id!= null} and ${meetingDTO.userId != user_id}" type="button" data-toggle="modal"
+                    <button id="modal-button" class="btn btn-primary" th:if="${userId!= null} and ${meetingDTO.userId != userId}" type="button" data-toggle="modal"
                             data-target="#myModal" data->신청하기
                     </button>
                 </th:block>
                 <th:block th:if="${checkApply== 1 || meetingDTO.status == 1 || now >= meetingDTO.applicationDeadline}">
-                    <button class="btn btn-primary" th:if="${user_id!= null} and ${meetingDTO.userId != user_id}" style="float: right; background-color:#282828;border:#282828;" disabled type="button">신청하기
+                    <button class="btn btn-primary" th:if="${userId!= null} and ${meetingDTO.userId != userId}" style="float: right; background-color:#282828;border:#282828;" disabled type="button">신청하기
                     </button>
                 </th:block>
                 <th:block th:if="${meetingDTO.status== 0 &&  now < meetingDTO.applicationDeadline}">
                     <a th:href="|/meeting/fix/${meetingDTO.meetingId}|">
-                        <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right;margin-left:3px;"
+                        <button th:if="${meetingDTO.userId == userId}" class="btn btn-primary" style="float: right;margin-left:3px;"
                                 th:text="수정하기"></button>
                     </a>
                     <a th:href="|/meeting/remove/${meetingDTO.meetingId}|">
-                        <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right;margin-left:3px;"
+                        <button th:if="${meetingDTO.userId == userId}" class="btn btn-primary" style="float: right;margin-left:3px;"
                                 th:text="삭제하기"></button>
                     </a>
 
                     <a th:href="|/meeting/finish/${meetingDTO.meetingId}|">
-                        <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right;margin-left:3px;background-color:#FF9F29;border:#FF9F29;"
+                        <button th:if="${meetingDTO.userId == userId}" class="btn btn-primary" style="float: right;margin-left:3px;background-color:#FF9F29;border:#FF9F29;"
                                 th:text="모집완료" ></button>
                     </a>
                 </th:block>
                 <th:block th:if="${meetingDTO.status==1 || now >= meetingDTO.applicationDeadline}">
-                    <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right;margin-left:3px;"
+                    <button th:if="${meetingDTO.userId == userId}" class="btn btn-primary" style="float: right;margin-left:3px;"
                           th:text="수정하기" disabled></button>
-                    <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right;margin-left:3px;"
+                    <button th:if="${meetingDTO.userId == userId}" class="btn btn-primary" style="float: right;margin-left:3px;"
                             th:text="삭제하기" disabled></button>
-                    <button th:if="${meetingDTO.userId == user_id}" class="btn btn-primary" style="float: right;margin-left:3px;background-color:#282828;border:#282828;"
+                    <button th:if="${meetingDTO.userId == userId}" class="btn btn-primary" style="float: right;margin-left:3px;background-color:#282828;border:#282828;"
                             th:text="완료됨" disabled></button>
                 </th:block>
             <div>
@@ -266,10 +266,10 @@
             </div>
         </section>
         <section id="comment_box">
-            <div>댓글 <span style="color: #1A4D2E" th:text="${count_comment}"></span>
+            <div>댓글 <span style="color: #1A4D2E" th:text="${countComment}"></span>
             </div>
             <div id="comment_input_line">
-                <form  th:if="${user_id!=null}" th:action="|${requestURI}/${meetingDTO.meetingId}|" method=post>
+                <form  th:if="${userId!=null}" th:action="|${requestURI}/${meetingDTO.meetingId}|" method=post>
                     <div  id="comment-input">
                     <input class="input-border-radius" type="text" name="commentContent" placeholder="댓글을 작성해 보세요"
                            size=77% maxlength=200 required/>
@@ -299,7 +299,7 @@
                              th:src="@{/image/global/userdefaultimg.png}"/>
                     </th:block>
                     <div class="writer-nickname-text" th:text="${userDao.getProfileInfo(meetingDTO.userId).getNickname()}"></div>
-                    <div class="writer-oneline-text" th:text="${userDao.getUserProfileInfo(meetingDTO.userId).about_me}"></div>
+                    <div class="writer-oneline-text" th:text="${userDao.getUserProfileInfo(meetingDTO.userId).aboutMe}"></div>
                 </div>
                 </a>
             </div>

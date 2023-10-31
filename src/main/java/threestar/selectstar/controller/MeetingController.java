@@ -138,8 +138,8 @@ public class MeetingController {
         // 세션 유저 아이디 조회
         Integer sessionId = null;
         //셀프 체크
-        if (session.getAttribute("user_id") != null) {
-            sessionId = (Integer) session.getAttribute("user_id");
+        if (session.getAttribute("userId") != null) {
+            sessionId = (Integer) session.getAttribute("userId");
             int checkApply = applyDao.countApplyByMeetingIDAndUserId(ApplyVO.builder()
                     .userId(sessionId)
                     .meetingId(meetingId)
@@ -155,11 +155,11 @@ public class MeetingController {
             // 조회수 1추가
             meetingDao.updateMeetingCount(meetingDTO.getViews()+1,meetingId);
             // 프로필 사진
-            byte[] profile_photo = userDao.getProfilePhotoById(meetingDao.getMeetingArticleById(meetingId).getUserId()).getProfile_photo();
+            byte[] profilePhoto = userDao.getProfilePhotoById(meetingDao.getMeetingArticleById(meetingId).getUserId()).getProfilePhoto();
 
             String encodeImg = null;
-            if(profile_photo != null) {
-                encodeImg = Base64.getEncoder().encodeToString(profile_photo);
+            if(profilePhoto != null) {
+                encodeImg = Base64.getEncoder().encodeToString(profilePhoto);
             }
 
 
@@ -169,12 +169,12 @@ public class MeetingController {
             model.addAttribute("description",meetingDTO.getDescription().replace("\r\n","<br>").replace(" ","&nbsp"));
             model.addAttribute("commentListByMeetingId", commentListByMeetingId);
             model.addAttribute("userDao",userDao);
-            model.addAttribute("count_comment",commentDao.calcCommentCount(meetingId));
+            model.addAttribute("countComment",commentDao.calcCommentCount(meetingId));
             model.addAttribute("applyDao",applyDao);
             model.addAttribute("false","isFail");
             model.addAttribute("image",encodeImg);
             model.addAttribute("now",LocalDateTime.now());
-            model.addAttribute("user_id",sessionId);
+            model.addAttribute("userId",sessionId);
             // 만약 신청게시물 작성자면...
             return "meeting/meeting_article";
         }
@@ -185,8 +185,8 @@ public class MeetingController {
     public String addMeetingComment(HttpSession session,@PathVariable("id") int meetingId,
                                     String commentContent, HttpServletRequest request, Model model){
         Integer userId = null;
-        if (session.getAttribute("user_id") != null){
-            userId = (Integer)session.getAttribute("user_id");
+        if (session.getAttribute("userId") != null){
+            userId = (Integer)session.getAttribute("userId");
             //빌더 수정 할 것..
             CommentDTO commentDTO = new CommentDTO(0,meetingId,userId,commentContent,LocalDateTime.now());
             commentDao.insertComment(commentDTO);
@@ -200,8 +200,8 @@ public class MeetingController {
 
     @GetMapping("/write")
     public String writeArticleForm(HttpSession session,Model model){
-        model.addAttribute("user_id",session.getAttribute("user_id"));
-        model.addAttribute("location",userDao.getUserInfo((int)session.getAttribute("user_id")).getLocation1());
+        model.addAttribute("userId",session.getAttribute("userId"));
+        model.addAttribute("location",userDao.getUserInfo((int)session.getAttribute("userId")).getLocation1());
         model.addAttribute("userDao",userDao);
         return "meeting/meeting_form";
     }
@@ -217,11 +217,11 @@ public class MeetingController {
                                 @RequestParam("interest_job") String interestJob,
                                 HttpSession session) {
         //HttpSession
-        if (session.getAttribute("user_id") != null)
+        if (session.getAttribute("userId") != null)
             {
                 //빌더 패턴
                 MeetingDTO meetingDTO = MeetingDTO.builder()
-                        .userId((int)session.getAttribute("user_id"))
+                        .userId((int)session.getAttribute("userId"))
                         .title(title)
                         .category(category)
                         .applicationDeadline(endDate)
@@ -245,7 +245,7 @@ public class MeetingController {
                              HttpSession session,
                              @PathVariable("id") int meetingId){
         MeetingDTO meetingVO = meetingDao.getMeetingArticleById(meetingId);
-        model.addAttribute("user_id",session.getAttribute("user_id"));
+        model.addAttribute("userId",session.getAttribute("userId"));
         model.addAttribute("meetingVO",meetingVO);
         model.addAttribute("now",LocalDateTime.now());
         return "meeting/meeting_form_fix";
@@ -265,7 +265,7 @@ public class MeetingController {
                                 @RequestParam("interest_language")String interestLanguage,
                                 @RequestParam("interest_framework")String interestFramework,
                                 @RequestParam("interest_job") String interestJob){
-        model.addAttribute("user_id",session.getAttribute("user_id"));
+        model.addAttribute("userId",session.getAttribute("userId"));
         //meetingDao.update
         meetingDao.updateMeetingById(MeetingDTO.builder()
                         .creationDate(creationDate)
@@ -286,8 +286,8 @@ public class MeetingController {
     @GetMapping("/finish/{id}")
     public String finishArticle(Model model, HttpSession session, @PathVariable("id") int meetingId){
         // 게시글에서 작성한 아이디가 새션 아이디랑 같을시
-        if (session.getAttribute("user_id").equals(meetingDao.getMeetingArticleById(meetingId).getUserId())){
-            model.addAttribute("user_id",session.getAttribute("user_id"));
+        if (session.getAttribute("userId").equals(meetingDao.getMeetingArticleById(meetingId).getUserId())){
+            model.addAttribute("userId",session.getAttribute("userId"));
             meetingDao.updateStatus(1,meetingId);
         }
         return "redirect:/meeting";
@@ -297,13 +297,13 @@ public class MeetingController {
     public String deleteArticle(Model model, HttpSession session,
                                 @PathVariable("id") int meetingId){
         // 게시글에서 작성한 아이디가 새션 아이디랑 같을시
-        if (session.getAttribute("user_id").equals(meetingDao.getMeetingArticleById(meetingId).getUserId())){
+        if (session.getAttribute("userId").equals(meetingDao.getMeetingArticleById(meetingId).getUserId())){
             Integer result = applyDao.countApplyByMeetingId(meetingId);
             if (result != null && result !=0){
                 model.addAttribute("msg","신청한 인원이 있습니다.");
                 return "redirect:/meeting/articles?id="+meetingId;
             }
-            model.addAttribute("user_id",session.getAttribute("user_id"));
+            model.addAttribute("userId",session.getAttribute("userId"));
             meetingDao.deleteMeeting(meetingId);
         }
 
@@ -315,10 +315,10 @@ public class MeetingController {
                            @PathVariable("id") int meetingId ,
                            String reason,String snsAddress) {
 
-        if (session.getAttribute("user_id") != null) {
+        if (session.getAttribute("userId") != null) {
             // 신청 데이터 추가
             applyDao.insertComment(ApplyVO.builder()
-                    .userId((int)session.getAttribute("user_id"))
+                    .userId((int)session.getAttribute("userId"))
                     .meetingId(meetingId)
                     .emailAddress(emailAddress)
                     .snsAddress(snsAddress)
