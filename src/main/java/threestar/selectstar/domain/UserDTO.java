@@ -18,11 +18,11 @@ public class UserDTO {
     private String nickname;
     private String location1;
     private String location2;
-    private LocalDateTime join_date;
-    private byte[] profile_photo;
-    private String about_me;
-    private String profile_content;
-    private String interest_language;
-    private String interest_framework;
-    private String interest_job;
+    private LocalDateTime joinDate;
+    private byte[] profilePhoto;
+    private String aboutMe;
+    private String profileContent;
+    private String interestLanguage;
+    private String interestFramework;
+    private String interestJob;
 }

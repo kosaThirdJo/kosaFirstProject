@@ -9,5 +9,5 @@ import org.springframework.web.multipart.MultipartFile;
 @Setter
 @AllArgsConstructor
 public class UserImgFileDTO {
-    private MultipartFile profile_photo;
+    private MultipartFile profilePhoto;
 }
